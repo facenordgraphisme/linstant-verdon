@@ -75,16 +75,30 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
             <div className={`absolute top-full left-1/2 -translate-x-1/2 w-72 pt-4 transition-all duration-300 ${activeDropdown === 'activities' ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
               <div className="glass-promax p-3 rounded-[2rem] shadow-2xl overflow-hidden border border-white/40">
                 <div className="flex flex-col gap-1">
-                  {activityLinks.map(link => (
-                    <Link 
-                      key={link.key} 
-                      href={link.href}
-                      className="flex items-center justify-between py-4 px-6 hover:bg-primary/10 text-slate-900 hover:text-primary rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-[10px] group/item"
-                    >
-                      <span>{dict.nav[link.key]}</span>
-                      <span className="opacity-0 group-hover/item:opacity-100 transition-opacity translate-x-2 group-hover/item:translate-x-0 transition-transform">→</span>
-                    </Link>
-                  ))}
+                  {activityLinks.map(link => {
+                    const hoverColors: Record<string, string> = {
+                      canyoning: 'hover:bg-canyoning-blue/10 hover:text-canyoning-blue text-slate-900',
+                      escalade: 'hover:bg-logo-teal/10 hover:text-logo-teal text-slate-900',
+                      aventures: 'hover:bg-logo-peach/10 hover:text-logo-peach text-slate-900',
+                      stages: 'hover:bg-stages-purple/10 hover:text-stages-purple text-slate-900',
+                      insolite: 'hover:bg-logo-pink/10 hover:text-logo-pink text-slate-900',
+                      evenementiel: 'hover:bg-event-rose/10 hover:text-event-rose text-slate-900',
+                    };
+                    const hoverClass = hoverColors[link.key] || 'hover:bg-primary/10 hover:text-primary text-slate-900';
+                    return (
+                      <Link 
+                        key={link.key} 
+                        href={link.href}
+                        className={`flex items-center justify-between py-4 px-6 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-[10px] group/item ${hoverClass}`}
+                      >
+                        <span className="flex items-center gap-3">
+                          <span className="opacity-75 group-hover/item:scale-110 transition-all">{link.icon}</span>
+                          <span>{dict.nav[link.key]}</span>
+                        </span>
+                        <span className="opacity-0 group-hover/item:opacity-100 transition-opacity translate-x-2 group-hover/item:translate-x-0 transition-transform">→</span>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -130,11 +144,27 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
         <div className="pt-32 px-8 flex flex-col space-y-10">
           <div className="flex flex-col space-y-6">
             <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-2">{dict.nav.activities}</p>
-            {activityLinks.map(link => (
-              <Link key={link.key} href={link.href} onClick={() => setIsOpen(false)} className="text-4xl font-black tracking-tighter text-slate-900 hover:text-primary transition-colors flex items-center gap-5 uppercase">
-                <span className="text-primary">{link.icon}</span> {dict.nav[link.key]}
-              </Link>
-            ))}
+            {activityLinks.map(link => {
+              const themeColors: Record<string, { text: string; hover: string }> = {
+                canyoning: { text: 'text-canyoning-blue', hover: 'hover:text-canyoning-blue' },
+                escalade: { text: 'text-logo-teal', hover: 'hover:text-logo-teal' },
+                aventures: { text: 'text-logo-peach', hover: 'hover:text-logo-peach' },
+                stages: { text: 'text-stages-purple', hover: 'hover:text-stages-purple' },
+                insolite: { text: 'text-logo-pink', hover: 'hover:text-logo-pink' },
+                evenementiel: { text: 'text-event-rose', hover: 'hover:text-event-rose' },
+              };
+              const colors = themeColors[link.key] || { text: 'text-primary', hover: 'hover:text-primary' };
+              return (
+                <Link 
+                  key={link.key} 
+                  href={link.href} 
+                  onClick={() => setIsOpen(false)} 
+                  className={`text-4xl font-black tracking-tighter text-slate-900 transition-colors flex items-center gap-5 uppercase ${colors.hover}`}
+                >
+                  <span className={colors.text}>{link.icon}</span> {dict.nav[link.key]}
+                </Link>
+              );
+            })}
           </div>
           
           <div className="h-px bg-slate-200" />

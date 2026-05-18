@@ -7,6 +7,7 @@ import { projectId, dataset } from './src/sanity/env';
 export default defineConfig({
   name: 'default',
   title: 'L\'instant Verdon Studio',
+  basePath: '/studio',
 
   projectId,
   dataset,

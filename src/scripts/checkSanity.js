@@ -11,11 +11,13 @@ const client = createClient({
 
 async function checkTypes() {
   try {
-    const types = await client.fetch('*[0...100]{_type}');
-    const uniqueTypes = [...new Set(types.map(t => t._type))];
-    console.log('Unique types in Sanity:', uniqueTypes);
+    const categories = await client.fetch('*[_type == "category"]{_id, title, slug}');
+    console.log('Categories in Sanity:', JSON.stringify(categories, null, 2));
+    
+    const activities = await client.fetch('*[_type == "activity"]{_id, title, slug, category->{slug}}');
+    console.log('Activities in Sanity:', JSON.stringify(activities, null, 2));
   } catch (err) {
-    console.error('Error fetching types:', err.message);
+    console.error('Error fetching data:', err.message);
   }
 }
 

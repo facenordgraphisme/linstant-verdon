@@ -7,6 +7,11 @@ const defaultLocale = 'fr';
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Bypass i18n rewrites for Sanity Studio
+  if (pathname.startsWith('/studio')) {
+    return;
+  }
+
   // Check if there is any supported locale in the pathname
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`

@@ -3,24 +3,32 @@
 @config "../../tailwind.config.ts";
 
 :root {
-  --background: 210 20% 98%;
+  --background: 171 20% 98%;
   --foreground: 220 40% 10%;
   --card: 0 0% 100%;
   --card-foreground: 220 40% 10%;
-  --primary: 180 100% 33%;
+  --primary: 171 82% 35%;
   --primary-foreground: 0 0% 100%;
   --secondary: 210 20% 94%;
-  --accent: 45 100% 50%;
+  --accent: 22 90% 71%;
   --border: rgba(0, 0, 0, 0.06);
   --radius-lg: 1.25rem;
   --radius-xl: 2rem;
+  
+  /* Specific Activity Colors */
+  --logo-teal: 191 83% 30%;
+  --logo-pink: 331 47% 63%;
+  --logo-peach: 22 90% 71%;
+  --canyoning-blue: 201 96% 40%;
+  --stages-purple: 262 83% 58%;
+  --event-rose: 349 89% 60%;
   
   /* Pro Max Shadows */
   --shadow-premium: 
     0 20px 40px -12px rgba(0, 0, 0, 0.08),
     0 10px 20px -8px rgba(0, 0, 0, 0.04);
   
-  --shadow-glow: 0 0 25px rgba(0, 168, 168, 0.2);
+  --shadow-glow: 0 0 25px rgba(16, 161, 139, 0.2);
 }
 
 @theme {
@@ -29,6 +37,14 @@
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
   --color-border: var(--border);
+  
+  /* Specific Activity Colors */
+  --color-logo-teal: hsl(var(--logo-teal));
+  --color-logo-pink: hsl(var(--logo-pink));
+  --color-logo-peach: hsl(var(--logo-peach));
+  --color-canyoning-blue: hsl(var(--canyoning-blue));
+  --color-stages-purple: hsl(var(--stages-purple));
+  --color-event-rose: hsl(var(--event-rose));
   
   --shadow-premium: var(--shadow-premium);
   --shadow-glow: var(--shadow-glow);
@@ -64,7 +80,7 @@
   /* Typography */
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #00d2d2 0%, #00ffff 100%);
+    background-image: linear-gradient(135deg, #10a18b 0%, #ca769e 50%, #f7a271 100%);
   }
 
   .text-white-shadow {
@@ -74,7 +90,7 @@
   /* Buttons */
   .button-glow {
     @apply inline-flex items-center justify-center px-10 py-4 rounded-full font-black uppercase tracking-widest transition-all duration-300 cursor-pointer shadow-premium relative overflow-hidden text-white;
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, #008080 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, #0d758b 100%);
   }
 
   .button-glow::after {
@@ -84,7 +100,7 @@
   }
 
   .button-glow:hover {
-    @apply -translate-y-1 scale-[1.02] shadow-[0_15px_30px_rgba(0,168,168,0.4)];
+    @apply -translate-y-1 scale-[1.02] shadow-[0_15px_30px_rgba(16,161,139,0.4)];
   }
 
   .button-glow:hover::after {

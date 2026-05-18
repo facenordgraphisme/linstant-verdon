@@ -94,5 +94,62 @@ export const activityType = defineType({
       title: 'Point de rendez-vous',
       type: 'string',
     }),
+    defineField({
+      name: 'included',
+      title: 'Ce qui est inclus',
+      type: 'object',
+      fields: [
+        { name: 'fr', title: 'Français', type: 'array', of: [{ type: 'string' }] },
+        { name: 'en', title: 'Anglais', type: 'array', of: [{ type: 'string' }] },
+      ],
+    }),
+    defineField({
+      name: 'requirements',
+      title: 'Pré-requis',
+      type: 'object',
+      fields: [
+        { name: 'fr', title: 'Français', type: 'array', of: [{ type: 'string' }] },
+        { name: 'en', title: 'Anglais', type: 'array', of: [{ type: 'string' }] },
+      ],
+    }),
+    defineField({
+      name: 'provided',
+      title: 'Matériel fourni (Nous fournissons)',
+      type: 'object',
+      fields: [
+        { name: 'fr', title: 'Français', type: 'array', of: [{ type: 'string' }] },
+        { name: 'en', title: 'Anglais', type: 'array', of: [{ type: 'string' }] },
+      ],
+    }),
+    defineField({
+      name: 'toBring',
+      title: 'Matériel à apporter (Vous devez apporter)',
+      type: 'object',
+      fields: [
+        { name: 'fr', title: 'Français', type: 'array', of: [{ type: 'string' }] },
+        { name: 'en', title: 'Anglais', type: 'array', of: [{ type: 'string' }] },
+      ],
+    }),
+    defineField({
+      name: 'googleMapsUrl',
+      title: 'URL Google Maps (Embed)',
+      type: 'string',
+    }),
   ],
+  preview: {
+    select: {
+      titleFr: 'title.fr',
+      titleEn: 'title.en',
+      duration: 'duration',
+      media: 'images.0',
+    },
+    prepare(selection) {
+      const { titleFr, titleEn, duration } = selection;
+      return {
+        title: titleFr || titleEn || 'Sans titre',
+        subtitle: duration ? `Durée : ${duration}` : '',
+        media: selection.media,
+      };
+    },
+  },
 });

@@ -13,6 +13,12 @@ const config: Config = {
         accent: "hsl(var(--accent))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        'logo-teal': "hsl(var(--logo-teal))",
+        'logo-pink': "hsl(var(--logo-pink))",
+        'logo-peach': "hsl(var(--logo-peach))",
+        'canyoning-blue': "hsl(var(--canyoning-blue))",
+        'stages-purple': "hsl(var(--stages-purple))",
+        'event-rose': "hsl(var(--event-rose))",
       },
       fontFamily: {
         outfit: ["var(--font-outfit)", "sans-serif"],

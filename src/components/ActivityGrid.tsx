@@ -41,6 +41,63 @@ export default function ActivityGrid({ dict, locale }: { dict: any; locale: stri
     { key: 'evenementiel', icon: <PartyPopper size={40} />, img: '/assets/evenementiel/events.jpg.jpeg' },
   ];
 
+  const colorMap: Record<string, { text: string; bg: string; border: string; bgGlow: string; hoverText: string; hoverBorder: string; hex: string }> = {
+    canyoning: {
+      text: 'text-canyoning-blue',
+      bg: 'bg-canyoning-blue',
+      border: 'border-canyoning-blue',
+      bgGlow: 'bg-canyoning-blue/10',
+      hoverText: 'group-hover:text-canyoning-blue',
+      hoverBorder: 'hover:border-canyoning-blue/30',
+      hex: '#0284c7'
+    },
+    escalade: {
+      text: 'text-logo-teal',
+      bg: 'bg-logo-teal',
+      border: 'border-logo-teal',
+      bgGlow: 'bg-logo-teal/10',
+      hoverText: 'group-hover:text-logo-teal',
+      hoverBorder: 'hover:border-logo-teal/30',
+      hex: '#0d758b'
+    },
+    aventures: {
+      text: 'text-logo-peach',
+      bg: 'bg-logo-peach',
+      border: 'border-logo-peach',
+      bgGlow: 'bg-logo-peach/10',
+      hoverText: 'group-hover:text-logo-peach',
+      hoverBorder: 'hover:border-logo-peach/30',
+      hex: '#f7a271'
+    },
+    stages: {
+      text: 'text-stages-purple',
+      bg: 'bg-stages-purple',
+      border: 'border-stages-purple',
+      bgGlow: 'bg-stages-purple/10',
+      hoverText: 'group-hover:text-stages-purple',
+      hoverBorder: 'hover:border-stages-purple/30',
+      hex: '#7c3aed'
+    },
+    insolite: {
+      text: 'text-logo-pink',
+      bg: 'bg-logo-pink',
+      border: 'border-logo-pink',
+      bgGlow: 'bg-logo-pink/10',
+      hoverText: 'group-hover:text-logo-pink',
+      hoverBorder: 'hover:border-logo-pink/30',
+      hex: '#ca769e'
+    },
+    evenementiel: {
+      text: 'text-event-rose',
+      bg: 'bg-event-rose',
+      border: 'border-event-rose',
+      bgGlow: 'bg-event-rose/10',
+      hoverText: 'group-hover:text-event-rose',
+      hoverBorder: 'hover:border-event-rose/30',
+      hex: '#f43f5e'
+    },
+  };
+
   return (
     <section id="activities" ref={containerRef} className="py-32 bg-slate-50 border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-6">
@@ -49,40 +106,51 @@ export default function ActivityGrid({ dict, locale }: { dict: any; locale: stri
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {activities.map((activity, index) => (
-            <Link 
-              href={`/${locale}/${activity.key}`}
-              key={activity.key}
-              ref={(el) => { if (el) cardsRef.current[index] = el as any; }}
-              className="card-promax group"
-            >
-              <div className="relative h-72 image-zoom-container">
-                <div 
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${activity.img})`, backgroundColor: '#1a1a1a' }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1a] to-transparent opacity-60" />
-                <div className="absolute top-5 left-5 p-3 glass-promax rounded-2xl text-primary shadow-2xl border border-white-10">
-                  {activity.icon}
+          {activities.map((activity, index) => {
+            const colors = colorMap[activity.key] || {
+              text: 'text-primary',
+              bg: 'bg-primary',
+              border: 'border-primary',
+              bgGlow: 'bg-primary/10',
+              hoverText: 'group-hover:text-primary',
+              hoverBorder: 'hover:border-primary/30',
+              hex: '#10a18b'
+            };
+            return (
+              <Link 
+                href={`/${locale}/${activity.key}`}
+                key={activity.key}
+                ref={(el) => { if (el) cardsRef.current[index] = el as any; }}
+                className={`card-promax group transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-black/5 ${colors.hoverBorder}`}
+              >
+                <div className="relative h-72 image-zoom-container">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${activity.img})`, backgroundColor: '#1a1a1a' }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1a] to-transparent opacity-60" />
+                  <div className={`absolute top-5 left-5 p-3 glass-promax rounded-2xl ${colors.text} shadow-2xl border border-white-10`}>
+                    {activity.icon}
+                  </div>
                 </div>
-              </div>
-              
-              <div className="p-8">
-                <p className="text-primary text-[10px] font-black mb-2 uppercase tracking-[0.3em]">
-                  {dict.activities[activity.key]?.tagline || "Verdon Adventure"}
-                </p>
-                <h3 className="text-2xl font-black mb-4 uppercase tracking-tight group-hover:text-primary transition-colors">
-                  {dict.activities[activity.key]?.name || dict.nav[activity.key]}
-                </h3>
-                <p className="text-slate-500 leading-relaxed mb-8 font-medium text-sm line-clamp-2">
-                  {dict.activities[activity.key]?.description}
-                </p>
-                <div className="flex items-center text-xs font-black tracking-widest text-primary group-hover:translate-x-2 transition-all uppercase">
-                  Explorer la catégorie <span className="ml-2">→</span>
+                
+                <div className="p-8">
+                  <p className={`${colors.text} text-[10px] font-black mb-2 uppercase tracking-[0.3em]`}>
+                    {dict.activities[activity.key]?.tagline || "Verdon Adventure"}
+                  </p>
+                  <h3 className={`text-2xl font-black mb-4 uppercase tracking-tight ${colors.hoverText} transition-colors`}>
+                    {dict.activities[activity.key]?.name || dict.nav[activity.key]}
+                  </h3>
+                  <p className="text-slate-500 leading-relaxed mb-8 font-medium text-sm line-clamp-2">
+                    {dict.activities[activity.key]?.description}
+                  </p>
+                  <div className={`flex items-center text-xs font-black tracking-widest ${colors.text} group-hover:translate-x-2 transition-all uppercase`}>
+                    Explorer la catégorie <span className="ml-2">→</span>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
