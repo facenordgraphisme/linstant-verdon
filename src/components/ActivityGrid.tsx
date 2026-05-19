@@ -13,23 +13,32 @@ export default function ActivityGrid({ dict, locale }: { dict: any; locale: stri
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    cardsRef.current.forEach((card, index) => {
-      gsap.fromTo(card,
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse'
-          },
-          delay: index * 0.1
+    const targets = cardsRef.current.filter(Boolean);
+    if (targets.length === 0) return;
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.batch(targets, {
+        start: 'top 85%',
+        onEnter: (batch) => {
+          gsap.fromTo(batch,
+            { y: 50, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: 'power3.out',
+              stagger: 0.15,
+              overwrite: 'auto'
+            }
+          );
+        },
+        onLeaveBack: (batch) => {
+          gsap.set(batch, { y: 50, opacity: 0, overwrite: 'auto' });
         }
-      );
-    });
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
   }, []);
 
   const activities = [
@@ -117,38 +126,42 @@ export default function ActivityGrid({ dict, locale }: { dict: any; locale: stri
               hex: '#10a18b'
             };
             return (
-              <Link 
-                href={`/${locale}/${activity.key}`}
+              <div
                 key={activity.key}
                 ref={(el) => { if (el) cardsRef.current[index] = el as any; }}
-                className={`card-promax group transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-black/5 ${colors.hoverBorder}`}
+                className="h-full flex flex-col"
               >
-                <div className="relative h-72 image-zoom-container">
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${activity.img})`, backgroundColor: '#1a1a1a' }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1a] to-transparent opacity-60" />
-                  <div className={`absolute top-5 left-5 p-3 glass-promax rounded-2xl ${colors.text} shadow-2xl border border-white-10`}>
-                    {activity.icon}
+                <Link 
+                  href={`/${locale}/${activity.key}`}
+                  className={`card-promax group h-full border border-black/5 ${colors.hoverBorder}`}
+                >
+                  <div className="relative h-72 image-zoom-container">
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ backgroundImage: `url(${activity.img})`, backgroundColor: '#1a1a1a' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1a] to-transparent opacity-60" />
+                    <div className={`absolute top-5 left-5 p-3 glass-promax rounded-2xl ${colors.text} shadow-2xl border border-white-10`}>
+                      {activity.icon}
+                    </div>
                   </div>
-                </div>
-                
-                <div className="p-8">
-                  <p className={`${colors.text} text-[10px] font-black mb-2 uppercase tracking-[0.3em]`}>
-                    {dict.activities[activity.key]?.tagline || "Verdon Adventure"}
-                  </p>
-                  <h3 className={`text-2xl font-black mb-4 uppercase tracking-tight ${colors.hoverText} transition-colors`}>
-                    {dict.activities[activity.key]?.name || dict.nav[activity.key]}
-                  </h3>
-                  <p className="text-slate-500 leading-relaxed mb-8 font-medium text-sm line-clamp-2">
-                    {dict.activities[activity.key]?.description}
-                  </p>
-                  <div className={`flex items-center text-xs font-black tracking-widest ${colors.text} group-hover:translate-x-2 transition-all uppercase`}>
-                    Explorer la catégorie <span className="ml-2">→</span>
+                  
+                  <div className="p-8">
+                    <p className={`${colors.text} text-[10px] font-black mb-2 uppercase tracking-[0.3em]`}>
+                      {dict.activities[activity.key]?.tagline || "Verdon Adventure"}
+                    </p>
+                    <h3 className={`text-2xl font-black mb-4 uppercase tracking-tight ${colors.hoverText} transition-colors`}>
+                      {dict.activities[activity.key]?.name || dict.nav[activity.key]}
+                    </h3>
+                    <p className="text-slate-500 leading-relaxed mb-8 font-medium text-sm line-clamp-2">
+                      {dict.activities[activity.key]?.description}
+                    </p>
+                    <div className={`flex items-center text-xs font-black tracking-widest ${colors.text} group-hover:translate-x-2 transition-all uppercase`}>
+                      Explorer la catégorie <span className="ml-2">→</span>
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             );
           })}
         </div>

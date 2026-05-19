@@ -16,6 +16,7 @@ const dictionaries = {
       faq: "Infos & FAQ",
       contact: "Contact",
       book: "Réserver",
+      blog: "Blog",
     },
     hero: {
       title: "Vivez l'instant présent au cœur du Verdon",
@@ -94,6 +95,16 @@ const dictionaries = {
         info: "Nous travaillons pour les comités d’entreprises et les collectivités, et animons les anniversaires."
       }
     },
+    blog: {
+      title: "Notre Blog & Actualités",
+      tagline: "Récits d'aventures et conseils de guides",
+      subtitle: "Suivez nos aventures et découvrez les secrets des Gorges du Verdon à travers les récits d'Emma et Angèle.",
+      readMore: "Lire l'article",
+      backToList: "← Retour aux articles",
+      publishedAt: "Publié le",
+      author: "Par Emma & Angèle",
+      noPosts: "Aucun article disponible pour le moment.",
+    },
   },
   en: {
     meta: {
@@ -112,6 +123,7 @@ const dictionaries = {
       faq: "Info & FAQ",
       contact: "Contact",
       book: "Book Now",
+      blog: "Blog",
     },
     hero: {
       title: "Experience the moment in the heart of Verdon",
@@ -139,6 +151,16 @@ const dictionaries = {
       insolite: { name: "Unusual", tagline: "Experience the unexpected" },
       stages: { name: "Stages", tagline: "Immerse yourself in the Verdon" },
       evenementiel: { name: "Events", tagline: "Custom events in a unique setting" },
+    },
+    blog: {
+      title: "Our Blog & News",
+      tagline: "Adventure stories and guide advice",
+      subtitle: "Follow our adventures and discover the secrets of the Verdon Gorges through Emma and Angèle's stories.",
+      readMore: "Read article",
+      backToList: "← Back to articles",
+      publishedAt: "Published on",
+      author: "By Emma & Angèle",
+      noPosts: "No posts available at the moment.",
     },
   },
 };

@@ -110,6 +110,9 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
           <Link href={`/${locale}/faq`} className={`text-sm font-black uppercase nav-link ${isScrolled ? 'text-slate-800' : 'text-white text-white-shadow'}`}>
             {dict.nav.faq}
           </Link>
+          <Link href={`/${locale}/blog`} className={`text-sm font-black uppercase nav-link ${isScrolled ? 'text-slate-800' : 'text-white text-white-shadow'}`}>
+            {dict.nav.blog}
+          </Link>
           <Link href={`/${locale}/contact`} className={`text-sm font-black uppercase nav-link ${isScrolled ? 'text-slate-800' : 'text-white text-white-shadow'}`}>
             {dict.nav.contact}
           </Link>
@@ -172,6 +175,7 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
           <div className="flex flex-col space-y-6">
             <Link href={`/${locale}/a-propos`} onClick={() => setIsOpen(false)} className="text-3xl font-black tracking-tight text-slate-800 uppercase">{dict.nav.about}</Link>
             <Link href={`/${locale}/faq`} onClick={() => setIsOpen(false)} className="text-3xl font-black tracking-tight text-slate-800 uppercase">{dict.nav.faq}</Link>
+            <Link href={`/${locale}/blog`} onClick={() => setIsOpen(false)} className="text-3xl font-black tracking-tight text-slate-800 uppercase">{dict.nav.blog}</Link>
             <Link href={`/${locale}/contact`} onClick={() => setIsOpen(false)} className="text-3xl font-black tracking-tight text-slate-800 uppercase">{dict.nav.contact}</Link>
           </div>
 

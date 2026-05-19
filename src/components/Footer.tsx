@@ -47,6 +47,7 @@ export default function Footer({ dict, locale }: { dict: any; locale: string }) 
                 <li><Link href={`/${locale}/canyoning`} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">Canyoning</Link></li>
                 <li><Link href={`/${locale}/escalade`} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">Escalade</Link></li>
                 <li><Link href={`/${locale}/stages`} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">Stages</Link></li>
+                <li><Link href={`/${locale}/blog`} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.blog}</Link></li>
                 <li><Link href={`/${locale}/a-propos`} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.about}</Link></li>
                 <li><Link href={`/${locale}/contact`} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.contact}</Link></li>
               </ul>
