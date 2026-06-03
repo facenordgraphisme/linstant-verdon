@@ -74,7 +74,7 @@ export default function ContactSection({ dict, locale }: { dict: any; locale: st
             <span className="text-primary font-black uppercase tracking-[0.3em] text-xs flex items-center gap-3">
               <span className="w-8 h-px bg-primary" /> {locale === 'fr' ? 'À VOTRE ÉCOUTE' : 'AT YOUR SERVICE'}
             </span>
-            <h2 className="text-4xl md:text-5.5xl font-black uppercase tracking-tighter text-slate-900 leading-none">
+            <h2 className="text-4xl md:text-5.5xl font-black uppercase tracking-tighter text-[#109ea5] leading-none">
               {contactDict.title}
             </h2>
             <p className="text-base md:text-lg text-slate-500 font-medium leading-relaxed max-w-xl">

@@ -63,7 +63,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
       bgGlow: 'bg-canyoning-blue/10',
       hoverText: 'group-hover:text-canyoning-blue',
       hoverBorder: 'hover:border-canyoning-blue/30',
-      hex: '#0284c7'
+      hex: '#109ea5'
     },
     escalade: {
       text: 'text-logo-teal',
@@ -72,7 +72,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
       bgGlow: 'bg-logo-teal/10',
       hoverText: 'group-hover:text-logo-teal',
       hoverBorder: 'hover:border-logo-teal/30',
-      hex: '#0d758b'
+      hex: '#109ea5'
     },
     aventures: {
       text: 'text-logo-peach',
@@ -90,7 +90,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
       bgGlow: 'bg-stages-purple/10',
       hoverText: 'group-hover:text-stages-purple',
       hoverBorder: 'hover:border-stages-purple/30',
-      hex: '#7c3aed'
+      hex: '#f7a271'
     },
     insolite: {
       text: 'text-logo-pink',
@@ -108,7 +108,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
       bgGlow: 'bg-event-rose/10',
       hoverText: 'group-hover:text-event-rose',
       hoverBorder: 'hover:border-event-rose/30',
-      hex: '#f43f5e'
+      hex: '#ca769e'
     },
   };
 
@@ -137,7 +137,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
             <span className={`${colors.text} font-black uppercase tracking-[0.4em] text-xs mb-6 block drop-shadow-lg`}>
               {locale === 'fr' ? 'SÉMINAIRES, EVG / EVJF & GROUPES' : 'SEMINARS, BACHELOR PARTIES & GROUPS'}
             </span>
-            <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-8 text-white-shadow">
+            <h1 className={`text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-8 text-white-shadow ${colors.text}`}>
               {activityData.name}
             </h1>
             <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto font-medium leading-relaxed text-white-shadow mb-10">
@@ -147,7 +147,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
               href={`/${locale}/contact`}
               className="button-glow transition-all duration-300 inline-block px-10 py-5 rounded-full font-black text-xs uppercase tracking-wider text-white shadow-2xl scale-[1.02] hover:scale-[1.05]"
               style={{
-                background: `linear-gradient(135deg, ${colors.hex} 0%, #10a18b 100%)`
+                background: colors.hex
               }}
             >
               {locale === 'fr' ? 'RÉSERVER VOTRE ÉVÉNEMENT' : 'BOOK YOUR EVENT'}
@@ -324,7 +324,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
           <span className={`${colors.text} font-black uppercase tracking-[0.4em] text-xs mb-6 block drop-shadow-lg`}>
             {activityData.tagline}
           </span>
-          <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-8 text-white-shadow">
+          <h1 className={`text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-8 text-white-shadow ${colors.text}`}>
             {activityData.name}
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto font-medium leading-relaxed text-white-shadow mb-10">
@@ -334,7 +334,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
             href="#booking" 
             className="button-glow transition-all duration-300"
             style={{
-              background: `linear-gradient(135deg, ${colors.hex} 0%, #10a18b 100%)`
+              background: colors.hex
             }}
           >
             RÉSERVER VOTRE SORTIE
@@ -398,7 +398,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                 </div>
                 <div className="p-8">
                   <p className={`text-[10px] font-black ${colors.text} uppercase tracking-[0.2em] mb-3`}>{activity.subtitle}</p>
-                  <h3 className={`text-2xl font-black text-slate-900 mb-6 uppercase tracking-tighter leading-tight ${colors.hoverText} transition-colors`}>
+                  <h3 className={`text-2xl font-black ${colors.text} mb-6 uppercase tracking-tighter leading-tight transition-colors`}>
                     {activity.title}
                   </h3>
                   <div className="flex items-center justify-between pt-6 border-t border-slate-50">

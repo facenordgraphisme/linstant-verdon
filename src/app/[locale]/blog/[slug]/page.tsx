@@ -150,7 +150,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             </div>
             <div className="text-center md:text-left space-y-2">
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-primary">Les Auteurs</span>
-              <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">Emma Aglaé & Angèle Kanapa</h3>
+              <h3 className="text-2xl font-black text-[#109ea5] uppercase tracking-tight">Emma Aglaé & Angèle Kanapa</h3>
               <p className="text-sm text-slate-500 font-semibold leading-relaxed">
                 Guides diplômées d'État passionnées par le Verdon. Nous aimons explorer, repousser les limites de la verticalité, et partager la beauté magique de nos gorges sauvages.
               </p>

@@ -99,7 +99,7 @@ export default async function BlogArchivePage({ params }: { params: Promise<{ lo
                     {/* Content */}
                     <div className="p-8 flex flex-col flex-grow justify-between space-y-6">
                       <div className="space-y-4">
-                        <h2 className="text-xl md:text-2xl font-black text-slate-900 leading-tight group-hover:text-primary transition-colors duration-300 uppercase tracking-tight">
+                        <h2 className="text-xl md:text-2xl font-black text-[#109ea5] leading-tight group-hover:text-primary transition-colors duration-300 uppercase tracking-tight">
                           {post.title}
                         </h2>
                         <p className="text-slate-500 text-xs md:text-sm font-semibold leading-relaxed line-clamp-3">

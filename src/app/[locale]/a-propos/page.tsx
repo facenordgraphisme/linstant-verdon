@@ -43,7 +43,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </div>
             <div className="flex flex-col justify-center">
               <p className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">Cofondatrice & Guide</p>
-              <h2 className="text-5xl font-black mb-8 text-slate-900 uppercase tracking-tighter">Emma Aglaé</h2>
+              <h2 className="text-5xl font-black mb-8 text-[#109ea5] uppercase tracking-tighter">Emma Aglaé</h2>
               <p className="text-lg text-slate-600 leading-relaxed font-medium">
                 {dict.about.emma}
               </p>
@@ -54,7 +54,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="flex flex-col justify-center order-2 lg:order-1">
               <p className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">Guide Escalade & Canyon</p>
-              <h2 className="text-5xl font-black mb-8 text-slate-900 uppercase tracking-tighter">Angèle Kanapa</h2>
+              <h2 className="text-5xl font-black mb-8 text-[#109ea5] uppercase tracking-tighter">Angèle Kanapa</h2>
               <p className="text-lg text-slate-600 leading-relaxed font-medium">
                 {dict.about.angele}
               </p>
@@ -77,7 +77,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </div>
             <div className="flex flex-col justify-center">
               <p className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">Guide Escalade & Canyon</p>
-              <h2 className="text-5xl font-black mb-8 text-slate-900 uppercase tracking-tighter">Marie Oddo</h2>
+              <h2 className="text-5xl font-black mb-8 text-[#109ea5] uppercase tracking-tighter">Marie Oddo</h2>
               <p className="text-lg text-slate-600 leading-relaxed font-medium">
                 {dict.about.marie}
               </p>
@@ -93,13 +93,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           {/* Partenaires Section */}
           <div className="pt-24 space-y-20">
             <div className="text-center">
-              <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter mb-4">Nos Partenaires</h2>
+              <h2 className="text-4xl md:text-6xl font-black text-[#109ea5] uppercase tracking-tighter mb-4">Nos Partenaires</h2>
               <p className="text-slate-500 font-bold uppercase tracking-[0.2em] text-xs">Ils nous font confiance et partagent nos valeurs</p>
             </div>
 
             {/* Activités */}
             <div className="space-y-12">
-              <h3 className="text-xl font-black text-primary uppercase tracking-[0.3em] text-center">Activités</h3>
+              <h3 className="text-xl font-black text-[#109ea5] uppercase tracking-[0.3em] text-center">Activités</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {[
                   { name: "Verdon tourisme", img: "verdontourisme.webp" },
@@ -125,7 +125,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
             {/* Hébergement */}
             <div className="space-y-12">
-              <h3 className="text-xl font-black text-primary uppercase tracking-[0.3em] text-center">Hébergement</h3>
+              <h3 className="text-xl font-black text-[#109ea5] uppercase tracking-[0.3em] text-center">Hébergement</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 {[
                   { name: "Hôtel le Panoramic", img: "panoramic.jpg.jpeg" },
@@ -146,7 +146,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
             {/* Autre */}
             <div className="space-y-12">
-              <h3 className="text-xl font-black text-primary uppercase tracking-[0.3em] text-center">Autre</h3>
+              <h3 className="text-xl font-black text-[#109ea5] uppercase tracking-[0.3em] text-center">Autre</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 {[
                   { name: "Marielle Laubie Photographe", img: "marielle-laubie.png" },

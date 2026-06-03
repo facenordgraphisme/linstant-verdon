@@ -63,28 +63,28 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
       bg: 'bg-canyoning-blue',
       border: 'border-canyoning-blue',
       bgGlow: 'bg-canyoning-blue/10',
-      hex: '#0284c7'
+      hex: '#109ea5'
     },
     canyon: {
       text: 'text-canyoning-blue',
       bg: 'bg-canyoning-blue',
       border: 'border-canyoning-blue',
       bgGlow: 'bg-canyoning-blue/10',
-      hex: '#0284c7'
+      hex: '#109ea5'
     },
     climbing: {
       text: 'text-logo-teal',
       bg: 'bg-logo-teal',
       border: 'border-logo-teal',
       bgGlow: 'bg-logo-teal/10',
-      hex: '#0d758b'
+      hex: '#10a18b'
     },
     escalade: {
       text: 'text-logo-teal',
       bg: 'bg-logo-teal',
       border: 'border-logo-teal',
       bgGlow: 'bg-logo-teal/10',
-      hex: '#0d758b'
+      hex: '#10a18b'
     },
     aventures: {
       text: 'text-logo-peach',
@@ -105,7 +105,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
       bg: 'bg-stages-purple',
       border: 'border-stages-purple',
       bgGlow: 'bg-stages-purple/10',
-      hex: '#7c3aed'
+      hex: '#ca769e'
     },
     insolite: {
       text: 'text-logo-pink',
@@ -126,7 +126,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
       bg: 'bg-event-rose',
       border: 'border-event-rose',
       bgGlow: 'bg-event-rose/10',
-      hex: '#f43f5e'
+      hex: '#ca769e'
     },
   };
 
@@ -172,7 +172,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
             <ChevronLeft size={14} className={colors.text} /> 
             {dict.nav[dictKey as keyof typeof dict.nav] || category}
           </Link>
-          <h1 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none mb-6 text-white-shadow">
+          <h1 className={`text-4xl md:text-7xl font-black ${colors.text} uppercase tracking-tighter leading-none mb-6 text-white-shadow`}>
             {activity.title}
           </h1>
           <p className="text-lg md:text-xl text-white/80 font-black tracking-[0.2em] uppercase text-white-shadow">
@@ -190,7 +190,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
             
             {/* Description */}
             <div className="prose prose-xl max-w-none">
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tighter mb-6 flex items-center gap-3">
+              <h2 className={`text-3xl md:text-4xl font-black ${colors.text} uppercase tracking-tighter mb-6 flex items-center gap-3`}>
                 <span className={`w-8 h-1 rounded-full ${colors.bg}`} /> Description
               </h2>
               <p className="text-slate-600 leading-relaxed font-semibold text-base md:text-lg">
@@ -221,7 +221,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
             {/* Video (YouTube embed) */}
             {embedVideoUrl && (
               <div className="space-y-6 border-t border-slate-200/50 pt-12">
-                <h3 className="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tighter flex items-center gap-3">
+                <h3 className={`text-2xl md:text-3xl font-black ${colors.text} uppercase tracking-tighter flex items-center gap-3`}>
                   <span className={`w-8 h-1 rounded-full ${colors.bg}`} /> 🎥 Aperçu Vidéo
                 </h3>
                 <div className="relative w-full aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white">
@@ -241,7 +241,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
             {/* Photo Gallery */}
             {activity.images && activity.images.length > 1 && (
               <div className="space-y-6 border-t border-slate-200/50 pt-12">
-                <h3 className="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tighter flex items-center gap-3">
+                <h3 className={`text-2xl md:text-3xl font-black ${colors.text} uppercase tracking-tighter flex items-center gap-3`}>
                   <span className={`w-8 h-1 rounded-full ${colors.bg}`} /> 📸 Galerie Photos
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -314,7 +314,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
                   href={`/${locale}/contact`} 
                   className="button-glow w-full text-center py-4 rounded-2xl block text-white font-black uppercase text-xs tracking-wider transition-all duration-300 hover:scale-[1.02]"
                   style={{
-                    background: `linear-gradient(135deg, ${colors.hex} 0%, #10a18b 100%)`
+                    background: colors.hex
                   }}
                 >
                   {locale === 'fr' ? 'RÉSERVER VOTRE SORTIE' : 'BOOK YOUR TRIP'}

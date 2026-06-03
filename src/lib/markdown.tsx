@@ -18,7 +18,7 @@ export function parseMarkdown(text: string) {
         // H2 Header
         if (trimmed.startsWith('## ')) {
           return (
-            <h2 key={index} className="text-2xl md:text-3.5xl font-black text-slate-900 mt-14 mb-6 uppercase tracking-tight leading-tight">
+            <h2 key={index} className="text-2xl md:text-3.5xl font-black text-[#109ea5] mt-14 mb-6 uppercase tracking-tight leading-tight">
               {parseInline(trimmed.slice(3))}
             </h2>
           );
@@ -27,7 +27,7 @@ export function parseMarkdown(text: string) {
         // H1 Header
         if (trimmed.startsWith('# ')) {
           return (
-            <h1 key={index} className="text-3xl md:text-5xl font-black text-slate-900 mt-16 mb-8 uppercase tracking-tighter leading-none">
+            <h1 key={index} className="text-3xl md:text-5xl font-black text-[#109ea5] mt-16 mb-8 uppercase tracking-tighter leading-none">
               {parseInline(trimmed.slice(2))}
             </h1>
           );

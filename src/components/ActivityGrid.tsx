@@ -58,7 +58,7 @@ export default function ActivityGrid({ dict, locale }: { dict: any; locale: stri
       bgGlow: 'bg-canyoning-blue/10',
       hoverText: 'group-hover:text-canyoning-blue',
       hoverBorder: 'hover:border-canyoning-blue/30',
-      hex: '#0284c7'
+      hex: '#109ea5'
     },
     escalade: {
       text: 'text-logo-teal',
@@ -67,7 +67,7 @@ export default function ActivityGrid({ dict, locale }: { dict: any; locale: stri
       bgGlow: 'bg-logo-teal/10',
       hoverText: 'group-hover:text-logo-teal',
       hoverBorder: 'hover:border-logo-teal/30',
-      hex: '#0d758b'
+      hex: '#109ea5'
     },
     aventures: {
       text: 'text-logo-peach',
@@ -85,7 +85,7 @@ export default function ActivityGrid({ dict, locale }: { dict: any; locale: stri
       bgGlow: 'bg-stages-purple/10',
       hoverText: 'group-hover:text-stages-purple',
       hoverBorder: 'hover:border-stages-purple/30',
-      hex: '#7c3aed'
+      hex: '#f7a271'
     },
     insolite: {
       text: 'text-logo-pink',
@@ -103,7 +103,7 @@ export default function ActivityGrid({ dict, locale }: { dict: any; locale: stri
       bgGlow: 'bg-event-rose/10',
       hoverText: 'group-hover:text-event-rose',
       hoverBorder: 'hover:border-event-rose/30',
-      hex: '#f43f5e'
+      hex: '#ca769e'
     },
   };
 
@@ -150,7 +150,7 @@ export default function ActivityGrid({ dict, locale }: { dict: any; locale: stri
                     <p className={`${colors.text} text-[10px] font-black mb-2 uppercase tracking-[0.3em]`}>
                       {dict.activities[activity.key]?.tagline || "Verdon Adventure"}
                     </p>
-                    <h3 className={`text-2xl font-black mb-4 uppercase tracking-tight ${colors.hoverText} transition-colors`}>
+                    <h3 className={`text-2xl font-black mb-4 uppercase tracking-tight ${colors.text} transition-colors`}>
                       {dict.activities[activity.key]?.name || dict.nav[activity.key]}
                     </h3>
                     <p className="text-slate-500 leading-relaxed mb-8 font-medium text-sm line-clamp-2">

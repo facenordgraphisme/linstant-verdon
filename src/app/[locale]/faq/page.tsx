@@ -37,7 +37,7 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
             <div key={i} className="card-promax p-12 relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-2 h-full bg-primary opacity-30" />
               <div className="relative z-10">
-                <h3 className="text-2xl font-black mb-6 text-slate-900 group-hover:text-primary transition-colors flex items-start gap-5">
+                <h3 className="text-2xl font-black mb-6 text-[#109ea5] group-hover:text-primary transition-colors flex items-start gap-5">
                   <span className="text-primary text-4xl leading-none font-black">?</span>
                   <span className="leading-tight">{faq.q}</span>
                 </h3>

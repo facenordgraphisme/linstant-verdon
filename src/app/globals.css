@@ -15,13 +15,13 @@
   --radius-lg: 1.25rem;
   --radius-xl: 2rem;
   
-  /* Specific Activity Colors */
-  --logo-teal: 191 83% 30%;
-  --logo-pink: 331 47% 63%;
-  --logo-peach: 22 90% 71%;
-  --canyoning-blue: 201 96% 40%;
-  --stages-purple: 262 83% 58%;
-  --event-rose: 349 89% 60%;
+  /* Specific Activity Colors (Limited strictly to brand palette) */
+  --logo-teal: 183 82% 35%;      /* #109ea5 (Cyan) */
+  --logo-pink: 331 47% 63%;      /* #ca769e */
+  --logo-peach: 22 90% 71%;      /* #f7a271 */
+  --canyoning-blue: 183 82% 35%;  /* #109ea5 */
+  --stages-purple: 22 90% 71%;    /* #f7a271 (Orange) */
+  --event-rose: 331 47% 63%;      /* #ca769e */
   
   /* Pro Max Shadows */
   --shadow-premium: 
@@ -61,7 +61,7 @@
     font-family: var(--font-outfit);
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-extrabold tracking-tight;
+    @apply font-extrabold tracking-tight text-[#109ea5];
     font-family: var(--font-outfit);
   }
 }
@@ -79,8 +79,7 @@
 
   /* Typography */
   .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #10a18b 0%, #ca769e 50%, #f7a271 100%);
+    color: #109ea5;
   }
 
   .text-white-shadow {
