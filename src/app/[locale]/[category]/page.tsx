@@ -1,6 +1,7 @@
 import { client } from '@/sanity/client';
 import { getDictionary } from '@/lib/dictionaries';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default async function CategoryPage({ params }: { params: Promise<{ locale: string; category: string }> }) {
   const { locale, category } = await params;
@@ -417,6 +418,42 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
           </div>
         </div>
       </section>
+
+      {/* Photo Gallery Section */}
+      {dictKey === 'insolite' && (
+        <section className="py-24 px-6 bg-slate-50 border-t border-slate-100">
+          <div className="max-w-7xl mx-auto space-y-16">
+            <div className="text-center space-y-4">
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter">
+                {locale === 'fr' ? 'Galerie Photos' : 'Photo Gallery'}
+              </h2>
+              <p className="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs">
+                {locale === 'fr' ? "Un avant-goût de l'aventure insolite" : 'A taste of the unusual adventure'}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {Array.from({ length: 12 }, (_, i) => {
+                const num = String(i + 1).padStart(5, '0');
+                return (
+                  <div
+                    key={num}
+                    className={`group overflow-hidden rounded-[2rem] border-4 border-white shadow-xl relative aspect-square bg-slate-100 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl ${colors.hoverBorder}`}
+                  >
+                    <Image
+                      src={`/assets/insolite/gallerie/portaledgesitelinstantverdon${num}.jpg`}
+                      alt={`Activité insolite Verdon ${i + 1}`}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

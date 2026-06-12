@@ -40,13 +40,17 @@ export default function Hero({ dict }: { dict: any }) {
 
   return (
     <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* YouTube Background Video - Guaranteed Cover */}
+      {/* Background Video - Guaranteed Cover */}
       <div ref={videoRef} className="video-container" style={{ opacity: 0 }}>
-        <iframe
-          src="https://www.youtube.com/embed/Yhu4XIlNje0?autoplay=1&mute=1&loop=1&playlist=Yhu4XIlNje0&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1&start=8&end=97&disablekb=1&fs=0"
-          frameBorder="0"
-          allow="autoplay; fullscreen"
-        ></iframe>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/video-linstant-verdon.mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* Strong Dark Overlay for Readability */}

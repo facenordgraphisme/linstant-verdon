@@ -111,14 +111,6 @@
     @apply absolute inset-0 overflow-hidden bg-black z-0;
   }
 
-  .video-container iframe {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none;
-    width: 140vw;
-    height: 78.75vw; /* 16:9 ratio of 140vw */
-    min-height: 140vh;
-    min-width: 248.88vh; /* 16:9 ratio of 140vh */
-  }
-
   .card-promax {
     @apply bg-white rounded-2xl border border-black/5 shadow-premium transition-all duration-500 overflow-hidden flex flex-col;
   }
