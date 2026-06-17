@@ -8,12 +8,13 @@ import type { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale, slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
   const post = await client.fetch(`
     *[_type == "post" && slug.current == $slug][0] {
       "title": title[$locale],
       "description": description[$locale]
     }
-  `, { slug, locale });
+  `, { slug: decodedSlug, locale });
 
   if (!post) return { title: "Article non trouvé | L'instant Verdon" };
 
@@ -25,6 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function BlogPostPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
   const dict = getDictionary(locale as 'fr' | 'en');
   const blogDict = dict.blog || {
     publishedAt: "Publié le",
@@ -42,7 +44,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
       "imageUrl": mainImage.asset->url,
       "content": content[$locale]
     }
-  `, { slug, locale });
+  `, { slug: decodedSlug, locale });
 
   if (!post) {
     return (

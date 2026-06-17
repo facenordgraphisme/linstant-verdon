@@ -11,6 +11,7 @@ interface ActivityTabsProps {
     meetingPoint?: string;
     googleMapsUrl?: string;
     price?: number;
+    priceDetails?: string;
     minAge?: number;
     duration?: string;
     approachTime?: string;
@@ -242,8 +243,10 @@ export default function ActivityTabs({ locale, categoryTheme, data }: ActivityTa
                   <Euro size={20} />
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase font-black tracking-widest text-slate-400">{labels.priceLabel}</div>
-                  <div className="text-xl font-black text-slate-900">{data.price ? `${data.price}€` : '--'}</div>
+                  <div className="text-[10px] uppercase font-black tracking-widest text-slate-500">{labels.priceLabel}</div>
+                  <div className={`${data.priceDetails && data.priceDetails.length > 12 ? 'text-[11px] md:text-xs' : 'text-xl'} font-black text-slate-900 leading-snug`}>
+                    {data.priceDetails ? data.priceDetails : (data.price ? `${data.price}€` : '--')}
+                  </div>
                 </div>
               </div>
 
@@ -253,7 +256,7 @@ export default function ActivityTabs({ locale, categoryTheme, data }: ActivityTa
                   <User2 size={20} />
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase font-black tracking-widest text-slate-400">{labels.ageLabel}</div>
+                  <div className="text-[10px] uppercase font-black tracking-widest text-slate-500">{labels.ageLabel}</div>
                   <div className="text-xl font-black text-slate-900">{data.minAge ? `${data.minAge} ans+` : '--'}</div>
                 </div>
               </div>
@@ -264,7 +267,7 @@ export default function ActivityTabs({ locale, categoryTheme, data }: ActivityTa
                   <Clock size={20} />
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase font-black tracking-widest text-slate-400">{labels.durationLabel}</div>
+                  <div className="text-[10px] uppercase font-black tracking-widest text-slate-500">{labels.durationLabel}</div>
                   <div className="text-xl font-black text-slate-900">{data.duration || '--'}</div>
                 </div>
               </div>
@@ -275,7 +278,7 @@ export default function ActivityTabs({ locale, categoryTheme, data }: ActivityTa
                   <Trees size={20} />
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase font-black tracking-widest text-slate-400">{labels.approachLabel}</div>
+                  <div className="text-[10px] uppercase font-black tracking-widest text-slate-500">{labels.approachLabel}</div>
                   <div className="text-xl font-black text-slate-900">{data.approachTime || '--'}</div>
                 </div>
               </div>
@@ -286,7 +289,7 @@ export default function ActivityTabs({ locale, categoryTheme, data }: ActivityTa
                   <Footprints size={20} />
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase font-black tracking-widest text-slate-400">{labels.returnLabel}</div>
+                  <div className="text-[10px] uppercase font-black tracking-widest text-slate-500">{labels.returnLabel}</div>
                   <div className="text-xl font-black text-slate-900">{data.returnTime || '--'}</div>
                 </div>
               </div>

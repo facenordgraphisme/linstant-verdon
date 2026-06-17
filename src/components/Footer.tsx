@@ -74,10 +74,14 @@ export default function Footer({ dict, locale }: { dict: any; locale: string }) 
 
         {/* Bottom Bar */}
         <div className="pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-slate-400 text-[10px] font-black tracking-[0.3em] uppercase">
-            © {new Date().getFullYear()} L'INSTANT VERDON.
-          </p>
-          <div className="flex gap-8 text-slate-400 text-[10px] font-black tracking-[0.3em] uppercase">
+          <div className="text-slate-500 text-xs md:text-sm font-black tracking-[0.2em] uppercase flex flex-col sm:flex-row gap-2 sm:gap-4 items-center">
+            <span>© {new Date().getFullYear()} L'INSTANT VERDON.</span>
+            <span className="hidden sm:inline text-slate-300">•</span>
+            <a href="https://www.facenordgraphisme.fr" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors font-bold normal-case tracking-normal">
+              Propulsé par Face Nord Graphisme
+            </a>
+          </div>
+          <div className="flex gap-8 text-slate-500 text-xs md:text-sm font-black tracking-[0.2em] uppercase">
             <Link href="#" className="hover:text-primary transition-colors">Mentions Légales</Link>
             <Link href="#" className="hover:text-primary transition-colors">Confidentialité</Link>
           </div>

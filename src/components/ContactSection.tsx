@@ -1,16 +1,27 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ContactSection({ dict, locale }: { dict: any; locale: string }) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
+  const formContainerRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const [formData, setFormData] = useState({
+    user_name: '',
+    user_email: '',
+    user_phone: '',
+    message: '',
+  });
+
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -30,7 +41,7 @@ export default function ContactSection({ dict, locale }: { dict: any; locale: st
       );
 
       // Form sliding from right
-      gsap.fromTo(formRef.current,
+      gsap.fromTo(formContainerRef.current,
         { x: 80, opacity: 0 },
         {
           x: 0,
@@ -58,10 +69,45 @@ export default function ContactSection({ dict, locale }: { dict: any; locale: st
     addressLabel: locale === 'fr' ? "Adresse" : "Address",
     namePlaceholder: locale === 'fr' ? "Votre nom" : "Your name",
     emailPlaceholder: locale === 'fr' ? "votre@email.com" : "your@email.com",
+    phonePlaceholder: locale === 'fr' ? "Votre numéro de téléphone" : "Your phone number",
     messagePlaceholder: locale === 'fr' ? "Dites-nous tout sur votre projet d'aventure..." : "Tell us all about your adventure project...",
     submitLabel: locale === 'fr' ? "ENVOYER VOTRE MESSAGE" : "SEND YOUR MESSAGE",
+    submittingLabel: locale === 'fr' ? "ENVOI EN COURS..." : "SENDING...",
     fullNameLabel: locale === 'fr' ? "Nom complet" : "Full name",
-    messageLabel: locale === 'fr' ? "Message" : "Message"
+    messageLabel: locale === 'fr' ? "Message" : "Message",
+    successMsg: locale === 'fr' ? "Merci ! Votre message a bien été envoyé." : "Thank you! Your message has been sent successfully.",
+    errorMsg: locale === 'fr' ? "Une erreur est survenue lors de l'envoi. Veuillez réessayer." : "An error occurred while sending. Please try again."
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    setStatus('sending');
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_linstant_verdon';
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_contact_form';
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
+
+    emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
+      .then(() => {
+        setStatus('success');
+        setFormData({
+          user_name: '',
+          user_email: '',
+          user_phone: '',
+          message: '',
+        });
+      })
+      .catch((error) => {
+        console.error('EmailJS error:', error);
+        setStatus('error');
+      });
   };
 
   return (
@@ -90,7 +136,7 @@ export default function ContactSection({ dict, locale }: { dict: any; locale: st
                 <Phone size={32} className="hidden md:block" />
               </div>
               <div>
-                <p className="text-[10px] font-black text-slate-300 uppercase tracking-[0.3em] mb-1">{contactDict.phoneLabel}</p>
+                <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-1">{contactDict.phoneLabel}</p>
                 <a href="tel:+33661473139" className="text-xl md:text-3xl font-black tracking-tight text-slate-900 hover:text-primary transition-colors">+33 (0)6 61 47 31 39</a>
               </div>
             </div>
@@ -102,7 +148,7 @@ export default function ContactSection({ dict, locale }: { dict: any; locale: st
                 <Mail size={32} className="hidden md:block" />
               </div>
               <div>
-                <p className="text-[10px] font-black text-slate-300 uppercase tracking-[0.3em] mb-1">{contactDict.emailLabel}</p>
+                <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-1">{contactDict.emailLabel}</p>
                 <a href="mailto:contact@linstantverdon.com" className="text-xl md:text-3.5xl font-black tracking-tight text-slate-900 hover:text-primary transition-colors lowercase">contact@linstantverdon.com</a>
               </div>
             </div>
@@ -114,7 +160,7 @@ export default function ContactSection({ dict, locale }: { dict: any; locale: st
                 <MapPin size={32} className="hidden md:block" />
               </div>
               <div>
-                <p className="text-[10px] font-black text-slate-300 uppercase tracking-[0.3em] mb-1">{contactDict.addressLabel}</p>
+                <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-1">{contactDict.addressLabel}</p>
                 <p className="text-xl md:text-3xl font-black tracking-tight leading-tight text-slate-900">Place de l'église, 04120 Castellane</p>
               </div>
             </div>
@@ -122,40 +168,81 @@ export default function ContactSection({ dict, locale }: { dict: any; locale: st
         </div>
 
         {/* Right Column: Form Panel */}
-        <div ref={formRef} className="bg-slate-50 p-8 md:p-16 rounded-[3.5rem] border border-slate-100 shadow-2xl relative overflow-hidden">
+        <div ref={formContainerRef} className="bg-slate-50 p-8 md:p-16 rounded-[3.5rem] border border-slate-100 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary opacity-5 blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
           
-          <form className="space-y-8 relative z-10">
+          <form ref={formRef} onSubmit={sendEmail} className="space-y-8 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex flex-col gap-3">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">{contactDict.fullNameLabel}</label>
+                <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em]">{contactDict.fullNameLabel}</label>
                 <input 
                   type="text" 
-                  className="bg-white border border-slate-200 rounded-2xl p-5 text-slate-900 focus:border-primary outline-none transition-all placeholder:text-slate-300 shadow-sm" 
+                  name="user_name"
+                  value={formData.user_name}
+                  onChange={handleInputChange}
+                  required
+                  className="bg-white border border-slate-200 rounded-2xl p-5 text-slate-900 focus:border-primary outline-none transition-all placeholder:text-slate-400 shadow-sm" 
                   placeholder={contactDict.namePlaceholder} 
                 />
               </div>
               <div className="flex flex-col gap-3">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">{contactDict.emailLabel}</label>
+                <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em]">{contactDict.emailLabel}</label>
                 <input 
                   type="email" 
-                  className="bg-white border border-slate-200 rounded-2xl p-5 text-slate-900 focus:border-primary outline-none transition-all placeholder:text-slate-300 shadow-sm" 
+                  name="user_email"
+                  value={formData.user_email}
+                  onChange={handleInputChange}
+                  required
+                  className="bg-white border border-slate-200 rounded-2xl p-5 text-slate-900 focus:border-primary outline-none transition-all placeholder:text-slate-400 shadow-sm" 
                   placeholder={contactDict.emailPlaceholder} 
                 />
               </div>
             </div>
+
+            <div className="flex flex-col gap-3">
+              <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em]">{contactDict.phoneLabel}</label>
+              <input 
+                type="tel" 
+                name="user_phone"
+                value={formData.user_phone}
+                onChange={handleInputChange}
+                className="bg-white border border-slate-200 rounded-2xl p-5 text-slate-900 focus:border-primary outline-none transition-all placeholder:text-slate-400 shadow-sm" 
+                placeholder={contactDict.phonePlaceholder} 
+              />
+            </div>
             
             <div className="flex flex-col gap-3">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">{contactDict.messageLabel}</label>
+              <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em]">{contactDict.messageLabel}</label>
               <textarea 
                 rows={5} 
-                className="bg-white border border-slate-200 rounded-2xl p-5 text-slate-900 focus:border-primary outline-none transition-all placeholder:text-slate-300 shadow-sm" 
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+                className="bg-white border border-slate-200 rounded-2xl p-5 text-slate-900 focus:border-primary outline-none transition-all placeholder:text-slate-400 shadow-sm" 
                 placeholder={contactDict.messagePlaceholder}
               ></textarea>
             </div>
+
+            {status === 'success' && (
+              <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-2xl text-sm font-medium">
+                {contactDict.successMsg}
+              </div>
+            )}
+
+            {status === 'error' && (
+              <div className="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-2xl text-sm font-medium">
+                {contactDict.errorMsg}
+              </div>
+            )}
             
-            <button className="button-glow w-full py-5.5 text-xs font-black uppercase tracking-widest shadow-xl hover:scale-[1.01] transition-transform">
-              {contactDict.submitLabel}
+            <button 
+              type="submit"
+              disabled={status === 'sending'}
+              className="button-glow w-full py-5.5 text-xs font-black uppercase tracking-widest shadow-xl hover:scale-[1.01] transition-transform disabled:opacity-70 disabled:hover:scale-100 flex items-center justify-center gap-2"
+            >
+              {status === 'sending' && <Loader2 className="animate-spin" size={16} />}
+              {status === 'sending' ? contactDict.submittingLabel : contactDict.submitLabel}
             </button>
           </form>
         </div>

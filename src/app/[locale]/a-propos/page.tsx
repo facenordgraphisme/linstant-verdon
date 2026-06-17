@@ -102,23 +102,29 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <h3 className="text-xl font-black text-[#109ea5] uppercase tracking-[0.3em] text-center">Activités</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {[
-                  { name: "Verdon tourisme", img: "verdontourisme.webp" },
-                  { name: "Azur Canyoning", img: "azur-canyoning.jpeg" },
-                  { name: "Ardèche Canyon Aventure", img: "ardeche-canyon-aventure.png" },
-                  { name: "Koala Grimpe", img: "koala-grimpe.jpg.jpeg" },
-                  { name: "Val de Grimpe", img: "val-de-grimpe.webp" },
-                  { name: "Latitude Challenge", img: "latitude-challenge.png" },
-                  { name: "Le cheval et soleil", img: "logo-cheval.jpg.jpeg" },
-                  { name: "Canyon Arrangé", img: "canyon-arrange-logo.png.webp" },
+                  { name: "Verdon tourisme", img: "verdontourisme.webp", url: "https://www.verdontourisme.com" },
+                  { name: "Azur Canyoning", img: "azur-canyoning.jpeg", url: "https://www.azurcanyoning.com" },
+                  { name: "Ardèche Canyon Aventure", img: "ardeche-canyon-aventure.png", url: "https://www.ardechecanyonaventure.com" },
+                  { name: "Koala Grimpe", img: "koala-grimpe.jpg.jpeg", url: "http://www.koalagrimpe.com" },
+                  { name: "Val de Grimpe", img: "val-de-grimpe.webp", url: "https://www.valdegrimpe.com" },
+                  { name: "Latitude Challenge", img: "latitude-challenge.png", url: "https://www.latitude-challenge.fr" },
+                  { name: "Le cheval et soleil", img: "logo-cheval.jpg.jpeg", url: "https://www.facebook.com/chevaletsoleil/" },
+                  { name: "Canyon Arrangé", img: "canyon-arrange-logo.png.webp", url: "https://canyon-arrange.re" },
                 ].map(p => (
-                  <div key={p.name} className="bg-white border border-slate-100 p-8 rounded-3xl flex flex-col items-center justify-center gap-6 shadow-sm hover:shadow-xl transition-all group">
+                  <a 
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key={p.name} 
+                    className="bg-white border border-slate-100 p-8 rounded-3xl flex flex-col items-center justify-center gap-6 shadow-sm hover:shadow-xl transition-all group cursor-pointer"
+                  >
                     <div className="h-20 flex items-center justify-center">
                       <img src={`/assets/a propos/${p.img}`} alt={p.name} className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" />
                     </div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-primary text-center leading-tight">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-primary text-center leading-tight">
                       {p.name}
                     </p>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -128,18 +134,24 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <h3 className="text-xl font-black text-[#109ea5] uppercase tracking-[0.3em] text-center">Hébergement</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 {[
-                  { name: "Hôtel le Panoramic", img: "panoramic.jpg.jpeg" },
-                  { name: "Hôtel des Gorges", img: "hotel-gorges-du-verdon.png" },
-                  { name: "Hôtel le Provence", img: "hotel-provence.avif" },
+                  { name: "Hôtel le Panoramic", img: "panoramic.jpg.jpeg", url: "https://www.hotelverdon.com" },
+                  { name: "Hôtel des Gorges", img: "hotel-gorges-du-verdon.png", url: "https://www.hotel-des-gorges-du-verdon.fr" },
+                  { name: "Hôtel le Provence", img: "hotel-provence.avif", url: "https://www.hotel-provence-verdon.com" },
                 ].map(p => (
-                  <div key={p.name} className="bg-white border border-slate-100 p-10 rounded-3xl flex flex-col items-center justify-center gap-8 shadow-sm hover:shadow-xl transition-all group">
+                  <a 
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key={p.name} 
+                    className="bg-white border border-slate-100 p-10 rounded-3xl flex flex-col items-center justify-center gap-8 shadow-sm hover:shadow-xl transition-all group cursor-pointer"
+                  >
                     <div className="h-24 flex items-center justify-center">
                       <img src={`/assets/a propos/${p.img}`} alt={p.name} className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" />
                     </div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-primary text-center">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-primary text-center">
                       {p.name}
                     </p>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -149,17 +161,23 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <h3 className="text-xl font-black text-[#109ea5] uppercase tracking-[0.3em] text-center">Autre</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 {[
-                  { name: "Marielle Laubie Photographe", img: "marielle-laubie.png" },
-                  { name: "L'effet Verdon", img: "effet-verdon.webp" },
+                  { name: "Marielle Laubie Photographe", img: "marielle-laubie.png", url: "https://www.mariellelaubie.com" },
+                  { name: "L'effet Verdon", img: "effet-verdon.webp", url: "http://effetverdon.com" },
                 ].map(p => (
-                  <div key={p.name} className="bg-white border border-slate-100 p-10 rounded-3xl flex flex-col items-center justify-center gap-8 shadow-sm hover:shadow-xl transition-all group">
+                  <a 
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key={p.name} 
+                    className="bg-white border border-slate-100 p-10 rounded-3xl flex flex-col items-center justify-center gap-8 shadow-sm hover:shadow-xl transition-all group cursor-pointer"
+                  >
                     <div className="h-24 flex items-center justify-center">
                       <img src={`/assets/a propos/${p.img}`} alt={p.name} className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" />
                     </div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-primary text-center">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-primary text-center">
                       {p.name}
                     </p>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>

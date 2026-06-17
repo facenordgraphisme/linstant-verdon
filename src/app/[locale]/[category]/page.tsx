@@ -307,7 +307,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
       price,
       minAge,
       duration,
-      "imageUrl": images[0].asset->url
+      "imageUrl": coalesce(mainImage.asset->url, images[0].asset->url)
     }
   `, { sanityCategory, locale });
 
@@ -404,11 +404,11 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                   </h3>
                   <div className="flex items-center justify-between pt-6 border-t border-slate-50">
                     <div className="flex flex-col">
-                      <span className="text-[9px] font-black text-slate-300 uppercase mb-1">Âge min.</span>
+                      <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Âge min.</span>
                       <span className="text-sm font-bold text-slate-900">{activity.minAge} ans</span>
                     </div>
                     <div className="flex flex-col text-right">
-                      <span className="text-[9px] font-black text-slate-300 uppercase mb-1">Durée</span>
+                      <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Durée</span>
                       <span className="text-sm font-bold text-slate-900">{activity.duration}</span>
                     </div>
                   </div>

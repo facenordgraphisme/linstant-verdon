@@ -3,6 +3,7 @@ import { getDictionary } from '@/lib/dictionaries';
 import Link from 'next/link';
 import { ChevronLeft, Clock, Users, Euro, MapPin, CheckCircle2 } from 'lucide-react';
 import ActivityTabs from '@/components/ActivityTabs';
+import { parseMarkdown } from '@/lib/markdown';
 
 // Helper to convert YouTube link into embed url
 function getYouTubeEmbedUrl(url?: string): string | null {
@@ -16,6 +17,7 @@ function getYouTubeEmbedUrl(url?: string): string | null {
 
 export default async function ActivityDetailPage({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }) {
   const { locale, category, slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
   const dict = getDictionary(locale as 'fr' | 'en');
 
   // Fetch outing from Sanity with complete tab details
@@ -25,6 +27,8 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
       "subtitle": subtitle[$locale],
       "description": description[$locale],
       price,
+      "priceDetails": priceDetails[$locale],
+      showStartingFrom,
       minAge,
       duration,
       approachTime,
@@ -37,9 +41,10 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
       "requirements": requirements[$locale],
       "provided": provided[$locale],
       "toBring": toBring[$locale],
+      "mainImageUrl": mainImage.asset->url,
       "images": images[].asset->url
     }
-  `, { slug, locale });
+  `, { slug: decodedSlug, locale });
 
   // Map user categories for slug normalizations
   const dictKeyMap: Record<string, string> = {
@@ -143,7 +148,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
   const defaultHero = category === 'climbing' || category === 'escalade' 
     ? '/assets/escalade/climbing.jpeg' 
     : '/assets/canyon/canyon.jpeg';
-  const heroImage = activity.images?.[0] || defaultHero;
+  const heroImage = activity.mainImageUrl || activity.images?.[0] || defaultHero;
   
   const embedVideoUrl = getYouTubeEmbedUrl(activity.videoUrl);
 
@@ -193,9 +198,9 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
               <h2 className={`text-3xl md:text-4xl font-black ${colors.text} uppercase tracking-tighter mb-6 flex items-center gap-3`}>
                 <span className={`w-8 h-1 rounded-full ${colors.bg}`} /> Description
               </h2>
-              <p className="text-slate-600 leading-relaxed font-semibold text-base md:text-lg">
-                {activity.description}
-              </p>
+              <div className="text-slate-600 leading-relaxed font-semibold text-base md:text-lg">
+                {parseMarkdown(activity.description)}
+              </div>
             </div>
 
             {/* Dynamic Tabs Component */}
@@ -207,6 +212,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
                   meetingPoint: activity.meetingPoint,
                   googleMapsUrl: activity.googleMapsUrl,
                   price: activity.price,
+                  priceDetails: activity.priceDetails,
                   minAge: activity.minAge,
                   duration: activity.duration,
                   approachTime: activity.approachTime,
@@ -267,17 +273,17 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
               {/* Included / Requirements in Sidebar */}
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-[10px] uppercase font-black tracking-widest text-slate-400 mb-4">Ce qui est inclus</h4>
+                  <h4 className="text-xs uppercase font-black tracking-widest text-slate-600 mb-4">Ce qui est inclus</h4>
                   <ul className="space-y-3">
                     {activity.included && activity.included.length > 0 ? (
                       activity.included.map((item: string, idx: number) => (
-                        <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-600 font-semibold leading-snug">
-                          <CheckCircle2 size={15} className={`shrink-0 mt-0.5 ${colors.text}`} />
+                        <li key={idx} className="flex items-start gap-2.5 text-sm text-slate-700 font-semibold leading-relaxed">
+                          <CheckCircle2 size={17} className={`shrink-0 mt-0.5 ${colors.text}`} />
                           <span>{item}</span>
                         </li>
                       ))
                     ) : (
-                      <li className="text-xs text-slate-400 font-semibold italic">
+                      <li className="text-sm text-slate-600 font-semibold italic">
                         {locale === 'fr' ? 'Matériel technique complet' : 'Full technical equipment'}
                       </li>
                     )}
@@ -285,17 +291,17 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
                 </div>
 
                 <div className="border-t border-slate-100 pt-6">
-                  <h4 className="text-[10px] uppercase font-black tracking-widest text-slate-400 mb-4">Pré-requis</h4>
+                  <h4 className="text-xs uppercase font-black tracking-widest text-slate-600 mb-4">Pré-requis</h4>
                   <ul className="space-y-3">
                     {activity.requirements && activity.requirements.length > 0 ? (
                       activity.requirements.map((item: string, idx: number) => (
-                        <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-600 font-semibold leading-snug">
-                          <CheckCircle2 size={15} className="shrink-0 mt-0.5 text-slate-300" />
+                        <li key={idx} className="flex items-start gap-2.5 text-sm text-slate-700 font-semibold leading-relaxed">
+                          <CheckCircle2 size={17} className="shrink-0 mt-0.5 text-slate-400" />
                           <span>{item}</span>
                         </li>
                       ))
                     ) : (
-                      <li className="text-xs text-slate-400 font-semibold italic">
+                      <li className="text-sm text-slate-600 font-semibold italic">
                         {locale === 'fr' ? 'Savoir nager' : 'Must know how to swim'}
                       </li>
                     )}
@@ -306,13 +312,26 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
               {/* Call To Action */}
               <div className="border-t border-slate-100 pt-6 space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] uppercase font-black tracking-widest text-slate-400">Tarif par personne</span>
-                  <span className={`text-3xl font-black ${colors.text}`}>{activity.price ? `${activity.price}€` : '--'}</span>
+                  <span className="text-xs uppercase font-black tracking-widest text-slate-600">
+                    {locale === 'fr' ? 'Tarif' : 'Price'}
+                  </span>
+                  <span className={`text-4xl font-black ${colors.text} flex items-baseline gap-1`}>
+                    {activity.price ? (
+                      <>
+                        {activity.showStartingFrom && (
+                          <span className="text-sm font-bold text-slate-500 uppercase tracking-tight mr-0.5">
+                            {locale === 'fr' ? 'dès' : 'from'}
+                          </span>
+                        )}
+                        <span>{activity.price}€</span>
+                      </>
+                    ) : '--'}
+                  </span>
                 </div>
 
                 <Link 
                   href={`/${locale}/contact`} 
-                  className="button-glow w-full text-center py-4 rounded-2xl block text-white font-black uppercase text-xs tracking-wider transition-all duration-300 hover:scale-[1.02]"
+                  className="button-glow w-full text-center py-4.5 rounded-2xl block text-white font-black uppercase text-sm tracking-wider transition-all duration-300 hover:scale-[1.02]"
                   style={{
                     background: colors.hex
                   }}
@@ -320,7 +339,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
                   {locale === 'fr' ? 'RÉSERVER VOTRE SORTIE' : 'BOOK YOUR TRIP'}
                 </Link>
 
-                <p className="text-[10px] text-slate-400 text-center font-bold tracking-tight">
+                <p className="text-[11px] text-slate-500 text-center font-bold tracking-tight">
                   {locale === 'fr' 
                     ? 'Paiement sur place • Réservation 100% Gratuite' 
                     : 'Payment on spot • Free Booking Guarantee'

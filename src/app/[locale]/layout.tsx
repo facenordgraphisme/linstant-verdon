@@ -13,6 +13,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: dict.meta.title,
     description: dict.meta.description,
+    icons: {
+      icon: '/assets/accueil/logo.webp',
+      apple: '/assets/accueil/logo.webp',
+    }
   };
 }
 

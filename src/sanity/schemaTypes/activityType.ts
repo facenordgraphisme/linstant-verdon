@@ -45,6 +45,14 @@ export const activityType = defineType({
       ],
     }),
     defineField({
+      name: 'mainImage',
+      title: 'Image principale',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'images',
       title: 'Galerie d\'images',
       type: 'array',
@@ -59,6 +67,21 @@ export const activityType = defineType({
       name: 'price',
       title: 'Prix par personne (€)',
       type: 'number',
+    }),
+    defineField({
+      name: 'priceDetails',
+      title: 'Détails du tarif (ex: 1 à 3 pers: 200€ / 4 à 8 pers: 250€)',
+      type: 'object',
+      fields: [
+        { name: 'fr', title: 'Français', type: 'string' },
+        { name: 'en', title: 'Anglais', type: 'string' },
+      ],
+    }),
+    defineField({
+      name: 'showStartingFrom',
+      title: "Afficher 'À partir de' devant le prix dans la boîte latérale",
+      type: 'boolean',
+      initialValue: false,
     }),
     defineField({
       name: 'minAge',
@@ -141,7 +164,7 @@ export const activityType = defineType({
       titleFr: 'title.fr',
       titleEn: 'title.en',
       duration: 'duration',
-      media: 'images.0',
+      media: 'mainImage',
     },
     prepare(selection) {
       const { titleFr, titleEn, duration } = selection;
