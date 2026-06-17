@@ -1,27 +1,81 @@
+import type { Metadata } from 'next';
 import { client } from '@/sanity/client';
 import { getDictionary } from '@/lib/dictionaries';
 import Link from 'next/link';
 import Image from 'next/image';
 
+const dictKeyMap: Record<string, string> = {
+  canyoning: 'canyoning', canyon: 'canyoning',
+  climbing: 'escalade', escalade: 'escalade',
+  adventure: 'aventures', aventures: 'aventures',
+  'unusual-activities': 'insolite', insolite: 'insolite',
+  stages: 'stages', weekend: 'stages',
+  evenementiel: 'evenementiel',
+}
+
+const categoryAltMap: Record<string, { fr: string; en: string }> = {
+  canyoning:    { fr: 'canyoning',    en: 'canyoning' },
+  escalade:     { fr: 'escalade',     en: 'climbing' },
+  aventures:    { fr: 'aventures',    en: 'adventure' },
+  insolite:     { fr: 'insolite',     en: 'unusual-activities' },
+  stages:       { fr: 'stages',       en: 'weekend' },
+  evenementiel: { fr: 'evenementiel', en: 'evenementiel' },
+}
+
+const categoryMeta: Record<string, { title: { fr: string; en: string }; description: { fr: string; en: string } }> = {
+  canyoning: {
+    title: { fr: "Canyoning Verdon avec Guide Diplômé | L'instant Verdon", en: "Canyoning in Verdon with Certified Guide | L'instant Verdon" },
+    description: { fr: "Descendez les plus beaux canyons du Verdon avec des guides diplômés d'État. Clue d'Artuby, Balène, Bas-Jabron… À partir de 50€ / personne.", en: "Explore the best canyons in Verdon with state-certified guides. From €50/person. Easy booking." },
+  },
+  escalade: {
+    title: { fr: "Escalade dans les Gorges du Verdon | L'instant Verdon", en: "Climbing in the Gorges du Verdon | L'instant Verdon" },
+    description: { fr: "Escalade dans le Verdon mondialement réputé pour ses voies d'exception. Initiation et grandes voies avec guides brevetés d'État.", en: "Climb world-famous routes in the Verdon Gorges. Beginner initiation to multi-pitch climbs with certified guides." },
+  },
+  aventures: {
+    title: { fr: "Parcours Aventure Verdon | L'instant Verdon", en: "Adventure Courses in Verdon | L'instant Verdon" },
+    description: { fr: "Parcours aventure verticaux dans les Gorges du Verdon. Trou du Renard, Main-morte… Sensations fortes avec L'instant Verdon.", en: "Vertical adventure courses in the Verdon Gorges. Breathtaking views and unique thrills." },
+  },
+  stages: {
+    title: { fr: "Stage Multi-Activités Verdon | L'instant Verdon", en: "Multi-Activity Courses in Verdon | L'instant Verdon" },
+    description: { fr: "Stage multi-activités Verdon : acro-yoga, escalade et canyoning. Week-ends immersifs dans les Gorges du Verdon avec des guides passionnés.", en: "Multi-activity courses: acro-yoga, climbing and canyoning in the Verdon Gorges." },
+  },
+  insolite: {
+    title: { fr: "Expériences Insolites dans le Verdon | L'instant Verdon", en: "Unusual Experiences in Verdon | L'instant Verdon" },
+    description: { fr: "Vivez des expériences insolites dans le Verdon : portaledge, soirée en canyon, demi-journée à la Carelle. Sortez des sentiers battus.", en: "Live unique experiences in Verdon: portaledge, canyon evenings, and unusual adventures." },
+  },
+  evenementiel: {
+    title: { fr: "Évènementiel & Team Building Verdon | L'instant Verdon", en: "Events & Team Building in Verdon | L'instant Verdon" },
+    description: { fr: "Organisez votre EVJF, EVG, séminaire ou team building dans les Gorges du Verdon. Activités outdoor sur mesure avec encadrement diplômé d'État.", en: "Bachelorette parties, bachelor parties, seminars and team building in the Verdon Gorges. Tailor-made outdoor activities." },
+  },
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; category: string }> }): Promise<Metadata> {
+  const { locale, category } = await params;
+  const dictKey = dictKeyMap[category] || category;
+  const m = categoryMeta[dictKey]
+  if (!m) return {}
+  const altUrls = categoryAltMap[dictKey] || { fr: dictKey, en: dictKey }
+  const title = m.title[locale as 'fr' | 'en'] || m.title.fr
+  const description = m.description[locale as 'fr' | 'en'] || m.description.fr
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/${locale}/${category}`,
+      languages: {
+        fr: `/fr/${altUrls.fr}`,
+        en: `/en/${altUrls.en}`,
+        'x-default': `/fr/${altUrls.fr}`,
+      },
+    },
+    openGraph: { title, description, url: `/${locale}/${category}` },
+  }
+}
+
 export default async function CategoryPage({ params }: { params: Promise<{ locale: string; category: string }> }) {
   const { locale, category } = await params;
   const dict = getDictionary(locale as 'fr' | 'en');
-  
-  // Normalization maps for URL routing
-  const dictKeyMap: Record<string, string> = {
-    canyoning: 'canyoning',
-    canyon: 'canyoning',
-    climbing: 'escalade',
-    escalade: 'escalade',
-    adventure: 'aventures',
-    aventures: 'aventures',
-    'unusual-activities': 'insolite',
-    insolite: 'insolite',
-    stages: 'stages',
-    weekend: 'stages',
-    evenementiel: 'evenementiel'
-  };
-  
+
   const dictKey = dictKeyMap[category] || category;
 
   const sanityCategoryMap: Record<string, string> = {

@@ -1,9 +1,64 @@
+import type { Metadata } from 'next';
 import { client } from '@/sanity/client';
 import { getDictionary } from '@/lib/dictionaries';
 import Link from 'next/link';
 import { ChevronLeft, Clock, Users, Euro, MapPin, CheckCircle2 } from 'lucide-react';
 import ActivityTabs from '@/components/ActivityTabs';
 import { parseMarkdown } from '@/lib/markdown';
+
+const slugCategoryAlt: Record<string, { fr: string; en: string }> = {
+  canyoning:    { fr: 'canyoning',    en: 'canyoning' },
+  canyon:       { fr: 'canyoning',    en: 'canyoning' },
+  escalade:     { fr: 'escalade',     en: 'climbing' },
+  climbing:     { fr: 'escalade',     en: 'climbing' },
+  aventures:    { fr: 'aventures',    en: 'adventure' },
+  adventure:    { fr: 'aventures',    en: 'adventure' },
+  insolite:     { fr: 'insolite',     en: 'unusual-activities' },
+  'unusual-activities': { fr: 'insolite', en: 'unusual-activities' },
+  stages:       { fr: 'stages',       en: 'weekend' },
+  weekend:      { fr: 'stages',       en: 'weekend' },
+  evenementiel: { fr: 'evenementiel', en: 'evenementiel' },
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }): Promise<Metadata> {
+  const { locale, category, slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
+  const activity = await client.fetch<{ title: string; description: string; price: number; mainImageUrl: string } | null>(`
+    *[_type == "activity" && slug.current == $slug][0] {
+      "title": title[$locale],
+      "description": description[$locale],
+      price,
+      "mainImageUrl": mainImage.asset->url
+    }
+  `, { slug: decodedSlug, locale });
+
+  if (!activity) return {}
+
+  const title = `${activity.title} — Verdon | L'instant Verdon`
+  const description = activity.description
+    ? `${activity.description.slice(0, 140)}…`
+    : `Activité ${activity.title} dans les Gorges du Verdon avec L'instant Verdon. Guides diplômés d'État.`
+
+  const altUrls = slugCategoryAlt[category] || { fr: category, en: category }
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/${locale}/${category}/${decodedSlug}`,
+      languages: {
+        fr: `/fr/${altUrls.fr}/${decodedSlug}`,
+        en: `/en/${altUrls.en}/${decodedSlug}`,
+        'x-default': `/fr/${altUrls.fr}/${decodedSlug}`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: `/${locale}/${category}/${decodedSlug}`,
+      images: activity.mainImageUrl ? [{ url: activity.mainImageUrl, width: 1200, height: 630, alt: activity.title }] : undefined,
+    },
+  }
+}
 
 // Helper to convert YouTube link into embed url
 function getYouTubeEmbedUrl(url?: string): string | null {

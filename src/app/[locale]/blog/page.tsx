@@ -5,13 +5,28 @@ import { client } from '@/sanity/client';
 import { Calendar, ArrowRight, BookOpen } from 'lucide-react';
 import type { Metadata } from 'next';
 
+const blogMeta = {
+  fr: {
+    title: "Blog Aventure Verdon — Récits & Conseils de Guides | L'instant Verdon",
+    description: "Récits d'aventures, conseils pratiques et guides saisonniers dans les Gorges du Verdon. Par Emma et Angèle, guides diplômées d'État de L'instant Verdon.",
+  },
+  en: {
+    title: "Verdon Adventure Blog — Stories & Guide Tips | L'instant Verdon",
+    description: "Adventure stories, practical tips and seasonal guides in the Verdon Gorges by Emma and Angèle, state-certified guides.",
+  },
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const dict = getDictionary(locale as 'fr' | 'en');
-  const blogDict = dict.blog || { title: "Notre Blog & Actualités" };
+  const m = blogMeta[locale as 'fr' | 'en'] || blogMeta.fr;
   return {
-    title: `${blogDict.title} | L'instant Verdon`,
-    description: dict.meta.description,
+    title: m.title,
+    description: m.description,
+    alternates: {
+      canonical: `/${locale}/blog`,
+      languages: { fr: '/fr/blog', en: '/en/blog', 'x-default': '/fr/blog' },
+    },
+    openGraph: { title: m.title, description: m.description, url: `/${locale}/blog` },
   };
 }
 

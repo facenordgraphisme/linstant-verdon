@@ -11,12 +11,27 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const dict = getDictionary(locale as 'fr' | 'en');
   return {
+    metadataBase: new URL('https://www.linstantverdon.com'),
     title: dict.meta.title,
     description: dict.meta.description,
     icons: {
       icon: '/assets/accueil/logo.webp',
       apple: '/assets/accueil/logo.webp',
-    }
+    },
+    openGraph: {
+      siteName: "L'instant Verdon",
+      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
+      type: 'website',
+      images: [{
+        url: '/assets/accueil/home.webp',
+        width: 1200,
+        height: 630,
+        alt: "L'instant Verdon — Canyoning & Escalade dans les Gorges du Verdon",
+      }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+    },
   };
 }
 

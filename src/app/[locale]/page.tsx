@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getDictionary } from '@/lib/dictionaries';
 import Navbar from '@/components/Navbar';
@@ -7,6 +8,28 @@ import ActivityGrid from '@/components/ActivityGrid';
 import BlogOverview from '@/components/BlogOverview';
 import ContactSection from '@/components/ContactSection';
 import { client } from '@/sanity/client';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const dict = getDictionary(locale as 'fr' | 'en');
+  return {
+    title: dict.meta.title,
+    description: dict.meta.description,
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        fr: '/fr',
+        en: '/en',
+        'x-default': '/fr',
+      },
+    },
+    openGraph: {
+      title: dict.meta.title,
+      description: dict.meta.description,
+      url: `/${locale}`,
+    },
+  };
+}
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

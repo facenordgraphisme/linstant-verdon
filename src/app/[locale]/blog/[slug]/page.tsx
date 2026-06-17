@@ -21,6 +21,21 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: `${post.title} | L'instant Verdon`,
     description: post.description,
+    alternates: {
+      canonical: `/${locale}/blog/${slug}`,
+      languages: {
+        fr: `/fr/blog/${slug}`,
+        en: `/en/blog/${slug}`,
+        'x-default': `/fr/blog/${slug}`,
+      },
+    },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      url: `/${locale}/blog/${slug}`,
+      type: 'article',
+      images: post.imageUrl ? [{ url: post.imageUrl, width: 1200, height: 630, alt: post.title }] : undefined,
+    },
   };
 }
 
@@ -69,9 +84,47 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     year: 'numeric'
   });
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    image: post.imageUrl || undefined,
+    url: `https://www.linstantverdon.com/${locale}/blog/${decodedSlug}`,
+    inLanguage: locale === 'fr' ? 'fr-FR' : 'en-US',
+    author: [
+      {
+        '@type': 'Person',
+        name: 'Emma Aglaé',
+        jobTitle: locale === 'fr' ? 'Guide diplômée d\'État canyonisme' : 'State-certified canyoning guide',
+        worksFor: { '@type': 'Organization', name: "L'instant Verdon" },
+      },
+      {
+        '@type': 'Person',
+        name: 'Angèle Kanapa',
+        jobTitle: locale === 'fr' ? 'Guide diplômée d\'État escalade & canyonisme' : 'State-certified climbing & canyoning guide',
+        worksFor: { '@type': 'Organization', name: "L'instant Verdon" },
+      },
+    ],
+    publisher: {
+      '@type': 'Organization',
+      name: "L'instant Verdon",
+      url: 'https://www.linstantverdon.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.linstantverdon.com/assets/accueil/logo.webp',
+      },
+    },
+  }
+
   return (
     <main className="min-h-screen bg-slate-50/30 pb-32">
-      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       {/* Banner Hero */}
       <section className="relative h-[65vh] flex items-center justify-center overflow-hidden bg-black text-white">
         <div 

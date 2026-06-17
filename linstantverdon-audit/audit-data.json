@@ -1,0 +1,315 @@
+{
+  "domain": "www.linstantverdon.com",
+  "audit_date": "2026-06-17",
+  "url": "https://www.linstantverdon.com/",
+  "summary": {
+    "health_score": 28,
+    "business_type": "Outdoor Adventure Activity Provider (SAB + Fixed Location) — Gorges du Verdon, France",
+    "language": "fr (primary), en (secondary)",
+    "pages_crawled": 12,
+    "pages_indexed_google": 1,
+    "top_findings": [
+      "robots.txt and sitemap.xml both return HTTP 500 — search engines cannot crawl the site",
+      "Only 1 URL indexed by Google (entire site effectively invisible in search)",
+      "Duplicate title tags across all pages — every page uses the homepage title",
+      "Zero structured data (schema markup) on any page",
+      "NAP inconsistency: Castellane on site vs. La Palud-sur-Verdon in all external directories"
+    ],
+    "quick_wins": [
+      "Fix robots.txt → 200 response with valid content",
+      "Generate and submit XML sitemap via Google Search Console",
+      "Write unique title tags for each page (biggest ranking impact)",
+      "Add LocalBusiness JSON-LD schema to homepage",
+      "Display TripAdvisor reviews (#3/19, 54 reviews) on website"
+    ]
+  },
+  "business_info": {
+    "name": "L'Instant Verdon",
+    "address_on_site": "Place de l'église, 04120 Castellane",
+    "address_in_directories": "395 Haut Bourras, 04120 La Palud-sur-Verdon",
+    "phone": "+33689855381",
+    "email": "contact@linstantverdon.com",
+    "founded": 2018,
+    "guides": ["Emma Aglaé (diplômée d'État canyonisme 2020)", "Angèle Kanapa (diplômée d'État escalade & canyonisme 2013)", "Marie Oddo (diplômée d'État 2020)"],
+    "services": ["Canyoning (€50–95/pers)", "Escalade (€200+/pers)", "Parcours Aventure", "Week-ends & Stages", "Insolite", "Événementiel"],
+    "tripadvisor_rank": "#3 / 19 attractions in La Palud-sur-Verdon",
+    "tripadvisor_reviews": 54
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 20,
+      "what_works": [
+        "HTTPS implemented correctly",
+        "URL structure logical (/fr/, /en/)"
+      ],
+      "findings": [
+        {
+          "title": "robots.txt returns HTTP 500",
+          "severity": "Critical",
+          "description": "Server returns 500 Internal Server Error at /robots.txt — Googlebot cannot read crawl rules",
+          "recommendation": "Serve a valid static robots.txt at the domain root with Allow: / and Sitemap: pointer"
+        },
+        {
+          "title": "sitemap.xml returns HTTP 500",
+          "severity": "Critical",
+          "description": "Both /sitemap.xml and /sitemap_index.xml return 500 errors — Google has no URL list",
+          "recommendation": "Generate XML sitemap covering all canonical pages and submit to Google Search Console"
+        },
+        {
+          "title": "Only 1 URL indexed by Google",
+          "severity": "Critical",
+          "description": "site:linstantverdon.com returns 1 result — entire site invisible to search engines",
+          "recommendation": "Fix sitemap + canonicals + old URL redirects, then request indexing via GSC"
+        },
+        {
+          "title": "No canonical URLs on any page",
+          "severity": "Critical",
+          "description": "No <link rel='canonical'> found on homepage, service pages, blog, or FAQ pages",
+          "recommendation": "Add self-referencing canonical to every page"
+        },
+        {
+          "title": "No hreflang implementation",
+          "severity": "High",
+          "description": "Bilingual site (fr/en) has no hreflang — Google can't determine language targeting",
+          "recommendation": "Add hreflang tags for fr, en, and x-default on all page pairs"
+        },
+        {
+          "title": "Old URL structure still in Google index",
+          "severity": "High",
+          "description": "Search results show /canyon/, /canyon/1, /en/canyon/ — old structure without 301 redirects",
+          "recommendation": "Implement 301 redirects from all old URLs to new canonical paths"
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 20,
+      "what_works": [
+        "Blog posts have unique descriptive titles",
+        "Navigation menu is consistent and logical",
+        "Blog posts link back to service pages"
+      ],
+      "findings": [
+        {
+          "title": "Duplicate title tags across all pages",
+          "severity": "Critical",
+          "description": "Every page uses 'L'instant Verdon | Canyoning, Aquarando & Escalade dans le Verdon' — only blog posts differ",
+          "recommendation": "Write unique keyword-rich titles for every page (50–60 chars)"
+        },
+        {
+          "title": "Missing meta descriptions on almost all pages",
+          "severity": "Critical",
+          "description": "Only /fr/a-propos has a meta description. All other pages auto-generate snippets.",
+          "recommendation": "Write 150–160 char meta descriptions for every page"
+        },
+        {
+          "title": "5 H1 tags on homepage",
+          "severity": "High",
+          "description": "Homepage has 5 separate H1 elements diluting topic focus",
+          "recommendation": "Keep one H1 per page, demote others to H2/H3"
+        },
+        {
+          "title": "Poor image alt texts",
+          "severity": "High",
+          "description": "Logo and author photos use file paths as alt text",
+          "recommendation": "Write descriptive alt text for all images including keywords and context"
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 45,
+      "what_works": [
+        "State-certified guides mentioned (E-E-A-T)",
+        "Individual canyon/route pages exist",
+        "Bilingual content for international visitors",
+        "Environmental commitment adds brand differentiation",
+        "Blog has seasonally relevant content"
+      ],
+      "findings": [
+        {
+          "title": "Blog posts critically thin (320–350 words)",
+          "severity": "High",
+          "description": "Both articles are far below 1,200-word minimum for informational query ranking",
+          "recommendation": "Expand each blog post to 1,000–1,500+ words with practical details, FAQs, and author voice"
+        },
+        {
+          "title": "FAQ page has only 3 questions",
+          "severity": "High",
+          "description": "Industry standard is 15–25 FAQs for activity providers",
+          "recommendation": "Expand FAQ to cover age minimums, weather policy, equipment, group sizes, meeting points"
+        },
+        {
+          "title": "No customer reviews displayed on website",
+          "severity": "High",
+          "description": "TripAdvisor #3/19 with 54 reviews not featured anywhere on the site",
+          "recommendation": "Add reviews section on homepage with aggregate rating and 3–5 featured reviews"
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 5,
+      "what_works": [],
+      "findings": [
+        {
+          "title": "Zero structured data on entire site",
+          "severity": "Critical",
+          "description": "No JSON-LD, Microdata, or RDFa found on any page — no rich results possible",
+          "recommendation": "Implement LocalBusiness, Service, FAQPage, Article, Person, BreadcrumbList schemas"
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 50,
+      "what_works": [
+        "WebP images used throughout",
+        "Modern framework (appears to be Next.js or Nuxt)"
+      ],
+      "findings": [
+        {
+          "title": "No CrUX field data available",
+          "severity": "Info",
+          "description": "Performance estimated — run PageSpeed Insights for real lab/field data",
+          "recommendation": "Run https://pagespeed.web.dev/ — target mobile score 70+"
+        },
+        {
+          "title": "Image paths contain spaces",
+          "severity": "Medium",
+          "description": "/assets/a propos/ path has a space — risk of URL encoding errors",
+          "recommendation": "Rename directory to /assets/a-propos/ and update all references"
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 20,
+      "what_works": [
+        "Listed in regional tourism directories (brand mention signals)",
+        "TripAdvisor presence with 54 reviews"
+      ],
+      "findings": [
+        {
+          "title": "No llms.txt file",
+          "severity": "Medium",
+          "description": "AI crawlers (GPTBot, ClaudeBot, PerplexityBot) cannot discover site content map",
+          "recommendation": "Create /llms.txt listing key pages and business description"
+        },
+        {
+          "title": "Content not structured for AI citability",
+          "severity": "High",
+          "description": "No answer-first passages, thin FAQ, no citation capsules",
+          "recommendation": "Restructure service pages and FAQ for direct-answer quotability"
+        }
+      ]
+    },
+    {
+      "name": "Local SEO",
+      "score": 35,
+      "what_works": [
+        "TripAdvisor #3/19 in La Palud-sur-Verdon with 54 reviews",
+        "Listed in 3 regional tourism directories",
+        "Active social media presence"
+      ],
+      "findings": [
+        {
+          "title": "NAP inconsistency — two different addresses",
+          "severity": "Critical",
+          "description": "Site: Castellane. All directories: La Palud-sur-Verdon. Google cannot reconcile.",
+          "recommendation": "Pick one address and update all listings to match"
+        },
+        {
+          "title": "No booking platform integration",
+          "severity": "High",
+          "description": "Not listed on FunBooker, CheckYeti, GetYourGuide, Viator — competitors rank here",
+          "recommendation": "Get listed on major French/international activity aggregators"
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 35,
+      "what_works": [
+        "WebP format used — correct modern choice",
+        "Blog article images have descriptive alt text"
+      ],
+      "findings": [
+        {
+          "title": "Logo alt text is file path",
+          "severity": "High",
+          "description": "alt='/assets/accueil/logo.webp' — not descriptive or keyword-rich",
+          "recommendation": "Use: alt='L'Instant Verdon — Guide Canyoning & Escalade Verdon'"
+        },
+        {
+          "title": "Activity images missing descriptive alt text",
+          "severity": "Medium",
+          "description": "Canyon and climbing images on service pages lack descriptive alt attributes",
+          "recommendation": "Write keyword + location alt text for every image"
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Fix robots.txt — return 200 with valid content",
+          "Generate and submit XML sitemap to Google Search Console",
+          "Add canonical URLs to all pages",
+          "Implement 301 redirects from old URL structure",
+          "Confirm www → non-www redirect",
+          "Resolve NAP address inconsistency"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2–3",
+        "items": [
+          "Write unique title tags for all pages",
+          "Write meta descriptions for all pages",
+          "Fix H1 structure — one H1 per page",
+          "Fix all image alt texts",
+          "Implement hreflang fr/en/x-default",
+          "Add LocalBusiness + AggregateRating JSON-LD schema",
+          "Add Service schema to all activity pages",
+          "Add FAQPage schema",
+          "Add Article schema to blog posts",
+          "Display TripAdvisor reviews on homepage"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Expand both blog posts to 1,200+ words",
+          "Expand FAQ to 20+ questions",
+          "Publish 2 new blog posts (pillar: canyoning guide, family guide)",
+          "Create /fr/avis page with reviews",
+          "Add difficulty ratings to all activity listings",
+          "Create llms.txt file",
+          "Get listed on FunBooker, CheckYeti, GetYourGuide, Viator"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Monitor Google Search Console coverage weekly",
+          "Track organic traffic growth in GA4",
+          "Run PageSpeed Insights monthly",
+          "Publish 2 blog posts per month (1,000+ words each)",
+          "Actively request Google Reviews from customers",
+          "Monitor TripAdvisor rank and respond to all reviews"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

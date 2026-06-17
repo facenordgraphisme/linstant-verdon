@@ -1,5 +1,31 @@
+import type { Metadata } from 'next';
 import { getDictionary } from '@/lib/dictionaries';
 import Navbar from '@/components/Navbar';
+
+const meta = {
+  fr: {
+    title: "Guides Diplômés d'État — Emma, Angèle & Marie | L'instant Verdon",
+    description: "Emma Aglaé, Angèle Kanapa et Marie Oddo — guides diplômées d'État passionnées par le Verdon depuis 2018. Découvrez l'équipe et la philosophie de L'instant Verdon.",
+  },
+  en: {
+    title: "State-Certified Guides — Emma, Angèle & Marie | L'instant Verdon",
+    description: "Meet Emma, Angèle and Marie — state-certified outdoor guides passionate about the Verdon since 2018.",
+  },
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const m = meta[locale as 'fr' | 'en'] || meta.fr;
+  return {
+    title: m.title,
+    description: m.description,
+    alternates: {
+      canonical: `/${locale}/a-propos`,
+      languages: { fr: '/fr/a-propos', en: '/en/a-propos', 'x-default': '/fr/a-propos' },
+    },
+    openGraph: { title: m.title, description: m.description, url: `/${locale}/a-propos` },
+  };
+}
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

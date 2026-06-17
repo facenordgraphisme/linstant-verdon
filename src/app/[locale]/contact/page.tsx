@@ -1,5 +1,31 @@
+import type { Metadata } from 'next';
 import { getDictionary } from '@/lib/dictionaries';
 import ContactSection from '@/components/ContactSection';
+
+const meta = {
+  fr: {
+    title: "Réserver votre Sortie Verdon — Contactez-nous | L'instant Verdon",
+    description: "Réservez votre sortie canyoning, escalade ou aventure dans les Gorges du Verdon. L'instant Verdon répond en moins de 24h. Place de l'église, 04120 Castellane.",
+  },
+  en: {
+    title: "Book your Verdon Adventure — Contact Us | L'instant Verdon",
+    description: "Book your canyoning, climbing or adventure outing in the Gorges du Verdon. L'instant Verdon replies within 24h.",
+  },
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const m = meta[locale as 'fr' | 'en'] || meta.fr;
+  return {
+    title: m.title,
+    description: m.description,
+    alternates: {
+      canonical: `/${locale}/contact`,
+      languages: { fr: '/fr/contact', en: '/en/contact', 'x-default': '/fr/contact' },
+    },
+    openGraph: { title: m.title, description: m.description, url: `/${locale}/contact` },
+  };
+}
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
