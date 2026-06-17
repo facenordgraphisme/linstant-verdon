@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppFloating from "@/components/WhatsAppFloating";
 
 export default async function RootLayout({
   children,
@@ -40,6 +41,7 @@ export default async function RootLayout({
         <Navbar dict={dict} locale={locale} />
         {children}
         <Footer dict={dict} locale={locale} />
+        <WhatsAppFloating />
       </body>
     </html>
   );
