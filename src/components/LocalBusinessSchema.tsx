@@ -10,7 +10,7 @@ export default function LocalBusinessSchema({ locale }: { locale: string }) {
     "image": "https://linstantverdon.com/logo.png",
     "@id": "https://linstantverdon.com",
     "url": "https://linstantverdon.com",
-    "telephone": "+33000000000",
+    "telephone": "+33689855381",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Place de l'église",

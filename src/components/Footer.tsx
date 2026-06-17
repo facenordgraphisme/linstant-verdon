@@ -83,7 +83,7 @@ export default function Footer({ dict, locale }: { dict: any; locale: string }) 
                 </li>
                 <li className="flex items-center gap-3 text-slate-600">
                   <Phone size={18} className="text-primary shrink-0" />
-                  <span className="text-sm font-bold">+33 (0)6 61 47 31 39</span>
+                  <a href="tel:+33689855381" className="text-sm font-bold hover:text-primary transition-colors">+33 (0)6 89 85 53 81</a>
                 </li>
                 <li className="flex items-center gap-3 text-slate-600">
                   <Mail size={18} className="text-primary shrink-0" />

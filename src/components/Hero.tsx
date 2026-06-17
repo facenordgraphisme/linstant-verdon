@@ -74,7 +74,7 @@ export default function Hero({ dict }: { dict: any }) {
 
         <div ref={ctaRef} className="flex flex-col md:flex-row items-center justify-center gap-12">
           <a href="#activities" className="button-glow py-4 px-10 text-sm">
-            DÉCOUVRIR NOS SORTIES
+            DÉCOUVRIR NOS ACTIVITÉS
           </a>
           <a href="#contact" className="text-white font-black text-sm uppercase tracking-widest hover:text-primary transition-all flex items-center gap-3 group text-white-shadow leading-none">
             NOUS CONTACTER <ArrowRight size={22} className="group-hover:translate-x-2 transition-transform" />

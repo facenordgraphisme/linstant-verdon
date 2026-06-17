@@ -137,7 +137,7 @@ export default function ContactSection({ dict, locale }: { dict: any; locale: st
               </div>
               <div>
                 <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-1">{contactDict.phoneLabel}</p>
-                <a href="tel:+33661473139" className="text-xl md:text-3xl font-black tracking-tight text-slate-900 hover:text-primary transition-colors">+33 (0)6 61 47 31 39</a>
+                <a href="tel:+33689855381" className="text-xl md:text-3xl font-black tracking-tight text-slate-900 hover:text-primary transition-colors">+33 (0)6 89 85 53 81</a>
               </div>
             </div>
 
