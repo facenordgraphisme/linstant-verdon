@@ -132,9 +132,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                   { name: "Azur Canyoning", img: "azur-canyoning.jpeg", url: "https://www.azurcanyoning.com" },
                   { name: "Ardèche Canyon Aventure", img: "ardeche-canyon-aventure.png", url: "https://www.ardechecanyonaventure.com" },
                   { name: "Koala Grimpe", img: "koala-grimpe.jpg.jpeg", url: "http://www.koalagrimpe.com" },
-                  { name: "Val de Grimpe", img: "val-de-grimpe.webp", url: "https://www.valdegrimpe.com" },
+                  { name: "Val de Grimpe", img: "val-de-grimpe.webp", url: "https://www.valdegrimpe.fr" },
                   { name: "Latitude Challenge", img: "latitude-challenge.png", url: "https://www.latitude-challenge.fr" },
-                  { name: "Le cheval et soleil", img: "logo-cheval.jpg.jpeg", url: "https://www.facebook.com/chevaletsoleil/" },
+                  { name: "Le cheval et soleil", img: "logo-cheval.jpg.jpeg", url: "https://www.facebook.com/groups/478730848948847/" },
                   { name: "Canyon Arrangé", img: "canyon-arrange-logo.png.webp", url: "https://canyon-arrange.re" },
                 ].map(p => (
                   <a 
@@ -188,7 +188,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 {[
                   { name: "Marielle Laubie Photographe", img: "marielle-laubie.png", url: "https://www.mariellelaubie.com" },
-                  { name: "L'effet Verdon", img: "effet-verdon.webp", url: "http://effetverdon.com" },
+                  { name: "L'effet Verdon", img: "effet-verdon.webp", url: "https://www.facebook.com/effetverdondiffusion/" },
                 ].map(p => (
                   <a 
                     href={p.url}
