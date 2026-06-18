@@ -210,7 +210,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
     return (
       <main className="min-h-screen bg-slate-50/50">
         {/* Hero Section */}
-        <section className="relative h-[65vh] flex items-center justify-center overflow-hidden bg-black text-white">
+        <section className="relative h-[65vh] flex items-center justify-center pt-24 md:pt-32 overflow-hidden bg-black text-white">
           <div 
             className="absolute inset-0 bg-cover bg-center transition-transform duration-[2000ms] scale-105"
             style={{ backgroundImage: `url('${heroBg}')` }}
