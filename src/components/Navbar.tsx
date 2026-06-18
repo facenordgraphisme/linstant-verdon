@@ -137,14 +137,21 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button className="md:hidden relative w-12 h-12 flex items-center justify-center rounded-2xl bg-white/10 border border-white/20 shadow-lg text-white" onClick={() => setIsOpen(!isOpen)}>
+        <button 
+          className={`md:hidden relative w-12 h-12 flex items-center justify-center rounded-2xl border transition-all duration-300 shadow-lg ${
+            isScrolled 
+              ? 'text-slate-900 bg-slate-900/5 border-slate-900/10' 
+              : 'text-white bg-white/10 border-white/20'
+          }`} 
+          onClick={() => setIsOpen(!isOpen)}
+        >
           {isOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden fixed inset-0 w-full h-screen bg-[#f8f9fa] transition-all duration-500 ${isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-full'}`}>
-        <div className="pt-32 px-8 flex flex-col space-y-10">
+      <div className={`md:hidden fixed inset-0 w-full h-screen bg-[#f8f9fa] overflow-y-auto transition-all duration-500 ${isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-full'}`}>
+        <div className="pt-32 pb-24 px-8 flex flex-col space-y-10">
           <div className="flex flex-col space-y-6">
             <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-2">{dict.nav.activities}</p>
             {activityLinks.map(link => {
@@ -187,7 +194,7 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
         </div>
         
         {/* Close button for mobile */}
-        <button className="absolute top-8 right-8 w-14 h-14 rounded-full bg-white-5 border border-white-10 flex items-center justify-center shadow-2xl" onClick={() => setIsOpen(false)}>
+        <button className="fixed top-8 right-8 w-14 h-14 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-2xl z-50 text-slate-900" onClick={() => setIsOpen(false)}>
           <X size={28} />
         </button>
       </div>
