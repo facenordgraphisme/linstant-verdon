@@ -99,6 +99,34 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
 
   if (!activityData || typeof activityData === 'string') return <div className="p-20 text-center font-bold text-slate-800">Category not found</div>;
 
+  let stagesData = null;
+  if (dictKey === 'stages') {
+    stagesData = await client.fetch(`
+      *[_type == "stagesPage"][0] {
+        "title": title[$locale],
+        "tagline": tagline[$locale],
+        "description": description[$locale],
+        "heroImage": coalesce(heroImage.asset->url, ""),
+        "whereTitle": whereTitle[$locale],
+        "whereText": whereText[$locale],
+        "acroYogaTitle": acroYogaTitle[$locale],
+        "acroYogaText": acroYogaText[$locale],
+        "canyonTitle": canyonTitle[$locale],
+        "canyonText": canyonText[$locale],
+        "climbingTitle": climbingTitle[$locale],
+        "climbingText": climbingText[$locale],
+        program3Days,
+        program7Days,
+        "logisticsAccommodation": logisticsAccommodation[$locale],
+        "logisticsGear": logisticsGear[$locale],
+        "logisticsTransport": logisticsTransport[$locale],
+        "toBring": toBring[$locale],
+        "prices": prices[$locale],
+        "gallery": gallery[].asset->url
+      }
+    `, { locale });
+  }
+
   const imageMapping: Record<string, string> = {
     canyoning: '/assets/canyon/canyon.jpeg',
     escalade: '/assets/escalade/climbing.jpeg',
@@ -176,6 +204,289 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
     hoverBorder: 'hover:border-primary/30',
     hex: '#10a18b'
   };
+
+  if (dictKey === 'stages' && stagesData) {
+    const heroBg = stagesData.heroImage || bgImage;
+    return (
+      <main className="min-h-screen bg-slate-50/50">
+        {/* Hero Section */}
+        <section className="relative h-[65vh] flex items-center justify-center overflow-hidden bg-black text-white">
+          <div 
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-[2000ms] scale-105"
+            style={{ backgroundImage: `url('${heroBg}')` }}
+          />
+          <div className="absolute inset-0 bg-black/60 z-10" />
+          
+          <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
+            <span className="text-[#10a18b] font-black uppercase tracking-[0.4em] text-xs mb-6 block drop-shadow-lg">
+              {stagesData.tagline}
+            </span>
+            <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-8 text-white-shadow text-white">
+              {stagesData.title}
+            </h1>
+            <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto font-medium leading-relaxed text-white-shadow mb-10">
+              {stagesData.description}
+            </p>
+            <Link 
+              href={`/${locale}/contact`}
+              className="button-glow transition-all duration-300 inline-block px-10 py-5 rounded-full font-black text-xs uppercase tracking-wider text-white shadow-2xl scale-[1.02] hover:scale-[1.05]"
+              style={{ background: '#10a18b' }}
+            >
+              {locale === 'fr' ? 'RÉSERVER VOTRE STAGE' : 'BOOK YOUR CAMP'}
+            </Link>
+          </div>
+        </section>
+
+        {/* Section Où ? */}
+        <section className="py-20 px-6 bg-white border-b border-slate-100">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter">
+              {stagesData.whereTitle}
+            </h2>
+            <p className="text-lg text-slate-600 font-semibold leading-relaxed">
+              {stagesData.whereText}
+            </p>
+          </div>
+        </section>
+
+        {/* Section Nos Activités */}
+        <section className="py-24 px-6 bg-slate-50/50">
+          <div className="max-w-7xl mx-auto space-y-16">
+            <div className="text-center">
+              <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter">
+                {locale === 'fr' ? 'Nos Activités' : 'Our Activities'}
+              </h2>
+              <p className="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs mt-2">
+                {locale === 'fr' ? 'Un programme complet et varié' : 'A complete and varied program'}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+              {/* Activity 1 */}
+              <div className="card-promax bg-white p-10 space-y-6 relative overflow-hidden group animate-fadeIn">
+                <div className="absolute top-0 left-0 w-2 h-full bg-[#10a18b]" />
+                <h3 className="text-2xl font-black text-[#0d758b] uppercase tracking-tight">
+                  {stagesData.acroYogaTitle}
+                </h3>
+                <p className="text-slate-600 leading-relaxed font-medium">
+                  {stagesData.acroYogaText}
+                </p>
+              </div>
+
+              {/* Activity 2 */}
+              <div className="card-promax bg-white p-10 space-y-6 relative overflow-hidden group animate-fadeIn">
+                <div className="absolute top-0 left-0 w-2 h-full bg-[#10a18b]" />
+                <h3 className="text-2xl font-black text-[#0d758b] uppercase tracking-tight">
+                  {stagesData.canyonTitle}
+                </h3>
+                <p className="text-slate-600 leading-relaxed font-medium">
+                  {stagesData.canyonText}
+                </p>
+              </div>
+
+              {/* Activity 3 */}
+              <div className="card-promax bg-white p-10 space-y-6 relative overflow-hidden group animate-fadeIn">
+                <div className="absolute top-0 left-0 w-2 h-full bg-[#10a18b]" />
+                <h3 className="text-2xl font-black text-[#0d758b] uppercase tracking-tight">
+                  {stagesData.climbingTitle}
+                </h3>
+                <p className="text-slate-600 leading-relaxed font-medium">
+                  {stagesData.climbingText}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section Programmation (Tables) */}
+        <section className="py-24 px-6 bg-white border-t border-slate-100">
+          <div className="max-w-7xl mx-auto space-y-20">
+            <div className="text-center">
+              <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter">
+                {locale === 'fr' ? 'Programme du Stage' : 'Camp Schedule'}
+              </h2>
+              <p className="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs mt-2">
+                {locale === 'fr' ? 'Découvrez le déroulement de votre aventure' : 'Discover the schedule of your adventure'}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+              {/* Table 1: Formule 3 jours */}
+              <div className="space-y-6">
+                <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight border-b-2 border-[#10a18b] pb-2">
+                  {locale === 'fr' ? 'Programmation Formule 3 jours' : '3-Day Camp Schedule'}
+                </h3>
+                <div className="overflow-x-auto rounded-2xl border border-slate-100 shadow-xl">
+                  <table className="w-full text-left border-collapse bg-white">
+                    <thead>
+                      <tr className="bg-slate-50 border-b border-slate-100 text-[10px] font-black uppercase tracking-wider text-slate-500">
+                        <th className="p-5">{locale === 'fr' ? 'Jour' : 'Day'}</th>
+                        <th className="p-5">{locale === 'fr' ? 'Matin' : 'Morning'}</th>
+                        <th className="p-5">{locale === 'fr' ? 'Après-midi (1 avril - 31 octobre)' : 'Afternoon (Apr 1 - Oct 31)'}</th>
+                        <th className="p-5">{locale === 'fr' ? 'Après-midi (1 novembre – 31 mars)' : 'Afternoon (Nov 1 - Mar 31)'}</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 text-sm font-semibold text-slate-600">
+                      {stagesData.program3Days?.map((row: any, index: number) => (
+                        <tr key={index} className="hover:bg-slate-50/50 transition-colors">
+                          <td className="p-5 font-black text-[#10a18b]">{row.day}</td>
+                          <td className="p-5">{row.morning}</td>
+                          <td className="p-5">{row.afternoon}</td>
+                          <td className="p-5">{row.afternoonWinter}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Table 2: Formule 7 jours */}
+              <div className="space-y-6">
+                <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight border-b-2 border-[#10a18b] pb-2">
+                  {locale === 'fr' ? 'Programmation Formule 7 jours' : '7-Day Camp Schedule'}
+                </h3>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                  {locale === 'fr' ? '(1 avril - 31 octobre, hors vacances scolaires estivales)' : '(April 1 - October 31, excluding summer school holidays)'}
+                </p>
+                <div className="overflow-x-auto rounded-2xl border border-slate-100 shadow-xl">
+                  <table className="w-full text-left border-collapse bg-white">
+                    <thead>
+                      <tr className="bg-slate-50 border-b border-slate-100 text-[10px] font-black uppercase tracking-wider text-slate-500">
+                        <th className="p-5">{locale === 'fr' ? 'Jour' : 'Day'}</th>
+                        <th className="p-5">{locale === 'fr' ? 'Matin (9H30 - 12H)' : 'Morning (9:30 - 12:00)'}</th>
+                        <th className="p-5">{locale === 'fr' ? 'Après-midi (13H30 – 16H)' : 'Afternoon (13:30 - 16:00)'}</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 text-sm font-semibold text-slate-600">
+                      {stagesData.program7Days?.map((row: any, index: number) => (
+                        <tr key={index} className="hover:bg-slate-50/50 transition-colors">
+                          <td className="p-5 font-black text-[#10a18b]">{row.day}</td>
+                          <td className="p-5">{row.morning}</td>
+                          <td className="p-5">{row.afternoon}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Logistics & Practical details */}
+        <section className="py-24 px-6 bg-slate-50 border-t border-slate-100">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Prise en charge */}
+            <div className="card-promax bg-white p-10 space-y-4">
+              <h4 className="text-xl font-black text-slate-900 uppercase tracking-tight">
+                {locale === 'fr' ? 'Prise en charge' : 'Accommodation & Food'}
+              </h4>
+              <p className="text-slate-600 text-sm font-medium leading-relaxed">
+                {stagesData.logisticsAccommodation}
+              </p>
+            </div>
+
+            {/* Prêt de matériel */}
+            <div className="card-promax bg-white p-10 space-y-4">
+              <h4 className="text-xl font-black text-slate-900 uppercase tracking-tight">
+                {locale === 'fr' ? 'Prêt de matériel' : 'Gear Provided'}
+              </h4>
+              <p className="text-slate-600 text-sm font-medium leading-relaxed">
+                {stagesData.logisticsGear}
+              </p>
+            </div>
+
+            {/* Transport */}
+            <div className="card-promax bg-white p-10 space-y-4">
+              <h4 className="text-xl font-black text-slate-900 uppercase tracking-tight">
+                {locale === 'fr' ? 'Transport' : 'Transport'}
+              </h4>
+              <p className="text-slate-600 text-sm font-medium leading-relaxed">
+                {stagesData.logisticsTransport}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Bring checklists, prices, & CTA */}
+        <section className="py-24 px-6 bg-white border-t border-slate-100">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            
+            {/* Checklist: Vous devez prévoir */}
+            <div className="lg:col-span-6 space-y-8">
+              <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">
+                {locale === 'fr' ? 'Vous devez prévoir :' : 'You must bring :'}
+              </h3>
+              <ul className="space-y-4">
+                {stagesData.toBring?.map((item: string, i: number) => (
+                  <li key={i} className="flex items-start gap-4 text-slate-600 font-semibold">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#10a18b] mt-2 shrink-0" />
+                    <span className="text-lg">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Pricing Box */}
+            <div className="lg:col-span-6 bg-slate-50 p-10 rounded-[3rem] border border-slate-100 shadow-xl space-y-8">
+              <h3 className="text-3xl font-black text-[#0d758b] uppercase tracking-tight">
+                {locale === 'fr' ? 'Tarifs' : 'Rates'}
+              </h3>
+              <ul className="space-y-4 text-slate-600 font-medium leading-relaxed">
+                {stagesData.prices?.map((priceLine: string, i: number) => (
+                  <li key={i} className={`flex items-start gap-3 text-base ${i < 2 ? 'font-black text-slate-950 text-lg border-b border-slate-200/50 pb-2' : ''}`}>
+                    {i >= 2 && <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2.5 shrink-0" />}
+                    <span>{priceLine}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="pt-4 space-y-4">
+                <Link 
+                  href={`/${locale}/contact`}
+                  className="w-full text-center block bg-slate-900 text-white font-black uppercase text-xs tracking-widest py-5 rounded-2xl hover:bg-[#10a18b] hover:shadow-lg transition-all duration-300"
+                >
+                  {locale === 'fr' ? 'CONTACTER LE BUREAU DES MONITEURS' : 'CONTACT INSTRUCTORS OFFICE'}
+                </Link>
+                <p className="text-xs text-slate-400 font-bold text-center uppercase tracking-wider">
+                  {locale === 'fr' ? 'Pour les dates de stage suivez nous sur instagram' : 'For camp dates follow us on Instagram'}
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* Gallery Section */}
+        {stagesData.gallery && stagesData.gallery.length > 0 && (
+          <section className="py-24 px-6 bg-slate-50 border-t border-slate-100">
+            <div className="max-w-7xl mx-auto space-y-16">
+              <div className="text-center">
+                <h3 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter">
+                  {locale === 'fr' ? 'Galerie Photo' : 'Photo Gallery'}
+                </h3>
+                <p className="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs mt-2">
+                  {locale === 'fr' ? 'Souvenirs de nos stages' : 'Memories of our camps'}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                {stagesData.gallery.map((imgUrl: string, idx: number) => (
+                  <div key={idx} className="group overflow-hidden rounded-[2rem] border-4 border-white shadow-xl aspect-[4/3] bg-slate-200 relative">
+                    <img 
+                      src={imgUrl} 
+                      alt={`Stage Photo ${idx + 1}`} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+      </main>
+    );
+  }
 
   if (dictKey === 'evenementiel') {
     return (
