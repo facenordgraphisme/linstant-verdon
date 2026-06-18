@@ -56,7 +56,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <div className="space-y-32">
           <p className="text-slate-600 text-2xl md:text-3xl font-bold italic leading-tight max-w-4xl border-l-4 border-primary pl-8 py-4">
             L’Instant Verdon est né d’une passion commune pour les grands espaces et l’aventure. 
-            Basés à Castellane, au cœur des Gorges du Verdon, nous vous accompagnons dans vos explorations les plus sauvages.
+            Basés à la Palud sur Verdon, au cœur des Gorges du Verdon, nous vous accompagnons dans vos explorations les plus sauvages.
           </p>
           
           {/* Emma */}
