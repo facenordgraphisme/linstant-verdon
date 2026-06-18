@@ -5,7 +5,7 @@ import ContactSection from '@/components/ContactSection';
 const meta = {
   fr: {
     title: "Réserver votre Sortie Verdon — Contactez-nous | L'instant Verdon",
-    description: "Réservez votre sortie canyoning, escalade ou aventure dans les Gorges du Verdon. L'instant Verdon répond en moins de 24h. Place de l'église, 04120 Castellane.",
+    description: "Réservez votre sortie canyoning, escalade ou aventure dans les Gorges du Verdon. L'instant Verdon répond en moins de 24h. 395 Chem. de Haut Bourras, 04120 La Palud-sur-Verdon.",
   },
   en: {
     title: "Book your Verdon Adventure — Contact Us | L'instant Verdon",

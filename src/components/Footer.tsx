@@ -79,7 +79,7 @@ export default function Footer({ dict, locale }: { dict: any; locale: string }) 
               <ul className="space-y-6">
                 <li className="flex items-start gap-3 text-slate-600">
                   <MapPin size={18} className="text-primary shrink-0 mt-1" />
-                  <span className="text-sm font-bold leading-relaxed">Place de l'église, 04120 Castellane</span>
+                  <span className="text-sm font-bold leading-relaxed">395 Chem. de Haut Bourras, 04120 La Palud-sur-Verdon</span>
                 </li>
                 <li className="flex items-center gap-3 text-slate-600">
                   <Phone size={18} className="text-primary shrink-0" />

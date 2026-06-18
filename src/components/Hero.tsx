@@ -59,7 +59,7 @@ export default function Hero({ dict }: { dict: any }) {
       <div className="relative z-20 text-center px-6 w-full max-w-5xl flex flex-col items-center">
         <div className="mb-12">
           <span className="px-6 py-2.5 bg-primary/20 text-primary rounded-full text-xs font-black uppercase tracking-[0.5em] border border-primary/30 backdrop-blur-2xl">
-            Castellane • Verdon
+            La Palud sur Verdon
           </span>
         </div>
 

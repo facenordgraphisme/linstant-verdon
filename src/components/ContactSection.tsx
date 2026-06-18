@@ -161,7 +161,7 @@ export default function ContactSection({ dict, locale }: { dict: any; locale: st
               </div>
               <div>
                 <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-1">{contactDict.addressLabel}</p>
-                <p className="text-xl md:text-3xl font-black tracking-tight leading-tight text-slate-900">Place de l'église, 04120 Castellane</p>
+                <p className="text-xl md:text-3xl font-black tracking-tight leading-tight text-slate-900">395 Chem. de Haut Bourras, 04120 La Palud-sur-Verdon</p>
               </div>
             </div>
           </div>

@@ -4,7 +4,7 @@ export default function LocalBusinessSchema({ locale }: { locale: string }) {
     '@type': ['LocalBusiness', 'SportsActivityLocation'],
     name: "L'instant Verdon",
     description: locale === 'fr'
-      ? "Guides diplômés d'État pour sorties canyoning, escalade et aventures dans les Gorges du Verdon. Basé à Castellane depuis 2018."
+      ? "Guides diplômés d'État pour sorties canyoning, escalade et aventures dans les Gorges du Verdon. Basé à La Palud-sur-Verdon depuis 2018."
       : "State-certified guides for canyoning, climbing and adventure outings in the Gorges du Verdon since 2018.",
     image: 'https://www.linstantverdon.com/assets/accueil/logo.webp',
     '@id': 'https://www.linstantverdon.com',
@@ -13,16 +13,16 @@ export default function LocalBusinessSchema({ locale }: { locale: string }) {
     email: 'contact@linstantverdon.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: "Place de l'église",
-      addressLocality: 'Castellane',
+      streetAddress: "395 Chem. de Haut Bourras",
+      addressLocality: 'La Palud-sur-Verdon',
       postalCode: '04120',
       addressRegion: 'Provence-Alpes-Côte d\'Azur',
       addressCountry: 'FR',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 43.8464,
-      longitude: 6.5135,
+      latitude: 43.7797,
+      longitude: 6.3421,
     },
     areaServed: [
       { '@type': 'Place', name: 'Gorges du Verdon' },
