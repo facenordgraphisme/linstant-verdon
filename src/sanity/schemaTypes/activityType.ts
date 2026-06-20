@@ -158,6 +158,16 @@ export const activityType = defineType({
       title: 'URL Google Maps (Embed)',
       type: 'string',
     }),
+    defineField({
+      name: 'difficultyGroup',
+      title: 'Groupe de difficulté / Catégorie (Optionnel)',
+      description: 'Permet de classer l\'activité sous un sous-titre de niveau sur la page catégorie (ex: "Demi journée découverte en famille").',
+      type: 'object',
+      fields: [
+        { name: 'fr', title: 'Français', type: 'string' },
+        { name: 'en', title: 'Anglais', type: 'string' },
+      ],
+    }),
   ],
   preview: {
     select: {

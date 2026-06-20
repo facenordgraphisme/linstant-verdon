@@ -672,9 +672,51 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
       price,
       minAge,
       duration,
-      "imageUrl": coalesce(mainImage.asset->url, images[0].asset->url)
+      "imageUrl": coalesce(mainImage.asset->url, images[0].asset->url),
+      "difficultyGroup": difficultyGroup[$locale]
     }
   `, { sanityCategory, locale });
+
+  // Check if we should group them by difficulty
+  const hasDifficultyGrouping = activities.some((act: any) => act.difficultyGroup);
+
+  // Group activities if grouping is active
+  const groupedActivities: Record<string, any[]> = {};
+  const ungroupedActivities: any[] = [];
+
+  if (hasDifficultyGrouping) {
+    activities.forEach((act: any) => {
+      if (act.difficultyGroup) {
+        if (!groupedActivities[act.difficultyGroup]) {
+          groupedActivities[act.difficultyGroup] = [];
+        }
+        groupedActivities[act.difficultyGroup].push(act);
+      } else {
+        ungroupedActivities.push(act);
+      }
+    });
+  }
+
+  // Predefined logical order of difficulty headings
+  const difficultyOrder = [
+    "Demi journée découverte en famille",
+    "Family discovery half day",
+    "Demi journée découverte entre amis",
+    "Friends discovery half day",
+    "Canyon demi-journée sportive",
+    "Sporty half day canyon",
+    "Canyon journée sportive",
+    "Sporty full day canyon"
+  ];
+
+  const sortedGroupedEntries = Object.entries(groupedActivities).sort(([aName], [bName]) => {
+    const aIndex = difficultyOrder.indexOf(aName);
+    const bIndex = difficultyOrder.indexOf(bName);
+    if (aIndex === -1 && bIndex === -1) return aName.localeCompare(bName);
+    if (aIndex === -1) return 1;
+    if (bIndex === -1) return -1;
+    return aIndex - bIndex;
+  });
 
   return (
     <main className="min-h-screen bg-white">
@@ -730,8 +772,10 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
 
       {/* Offerings Section */}
       <section className="py-24 px-6 bg-white" id="booking">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-16">
+        <div className="max-w-7xl mx-auto space-y-24">
+          
+          {/* Header */}
+          <div className="flex items-center justify-between">
             <div>
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter mb-4">Notre Sélection</h2>
               <p className="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs">Découvrez nos parcours phares</p>
@@ -744,43 +788,143 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {/* Sanity Activities */}
-            {activities.map((activity: any) => (
-              <Link 
-                href={`/${locale}/${category}/${activity.slug.current}`}
-                key={activity._id}
-                className={`group card-promax overflow-hidden transition-all duration-500 ${colors.hoverBorder}`}
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src={activity.imageUrl || bgImage} 
-                    alt={activity.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg z-20">
-                    <span className={`text-xs font-black ${colors.text} uppercase`}>À partir de {activity.price}€</span>
+          {/* Grouped Activities display */}
+          {hasDifficultyGrouping ? (
+            <div className="space-y-24">
+              {sortedGroupedEntries.map(([groupName, groupActs]) => (
+                <div key={groupName} className="space-y-10">
+                  <div className="flex items-center gap-4 border-b border-slate-100 pb-4">
+                    <span className={`w-8 h-1.5 rounded-full ${colors.bg}`} />
+                    <h3 className="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tighter">
+                      {groupName}
+                    </h3>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    {groupActs.map((activity) => (
+                      <Link 
+                        href={`/${locale}/${category}/${activity.slug.current}`}
+                        key={activity._id}
+                        className={`group card-promax overflow-hidden transition-all duration-500 ${colors.hoverBorder}`}
+                      >
+                        <div className="relative h-64 overflow-hidden">
+                          <img 
+                            src={activity.imageUrl || bgImage} 
+                            alt={activity.title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                          <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg z-20">
+                            <span className={`text-xs font-black ${colors.text} uppercase`}>À partir de {activity.price}€</span>
+                          </div>
+                        </div>
+                        <div className="p-8">
+                          <p className={`text-[10px] font-black ${colors.text} uppercase tracking-[0.2em] mb-3`}>{activity.subtitle}</p>
+                          <h3 className={`text-2xl font-black ${colors.text} mb-6 uppercase tracking-tighter leading-tight transition-colors`}>
+                            {activity.title}
+                          </h3>
+                          <div className="flex items-center justify-between pt-6 border-t border-slate-50">
+                            <div className="flex flex-col">
+                              <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Âge min.</span>
+                              <span className="text-sm font-bold text-slate-900">{activity.minAge} ans</span>
+                            </div>
+                            <div className="flex flex-col text-right">
+                              <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Durée</span>
+                              <span className="text-sm font-bold text-slate-900">{activity.duration}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
                   </div>
                 </div>
-                <div className="p-8">
-                  <p className={`text-[10px] font-black ${colors.text} uppercase tracking-[0.2em] mb-3`}>{activity.subtitle}</p>
-                  <h3 className={`text-2xl font-black ${colors.text} mb-6 uppercase tracking-tighter leading-tight transition-colors`}>
-                    {activity.title}
-                  </h3>
-                  <div className="flex items-center justify-between pt-6 border-t border-slate-50">
-                    <div className="flex flex-col">
-                      <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Âge min.</span>
-                      <span className="text-sm font-bold text-slate-900">{activity.minAge} ans</span>
-                    </div>
-                    <div className="flex flex-col text-right">
-                      <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Durée</span>
-                      <span className="text-sm font-bold text-slate-900">{activity.duration}</span>
-                    </div>
+              ))}
+
+              {/* Ungrouped Activities fallback */}
+              {ungroupedActivities.length > 0 && (
+                <div className="space-y-10 pt-10 border-t border-slate-100">
+                  <div className="flex items-center gap-4 pb-4">
+                    <span className="w-8 h-1.5 rounded-full bg-slate-400" />
+                    <h3 className="text-2xl md:text-3xl font-black text-slate-800 uppercase tracking-tighter">
+                      {locale === 'fr' ? 'Autres parcours' : 'Other tours'}
+                    </h3>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    {ungroupedActivities.map((activity) => (
+                      <Link 
+                        href={`/${locale}/${category}/${activity.slug.current}`}
+                        key={activity._id}
+                        className="group card-promax overflow-hidden transition-all duration-500 hover:border-slate-300"
+                      >
+                        <div className="relative h-64 overflow-hidden">
+                          <img 
+                            src={activity.imageUrl || bgImage} 
+                            alt={activity.title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                          <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg z-20">
+                            <span className="text-xs font-black text-slate-600 uppercase">À partir de {activity.price}€</span>
+                          </div>
+                        </div>
+                        <div className="p-8">
+                          <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3">{activity.subtitle}</p>
+                          <h3 className="text-2xl font-black text-slate-800 mb-6 uppercase tracking-tighter leading-tight transition-colors">
+                            {activity.title}
+                          </h3>
+                          <div className="flex items-center justify-between pt-6 border-t border-slate-50">
+                            <div className="flex flex-col">
+                              <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Âge min.</span>
+                              <span className="text-sm font-bold text-slate-900">{activity.minAge} ans</span>
+                            </div>
+                            <div className="flex flex-col text-right">
+                              <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Durée</span>
+                              <span className="text-sm font-bold text-slate-900">{activity.duration}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
                   </div>
                 </div>
-              </Link>
-            ))}
-          </div>
+              )}
+            </div>
+          ) : (
+            /* Standard Flat Grid Layout */
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+              {activities.map((activity: any) => (
+                <Link 
+                  href={`/${locale}/${category}/${activity.slug.current}`}
+                  key={activity._id}
+                  className={`group card-promax overflow-hidden transition-all duration-500 ${colors.hoverBorder}`}
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    <img 
+                      src={activity.imageUrl || bgImage} 
+                      alt={activity.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg z-20">
+                      <span className={`text-xs font-black ${colors.text} uppercase`}>À partir de {activity.price}€</span>
+                    </div>
+                  </div>
+                  <div className="p-8">
+                    <p className={`text-[10px] font-black ${colors.text} uppercase tracking-[0.2em] mb-3`}>{activity.subtitle}</p>
+                    <h3 className={`text-2xl font-black ${colors.text} mb-6 uppercase tracking-tighter leading-tight transition-colors`}>
+                      {activity.title}
+                    </h3>
+                    <div className="flex items-center justify-between pt-6 border-t border-slate-50">
+                      <div className="flex flex-col">
+                        <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Âge min.</span>
+                        <span className="text-sm font-bold text-slate-900">{activity.minAge} ans</span>
+                      </div>
+                      <div className="flex flex-col text-right">
+                        <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Durée</span>
+                        <span className="text-sm font-bold text-slate-900">{activity.duration}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
