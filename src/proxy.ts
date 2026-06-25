@@ -7,30 +7,23 @@ const defaultLocale = 'fr';
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Bypass i18n rewrites for Sanity Studio
   if (pathname.startsWith('/studio')) {
-    return;
+    return NextResponse.next();
   }
 
-  // Check if there is any supported locale in the pathname
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  if (pathnameHasLocale) return;
+  if (pathnameHasLocale) return NextResponse.next();
 
-  // If no locale is present, default to 'fr' but don't redirect for the root path
-  // We want '/' to serve 'fr' content without changing the URL.
-  // We rewrite to /[locale]/pathname
-  const locale = defaultLocale;
-  request.nextUrl.pathname = `/${locale}${pathname}`;
-  
-  return NextResponse.rewrite(request.nextUrl);
+  const url = request.nextUrl.clone();
+  url.pathname = `/${defaultLocale}${pathname === '/' ? '' : pathname}`;
+  return NextResponse.redirect(url, { status: 308 });
 }
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next, static, etc.)
-    '/((?!_next|api|favicon.ico|.*\\..*).*)',
+    '/((?!_next|api|favicon\\.ico|assets|sitemap\\.xml|robots\\.txt|llms\\.txt|.*\\..*).*)',
   ],
 };
