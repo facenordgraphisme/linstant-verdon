@@ -13,6 +13,12 @@ const meta = {
   },
 }
 
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  return [{ locale: 'fr' }, { locale: 'en' }];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const m = meta[locale as 'fr' | 'en'] || meta.fr;

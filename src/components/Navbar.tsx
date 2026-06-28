@@ -47,7 +47,7 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
       <div className={`absolute inset-0 transition-all duration-500 ${isScrolled ? 'glass-promax opacity-100 shadow-xl' : 'glass-nav opacity-50'}`} />
       
       <div className="relative max-w-7xl mx-auto px-6 flex justify-between items-center h-20">
-        <Link href={`/${locale}`} className="flex items-center gap-4 group">
+        <Link href={`/${locale}`} prefetch={false} className="flex items-center gap-4 group">
           <div className="relative w-16 h-16 transition-transform duration-500 group-hover:scale-110">
             <img src="/assets/accueil/logo.webp" alt="Logo" className="w-full h-full object-contain" />
           </div>
@@ -89,6 +89,7 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
                       <Link 
                         key={link.key} 
                         href={link.href}
+                        prefetch={false}
                         className={`flex items-center justify-between py-4 px-6 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-[10px] group/item ${hoverClass}`}
                       >
                         <span className="flex items-center gap-3">
@@ -104,16 +105,16 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
             </div>
           </div>
 
-          <Link href={`/${locale}/a-propos`} className={`text-sm font-black uppercase nav-link ${isScrolled ? 'text-slate-800' : 'text-white text-white-shadow'}`}>
+          <Link href={`/${locale}/a-propos`} prefetch={false} className={`text-sm font-black uppercase nav-link ${isScrolled ? 'text-slate-800' : 'text-white text-white-shadow'}`}>
             {dict.nav.about}
           </Link>
-          <Link href={`/${locale}/faq`} className={`text-sm font-black uppercase nav-link ${isScrolled ? 'text-slate-800' : 'text-white text-white-shadow'}`}>
+          <Link href={`/${locale}/faq`} prefetch={false} className={`text-sm font-black uppercase nav-link ${isScrolled ? 'text-slate-800' : 'text-white text-white-shadow'}`}>
             {dict.nav.faq}
           </Link>
-          <Link href={`/${locale}/blog`} className={`text-sm font-black uppercase nav-link ${isScrolled ? 'text-slate-800' : 'text-white text-white-shadow'}`}>
+          <Link href={`/${locale}/blog`} prefetch={false} className={`text-sm font-black uppercase nav-link ${isScrolled ? 'text-slate-800' : 'text-white text-white-shadow'}`}>
             {dict.nav.blog}
           </Link>
-          <Link href={`/${locale}/contact`} className={`text-sm font-black uppercase nav-link ${isScrolled ? 'text-slate-800' : 'text-white text-white-shadow'}`}>
+          <Link href={`/${locale}/contact`} prefetch={false} className={`text-sm font-black uppercase nav-link ${isScrolled ? 'text-slate-800' : 'text-white text-white-shadow'}`}>
             {dict.nav.contact}
           </Link>
 
@@ -121,6 +122,7 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
 
           <Link 
             href={`/${toggleLocale}`} 
+            prefetch={false}
             className="flex items-center justify-center w-10 h-10 overflow-hidden rounded-lg transition-all hover:scale-110 active:scale-95" 
             title={toggleLocale === 'fr' ? 'Version Française' : 'English Version'}
           >
@@ -168,6 +170,7 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
                 <Link 
                   key={link.key} 
                   href={link.href} 
+                  prefetch={false}
                   onClick={() => setIsOpen(false)} 
                   className={`text-4xl font-black tracking-tighter text-slate-900 transition-colors flex items-center gap-5 uppercase ${colors.hover}`}
                 >
@@ -180,14 +183,14 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
           <div className="h-px bg-slate-200" />
           
           <div className="flex flex-col space-y-6">
-            <Link href={`/${locale}/a-propos`} onClick={() => setIsOpen(false)} className="text-3xl font-black tracking-tight text-slate-800 uppercase">{dict.nav.about}</Link>
-            <Link href={`/${locale}/faq`} onClick={() => setIsOpen(false)} className="text-3xl font-black tracking-tight text-slate-800 uppercase">{dict.nav.faq}</Link>
-            <Link href={`/${locale}/blog`} onClick={() => setIsOpen(false)} className="text-3xl font-black tracking-tight text-slate-800 uppercase">{dict.nav.blog}</Link>
-            <Link href={`/${locale}/contact`} onClick={() => setIsOpen(false)} className="text-3xl font-black tracking-tight text-slate-800 uppercase">{dict.nav.contact}</Link>
+            <Link href={`/${locale}/a-propos`} prefetch={false} onClick={() => setIsOpen(false)} className="text-3xl font-black tracking-tight text-slate-800 uppercase">{dict.nav.about}</Link>
+            <Link href={`/${locale}/faq`} prefetch={false} onClick={() => setIsOpen(false)} className="text-3xl font-black tracking-tight text-slate-800 uppercase">{dict.nav.faq}</Link>
+            <Link href={`/${locale}/blog`} prefetch={false} onClick={() => setIsOpen(false)} className="text-3xl font-black tracking-tight text-slate-800 uppercase">{dict.nav.blog}</Link>
+            <Link href={`/${locale}/contact`} prefetch={false} onClick={() => setIsOpen(false)} className="text-3xl font-black tracking-tight text-slate-800 uppercase">{dict.nav.contact}</Link>
           </div>
 
           <div className="pt-10">
-             <Link href={`/${toggleLocale}`} onClick={() => setIsOpen(false)} className="inline-flex items-center gap-4 px-8 py-4 rounded-full border border-slate-200 font-black text-slate-800 bg-white shadow-lg uppercase text-xs tracking-widest">
+             <Link href={`/${toggleLocale}`} prefetch={false} onClick={() => setIsOpen(false)} className="inline-flex items-center gap-4 px-8 py-4 rounded-full border border-slate-200 font-black text-slate-800 bg-white shadow-lg uppercase text-xs tracking-widest">
                 <Globe size={20} /> {toggleLocale === 'fr' ? 'Version Française' : 'English Version'}
              </Link>
           </div>

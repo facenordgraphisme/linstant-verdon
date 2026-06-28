@@ -22,7 +22,7 @@ export default function Footer({ dict, locale }: { dict: any; locale: string }) 
           
           {/* Left Side: Brand & Socials */}
           <div className="space-y-10">
-            <Link href={`/${locale}`} className="flex items-center gap-4 group">
+            <Link href={`/${locale}`} prefetch={false} className="flex items-center gap-4 group">
               <div className="w-16 h-16 transition-transform duration-500 group-hover:scale-110">
                 <img src="/assets/accueil/logo.webp" alt="Logo" className="w-full h-full object-contain" />
               </div>
@@ -66,12 +66,12 @@ export default function Footer({ dict, locale }: { dict: any; locale: string }) 
             <div>
               <h4 className="text-slate-900 font-black text-[10px] uppercase tracking-[0.3em] mb-8 opacity-40">Navigation</h4>
               <ul className="space-y-4">
-                <li><Link href={`/${locale}/canyoning`} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">Canyoning</Link></li>
-                <li><Link href={`/${locale}/escalade`} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">Escalade</Link></li>
-                <li><Link href={`/${locale}/stages`} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">Stages</Link></li>
-                <li><Link href={`/${locale}/blog`} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.blog}</Link></li>
-                <li><Link href={`/${locale}/a-propos`} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.about}</Link></li>
-                <li><Link href={`/${locale}/contact`} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.contact}</Link></li>
+                <li><Link href={`/${locale}/canyoning`} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">Canyoning</Link></li>
+                <li><Link href={`/${locale}/escalade`} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">Escalade</Link></li>
+                <li><Link href={`/${locale}/stages`} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">Stages</Link></li>
+                <li><Link href={`/${locale}/blog`} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.blog}</Link></li>
+                <li><Link href={`/${locale}/a-propos`} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.about}</Link></li>
+                <li><Link href={`/${locale}/contact`} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.contact}</Link></li>
               </ul>
             </div>
             <div>
@@ -104,8 +104,8 @@ export default function Footer({ dict, locale }: { dict: any; locale: string }) 
             </a>
           </div>
           <div className="flex gap-8 text-slate-500 text-xs md:text-sm font-black tracking-[0.2em] uppercase">
-            <Link href="#" className="hover:text-primary transition-colors">Mentions Légales</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Confidentialité</Link>
+            <Link href="#" prefetch={false} className="hover:text-primary transition-colors">Mentions Légales</Link>
+            <Link href="#" prefetch={false} className="hover:text-primary transition-colors">Confidentialité</Link>
           </div>
         </div>
       </div>

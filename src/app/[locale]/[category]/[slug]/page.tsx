@@ -20,6 +20,39 @@ const slugCategoryAlt: Record<string, { fr: string; en: string }> = {
   evenementiel: { fr: 'evenementiel', en: 'evenementiel' },
 }
 
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const activities = await client.fetch(`*[_type == "activity"]{ "slug": slug.current, "category": category->slug.current }`);
+  const locales = ['fr', 'en'];
+  const params = [];
+  
+  // Map internal categories to their localized paths
+  const categoryMap: Record<string, string[]> = {
+    canyoning: ['canyoning', 'canyon'],
+    escalade: ['escalade', 'climbing'],
+    aventures: ['aventures', 'adventure'],
+    insolite: ['insolite', 'unusual-activities'],
+    stages: ['stages', 'weekend'],
+    evenementiel: ['evenementiel'],
+  };
+
+  for (const activity of activities) {
+    if (!activity.slug || !activity.category) continue;
+    const catKeys = categoryMap[activity.category] || [activity.category];
+    for (const locale of locales) {
+      for (const catKey of catKeys) {
+        params.push({
+          locale,
+          category: catKey,
+          slug: activity.slug,
+        });
+      }
+    }
+  }
+  return params;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }): Promise<Metadata> {
   const { locale, category, slug } = await params;
   const decodedSlug = decodeURIComponent(slug);

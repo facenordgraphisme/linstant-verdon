@@ -13,6 +13,12 @@ const meta = {
   },
 }
 
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  return [{ locale: 'fr' }, { locale: 'en' }];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const m = meta[locale as 'fr' | 'en'] || meta.fr;
@@ -68,7 +74,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               </div>
             </div>
             <div className="flex flex-col justify-center">
-              <p className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">Cofondatrice & Guide</p>
+              <p className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">Co-gérante & Guide</p>
               <h2 className="text-5xl font-black mb-8 text-[#109ea5] uppercase tracking-tighter">Emma Aglaé</h2>
               <p className="text-lg text-slate-600 leading-relaxed font-medium">
                 {dict.about.emma}
@@ -79,7 +85,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           {/* Angèle */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="flex flex-col justify-center order-2 lg:order-1">
-              <p className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">Guide Escalade & Canyon</p>
+              <p className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">Co-gérante & Guide</p>
               <h2 className="text-5xl font-black mb-8 text-[#109ea5] uppercase tracking-tighter">Angèle Kanapa</h2>
               <p className="text-lg text-slate-600 leading-relaxed font-medium">
                 {dict.about.angele}

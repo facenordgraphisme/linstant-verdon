@@ -7,6 +7,10 @@ import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
+export async function generateStaticParams() {
+  return [{ locale: 'fr' }, { locale: 'en' }];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const dict = getDictionary(locale as 'fr' | 'en');

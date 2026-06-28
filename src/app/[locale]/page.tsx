@@ -9,6 +9,12 @@ import BlogOverview from '@/components/BlogOverview';
 import ContactSection from '@/components/ContactSection';
 import { client } from '@/sanity/client';
 
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  return [{ locale: 'fr' }, { locale: 'en' }];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const dict = getDictionary(locale as 'fr' | 'en');

@@ -16,6 +16,12 @@ const blogMeta = {
   },
 }
 
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  return [{ locale: 'fr' }, { locale: 'en' }];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const m = blogMeta[locale as 'fr' | 'en'] || blogMeta.fr;

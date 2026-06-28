@@ -6,6 +6,24 @@ import { parseMarkdown } from '@/lib/markdown';
 import { Calendar, User, ArrowLeft, MessageSquare, Phone, CalendarRange } from 'lucide-react';
 import type { Metadata } from 'next';
 
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const posts = await client.fetch(`*[_type == "post"]{ "slug": slug.current }`);
+  const locales = ['fr', 'en'];
+  const params = [];
+  for (const post of posts) {
+    if (!post.slug) continue;
+    for (const locale of locales) {
+      params.push({
+        locale,
+        slug: post.slug,
+      });
+    }
+  }
+  return params;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale, slug } = await params;
   const decodedSlug = decodeURIComponent(slug);

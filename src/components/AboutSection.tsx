@@ -110,7 +110,7 @@ export default function AboutSection({ dict }: { dict: any }) {
                     </div>
                     <div>
                       <p className="text-sm font-black text-slate-900 uppercase tracking-tight">Angèle Kanapa</p>
-                      <MapPin size={14} className="text-primary" />
+                      <Heart size={14} className="text-primary" fill="currentColor" />
                     </div>
                   </div>
                   <p className="text-[11px] leading-relaxed">{dict.about.angele}</p>

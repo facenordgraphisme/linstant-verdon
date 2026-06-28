@@ -49,6 +49,27 @@ const categoryMeta: Record<string, { title: { fr: string; en: string }; descript
   },
 }
 
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const locales = ['fr', 'en'];
+  const categories = [
+    'canyoning', 'canyon',
+    'climbing', 'escalade',
+    'adventure', 'aventures',
+    'unusual-activities', 'insolite',
+    'stages', 'weekend',
+    'evenementiel'
+  ];
+  const params = [];
+  for (const locale of locales) {
+    for (const category of categories) {
+      params.push({ locale, category });
+    }
+  }
+  return params;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; category: string }> }): Promise<Metadata> {
   const { locale, category } = await params;
   const dictKey = dictKeyMap[category] || category;
