@@ -16,7 +16,7 @@ const blogMeta = {
   },
 }
 
-export const revalidate = 60;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   return [{ locale: 'fr' }, { locale: 'en' }];
@@ -131,6 +131,7 @@ export default async function BlogArchivePage({ params }: { params: Promise<{ lo
                       <div className="pt-4 border-t border-slate-50">
                         <Link 
                           href={`/${locale}/blog/${post.slug.current}`}
+                          prefetch={false}
                           className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-900 group-hover:text-primary transition-colors duration-300"
                         >
                           {blogDict.readMore}

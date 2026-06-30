@@ -9,7 +9,7 @@ import BlogOverview from '@/components/BlogOverview';
 import ContactSection from '@/components/ContactSection';
 import { client } from '@/sanity/client';
 
-export const revalidate = 60;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   return [{ locale: 'fr' }, { locale: 'en' }];

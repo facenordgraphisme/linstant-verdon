@@ -6,7 +6,7 @@ import { parseMarkdown } from '@/lib/markdown';
 import { Calendar, User, ArrowLeft, MessageSquare, Phone, CalendarRange } from 'lucide-react';
 import type { Metadata } from 'next';
 
-export const revalidate = 60;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   const posts = await client.fetch(`*[_type == "post"]{ "slug": slug.current }`);

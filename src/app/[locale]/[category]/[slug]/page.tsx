@@ -20,7 +20,7 @@ const slugCategoryAlt: Record<string, { fr: string; en: string }> = {
   evenementiel: { fr: 'evenementiel', en: 'evenementiel' },
 }
 
-export const revalidate = 60;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   const activities = await client.fetch(`*[_type == "activity"]{ "slug": slug.current, "category": category->slug.current }`);

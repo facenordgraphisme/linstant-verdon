@@ -49,7 +49,7 @@ const categoryMeta: Record<string, { title: { fr: string; en: string }; descript
   },
 }
 
-export const revalidate = 60;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   const locales = ['fr', 'en'];
@@ -824,6 +824,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                     {groupActs.map((activity) => (
                       <Link 
                         href={`/${locale}/${category}/${activity.slug.current}`}
+                        prefetch={false}
                         key={activity._id}
                         className={`group card-promax overflow-hidden transition-all duration-500 ${colors.hoverBorder}`}
                       >
@@ -872,6 +873,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                     {ungroupedActivities.map((activity) => (
                       <Link 
                         href={`/${locale}/${category}/${activity.slug.current}`}
+                        prefetch={false}
                         key={activity._id}
                         className="group card-promax overflow-hidden transition-all duration-500 hover:border-slate-300"
                       >
@@ -913,6 +915,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
               {activities.map((activity: any) => (
                 <Link 
                   href={`/${locale}/${category}/${activity.slug.current}`}
+                  prefetch={false}
                   key={activity._id}
                   className={`group card-promax overflow-hidden transition-all duration-500 ${colors.hoverBorder}`}
                 >

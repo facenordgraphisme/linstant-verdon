@@ -133,6 +133,7 @@ export default function ActivityGrid({ dict, locale }: { dict: any; locale: stri
               >
                 <Link 
                   href={`/${locale}/${activity.key}`}
+                  prefetch={false}
                   className={`card-promax group h-full border border-black/5 ${colors.hoverBorder}`}
                 >
                   <div className="relative h-72 image-zoom-container">

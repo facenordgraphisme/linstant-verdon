@@ -94,6 +94,7 @@ export default function BlogOverview({ dict, locale, posts }: { dict: any; local
           <div>
             <Link 
               href={`/${locale}/blog`}
+              prefetch={false}
               className="group inline-flex items-center gap-3 px-8 py-4.5 rounded-2xl bg-white border border-slate-100 shadow-xl hover:border-primary/20 text-slate-800 hover:text-primary transition-all duration-300 font-black uppercase tracking-wider text-xs"
             >
               Voir tous les articles
@@ -147,6 +148,7 @@ export default function BlogOverview({ dict, locale, posts }: { dict: any; local
                     <div className="pt-4 border-t border-slate-50">
                       <Link 
                         href={`/${locale}/blog/${post.slug.current}`}
+                        prefetch={false}
                         className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-900 group-hover:text-primary transition-colors duration-300"
                       >
                         {blogDict.readMore}
