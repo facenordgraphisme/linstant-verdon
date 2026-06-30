@@ -8,6 +8,10 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: '/studio/',
       },
+      {
+        userAgent: ['AhrefsBot', 'SemrushBot', 'DotBot', 'PetalBot', 'ByteSpider', 'GPTBot', 'amazonbot', 'CCBot'],
+        disallow: '/',
+      }
     ],
     sitemap: 'https://www.linstantverdon.com/sitemap.xml',
   }
