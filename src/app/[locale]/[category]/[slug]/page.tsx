@@ -125,6 +125,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
       meetingPoint,
       googleMapsUrl,
       videoUrl,
+      bookingUrl,
       "included": included[$locale],
       "requirements": requirements[$locale],
       "provided": provided[$locale],
@@ -418,7 +419,9 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
                 </div>
 
                 <Link 
-                  href={`/${locale}/contact`} 
+                  href={activity.bookingUrl ? activity.bookingUrl : `/${locale}/contact`}
+                  target={activity.bookingUrl ? "_blank" : undefined}
+                  rel={activity.bookingUrl ? "noopener noreferrer" : undefined}
                   className="button-glow w-full text-center py-4.5 rounded-2xl block text-white font-black uppercase text-sm tracking-wider transition-all duration-300 hover:scale-[1.02]"
                   style={{
                     background: colors.hex

@@ -133,9 +133,14 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
             />
           </Link>
           
-          <Link href="#contact" className="button-glow">
+          <a 
+            href="https://app.book-adventure.fr/public/booking/65eb5a8dfb9e3e414973b8b0" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="button-glow"
+          >
             {dict.nav.book.toUpperCase()}
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Menu Toggle */}

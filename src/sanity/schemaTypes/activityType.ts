@@ -64,6 +64,12 @@ export const activityType = defineType({
       type: 'url',
     }),
     defineField({
+      name: 'bookingUrl',
+      title: 'Lien de réservation Book\'Adventure',
+      description: 'Lien direct vers la réservation en ligne de cette activité (optionnel). Si vide, le bouton redirige vers le formulaire de contact.',
+      type: 'url',
+    }),
+    defineField({
       name: 'price',
       title: 'Prix par personne (€)',
       type: 'number',
