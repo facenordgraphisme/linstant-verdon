@@ -698,6 +698,15 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
     }
   `, { sanityCategory, locale });
 
+  // Custom sorting: Ensure "Trou du Renard" is sorted before "Main Morte"
+  activities.sort((a: any, b: any) => {
+    const aTitle = (a.title || '').toLowerCase();
+    const bTitle = (b.title || '').toLowerCase();
+    if (aTitle.includes('renard') || aTitle.includes('fox')) return -1;
+    if (bTitle.includes('renard') || bTitle.includes('fox')) return 1;
+    return 0;
+  });
+
   // Check if we should group them by difficulty
   const hasDifficultyGrouping = activities.some((act: any) => act.difficultyGroup);
 
