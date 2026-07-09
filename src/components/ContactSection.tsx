@@ -97,6 +97,9 @@ export default function ContactSection({ dict, locale }: { dict: any; locale: st
     emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
       .then(() => {
         setStatus('success');
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'ads_conversion_Nous_contacter_1', {});
+        }
         setFormData({
           user_name: '',
           user_email: '',

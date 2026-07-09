@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ChevronLeft, Clock, Users, Euro, MapPin, CheckCircle2 } from 'lucide-react';
 import ActivityTabs from '@/components/ActivityTabs';
 import { parseMarkdown } from '@/lib/markdown';
+import BookingCTA from '@/components/BookingCTA';
 
 const slugCategoryAlt: Record<string, { fr: string; en: string }> = {
   canyoning:    { fr: 'canyoning',    en: 'canyoning' },
@@ -399,44 +400,14 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
               </div>
 
               {/* Call To Action */}
-              <div className="border-t border-slate-100 pt-6 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs uppercase font-black tracking-widest text-slate-600">
-                    {locale === 'fr' ? 'Tarif' : 'Price'}
-                  </span>
-                  <span className={`text-4xl font-black ${colors.text} flex items-baseline gap-1`}>
-                    {activity.price ? (
-                      <>
-                        {activity.showStartingFrom && (
-                          <span className="text-sm font-bold text-slate-500 uppercase tracking-tight mr-0.5">
-                            {locale === 'fr' ? 'dès' : 'from'}
-                          </span>
-                        )}
-                        <span>{activity.price}€</span>
-                      </>
-                    ) : '--'}
-                  </span>
-                </div>
-
-                <Link 
-                  href={activity.bookingUrl ? activity.bookingUrl : `/${locale}/contact`}
-                  target={activity.bookingUrl ? "_blank" : undefined}
-                  rel={activity.bookingUrl ? "noopener noreferrer" : undefined}
-                  className="button-glow w-full text-center py-4.5 rounded-2xl block text-white font-black uppercase text-sm tracking-wider transition-all duration-300 hover:scale-[1.02]"
-                  style={{
-                    background: colors.hex
-                  }}
-                >
-                  {locale === 'fr' ? 'RÉSERVER VOTRE SORTIE' : 'BOOK YOUR TRIP'}
-                </Link>
-
-                <p className="text-[11px] text-slate-500 text-center font-bold tracking-tight">
-                  {locale === 'fr' 
-                    ? 'Paiement sur place • Réservation 100% Gratuite' 
-                    : 'Payment on spot • Free Booking Guarantee'
-                  }
-                </p>
-              </div>
+              <BookingCTA
+                bookingUrl={activity.bookingUrl}
+                contactUrl={`/${locale}/contact`}
+                price={activity.price}
+                showStartingFrom={activity.showStartingFrom}
+                colors={colors}
+                locale={locale}
+              />
 
             </div>
           </div>

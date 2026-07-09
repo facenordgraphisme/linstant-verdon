@@ -3,6 +3,7 @@ import { Inter, Outfit } from "next/font/google";
 import "../globals.css";
 import { getDictionary } from "@/lib/dictionaries";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
@@ -56,6 +57,19 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={`${inter.variable} ${outfit.variable}`}>
+        {/* Google Tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-797772111"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-797772111');
+          `}
+        </Script>
         <LocalBusinessSchema locale={locale} />
         <Navbar dict={dict} locale={locale} />
         {children}

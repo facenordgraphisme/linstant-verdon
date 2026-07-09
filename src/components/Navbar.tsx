@@ -138,6 +138,11 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
             target="_blank" 
             rel="noopener noreferrer" 
             className="button-glow"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).gtag) {
+                (window as any).gtag('event', 'ads_conversion_Inscription_1', {});
+              }
+            }}
           >
             {dict.nav.book.toUpperCase()}
           </a>
