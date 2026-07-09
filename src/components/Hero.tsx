@@ -49,7 +49,7 @@ export default function Hero({ dict }: { dict: any }) {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/video-linstant-verdon.mp4" type="video/mp4" />
+          <source src="https://pub-badf3a21614b454495059542458030e6.r2.dev/video-linstant-verdon.mp4" type="video/mp4" />
         </video>
       </div>
 
