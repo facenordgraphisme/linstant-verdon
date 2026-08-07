@@ -874,7 +874,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                           <div className="flex items-center justify-between pt-6 border-t border-slate-50">
                             <div className="flex flex-col">
                               <span className="text-[9px] font-black text-slate-500 uppercase mb-1">{locale === 'fr' ? 'Âge min.' : 'Min. age'}</span>
-                              <span className="text-sm font-bold text-slate-900">{activity.minAge} ans</span>
+                              <span className="text-sm font-bold text-slate-900">{activity.minAge}{locale === 'fr' ? ' ans' : '+'}</span>
                             </div>
                             <div className="flex flex-col text-right">
                               <span className="text-[9px] font-black text-slate-500 uppercase mb-1">{locale === 'fr' ? 'Durée' : 'Duration'}</span>
@@ -925,7 +925,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                           <div className="flex items-center justify-between pt-6 border-t border-slate-50">
                             <div className="flex flex-col">
                               <span className="text-[9px] font-black text-slate-500 uppercase mb-1">{locale === 'fr' ? 'Âge min.' : 'Min. age'}</span>
-                              <span className="text-sm font-bold text-slate-900">{activity.minAge} ans</span>
+                              <span className="text-sm font-bold text-slate-900">{activity.minAge}{locale === 'fr' ? ' ans' : '+'}</span>
                             </div>
                             <div className="flex flex-col text-right">
                               <span className="text-[9px] font-black text-slate-500 uppercase mb-1">{locale === 'fr' ? 'Durée' : 'Duration'}</span>
@@ -969,7 +969,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                     <div className="flex items-center justify-between pt-6 border-t border-slate-50">
                       <div className="flex flex-col">
                         <span className="text-[9px] font-black text-slate-500 uppercase mb-1">{locale === 'fr' ? 'Âge min.' : 'Min. age'}</span>
-                        <span className="text-sm font-bold text-slate-900">{activity.minAge} ans</span>
+                        <span className="text-sm font-bold text-slate-900">{activity.minAge}{locale === 'fr' ? ' ans' : '+'}</span>
                       </div>
                       <div className="flex flex-col text-right">
                         <span className="text-[9px] font-black text-slate-500 uppercase mb-1">{locale === 'fr' ? 'Durée' : 'Duration'}</span>
@@ -979,6 +979,52 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                   </div>
                 </Link>
               ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Trust & Practical Info Section */}
+      <section className="py-24 px-6 bg-slate-50 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
+          {/* Safety & certification block */}
+          <div className="lg:col-span-4 space-y-6">
+            <h2 className={`text-2xl md:text-3xl font-black ${colors.text} uppercase tracking-tighter flex items-center gap-3`}>
+              <span className={`w-8 h-1 rounded-full ${colors.bg}`} />
+              {locale === 'fr' ? 'Sécurité & Encadrement' : 'Safety & Supervision'}
+            </h2>
+            <p className="text-slate-600 font-medium leading-relaxed">
+              {locale === 'fr'
+                ? "Toutes nos sorties sont encadrées par des guides titulaires d'un Diplôme d'État (DE) ou Brevet d'État (BE) de canyonisme et/ou d'escalade, délivré par le Ministère des Sports, à jour de leurs recyclages réglementaires."
+                : "All our outings are supervised by guides holding a State Diploma (DE) or State Certificate (BE) in canyoning and/or climbing, issued by the French Ministry of Sports, with up-to-date mandatory training."}
+            </p>
+            <p className="text-slate-600 font-medium leading-relaxed">
+              {locale === 'fr'
+                ? "Nos guides sont couverts par une assurance responsabilité civile et professionnelle ainsi qu'une assurance individuelle accident client, et tout le matériel technique fourni est conforme aux normes CE."
+                : "Our guides carry professional and civil liability insurance as well as individual accident coverage for clients, and all technical equipment provided meets CE safety standards."}
+            </p>
+            <Link
+              href={`/${locale}/faq`}
+              className={`inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest ${colors.text} hover:text-slate-900 transition-colors`}
+            >
+              {locale === 'fr' ? 'Voir toutes les infos pratiques' : 'See all practical info'} →
+            </Link>
+          </div>
+
+          {/* Category-specific mini FAQ */}
+          {activityData.faqMini && activityData.faqMini.length > 0 && (
+            <div className="lg:col-span-8 space-y-8">
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tighter">
+                {locale === 'fr' ? 'Questions fréquentes' : 'Frequently asked questions'}
+              </h2>
+              <div className="space-y-6">
+                {activityData.faqMini.map((item: { q: string; a: string }, idx: number) => (
+                  <div key={idx} className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm">
+                    <h3 className="text-lg font-black text-slate-900 mb-3">{item.q}</h3>
+                    <p className="text-slate-600 font-medium leading-relaxed">{item.a}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

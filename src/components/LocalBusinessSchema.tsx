@@ -40,8 +40,8 @@ export default function LocalBusinessSchema({ locale }: { locale: string }) {
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '54',
+      ratingValue: '4.9',
+      reviewCount: '276',
       bestRating: '5',
       worstRating: '1',
     },
@@ -51,6 +51,7 @@ export default function LocalBusinessSchema({ locale }: { locale: string }) {
       'https://www.youtube.com/channel/UCvOPoMuJYkrMgZWiXiErugw',
       'https://www.tripadvisor.fr/Attraction_Review-g635586-d14924373-Reviews-L_Instant_Verdon-La_Palud_sur_Verdon_Alpes_de_Haute_Provence_Provence_Alpes_Cote.html',
       'https://www.verdontourisme.com/commerces-services/linstant-verdon-la-palud-sur-verdon/',
+      'https://www.google.com/maps/search/?api=1&query=L%27Instant+Verdon+395+Chemin+de+Haut+Bourras+04120+La+Palud-sur-Verdon',
     ],
     founder: [
       {

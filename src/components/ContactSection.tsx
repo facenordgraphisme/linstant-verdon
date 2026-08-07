@@ -3,7 +3,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { Mail, Phone, MapPin, Loader2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Loader2, ExternalLink } from 'lucide-react';
+
+const GOOGLE_MAPS_QUERY = "L'Instant Verdon 395 Chemin de Haut Bourras 04120 La Palud-sur-Verdon";
+const GOOGLE_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(GOOGLE_MAPS_QUERY)}`;
+const GOOGLE_MAPS_EMBED_URL = `https://www.google.com/maps?q=${encodeURIComponent(GOOGLE_MAPS_QUERY)}&output=embed`;
 import emailjs from '@emailjs/browser';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -165,8 +169,29 @@ export default function ContactSection({ dict, locale }: { dict: any; locale: st
               <div>
                 <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-1">{contactDict.addressLabel}</p>
                 <p className="text-xl md:text-3xl font-black tracking-tight leading-tight text-slate-900">395 Chem. de Haut Bourras, 04120 La Palud-sur-Verdon</p>
+                <a
+                  href={GOOGLE_MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-3 text-xs font-black uppercase tracking-widest text-primary hover:text-slate-900 transition-colors"
+                >
+                  {locale === 'fr' ? 'Voir sur Google Maps' : 'View on Google Maps'} <ExternalLink size={14} />
+                </a>
               </div>
             </div>
+          </div>
+
+          {/* Google Maps embed */}
+          <div className="rounded-[2.5rem] overflow-hidden shadow-xl border border-slate-100 h-[300px]">
+            <iframe
+              src={GOOGLE_MAPS_EMBED_URL}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title={locale === 'fr' ? "Localisation de L'Instant Verdon sur Google Maps" : "L'Instant Verdon location on Google Maps"}
+            />
           </div>
         </div>
 
