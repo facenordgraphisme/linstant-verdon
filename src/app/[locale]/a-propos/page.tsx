@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { getDictionary } from '@/lib/dictionaries';
 import Navbar from '@/components/Navbar';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 const meta = {
   fr: {
@@ -33,12 +35,71 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
+const guidesSchema = (locale: 'fr' | 'en') => [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Emma Aglaé',
+    jobTitle: locale === 'fr' ? "Co-gérante & Guide diplômée d'État canyonisme" : 'Co-manager & State-certified canyoning guide',
+    image: 'https://www.linstantverdon.com/assets/a%20propos/emma.JPG.jpeg',
+    url: `https://www.linstantverdon.com/${locale}/a-propos`,
+    worksFor: { '@type': 'Organization', name: "L'instant Verdon", '@id': 'https://www.linstantverdon.com' },
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: locale === 'fr' ? "Diplôme d'État de canyonisme" : 'State canyoning diploma',
+      dateCreated: '2020',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Angèle Kanapa',
+    jobTitle: locale === 'fr' ? "Co-gérante & Guide diplômée d'État escalade & canyonisme" : 'Co-manager & State-certified climbing & canyoning guide',
+    image: 'https://www.linstantverdon.com/assets/a%20propos/angele.jpg.jpeg',
+    url: `https://www.linstantverdon.com/${locale}/a-propos`,
+    worksFor: { '@type': 'Organization', name: "L'instant Verdon", '@id': 'https://www.linstantverdon.com' },
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: locale === 'fr' ? "Brevet d'État d'escalade et canyonisme" : 'State climbing & canyoning certificate',
+      dateCreated: '2013',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Marie Oddo',
+    jobTitle: locale === 'fr' ? "Guide diplômée d'État escalade & canyonisme" : 'State-certified climbing & canyoning guide',
+    image: 'https://www.linstantverdon.com/assets/a%20propos/marie.JPG.jpeg',
+    url: `https://www.linstantverdon.com/${locale}/a-propos`,
+    worksFor: { '@type': 'Organization', name: "L'instant Verdon", '@id': 'https://www.linstantverdon.com' },
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: locale === 'fr' ? "Diplôme d'État d'escalade et canyonisme" : 'State climbing & canyoning diploma',
+      dateCreated: '2020',
+    },
+  },
+];
+
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const dict = getDictionary(locale as 'fr' | 'en');
+  const loc = (locale === 'en' ? 'en' : 'fr') as 'fr' | 'en';
 
   return (
     <main className="min-h-screen bg-white">
+      {guidesSchema(loc).map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+      <BreadcrumbSchema
+        items={[
+          { name: locale === 'fr' ? 'Accueil' : 'Home', url: `https://www.linstantverdon.com/${locale}` },
+          { name: dict.nav.about, url: `https://www.linstantverdon.com/${locale}/a-propos` },
+        ]}
+      />
       {/* Cinematic Hero */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-black text-white">
         <div 
@@ -61,8 +122,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         
         <div className="space-y-32">
           <p className="text-slate-600 text-2xl md:text-3xl font-bold italic leading-tight max-w-4xl border-l-4 border-primary pl-8 py-4">
-            L’Instant Verdon est né d’une passion commune pour les grands espaces et l’aventure. 
-            Basés à la Palud sur Verdon, au cœur des Gorges du Verdon, nous vous accompagnons dans vos explorations les plus sauvages.
+            {dict.about.intro}
           </p>
           
           {/* Emma */}
@@ -70,11 +130,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <div className="relative group">
               <div className="absolute -inset-4 bg-primary/10 rounded-[3rem] rotate-2 group-hover:rotate-0 transition-transform duration-700" />
               <div className="relative card-promax h-[500px] overflow-hidden rounded-[2.5rem]">
-                <img src="/assets/a propos/emma.JPG.jpeg" alt="Emma Aglaé" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <Image src="/assets/a propos/emma.JPG.jpeg" alt="Emma Aglaé" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 50vw" />
               </div>
             </div>
             <div className="flex flex-col justify-center">
-              <p className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">Co-gérante & Guide</p>
+              <p className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">{dict.about.guideRole}</p>
               <h2 className="text-5xl font-black mb-8 text-[#109ea5] uppercase tracking-tighter">Emma Aglaé</h2>
               <p className="text-lg text-slate-600 leading-relaxed font-medium">
                 {dict.about.emma}
@@ -85,7 +145,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           {/* Angèle */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="flex flex-col justify-center order-2 lg:order-1">
-              <p className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">Co-gérante & Guide</p>
+              <p className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">{dict.about.guideRole}</p>
               <h2 className="text-5xl font-black mb-8 text-[#109ea5] uppercase tracking-tighter">Angèle Kanapa</h2>
               <p className="text-lg text-slate-600 leading-relaxed font-medium">
                 {dict.about.angele}
@@ -94,7 +154,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <div className="relative group order-1 lg:order-2">
               <div className="absolute -inset-4 bg-primary/10 rounded-[3rem] -rotate-2 group-hover:rotate-0 transition-transform duration-700" />
               <div className="relative card-promax h-[500px] overflow-hidden rounded-[2.5rem]">
-                <img src="/assets/a propos/angele.jpg.jpeg" alt="Angèle Kanapa" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <Image src="/assets/a propos/angele.jpg.jpeg" alt="Angèle Kanapa" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 50vw" />
               </div>
             </div>
           </div>
@@ -104,11 +164,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <div className="relative group">
               <div className="absolute -inset-4 bg-primary/10 rounded-[3rem] rotate-2 group-hover:rotate-0 transition-transform duration-700" />
               <div className="relative card-promax h-[500px] overflow-hidden rounded-[2.5rem]">
-                <img src="/assets/a propos/marie.JPG.jpeg" alt="Marie Oddo" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <Image src="/assets/a propos/marie.JPG.jpeg" alt="Marie Oddo" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 50vw" />
               </div>
             </div>
             <div className="flex flex-col justify-center">
-              <p className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">Guide Escalade & Canyon</p>
+              <p className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">{dict.about.marieRole}</p>
               <h2 className="text-5xl font-black mb-8 text-[#109ea5] uppercase tracking-tighter">Marie Oddo</h2>
               <p className="text-lg text-slate-600 leading-relaxed font-medium">
                 {dict.about.marie}
@@ -125,13 +185,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           {/* Partenaires Section */}
           <div className="pt-24 space-y-20">
             <div className="text-center">
-              <h2 className="text-4xl md:text-6xl font-black text-[#109ea5] uppercase tracking-tighter mb-4">Nos Partenaires</h2>
-              <p className="text-slate-500 font-bold uppercase tracking-[0.2em] text-xs">Ils nous font confiance et partagent nos valeurs</p>
+              <h2 className="text-4xl md:text-6xl font-black text-[#109ea5] uppercase tracking-tighter mb-4">{dict.about.partnersTitle}</h2>
+              <p className="text-slate-500 font-bold uppercase tracking-[0.2em] text-xs">{dict.about.partnersSubtitle}</p>
             </div>
 
             {/* Activités */}
             <div className="space-y-12">
-              <h3 className="text-xl font-black text-[#109ea5] uppercase tracking-[0.3em] text-center">Activités</h3>
+              <h3 className="text-xl font-black text-[#109ea5] uppercase tracking-[0.3em] text-center">{dict.about.partnersActivities}</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {[
                   { name: "Verdon tourisme", img: "verdontourisme.webp", url: "https://www.verdontourisme.com" },
@@ -163,7 +223,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
             {/* Hébergement */}
             <div className="space-y-12">
-              <h3 className="text-xl font-black text-[#109ea5] uppercase tracking-[0.3em] text-center">Hébergement</h3>
+              <h3 className="text-xl font-black text-[#109ea5] uppercase tracking-[0.3em] text-center">{dict.about.partnersLodging}</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 {[
                   { name: "Hôtel le Panoramic", img: "panoramic.jpg.jpeg", url: "https://www.hotelverdon.com" },
@@ -190,7 +250,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
             {/* Autre */}
             <div className="space-y-12">
-              <h3 className="text-xl font-black text-[#109ea5] uppercase tracking-[0.3em] text-center">Autre</h3>
+              <h3 className="text-xl font-black text-[#109ea5] uppercase tracking-[0.3em] text-center">{dict.about.partnersOther}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 {[
                   { name: "Marielle Laubie Photographe", img: "marielle-laubie.png", url: "https://www.mariellelaubie.com" },

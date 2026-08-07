@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { Users, Leaf, Heart, MapPin } from 'lucide-react';
@@ -93,8 +94,8 @@ export default function AboutSection({ dict }: { dict: any }) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 hover:border-primary/20 transition-all group/card">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-white shadow-md">
-                      <img src="/assets/a propos/emma.JPG.jpeg" className="w-full h-full object-cover" alt="Emma" />
+                    <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-2 border-white shadow-md">
+                      <Image src="/assets/a propos/emma.JPG.jpeg" fill className="object-cover" alt="Emma" sizes="56px" />
                     </div>
                     <div>
                       <p className="text-sm font-black text-slate-900 uppercase tracking-tight">Emma Aglaé</p>
@@ -105,8 +106,8 @@ export default function AboutSection({ dict }: { dict: any }) {
                 </div>
                 <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 hover:border-primary/20 transition-all group/card">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-white shadow-md">
-                      <img src="/assets/a propos/angele.jpg.jpeg" className="w-full h-full object-cover" alt="Angèle" />
+                    <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-2 border-white shadow-md">
+                      <Image src="/assets/a propos/angele.jpg.jpeg" fill className="object-cover" alt="Angèle" sizes="56px" />
                     </div>
                     <div>
                       <p className="text-sm font-black text-slate-900 uppercase tracking-tight">Angèle Kanapa</p>

@@ -3,6 +3,7 @@ import { client } from '@/sanity/client';
 import { getDictionary } from '@/lib/dictionaries';
 import Link from 'next/link';
 import Image from 'next/image';
+import { notFound, permanentRedirect } from 'next/navigation';
 
 const dictKeyMap: Record<string, string> = {
   canyoning: 'canyoning', canyon: 'canyoning',
@@ -52,19 +53,13 @@ const categoryMeta: Record<string, { title: { fr: string; en: string }; descript
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const locales = ['fr', 'en'];
-  const categories = [
-    'canyoning', 'canyon',
-    'climbing', 'escalade',
-    'adventure', 'aventures',
-    'unusual-activities', 'insolite',
-    'stages', 'weekend',
-    'evenementiel'
-  ];
+  const locales = ['fr', 'en'] as const;
+  const dictKeys = ['canyoning', 'escalade', 'aventures', 'insolite', 'stages', 'evenementiel'];
   const params = [];
   for (const locale of locales) {
-    for (const category of categories) {
-      params.push({ locale, category });
+    for (const dictKey of dictKeys) {
+      const alt = categoryAltMap[dictKey] || { fr: dictKey, en: dictKey };
+      params.push({ locale, category: alt[locale] });
     }
   }
   return params;
@@ -99,6 +94,16 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
 
   const dictKey = dictKeyMap[category] || category;
 
+  // The category segment in the URL must match the canonical one for this
+  // locale — otherwise this is a wrong-locale/alias duplicate (e.g.
+  // /en/escalade instead of /en/climbing, or /fr/canyon instead of
+  // /fr/canyoning). Send it to the one true URL instead of rendering a
+  // self-canonicalizing copy.
+  const canonicalForLocale = categoryAltMap[dictKey]?.[locale as 'fr' | 'en'];
+  if (canonicalForLocale && canonicalForLocale !== category) {
+    permanentRedirect(`/${locale}/${canonicalForLocale}`);
+  }
+
   const sanityCategoryMap: Record<string, string> = {
     canyoning: 'canyoning',
     canyon: 'canyoning',
@@ -118,7 +123,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
   // Type-safe activity data fetch from dictionary
   const activityData = dictKey !== 'title' ? (dict.activities as any)[dictKey] : null;
 
-  if (!activityData || typeof activityData === 'string') return <div className="p-20 text-center font-bold text-slate-800">Category not found</div>;
+  if (!activityData || typeof activityData === 'string') notFound();
 
   let stagesData = null;
   if (dictKey === 'stages') {
@@ -494,10 +499,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 {stagesData.gallery.map((imgUrl: string, idx: number) => (
                   <div key={idx} className="group overflow-hidden rounded-[2rem] border-4 border-white shadow-xl aspect-[4/3] bg-slate-200 relative">
-                    <img 
-                      src={imgUrl} 
-                      alt={`Stage Photo ${idx + 1}`} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    <Image
+                      src={imgUrl}
+                      alt={`Stage Photo ${idx + 1}`}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                     />
                   </div>
                 ))}
@@ -642,10 +649,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
               
               {/* Photo 1 */}
               <div className="group overflow-hidden rounded-[2.5rem] border-4 border-white shadow-2xl relative aspect-[4/3] bg-slate-100">
-                <img 
-                  src="/assets/evenementiel/event1.jpg.jpeg" 
-                  alt="Événementiel Photo 1" 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                <Image
+                  src="/assets/evenementiel/event1.jpg.jpeg"
+                  alt={locale === 'fr' ? 'Enterrement de vie de célibataire dans le Verdon' : 'Bachelor/bachelorette party in the Verdon'}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-10" />
                 <div className="absolute bottom-8 left-8 right-8 z-20">
@@ -660,10 +669,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
 
               {/* Photo 2 */}
               <div className="group overflow-hidden rounded-[2.5rem] border-4 border-white shadow-2xl relative aspect-[4/3] bg-slate-100">
-                <img 
-                  src="/assets/evenementiel/event2.jpg.jpeg" 
-                  alt="Événementiel Photo 2" 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                <Image
+                  src="/assets/evenementiel/event2.jpg.jpeg"
+                  alt={locale === 'fr' ? 'Séminaire et team building dans le Verdon' : 'Corporate seminar and team building in the Verdon'}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-10" />
                 <div className="absolute bottom-8 left-8 right-8 z-20">
@@ -807,13 +818,19 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
           {/* Header */}
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter mb-4">Notre Sélection</h2>
-              <p className="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs">Découvrez nos parcours phares</p>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter mb-4">
+                {locale === 'fr' ? 'Notre Sélection' : 'Our Selection'}
+              </h2>
+              <p className="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs">
+                {locale === 'fr' ? 'Découvrez nos parcours phares' : 'Discover our signature outings'}
+              </p>
             </div>
             <div className="hidden md:block w-px h-20 bg-slate-100 mx-12" />
             <div className="hidden md:block max-w-md">
               <p className="text-sm text-slate-400 font-medium leading-relaxed">
-                Chaque parcours est encadré par un guide diplômé d'État passionné par son métier et son territoire.
+                {locale === 'fr'
+                  ? "Chaque parcours est encadré par un guide diplômé d'État passionné par son métier et son territoire."
+                  : 'Every outing is led by a state-certified guide passionate about their craft and their region.'}
               </p>
             </div>
           </div>
@@ -838,13 +855,15 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                         className={`group card-promax overflow-hidden transition-all duration-500 ${colors.hoverBorder}`}
                       >
                         <div className="relative h-64 overflow-hidden">
-                          <img 
-                            src={activity.imageUrl || bgImage} 
+                          <Image
+                            src={activity.imageUrl || bgImage}
                             alt={activity.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           />
                           <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg z-20">
-                            <span className={`text-xs font-black ${colors.text} uppercase`}>À partir de {activity.price}€</span>
+                            <span className={`text-xs font-black ${colors.text} uppercase`}>{locale === 'fr' ? 'À partir de' : 'From'} {activity.price}€</span>
                           </div>
                         </div>
                         <div className="p-8">
@@ -854,11 +873,11 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                           </h3>
                           <div className="flex items-center justify-between pt-6 border-t border-slate-50">
                             <div className="flex flex-col">
-                              <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Âge min.</span>
+                              <span className="text-[9px] font-black text-slate-500 uppercase mb-1">{locale === 'fr' ? 'Âge min.' : 'Min. age'}</span>
                               <span className="text-sm font-bold text-slate-900">{activity.minAge} ans</span>
                             </div>
                             <div className="flex flex-col text-right">
-                              <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Durée</span>
+                              <span className="text-[9px] font-black text-slate-500 uppercase mb-1">{locale === 'fr' ? 'Durée' : 'Duration'}</span>
                               <span className="text-sm font-bold text-slate-900">{activity.duration}</span>
                             </div>
                           </div>
@@ -887,13 +906,15 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                         className="group card-promax overflow-hidden transition-all duration-500 hover:border-slate-300"
                       >
                         <div className="relative h-64 overflow-hidden">
-                          <img 
-                            src={activity.imageUrl || bgImage} 
+                          <Image
+                            src={activity.imageUrl || bgImage}
                             alt={activity.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           />
                           <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg z-20">
-                            <span className="text-xs font-black text-slate-600 uppercase">À partir de {activity.price}€</span>
+                            <span className="text-xs font-black text-slate-600 uppercase">{locale === 'fr' ? 'À partir de' : 'From'} {activity.price}€</span>
                           </div>
                         </div>
                         <div className="p-8">
@@ -903,11 +924,11 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                           </h3>
                           <div className="flex items-center justify-between pt-6 border-t border-slate-50">
                             <div className="flex flex-col">
-                              <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Âge min.</span>
+                              <span className="text-[9px] font-black text-slate-500 uppercase mb-1">{locale === 'fr' ? 'Âge min.' : 'Min. age'}</span>
                               <span className="text-sm font-bold text-slate-900">{activity.minAge} ans</span>
                             </div>
                             <div className="flex flex-col text-right">
-                              <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Durée</span>
+                              <span className="text-[9px] font-black text-slate-500 uppercase mb-1">{locale === 'fr' ? 'Durée' : 'Duration'}</span>
                               <span className="text-sm font-bold text-slate-900">{activity.duration}</span>
                             </div>
                           </div>
@@ -929,13 +950,15 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                   className={`group card-promax overflow-hidden transition-all duration-500 ${colors.hoverBorder}`}
                 >
                   <div className="relative h-64 overflow-hidden">
-                    <img 
-                      src={activity.imageUrl || bgImage} 
+                    <Image
+                      src={activity.imageUrl || bgImage}
                       alt={activity.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg z-20">
-                      <span className={`text-xs font-black ${colors.text} uppercase`}>À partir de {activity.price}€</span>
+                      <span className={`text-xs font-black ${colors.text} uppercase`}>{locale === 'fr' ? 'À partir de' : 'From'} {activity.price}€</span>
                     </div>
                   </div>
                   <div className="p-8">
@@ -945,11 +968,11 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
                     </h3>
                     <div className="flex items-center justify-between pt-6 border-t border-slate-50">
                       <div className="flex flex-col">
-                        <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Âge min.</span>
+                        <span className="text-[9px] font-black text-slate-500 uppercase mb-1">{locale === 'fr' ? 'Âge min.' : 'Min. age'}</span>
                         <span className="text-sm font-bold text-slate-900">{activity.minAge} ans</span>
                       </div>
                       <div className="flex flex-col text-right">
-                        <span className="text-[9px] font-black text-slate-500 uppercase mb-1">Durée</span>
+                        <span className="text-[9px] font-black text-slate-500 uppercase mb-1">{locale === 'fr' ? 'Durée' : 'Duration'}</span>
                         <span className="text-sm font-bold text-slate-900">{activity.duration}</span>
                       </div>
                     </div>

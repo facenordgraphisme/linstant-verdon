@@ -8,7 +8,7 @@ export default function LocalBusinessSchema({ locale }: { locale: string }) {
       : "State-certified guides for canyoning, climbing and adventure outings in the Gorges du Verdon since 2018.",
     image: 'https://www.linstantverdon.com/assets/accueil/logo.webp',
     '@id': 'https://www.linstantverdon.com',
-    url: 'https://www.linstantverdon.com/fr',
+    url: `https://www.linstantverdon.com/${locale}`,
     telephone: '+33689855381',
     email: 'contact@linstantverdon.com',
     address: {

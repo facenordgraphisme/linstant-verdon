@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, Phone, MapPin, Instagram, Facebook, Youtube, Compass } from 'lucide-react';
 
 const TripAdvisorIcon = ({ size = 20 }: { size?: number }) => (
@@ -23,8 +24,8 @@ export default function Footer({ dict, locale }: { dict: any; locale: string }) 
           {/* Left Side: Brand & Socials */}
           <div className="space-y-10">
             <Link href={`/${locale}`} prefetch={false} className="flex items-center gap-4 group">
-              <div className="w-16 h-16 transition-transform duration-500 group-hover:scale-110">
-                <img src="/assets/accueil/logo.webp" alt="Logo" className="w-full h-full object-contain" />
+              <div className="relative w-16 h-16 transition-transform duration-500 group-hover:scale-110">
+                <Image src="/assets/accueil/logo.webp" alt="Logo" fill className="object-contain" sizes="64px" />
               </div>
               <div className="flex flex-col leading-none">
                 <span className="text-2xl font-black tracking-tighter text-gradient uppercase">
@@ -52,7 +53,7 @@ export default function Footer({ dict, locale }: { dict: any; locale: string }) 
               <a href="https://www.youtube.com/channel/UCvOPoMuJYkrMgZWiXiErugw" target="_blank" rel="noopener noreferrer" title="YouTube" className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center hover:bg-primary hover:text-white transition-all border border-slate-100 text-slate-400">
                 <Youtube size={20} />
               </a>
-              <a href="https://www.tripadvisor.fr/Attraction_Review-g635586-d14924372-Reviews-Verdon_la_Palud_sur_Verdon_Alpes_de_Haute_Provence_Provence_Alpes_Cote.html" target="_blank" rel="noopener noreferrer" title="TripAdvisor" className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center hover:bg-primary hover:text-white transition-all border border-slate-100 text-slate-400">
+              <a href="https://www.tripadvisor.fr/Attraction_Review-g635586-d14924373-Reviews-L_Instant_Verdon-La_Palud_sur_Verdon_Alpes_de_Haute_Provence_Provence_Alpes_Cote.html" target="_blank" rel="noopener noreferrer" title="TripAdvisor" className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center hover:bg-primary hover:text-white transition-all border border-slate-100 text-slate-400">
                 <TripAdvisorIcon size={20} />
               </a>
               <a href="https://api.whatsapp.com/send?phone=33689855381" target="_blank" rel="noopener noreferrer" title="WhatsApp" className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center hover:bg-primary hover:text-white transition-all border border-slate-100 text-slate-400">

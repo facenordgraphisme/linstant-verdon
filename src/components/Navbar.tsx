@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 import { Menu, X, Globe, ChevronDown, Mountain, Compass, Calendar, Star, Tent, PartyPopper } from 'lucide-react';
@@ -49,7 +50,7 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
       <div className="relative max-w-7xl mx-auto px-6 flex justify-between items-center h-20">
         <Link href={`/${locale}`} prefetch={false} className="flex items-center gap-4 group">
           <div className="relative w-16 h-16 transition-transform duration-500 group-hover:scale-110">
-            <img src="/assets/accueil/logo.webp" alt="Logo" className="w-full h-full object-contain" />
+            <Image src="/assets/accueil/logo.webp" alt="Logo" fill className="object-contain" sizes="64px" priority />
           </div>
           <div className="flex items-center gap-2">
             <span className="text-xl md:text-3xl font-black tracking-tighter text-gradient uppercase">
@@ -120,16 +121,18 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
 
           <div className="w-px h-6 bg-slate-200/20 mx-2" />
 
-          <Link 
-            href={`/${toggleLocale}`} 
+          <Link
+            href={`/${toggleLocale}`}
             prefetch={false}
-            className="flex items-center justify-center w-10 h-10 overflow-hidden rounded-lg transition-all hover:scale-110 active:scale-95" 
+            className="relative flex items-center justify-center w-10 h-10 overflow-hidden rounded-lg transition-all hover:scale-110 active:scale-95"
             title={toggleLocale === 'fr' ? 'Version Française' : 'English Version'}
           >
-            <img 
-              src={toggleLocale === 'fr' ? '/assets/a propos/flag-fr.png' : '/assets/a propos/flag-en.png'} 
-              alt={toggleLocale} 
-              className="w-full h-full object-cover"
+            <Image
+              src={toggleLocale === 'fr' ? '/assets/a propos/flag-fr.png' : '/assets/a propos/flag-en.png'}
+              alt={toggleLocale}
+              fill
+              className="object-cover"
+              sizes="40px"
             />
           </Link>
           

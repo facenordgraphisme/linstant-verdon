@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { client } from '@/sanity/client';
 import { getDictionary } from '@/lib/dictionaries';
 import Link from 'next/link';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { ChevronLeft, Clock, Users, Euro, MapPin, CheckCircle2 } from 'lucide-react';
 import ActivityTabs from '@/components/ActivityTabs';
 import { parseMarkdown } from '@/lib/markdown';
 import BookingCTA from '@/components/BookingCTA';
+import TourSchema from '@/components/TourSchema';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 const slugCategoryAlt: Record<string, { fr: string; en: string }> = {
   canyoning:    { fr: 'canyoning',    en: 'canyoning' },
@@ -21,34 +25,36 @@ const slugCategoryAlt: Record<string, { fr: string; en: string }> = {
   evenementiel: { fr: 'evenementiel', en: 'evenementiel' },
 }
 
+// Sanity category document slug -> canonical URL segment per locale.
+// Used to redirect wrong-locale/alias URL combos (e.g. /en/escalade/...,
+// /fr/canyon/...) to the one true canonical URL instead of serving a
+// self-canonicalizing duplicate.
+const categoryUrlMap: Record<string, { fr: string; en: string }> = {
+  canyoning:    { fr: 'canyoning',    en: 'canyoning' },
+  climbing:     { fr: 'escalade',     en: 'climbing' },
+  aventures:    { fr: 'aventures',    en: 'adventure' },
+  insolite:     { fr: 'insolite',     en: 'unusual-activities' },
+  weekend:      { fr: 'stages',       en: 'weekend' },
+  evenementiel: { fr: 'evenementiel', en: 'evenementiel' },
+}
+
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
   const activities = await client.fetch(`*[_type == "activity"]{ "slug": slug.current, "category": category->slug.current }`);
-  const locales = ['fr', 'en'];
+  const locales = ['fr', 'en'] as const;
   const params = [];
-  
-  // Map internal categories to their localized paths
-  const categoryMap: Record<string, string[]> = {
-    canyoning: ['canyoning', 'canyon'],
-    escalade: ['escalade', 'climbing'],
-    aventures: ['aventures', 'adventure'],
-    insolite: ['insolite', 'unusual-activities'],
-    stages: ['stages', 'weekend'],
-    evenementiel: ['evenementiel'],
-  };
 
   for (const activity of activities) {
     if (!activity.slug || !activity.category) continue;
-    const catKeys = categoryMap[activity.category] || [activity.category];
+    const map = categoryUrlMap[activity.category];
+    if (!map) continue;
     for (const locale of locales) {
-      for (const catKey of catKeys) {
-        params.push({
-          locale,
-          category: catKey,
-          slug: activity.slug,
-        });
-      }
+      params.push({
+        locale,
+        category: map[locale],
+        slug: activity.slug,
+      });
     }
   }
   return params;
@@ -68,7 +74,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   if (!activity) return {}
 
-  const title = `${activity.title} — Verdon | L'instant Verdon`
+  const title = `${activity.title} — Gorges du Verdon | L'instant Verdon`
   const description = activity.description
     ? `${activity.description.slice(0, 140)}…`
     : `Activité ${activity.title} dans les Gorges du Verdon avec L'instant Verdon. Guides diplômés d'État.`
@@ -132,9 +138,21 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
       "provided": provided[$locale],
       "toBring": toBring[$locale],
       "mainImageUrl": mainImage.asset->url,
-      "images": images[].asset->url
+      "images": images[].asset->url,
+      "categorySlug": category->slug.current
     }
   `, { slug: decodedSlug, locale });
+
+  if (!activity) notFound();
+
+  // The category segment in the URL must match this activity's real category
+  // for this locale — otherwise this is a wrong-locale/alias duplicate
+  // (e.g. /en/escalade/... or /fr/canyon/...). Send it to the one true URL
+  // instead of rendering a self-canonicalizing copy.
+  const canonicalCategory = categoryUrlMap[activity.categorySlug]?.[locale as 'fr' | 'en'];
+  if (canonicalCategory && canonicalCategory !== category) {
+    permanentRedirect(`/${locale}/${canonicalCategory}/${decodedSlug}`);
+  }
 
   // Map user categories for slug normalizations
   const dictKeyMap: Record<string, string> = {
@@ -233,9 +251,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
     hex: '#10a18b'
   };
 
-  if (!activity) return <div className="p-20 text-center font-bold text-slate-800">Activity not found</div>;
-
-  const defaultHero = category === 'climbing' || category === 'escalade' 
+  const defaultHero = category === 'climbing' || category === 'escalade'
     ? '/assets/escalade/climbing.jpeg' 
     : '/assets/canyon/canyon.jpeg';
   const heroImage = activity.mainImageUrl || activity.images?.[0] || defaultHero;
@@ -249,8 +265,27 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
                      (category === 'unusual-activities' || category === 'insolite') ? 'insolite' :
                      (category === 'weekend' || category === 'stages') ? 'stages' : 'default';
 
+  const activityUrl = `https://www.linstantverdon.com/${locale}/${category}/${decodedSlug}`;
+
   return (
     <main className="min-h-screen bg-slate-50/50">
+      <TourSchema
+        name={activity.title}
+        description={activity.description}
+        image={activity.mainImageUrl}
+        url={activityUrl}
+        price={activity.price}
+        minAge={activity.minAge}
+        duration={activity.duration}
+        locale={locale}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: locale === 'fr' ? 'Accueil' : 'Home', url: `https://www.linstantverdon.com/${locale}` },
+          { name: dict.nav[dictKey as keyof typeof dict.nav] || category, url: `https://www.linstantverdon.com/${locale}/${category}` },
+          { name: activity.title, url: activityUrl },
+        ]}
+      />
       {/* Cinematic Hero */}
       <section className="relative h-[65vh] flex items-center justify-center overflow-hidden bg-black text-white">
         <div 
@@ -286,7 +321,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
             {/* Description */}
             <div className="prose prose-xl max-w-none">
               <h2 className={`text-3xl md:text-4xl font-black ${colors.text} uppercase tracking-tighter mb-6 flex items-center gap-3`}>
-                <span className={`w-8 h-1 rounded-full ${colors.bg}`} /> Description
+                <span className={`w-8 h-1 rounded-full ${colors.bg}`} /> {locale === 'fr' ? 'Description' : 'Overview'}
               </h2>
               <div className="text-slate-600 leading-relaxed font-semibold text-base md:text-lg">
                 {parseMarkdown(activity.description)}
@@ -338,7 +373,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
             {activity.images && activity.images.length > 1 && (
               <div className="space-y-6 border-t border-slate-200/50 pt-12">
                 <h3 className={`text-2xl md:text-3xl font-black ${colors.text} uppercase tracking-tighter flex items-center gap-3`}>
-                  <span className={`w-8 h-1 rounded-full ${colors.bg}`} /> 📸 Galerie Photos
+                  <span className={`w-8 h-1 rounded-full ${colors.bg}`} /> 📸 {locale === 'fr' ? 'Galerie Photos' : 'Photo Gallery'}
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {activity.images.slice(1).map((imgUrl: string, idx: number) => (
@@ -346,7 +381,13 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
                       key={idx} 
                       className="rounded-[2rem] overflow-hidden aspect-video shadow-xl border border-white hover:scale-[1.03] transition-all duration-500 group relative"
                     >
-                      <img src={imgUrl} alt="" className="w-full h-full object-cover" />
+                      <Image
+                        src={imgUrl}
+                        alt={`${activity.title} — photo ${idx + 2}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                      />
                       <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                   ))}
@@ -359,11 +400,44 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
           {/* Sidebar / Quick Booking Card */}
           <div className="space-y-8">
             <div className="glass-card p-8 md:p-10 rounded-[3rem] border border-white shadow-2xl space-y-8 sticky top-28 bg-white/80">
-              
+
+              {/* Quick specs — always visible, not hidden behind a tab click.
+                  First-time visitors' top questions (price / how long / age
+                  minimum) answered at a glance. */}
+              <div className="grid grid-cols-3 gap-3 pb-2">
+                <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100">
+                  <Euro size={18} className={`mx-auto mb-1.5 ${colors.text}`} />
+                  <div className="text-sm font-black text-slate-900 leading-tight">
+                    {activity.priceDetails || (activity.price ? `${activity.price}€` : '—')}
+                  </div>
+                  <div className="text-[9px] uppercase font-bold tracking-wider text-slate-400 mt-0.5">
+                    {locale === 'fr' ? 'Prix / pers.' : 'Price / person'}
+                  </div>
+                </div>
+                <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100">
+                  <Clock size={18} className={`mx-auto mb-1.5 ${colors.text}`} />
+                  <div className="text-sm font-black text-slate-900 leading-tight">
+                    {activity.duration || '—'}
+                  </div>
+                  <div className="text-[9px] uppercase font-bold tracking-wider text-slate-400 mt-0.5">
+                    {locale === 'fr' ? 'Durée' : 'Duration'}
+                  </div>
+                </div>
+                <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100">
+                  <Users size={18} className={`mx-auto mb-1.5 ${colors.text}`} />
+                  <div className="text-sm font-black text-slate-900 leading-tight">
+                    {activity.minAge ? (locale === 'fr' ? `${activity.minAge} ans+` : `${activity.minAge}+ yrs`) : '—'}
+                  </div>
+                  <div className="text-[9px] uppercase font-bold tracking-wider text-slate-400 mt-0.5">
+                    {locale === 'fr' ? 'Âge min.' : 'Min. age'}
+                  </div>
+                </div>
+              </div>
+
               {/* Included / Requirements in Sidebar */}
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-xs uppercase font-black tracking-widest text-slate-600 mb-4">Ce qui est inclus</h4>
+                  <h4 className="text-xs uppercase font-black tracking-widest text-slate-600 mb-4">{locale === 'fr' ? 'Ce qui est inclus' : "What's included"}</h4>
                   <ul className="space-y-3">
                     {activity.included && activity.included.length > 0 ? (
                       activity.included.map((item: string, idx: number) => (
@@ -381,7 +455,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
                 </div>
 
                 <div className="border-t border-slate-100 pt-6">
-                  <h4 className="text-xs uppercase font-black tracking-widest text-slate-600 mb-4">Pré-requis</h4>
+                  <h4 className="text-xs uppercase font-black tracking-widest text-slate-600 mb-4">{locale === 'fr' ? 'Pré-requis' : 'Requirements'}</h4>
                   <ul className="space-y-3">
                     {activity.requirements && activity.requirements.length > 0 ? (
                       activity.requirements.map((item: string, idx: number) => (

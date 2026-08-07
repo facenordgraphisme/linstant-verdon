@@ -12,13 +12,29 @@ export default function FAQContent({ locale, dict }: FAQContentProps) {
   const [activeTab, setActiveTab] = useState<'faq' | 'info' | 'legal' | 'cgv'>('faq');
 
   const faqs = locale === 'en' ? [
-    { q: "What equipment should I bring?", a: "A swimsuit, a towel, closed sports shoes (like sneakers), and a bottle of water." },
-    { q: "Do I need to know how to swim?", a: "Yes, it is mandatory to know how to swim at least 25 meters and be able to submerge." },
-    { q: "What are the cancellation conditions?", a: "Please consult our terms and conditions (CGV) tab for full details." },
+    { q: "What equipment should I bring for canyoning or climbing?", a: "A swimsuit, a towel, closed sports shoes (like sneakers), and a bottle of water. All technical gear (wetsuit, helmet, harness) is provided by L'Instant Verdon." },
+    { q: "Do I need to know how to swim to go canyoning in the Verdon?", a: "Yes, it is mandatory to know how to swim at least 25 meters and be able to submerge underwater. This is a required condition for every canyoning outing." },
+    { q: "What are your cancellation conditions?", a: "Cancellation up to 6 days before the activity: full refund of the deposit. Between 5 days and 48 hours before: the deposit is kept. Less than 48 hours before: 50% of the total amount is due. In case of force majeure (e.g. medical certificate), the deposit is refunded." },
+    { q: "Are the guides state-certified?", a: "Yes. All our guides hold a State Diploma (DE) or State Certificate (BE) in canyoning and/or climbing, issued by the French Ministry of Sports, and are up to date on their mandatory refresher training." },
+    { q: "What age can you start canyoning in the Verdon?", a: "Several of our canyons are accessible from age 7-8 (Balène Pitchoune, Bas-Jabron for families). The minimum age varies by activity and is listed on each activity page — contact us for a personalized recommendation." },
+    { q: "How do I book a canyoning or climbing outing?", a: "By phone at +33 (0)6 89 85 53 81 or by email at contact@linstantverdon.com. We confirm the booking once a 50% deposit is received. The meeting takes place directly at the activity's starting point." },
+    { q: "What payment methods do you accept?", a: "Credit card, holiday vouchers (ANCV), bank transfer, and cash on the day of the activity." },
+    { q: "What's included in the price?", a: "The price includes supervision by a state-certified guide and all technical safety equipment meeting CE standards (harness, helmet, wetsuit where relevant). Meals, sleeping bags, and personal gear are not included unless stated on the specific activity page." },
+    { q: "What happens if the weather or water level isn't safe?", a: "Your guide may decide to cancel or reschedule an outing for safety reasons (flooding, storms, drought, pollution). In this case no cancellation fee applies, and we'll propose an alternative activity or date." },
+    { q: "Is L'Instant Verdon insured?", a: "Yes. All our guides carry professional and civil liability insurance as well as individual accident coverage for clients, as required to operate as state-certified outdoor guides in France." },
+    { q: "When is the canyoning and climbing season in the Verdon?", a: "Canyoning generally runs from mid-April to the end of October, depending on water levels. Climbing is possible most of the year, weather permitting. Portaledge experiences run in the warmer months — contact us to check current availability." },
   ] : [
-    { q: "Quel équipement dois-je prévoir ?", a: "Maillot de bain, serviette, chaussures de sport fermées (type baskets) et une bouteille d'eau." },
-    { q: "Faut-il savoir nager ?", a: "Oui, il est impératif de savoir nager au moins 25 mètres et d'être capable de s'immerger." },
-    { q: "Quelles sont les conditions d'annulation ?", a: "Consultez notre onglet Conditions Générales de Vente (CGV) pour plus de détails." },
+    { q: "Quel équipement dois-je prévoir pour le canyoning ou l'escalade ?", a: "Maillot de bain, serviette, chaussures de sport fermées (type baskets) et une bouteille d'eau. Tout le matériel technique (combinaison, casque, harnais) est fourni par L'Instant Verdon." },
+    { q: "Faut-il savoir nager pour faire du canyoning dans le Verdon ?", a: "Oui, il est impératif de savoir nager au moins 25 mètres et d'être capable de s'immerger. Cette condition est obligatoire pour toutes nos sorties canyoning." },
+    { q: "Quelles sont vos conditions d'annulation ?", a: "Annulation jusqu'à 6 jours avant la prestation : remboursement intégral des arrhes. Entre 5 jours et 48h avant : les arrhes sont encaissées. Moins de 48h avant : 50% du montant total est dû. En cas de force majeure (certificat médical à l'appui), les arrhes sont remboursées." },
+    { q: "Les guides sont-ils diplômés d'État ?", a: "Oui. Toutes nos guides détiennent un Diplôme d'État (DE) ou Brevet d'État (BE) de canyonisme et/ou d'escalade, délivré par le Ministère des Sports, et sont à jour de leurs recyclages réglementaires." },
+    { q: "À partir de quel âge peut-on faire du canyoning dans le Verdon ?", a: "Plusieurs de nos canyons sont accessibles dès 7-8 ans (Balène Pitchoune, Bas-Jabron en famille). L'âge minimum varie selon l'activité et est indiqué sur chaque fiche — contactez-nous pour un conseil personnalisé." },
+    { q: "Comment réserver une sortie canyoning ou escalade ?", a: "Par téléphone au 06 89 85 53 81 ou par mail à contact@linstantverdon.com. Nous confirmons la réservation après versement d'un acompte de 50%. Le rendez-vous se fait directement au point de départ de l'activité." },
+    { q: "Quels modes de paiement acceptez-vous ?", a: "Carte bancaire, chèques vacances ANCV, virement bancaire et espèces le jour du rendez-vous." },
+    { q: "Qu'est-ce qui est inclus dans le prix ?", a: "Le prix comprend l'encadrement par un guide diplômé d'État et tout le matériel de sécurité conforme aux normes CE (harnais, casque, combinaison selon l'activité). Repas, sacs de couchage et affaires personnelles ne sont pas inclus sauf mention contraire sur la fiche activité." },
+    { q: "Que se passe-t-il si la météo ou le niveau d'eau n'est pas sûr ?", a: "Votre guide peut décider d'annuler ou de reporter une sortie pour des raisons de sécurité (crues, orage, sécheresse, pollution). Dans ce cas, aucun frais d'annulation n'est appliqué et nous vous proposons une activité ou une date alternative." },
+    { q: "L'Instant Verdon est-il assuré ?", a: "Oui. Nos guides disposent d'une assurance responsabilité civile et professionnelle ainsi que d'une assurance individuelle accident client, comme l'exige le statut de guide diplômé d'État en France." },
+    { q: "Quelle est la saison pour le canyoning et l'escalade dans le Verdon ?", a: "Le canyoning se pratique généralement de mi-avril à fin octobre selon le niveau d'eau. L'escalade est possible une grande partie de l'année selon la météo. Les expériences portaledge se déroulent aux beaux jours — contactez-nous pour connaître les disponibilités actuelles." },
   ];
 
   const allContent = {
@@ -239,9 +255,12 @@ export default function FAQContent({ locale, dict }: FAQContentProps) {
         ))}
       </div>
 
-      {/* Tab Contents */}
+      {/* Tab Contents. All four panels are always rendered (visibility toggled
+          via CSS, not conditional mounting) so crawlers and text-extraction
+          tools that don't simulate tab clicks — including the FAQ, insurance,
+          legal, and CGV content — see everything in the initial HTML. */}
       <div className="transition-all duration-500">
-        {activeTab === 'faq' && (
+        <div className={activeTab === 'faq' ? 'block' : 'hidden'}>
           <div className="space-y-8 animate-fadeIn max-w-4xl mx-auto">
             {faqs.map((faq, i) => (
               <div key={i} className="card-promax p-10 relative overflow-hidden group">
@@ -258,9 +277,9 @@ export default function FAQContent({ locale, dict }: FAQContentProps) {
               </div>
             ))}
           </div>
-        )}
+        </div>
 
-        {activeTab === 'info' && (
+        <div className={activeTab === 'info' ? 'block' : 'hidden'}>
           <div className="space-y-10 animate-fadeIn max-w-4xl mx-auto">
             {/* Functioning Card */}
             <div className="card-promax p-10 md:p-12 space-y-6">
@@ -292,9 +311,9 @@ export default function FAQContent({ locale, dict }: FAQContentProps) {
               </ul>
             </div>
           </div>
-        )}
+        </div>
 
-        {activeTab === 'legal' && (
+        <div className={activeTab === 'legal' ? 'block' : 'hidden'}>
           <div className="space-y-8 animate-fadeIn max-w-4xl mx-auto">
             <div className="card-promax p-10 md:p-12 space-y-8">
               <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight flex items-center gap-3">
@@ -315,9 +334,9 @@ export default function FAQContent({ locale, dict }: FAQContentProps) {
               </div>
             </div>
           </div>
-        )}
+        </div>
 
-        {activeTab === 'cgv' && (
+        <div className={activeTab === 'cgv' ? 'block' : 'hidden'}>
           <div className="space-y-8 animate-fadeIn max-w-4xl mx-auto">
             <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-8 text-center">
               {content.cgv.title}
@@ -342,7 +361,7 @@ export default function FAQContent({ locale, dict }: FAQContentProps) {
               ))}
             </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

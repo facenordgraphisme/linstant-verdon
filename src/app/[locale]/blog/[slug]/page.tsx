@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getDictionary } from '@/lib/dictionaries';
 import { client } from '@/sanity/client';
 import { parseMarkdown } from '@/lib/markdown';
@@ -214,11 +215,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
           {/* Dual Authors Bio card */}
           <div className="p-8 md:p-12 bg-slate-50 rounded-[2.5rem] border border-slate-100 flex flex-col md:flex-row gap-8 items-center">
             <div className="flex -space-x-4 shrink-0">
-              <div className="w-20 h-20 rounded-2xl overflow-hidden border-4 border-white shadow-lg rotate-[-6deg]">
-                <img src="/assets/a propos/emma.JPG.jpeg" alt="Emma" className="w-full h-full object-cover" />
+              <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-4 border-white shadow-lg rotate-[-6deg]">
+                <Image src="/assets/a propos/emma.JPG.jpeg" alt="Emma" fill className="object-cover" sizes="80px" />
               </div>
-              <div className="w-20 h-20 rounded-2xl overflow-hidden border-4 border-white shadow-lg rotate-[6deg]">
-                <img src="/assets/a propos/angele.jpg.jpeg" alt="Angèle" className="w-full h-full object-cover" />
+              <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-4 border-white shadow-lg rotate-[6deg]">
+                <Image src="/assets/a propos/angele.jpg.jpeg" alt="Angèle" fill className="object-cover" sizes="80px" />
               </div>
             </div>
             <div className="text-center md:text-left space-y-2">

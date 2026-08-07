@@ -1,0 +1,522 @@
+{
+  "title": "Canyoning Verdon avec Guide Dipl\u00f4m\u00e9 | L'instant Verdon",
+  "meta_description": "Descendez les plus beaux canyons du Verdon avec des guides dipl\u00f4m\u00e9s d'\u00c9tat. Clue d'Artuby, Bal\u00e8ne, Bas-Jabron\u2026 \u00c0 partir de 50\u20ac / personne.",
+  "meta_robots": null,
+  "canonical": "https://www.linstantverdon.com/fr/canyoning",
+  "h1": [
+    "Canyoning"
+  ],
+  "h2": [
+    "Notre S\u00e9lection"
+  ],
+  "h3": [
+    "Demi journ\u00e9e d\u00e9couverte en famille",
+    "Bal\u00e8ne: Canyon \"Pitchoune\"",
+    "Canyon famille - Le Bas Jabron",
+    "Canyon Famille - Le Baudan Baou",
+    "Demi journ\u00e9e d\u00e9couverte entre amis",
+    "La clue d\u2019Artuby",
+    "Rando Aqua du Couloir Samson",
+    "Canyon demi-journ\u00e9e sportive",
+    "La Clue de Saint-Auban",
+    "Canyon journ\u00e9e sportive",
+    "Le Canyon de l'Esteli\u00e9-Imbut",
+    "Le Canyon de La Fern\u00e9"
+  ],
+  "images": [
+    {
+      "src": "https://www.linstantverdon.com/assets/accueil/logo.webp",
+      "alt": "Logo",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "lazy_method": "none"
+    },
+    {
+      "src": "https://www.linstantverdon.com/assets/a propos/flag-en.png",
+      "alt": "en",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "lazy_method": "none"
+    },
+    {
+      "src": "https://cdn.sanity.io/images/h48oam2s/production/623ad48207f4b145cc033aba8dd791804b6cd5fe-960x1280.jpg",
+      "alt": "Bal\u00e8ne: Canyon \"Pitchoune\"",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "lazy_method": "none"
+    },
+    {
+      "src": "https://cdn.sanity.io/images/h48oam2s/production/45df8ad6491e2165dac8e344eb8f3a940b7edced-660x819.jpg",
+      "alt": "Canyon famille - Le Bas Jabron",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "lazy_method": "none"
+    },
+    {
+      "src": "https://cdn.sanity.io/images/h48oam2s/production/66d109bc597bfe76ad6ffad448a07027e32d125f-1600x1200.webp",
+      "alt": "Canyon Famille - Le Baudan Baou",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "lazy_method": "none"
+    },
+    {
+      "src": "https://cdn.sanity.io/images/h48oam2s/production/0c4bff3f610915dc8e234e815a5eff2350c0ce2f-1200x1600.jpg",
+      "alt": "La clue d\u2019Artuby",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "lazy_method": "none"
+    },
+    {
+      "src": "https://cdn.sanity.io/images/h48oam2s/production/6190b3f5a9c5de774d325eefc480e6bdd287102e-4032x3024.jpg",
+      "alt": "Rando Aqua du Couloir Samson",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "lazy_method": "none"
+    },
+    {
+      "src": "https://cdn.sanity.io/images/h48oam2s/production/22753c069532e7d42737336b1f502c9626e00af4-1280x855.jpg",
+      "alt": "La Clue de Saint-Auban",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "lazy_method": "none"
+    },
+    {
+      "src": "https://cdn.sanity.io/images/h48oam2s/production/64e106f63232cbcf0b2255798d65a2c764f6ad9e-1600x1200.jpg",
+      "alt": "Le Canyon de l'Esteli\u00e9-Imbut",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "lazy_method": "none"
+    },
+    {
+      "src": "https://cdn.sanity.io/images/h48oam2s/production/7320ab2e274bdd3a675facbb3e70c96a549f6b1d-960x1280.jpg",
+      "alt": "Le Canyon de La Fern\u00e9",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "lazy_method": "none"
+    },
+    {
+      "src": "https://www.linstantverdon.com/assets/accueil/logo.webp",
+      "alt": "Logo",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "lazy_method": "none"
+    }
+  ],
+  "links": {
+    "internal": [
+      {
+        "href": "https://www.linstantverdon.com/fr",
+        "text": "L'INSTANTVerdon",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/canyoning",
+        "text": "Canyoning\u2192",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/escalade",
+        "text": "Escalade\u2192",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/aventures",
+        "text": "Parcours Aventure\u2192",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/stages",
+        "text": "Week-ends & Stages\u2192",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/insolite",
+        "text": "Insolite\u2192",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/evenementiel",
+        "text": "\u00c9v\u00e8nementiel\u2192",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/a-propos",
+        "text": "\u00c0 propos",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/faq",
+        "text": "Infos & FAQ",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/blog",
+        "text": "Blog",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/contact",
+        "text": "Contact",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/en",
+        "text": "",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/canyoning",
+        "text": "Canyoning",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/escalade",
+        "text": "Escalade",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/aventures",
+        "text": "Parcours Aventure",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/stages",
+        "text": "Week-ends & Stages",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/insolite",
+        "text": "Insolite",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/evenementiel",
+        "text": "\u00c9v\u00e8nementiel",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/a-propos",
+        "text": "\u00c0 propos",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/faq",
+        "text": "Infos & FAQ",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/blog",
+        "text": "Blog",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/contact",
+        "text": "Contact",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/en",
+        "text": "English Version",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/canyoning/canyon-balene",
+        "text": "\u00c0 partir de50\u20acLe paradis des enfants (Pitchounes)Bal\u00e8ne: Canyon \"Pitchoune\"\u00c2ge min.6ansDur\u00e9e2h",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/canyoning/canoyn-bas-jabron",
+        "text": "\u00c0 partir de50\u20acCanyon d'initiation et de fra\u00eecheurCanyon famille - Le Bas Jabron\u00c2ge min.8ansDur\u00e9e2h30",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/canyoning/canyon-baudan-baou",
+        "text": "\u00c0 partir de50\u20acUn joyau secret et sauvageCanyon Famille - Le Baudan Baou\u00c2ge min.8ansDur\u00e9e2h40",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby",
+        "text": "\u00c0 partir de50\u20acDemi journ\u00e9e d\u00e9couverte entre amisLa clue d\u2019Artuby\u00c2ge min.7ansDur\u00e9e2h30",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/canyoning/canyon-couloir-samson",
+        "text": "\u00c0 partir de50\u20acLa majest\u00e9 absolue des Gorges du VerdonRando Aqua du Couloir Samson\u00c2ge min.10ansDur\u00e9e2",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/canyoning/canyon-st-auban",
+        "text": "\u00c0 partir de55\u20acLa r\u00e9f\u00e9rence aquatique et sportiveLa Clue de Saint-Auban\u00c2ge min.12ansDur\u00e9e2h40",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/canyoning/canyon-estelie-imbut",
+        "text": "\u00c0 partir de95\u20acCanyon tr\u00e8s sportif et aquatiqueLe Canyon de l'Esteli\u00e9-Imbut\u00c2ge min.14ansDur\u00e9e7h",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/canyoning/canyon-ferne",
+        "text": "\u00c0 partir de85\u20acCanyon sauvage de grande envergureLe Canyon de La Fern\u00e9\u00c2ge min.14ansDur\u00e9e6h15",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr",
+        "text": "L'INSTANTVerdon",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/canyoning",
+        "text": "Canyoning",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/escalade",
+        "text": "Escalade",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/stages",
+        "text": "Stages",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/blog",
+        "text": "Blog",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/a-propos",
+        "text": "\u00c0 propos",
+        "rel": []
+      },
+      {
+        "href": "https://www.linstantverdon.com/fr/contact",
+        "text": "Contact",
+        "rel": []
+      }
+    ],
+    "external": [
+      {
+        "href": "https://app.book-adventure.fr/public/booking/65eb5a8dfb9e3e414973b8b0",
+        "text": "R\u00c9SERVER",
+        "rel": [
+          "noopener",
+          "noreferrer"
+        ]
+      },
+      {
+        "href": "https://www.verdontourisme.com/commerces-services/linstant-verdon-la-palud-sur-verdon/",
+        "text": "",
+        "rel": [
+          "noopener",
+          "noreferrer"
+        ]
+      },
+      {
+        "href": "https://www.facebook.com/linstantverdon",
+        "text": "",
+        "rel": [
+          "noopener",
+          "noreferrer"
+        ]
+      },
+      {
+        "href": "https://www.instagram.com/linstant_verdon/",
+        "text": "",
+        "rel": [
+          "noopener",
+          "noreferrer"
+        ]
+      },
+      {
+        "href": "https://www.youtube.com/channel/UCvOPoMuJYkrMgZWiXiErugw",
+        "text": "",
+        "rel": [
+          "noopener",
+          "noreferrer"
+        ]
+      },
+      {
+        "href": "https://www.tripadvisor.fr/Attraction_Review-g635586-d14924372-Reviews-Verdon_la_Palud_sur_Verdon_Alpes_de_Haute_Provence_Provence_Alpes_Cote.html",
+        "text": "",
+        "rel": [
+          "noopener",
+          "noreferrer"
+        ]
+      },
+      {
+        "href": "https://api.whatsapp.com/send?phone=33689855381",
+        "text": "",
+        "rel": [
+          "noopener",
+          "noreferrer"
+        ]
+      },
+      {
+        "href": "tel:+33689855381",
+        "text": "+33 (0)6 89 85 53 81",
+        "rel": []
+      },
+      {
+        "href": "https://www.facenordgraphisme.fr",
+        "text": "Propuls\u00e9 par Face Nord Graphisme",
+        "rel": [
+          "noopener",
+          "noreferrer"
+        ]
+      },
+      {
+        "href": "https://api.whatsapp.com/send?phone=33689855381",
+        "text": "",
+        "rel": [
+          "noopener",
+          "noreferrer"
+        ]
+      }
+    ]
+  },
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": [
+        "LocalBusiness",
+        "SportsActivityLocation"
+      ],
+      "name": "L'instant Verdon",
+      "description": "Guides dipl\u00f4m\u00e9s d'\u00c9tat pour sorties canyoning, escalade et aventures dans les Gorges du Verdon. Bas\u00e9 \u00e0 La Palud-sur-Verdon depuis 2018.",
+      "image": "https://www.linstantverdon.com/assets/accueil/logo.webp",
+      "@id": "https://www.linstantverdon.com",
+      "url": "https://www.linstantverdon.com/fr",
+      "telephone": "+33689855381",
+      "email": "contact@linstantverdon.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "395 Chem. de Haut Bourras",
+        "addressLocality": "La Palud-sur-Verdon",
+        "postalCode": "04120",
+        "addressRegion": "Provence-Alpes-C\u00f4te d'Azur",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.7797,
+        "longitude": 6.3421
+      },
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "Gorges du Verdon"
+        },
+        {
+          "@type": "Place",
+          "name": "Castellane"
+        },
+        {
+          "@type": "Place",
+          "name": "La Palud-sur-Verdon"
+        }
+      ],
+      "priceRange": "\u20ac\u20ac",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Cash, Credit Card, Ch\u00e8ques vacances, Virement bancaire",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "08:00",
+        "closes": "20:00"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "54",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "sameAs": [
+        "https://www.facebook.com/linstantverdon",
+        "https://www.instagram.com/linstant_verdon/",
+        "https://www.youtube.com/channel/UCvOPoMuJYkrMgZWiXiErugw",
+        "https://www.tripadvisor.fr/Attraction_Review-g635586-d14924373-Reviews-L_Instant_Verdon-La_Palud_sur_Verdon_Alpes_de_Haute_Provence_Provence_Alpes_Cote.html",
+        "https://www.verdontourisme.com/commerces-services/linstant-verdon-la-palud-sur-verdon/"
+      ],
+      "founder": [
+        {
+          "@type": "Person",
+          "name": "Emma Agla\u00e9",
+          "jobTitle": "Guide dipl\u00f4m\u00e9e d'\u00c9tat canyonisme",
+          "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Dipl\u00f4me d'\u00c9tat de canyonisme",
+            "dateCreated": "2020"
+          }
+        }
+      ],
+      "employee": [
+        {
+          "@type": "Person",
+          "name": "Ang\u00e8le Kanapa",
+          "jobTitle": "Guide dipl\u00f4m\u00e9e d'\u00c9tat escalade & canyonisme",
+          "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Brevet d'\u00c9tat d'escalade et canyonisme",
+            "dateCreated": "2013"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Marie Oddo",
+          "jobTitle": "Guide dipl\u00f4m\u00e9e d'\u00c9tat escalade & canyonisme",
+          "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Dipl\u00f4me d'\u00c9tat d'escalade et canyonisme",
+            "dateCreated": "2020"
+          }
+        }
+      ]
+    }
+  ],
+  "open_graph": {
+    "og:title": "Canyoning Verdon avec Guide Dipl\u00f4m\u00e9 | L'instant Verdon",
+    "og:description": "Descendez les plus beaux canyons du Verdon avec des guides dipl\u00f4m\u00e9s d'\u00c9tat. Clue d'Artuby, Bal\u00e8ne, Bas-Jabron\u2026 \u00c0 partir de 50\u20ac / personne.",
+    "og:url": "https://www.linstantverdon.com/fr/canyoning"
+  },
+  "twitter_card": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Canyoning Verdon avec Guide Dipl\u00f4m\u00e9 | L'instant Verdon",
+    "twitter:description": "Descendez les plus beaux canyons du Verdon avec des guides dipl\u00f4m\u00e9s d'\u00c9tat. Clue d'Artuby, Bal\u00e8ne, Bas-Jabron\u2026 \u00c0 partir de 50\u20ac / personne."
+  },
+  "word_count": 335,
+  "hreflang": [
+    {
+      "lang": "fr",
+      "href": "https://www.linstantverdon.com/fr/canyoning"
+    },
+    {
+      "lang": "en",
+      "href": "https://www.linstantverdon.com/en/canyoning"
+    },
+    {
+      "lang": "x-default",
+      "href": "https://www.linstantverdon.com/fr/canyoning"
+    }
+  ]
+}

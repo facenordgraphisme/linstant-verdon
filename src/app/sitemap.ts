@@ -37,18 +37,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { fr: 'contact',      en: 'contact',             changeFreq: 'yearly',  priority: 0.6 },
   ]
 
-  const staticEntries: MetadataRoute.Sitemap = staticPaths.map(({ fr, en, changeFreq, priority }) => ({
-    url: `${BASE}/fr${fr ? `/${fr}` : ''}`,
-    lastModified: now,
-    changeFrequency: changeFreq,
-    priority,
-    alternates: {
-      languages: {
-        fr: `${BASE}/fr${fr ? `/${fr}` : ''}`,
-        en: `${BASE}/en${en ? `/${en}` : ''}`,
-      },
-    },
-  }))
+  // Emit one <url> entry per locale per page — hreflang annotations inside a
+  // sitemap don't cause the referenced alternate URL to be discovered on its
+  // own, so each language version needs its own first-class entry.
+  const staticEntries: MetadataRoute.Sitemap = staticPaths.flatMap(({ fr, en, changeFreq, priority }) => {
+    const frUrl = `${BASE}/fr${fr ? `/${fr}` : ''}`
+    const enUrl = `${BASE}/en${en ? `/${en}` : ''}`
+    const languages = { fr: frUrl, en: enUrl }
+    return [
+      { url: frUrl, lastModified: now, changeFrequency: changeFreq, priority, alternates: { languages } },
+      { url: enUrl, lastModified: now, changeFrequency: changeFreq, priority, alternates: { languages } },
+    ]
+  })
 
   // Blog posts from Sanity
   let postEntries: MetadataRoute.Sitemap = []
@@ -56,18 +56,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const posts = await client.fetch<Array<{ slug: string; publishedAt: string }>>(`
       *[_type == "post"] { "slug": slug.current, publishedAt }
     `)
-    postEntries = posts.map((post) => ({
-      url: `${BASE}/fr/blog/${post.slug}`,
-      lastModified: post.publishedAt ? new Date(post.publishedAt) : now,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-      alternates: {
-        languages: {
-          fr: `${BASE}/fr/blog/${post.slug}`,
-          en: `${BASE}/en/blog/${post.slug}`,
-        },
-      },
-    }))
+    postEntries = posts.flatMap((post) => {
+      const frUrl = `${BASE}/fr/blog/${post.slug}`
+      const enUrl = `${BASE}/en/blog/${post.slug}`
+      const languages = { fr: frUrl, en: enUrl }
+      const lastModified = post.publishedAt ? new Date(post.publishedAt) : now
+      return [
+        { url: frUrl, lastModified, changeFrequency: 'monthly' as const, priority: 0.7, alternates: { languages } },
+        { url: enUrl, lastModified, changeFrequency: 'monthly' as const, priority: 0.7, alternates: { languages } },
+      ]
+    })
   } catch {
     // Sanity unavailable at build time — static pages still served
   }
@@ -84,20 +82,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     `)
     activityEntries = activities
       .filter((a) => a.slug && a.categorySlug && categoryUrlMap[a.categorySlug])
-      .map((activity) => {
+      .flatMap((activity) => {
         const map = categoryUrlMap[activity.categorySlug]
-        return {
-          url: `${BASE}/fr/${map.fr}/${activity.slug}`,
-          lastModified: activity.updatedAt ? new Date(activity.updatedAt) : now,
-          changeFrequency: 'monthly' as const,
-          priority: 0.8,
-          alternates: {
-            languages: {
-              fr: `${BASE}/fr/${map.fr}/${activity.slug}`,
-              en: `${BASE}/en/${map.en}/${activity.slug}`,
-            },
-          },
-        }
+        const frUrl = `${BASE}/fr/${map.fr}/${activity.slug}`
+        const enUrl = `${BASE}/en/${map.en}/${activity.slug}`
+        const languages = { fr: frUrl, en: enUrl }
+        const lastModified = activity.updatedAt ? new Date(activity.updatedAt) : now
+        return [
+          { url: frUrl, lastModified, changeFrequency: 'monthly' as const, priority: 0.8, alternates: { languages } },
+          { url: enUrl, lastModified, changeFrequency: 'monthly' as const, priority: 0.8, alternates: { languages } },
+        ]
       })
   } catch {
     // Sanity unavailable at build time

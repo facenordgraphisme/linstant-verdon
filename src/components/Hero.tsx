@@ -11,20 +11,24 @@ export default function Hero({ dict }: { dict: any }) {
   const subtitleRef = useRef(null);
   const ctaRef = useRef(null);
   const videoRef = useRef(null);
-  const [videoVisible, setVideoVisible] = React.useState(false);
+  const videoElRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
 
-    // Subtle fade in for smoothness
+    // Subtle fade in for smoothness. Short delay now that a poster image (not the
+    // video) is what's actually being revealed here — the video source itself is
+    // injected separately once idle (see loadVideo below).
     gsap.fromTo(videoRef.current,
       { opacity: 0 },
-      { opacity: 1, duration: 1.5, delay: 0.5 }
+      { opacity: 1, duration: 0.8, delay: 0.1 }
     );
 
+    // Title (LCP element) is rendered at full opacity server-side — only animate
+    // position, never opacity, so it never blocks on JS hydration to become visible.
     tl.fromTo(titleRef.current,
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.2, ease: 'power4.out', delay: 0.8 }
+      { y: 50 },
+      { y: 0, duration: 1.2, ease: 'power4.out', delay: 0.3 }
     )
       .fromTo(subtitleRef.current,
         { y: 30, opacity: 0 },
@@ -36,21 +40,42 @@ export default function Hero({ dict }: { dict: any }) {
         { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.7)' },
         '-=0.5'
       );
+
+    // Defer the (large) hero video load until the browser is idle, well after
+    // first paint — the poster image is the real LCP candidate until then.
+    const loadVideo = () => {
+      const el = videoElRef.current;
+      if (!el) return;
+      const source = document.createElement('source');
+      source.src = 'https://pub-badf3a21614b454495059542458030e6.r2.dev/video-linstant-verdon.mp4';
+      source.type = 'video/mp4';
+      el.appendChild(source);
+      el.load();
+      el.play().catch(() => {});
+    };
+    if ('requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(loadVideo, { timeout: 2000 });
+    } else {
+      setTimeout(loadVideo, 1000);
+    }
   }, []);
 
   return (
     <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Background Video - Guaranteed Cover */}
+      {/* Background Video - Guaranteed Cover. Source is injected via JS after the
+          browser goes idle (see useEffect) so this 60MB+ asset never competes with
+          the critical rendering path; the poster is the real LCP-safe visual. */}
       <div ref={videoRef} className="video-container" style={{ opacity: 0 }}>
         <video
+          ref={videoElRef}
           autoPlay
           muted
           loop
           playsInline
+          preload="none"
+          poster="/assets/accueil/hero-poster.webp"
           className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="https://pub-badf3a21614b454495059542458030e6.r2.dev/video-linstant-verdon.mp4" type="video/mp4" />
-        </video>
+        />
       </div>
 
       {/* Strong Dark Overlay for Readability */}

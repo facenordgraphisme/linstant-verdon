@@ -1,0 +1,15 @@
+User-Agent: *
+Allow: /
+Disallow: /studio/
+
+User-Agent: AhrefsBot
+User-Agent: SemrushBot
+User-Agent: DotBot
+User-Agent: PetalBot
+User-Agent: ByteSpider
+User-Agent: GPTBot
+User-Agent: amazonbot
+User-Agent: CCBot
+Disallow: /
+
+Sitemap: https://www.linstantverdon.com/sitemap.xml

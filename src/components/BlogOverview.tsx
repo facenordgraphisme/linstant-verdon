@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { Calendar, ArrowRight } from 'lucide-react';
@@ -120,10 +121,12 @@ export default function BlogOverview({ dict, locale, posts }: { dict: any; local
                 >
                   {/* Image wrapper with shine and zoom */}
                   <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
-                    <img 
-                      src={post.imageUrl || '/assets/canyon/canyon.jpeg'} 
+                    <Image
+                      src={post.imageUrl || '/assets/canyon/canyon.jpeg'}
                       alt={post.title}
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      fill
+                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
                     

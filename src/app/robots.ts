@@ -6,10 +6,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: '/studio/',
+        disallow: '/studio',
       },
       {
-        userAgent: ['AhrefsBot', 'SemrushBot', 'DotBot', 'PetalBot', 'ByteSpider', 'GPTBot', 'amazonbot', 'CCBot'],
+        userAgent: ['AhrefsBot', 'SemrushBot', 'DotBot', 'PetalBot', 'ByteSpider'],
         disallow: '/',
       }
     ],
