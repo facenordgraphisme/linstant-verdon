@@ -121,6 +121,22 @@
   .card-promax:hover {
     @apply -translate-y-2 shadow-2xl border-white/15;
   }
+
+  /* Was referenced as `animate-fadeIn` in many places without ever being
+     defined, so it was a silent no-op everywhere. Defining it now makes all
+     of those existing usages (and new ones) actually animate. */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.4s ease-out;
+  }
 }
 
 /* Custom Animation Helpers */

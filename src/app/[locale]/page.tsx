@@ -7,6 +7,7 @@ import AboutSection from '@/components/AboutSection';
 import ActivityGrid from '@/components/ActivityGrid';
 import BlogOverview from '@/components/BlogOverview';
 import ContactSection from '@/components/ContactSection';
+import PromoPopup from '@/components/PromoPopup';
 import { client } from '@/sanity/client';
 
 export const revalidate = 86400;
@@ -55,6 +56,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   return (
     <main className="min-h-screen">
+      <PromoPopup locale={locale} />
       <Hero dict={dict} />
       <AboutSection dict={dict} />
       <ActivityGrid dict={dict} locale={locale} />
