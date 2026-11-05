@@ -18,6 +18,8 @@ const blogMeta = {
 }
 
 export const revalidate = 86400;
+// Params are a closed list: anything else is a static 404, never a render.
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return [{ locale: 'fr' }, { locale: 'en' }];

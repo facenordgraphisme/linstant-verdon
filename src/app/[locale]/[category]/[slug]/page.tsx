@@ -40,6 +40,10 @@ const categoryUrlMap: Record<string, { fr: string; en: string }> = {
 
 export const revalidate = 86400;
 
+function isValidRoute(locale: string, category: string) {
+  return (locale === 'fr' || locale === 'en') && category in slugCategoryAlt;
+}
+
 export async function generateStaticParams() {
   const activities = await client.fetch(`*[_type == "activity"]{ "slug": slug.current, "category": category->slug.current }`);
   const locales = ['fr', 'en'] as const;
@@ -62,6 +66,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }): Promise<Metadata> {
   const { locale, category, slug } = await params;
+  if (!isValidRoute(locale, category)) return {}
   const decodedSlug = decodeURIComponent(slug);
   const activity = await client.fetch<{ title: string; description: string; price: number; mainImageUrl: string } | null>(`
     *[_type == "activity" && slug.current == $slug][0] {
@@ -112,6 +117,8 @@ function getYouTubeEmbedUrl(url?: string): string | null {
 
 export default async function ActivityDetailPage({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }) {
   const { locale, category, slug } = await params;
+  // Reject junk URLs (scanners, typos) before hitting Sanity.
+  if (!isValidRoute(locale, category)) notFound();
   const decodedSlug = decodeURIComponent(slug);
   const dict = getDictionary(locale as 'fr' | 'en');
 

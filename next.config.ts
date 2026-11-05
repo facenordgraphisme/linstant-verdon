@@ -21,6 +21,9 @@ const csp = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  experimental: {
+    globalNotFound: true,
+  },
   images: {
     remotePatterns: [
       {
@@ -46,6 +49,23 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Root → default locale, handled by Vercel's routing layer (no Function
+      // invocation, unlike doing it in proxy.ts).
+      { source: '/', destination: '/fr', permanent: true },
+      // Wrong-locale / alias category URLs → canonical one (these used to be
+      // redirected by the page itself; the category route is now fully static).
+      ...[
+        ['fr', 'climbing', 'escalade'], ['fr', 'adventure', 'aventures'],
+        ['fr', 'unusual-activities', 'insolite'], ['fr', 'weekend', 'stages'],
+        ['fr', 'canyon', 'canyoning'],
+        ['en', 'escalade', 'climbing'], ['en', 'aventures', 'adventure'],
+        ['en', 'insolite', 'unusual-activities'], ['en', 'stages', 'weekend'],
+        ['en', 'canyon', 'canyoning'],
+      ].map(([locale, from, to]) => ({
+        source: `/${locale}/${from}`,
+        destination: `/${locale}/${to}`,
+        permanent: true,
+      })),
       // Old site URLs without locale prefix → new FR URLs (permanent 308)
       { source: '/contact', destination: '/fr/contact', permanent: true },
       { source: '/a-propos', destination: '/fr/a-propos', permanent: true },

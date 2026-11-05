@@ -6,6 +6,7 @@ import { client } from '@/sanity/client';
 import { parseMarkdown } from '@/lib/markdown';
 import { Calendar, User, ArrowLeft, MessageSquare, Phone, CalendarRange } from 'lucide-react';
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 export const revalidate = 86400;
 
@@ -27,6 +28,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale, slug } = await params;
+  if (locale !== 'fr' && locale !== 'en') return {};
   const decodedSlug = decodeURIComponent(slug);
   const post = await client.fetch(`
     *[_type == "post" && slug.current == $slug][0] {
@@ -60,6 +62,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function BlogPostPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
+  // Reject junk URLs (scanners, typos) before hitting Sanity.
+  if (locale !== 'fr' && locale !== 'en') notFound();
   const decodedSlug = decodeURIComponent(slug);
   const dict = getDictionary(locale as 'fr' | 'en');
   const blogDict = dict.blog || {
@@ -80,22 +84,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     }
   `, { slug: decodedSlug, locale });
 
-  if (!post) {
-    return (
-      <main className="min-h-screen flex items-center justify-center bg-slate-50">
-        <div className="text-center p-12 bg-white rounded-3xl shadow-xl max-w-md border border-slate-100">
-          <h1 className="text-2xl font-black text-slate-800 uppercase tracking-tight mb-4">Article non trouvé</h1>
-          <p className="text-slate-500 mb-8 font-semibold">Cet article n'existe pas ou a été déplacé.</p>
-          <Link 
-            href={`/${locale}/blog`}
-            className="button-glow inline-block text-xs font-black uppercase tracking-wider py-4 px-8"
-          >
-            {blogDict.backToList}
-          </Link>
-        </div>
-      </main>
-    );
-  }
+  if (!post) notFound();
 
   const formattedDate = new Date(post.publishedAt).toLocaleDateString(locale === 'fr' ? 'fr-FR' : 'en-US', {
     day: 'numeric',
