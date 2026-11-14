@@ -1,0 +1,626 @@
+{
+  "summary": {
+    "health_score": 53,
+    "business_type": "Local Service / Adventure Tourism Guide (Hybrid: fixed base address + service-area guiding) — canyoning, climbing, hiking in the Gorges du Verdon, France. Bilingual FR/EN. Next.js App Router + Sanity CMS on Vercel, relaunched 2026-06-17 after prior deindexing.",
+    "top_findings": [
+      "Next.js middleware (src/proxy.ts) returns a hard HTTP 403 to GPTBot, ChatGPT's live link-fetch agent (chatgpt-user), Claude's link-share agent (claude-web), CCBot, amazonbot, anthropic-ai, and cohere-ai — total access denial to major AI-search/citation systems, not just an advisory robots.txt block.",
+      "Every dynamic route returns HTTP 200 for invalid/typo'd URLs (soft 404s) — no route ever calls Next's notFound(), risking Search Console 'Crawled — thin content' flags on a site trying to recover from deindexing.",
+      "The entire /en (English) site is under-served: 30 English pages have zero sitemap presence, several EN pages leak untranslated French text or duplicate fragments (e.g. /en/canyoning renders a French paragraph twice), and ~15 wrong-locale/wrong-slug URL combinations (e.g. /en/escalade) are live, self-canonicalizing duplicates.",
+      "The 11 tour/activity detail pages — the site's only revenue-generating pages — carry zero Product/Offer/TouristTrip schema despite already having price, duration, and inclusions data in Sanity, forfeiting price/rating rich-snippet eligibility that OTA competitors (GetYourGuide, Viator) win.",
+      "Homepage LCP measured at 5.27s ('Poor') driven by a 62.5MB hero video with no preload/poster strategy, compounded by the LCP element (the H1 title) being hidden at opacity:0 until a client-side GSAP animation runs."
+    ],
+    "quick_wins": [
+      "robots.txt: change disallow: '/studio/' to disallow: '/studio' in src/app/robots.ts — the current rule doesn't block /studio (no trailing slash), which 200s and serves the live Sanity Studio admin shell.",
+      "src/proxy.ts: remove 'gptbot', 'chatgpt-user', 'amazonbot', 'ccbot' from BANNED_USER_AGENTS — one array edit restores AI-search/citation access.",
+      "Hero video: add preload=\"none\" and a compressed poster image to the <video> in src/components/Hero.tsx — immediate LCP improvement with no re-encoding required as a first step.",
+      "Fix the homepage TripAdvisor icon link — it points to a different (wrong) listing than the one declared in LocalBusiness schema.",
+      "Reconcile the address in /llms.txt (currently 'Castellane') with the real, schema-consistent address (395 Chem. de Haut Bourras, 04120 La Palud-sur-Verdon) to remove an entity-confusion signal for AI systems."
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 58,
+      "what_works": [
+        "All 60 tested URLs (30 FR sitemap pages + 30 EN counterparts) return clean single-hop 200s — no broken links or redirect chains found",
+        "Canonical tags implemented correctly and consistently via generateMetadata on every page type",
+        "hreflang is fully reciprocal at the page level (including x-default) on both /fr and /en pages",
+        "Viewport meta, html lang attribute, and JSON-LD structured data present on every page tested",
+        "HSTS present site-wide; www/non-www and locale redirects are clean single 308 hops",
+        "/studio/ (with trailing slash) is correctly blocked by the current robots.txt rule"
+      ],
+      "findings": [
+        {
+          "title": "Soft 404s site-wide — invalid URLs return HTTP 200, not 404",
+          "severity": "Critical",
+          "description": "curl against https://www.linstantverdon.com/fr/canyoning/nonexistent-slug-xyz returns 200 with body text 'Activity not found', no noindex, no canonical. grep -rl \"notFound()\" src/app returns zero matches sitewide — there is no not-found.tsx and no route ever calls Next's notFound(). Because [category] and [category]/[slug] are effectively catch-alls, any typo'd or removed URL resolves to 200.",
+          "recommendation": "In src/app/[locale]/[category]/[slug]/page.tsx and [locale]/[category]/page.tsx, call notFound() (from next/navigation) when the activity/category isn't found, and add src/app/[locale]/not-found.tsx (or a root not-found.tsx) for a real 404 page."
+        },
+        {
+          "title": "robots.txt /studio/ block is bypassed — /studio (no trailing slash) is live and unblocked",
+          "severity": "Critical",
+          "description": "curl https://www.linstantverdon.com/studio (no trailing slash) returns 200 serving the real Sanity Studio SPA shell. curl https://www.linstantverdon.com/studio/ (the blocked path) returns a 308 redirect straight to /studio — the one path robots.txt blocks redirects to the one path it doesn't.",
+          "recommendation": "In src/app/robots.ts, change disallow: '/studio/' to disallow: '/studio' (prefix match without trailing slash blocks both /studio and everything under /studio/*)."
+        },
+        {
+          "title": "No security headers beyond HSTS",
+          "severity": "High",
+          "description": "Response headers on all 60 tested URLs contain only Strict-Transport-Security. Content-Security-Policy, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, and Permissions-Policy are absent everywhere. No headers() function in next.config.ts, no vercel.json.",
+          "recommendation": "Add a headers() function to next.config.ts (or a vercel.json headers array) setting at minimum X-Content-Type-Options: nosniff, X-Frame-Options/frame-ancestors, and a baseline CSP."
+        },
+        {
+          "title": "Sitemap <loc> uses raw UTF-8 accented characters while canonical tags use percent-encoding",
+          "severity": "Medium",
+          "description": "sitemap.xml declares .../escalade-demi-journée-découverte (raw accented chars) while the live canonical tag uses percent-encoding. Both resolve to the same 200 page currently, but this violates the sitemaps.org RFC 3986 escaping requirement and could confuse stricter validators/tools.",
+          "recommendation": "In src/app/sitemap.ts, percent-encode the dynamic slug segment (encodeURI/encodeURIComponent) when building url and alternates.languages values."
+        },
+        {
+          "title": "X-Powered-By: Next.js header exposed on every response",
+          "severity": "Medium",
+          "description": "Minor framework-fingerprinting information disclosure, present on all 60 tested URLs.",
+          "recommendation": "Set poweredByHeader: false in next.config.ts."
+        },
+        {
+          "title": "AI-crawler blocking in robots.txt is syntactically valid but scoping should be a deliberate decision",
+          "severity": "Low",
+          "description": "robots.ts groups GPTBot/amazonbot/CCBot under the same rule as AhrefsBot/SemrushBot/DotBot/PetalBot/ByteSpider. The grouping/syntax works as intended per the Robots Exclusion Standard, but mixing AI-search crawlers with SEO-tool scrapers suggests this wasn't a deliberate AI-visibility decision. See AI Search Readiness category for the more severe proxy.ts-level block of the same crawlers.",
+          "recommendation": "Split the rule: keep AhrefsBot/SemrushBot/DotBot/PetalBot/ByteSpider blocked; remove GPTBot/amazonbot/CCBot per the AI Search Readiness recommendation."
+        },
+        {
+          "title": "Core Web Vitals not fully measured in this pass",
+          "severity": "Info",
+          "description": "No PageSpeed Insights API key configured; unlighthouse_run.py failed in this environment (npx not resolvable). Only homepage TTFB (~129ms) was obtained directly. Full CWV/Lighthouse analysis is covered by the Performance category instead.",
+          "recommendation": "See Performance category for lab-based Lighthouse results on the homepage."
+        }
+      ]
+    },
+    {
+      "name": "Sitemap Structure",
+      "score": 55,
+      "what_works": [
+        "XML is valid: 30 unique <url> entries, no duplicates, well under the 50,000-URL limit",
+        "hreflang alternates correctly computed for every entry including locale-specific slug translation (escalade→climbing, aventures→adventure, etc.)",
+        "robots.txt correctly references the sitemap and disallows /studio/",
+        "sitemap.ts is dynamically generated from Sanity content, not hand-maintained static XML — the right architecture, just incomplete",
+        "No orphan pages for the fr locale; no thin-content/doorway-page risk (activity pages are individually differentiated real content)"
+      ],
+      "findings": [
+        {
+          "title": "Entire /en locale missing from sitemap as first-class entries",
+          "severity": "Critical",
+          "description": "sitemap.ts emits one <url> entry per page for the fr locale only; /en URLs appear solely inside hreflang annotations, which Google's own documentation says do not cause the referenced URL to be discovered/crawled. Verified live: https://www.linstantverdon.com/en and /en/canyoning/canyon-artuby both return 200, prerendered, self-canonical, unique English content, no noindex — 30 fully indexable pages with zero sitemap presence.",
+          "recommendation": "In src/app/sitemap.ts, emit one <url> entry per locale per page (reusing the existing categoryUrlMap), each with its own alternates.languages block. Doubles the sitemap to ~60 URLs."
+        },
+        {
+          "title": "Self-canonicalizing duplicate wrong-locale category/activity URLs (~15 pages)",
+          "severity": "Critical",
+          "description": "generateStaticParams() builds params from a flat cross-product of both language variants of each category slug and both locales, not just correct pairings. generateMetadata() always canonicalizes to itself. Confirmed live: /en/escalade (should be /en/climbing) is 200 and self-canonical; same for /fr/climbing, /en/canyon, /fr/canyon, and activity-level equivalents like /en/escalade/escalade-grande-voie. ~15 extra live, crawlable, duplicate pages exist outside the sitemap with no noindex and no redirect to the true canonical.",
+          "recommendation": "Restrict generateStaticParams() to only the correct locale↔slug pairs (let mismatched combinations 404), or 301-redirect the wrong-language variant to the correct URL. Fix in the same pass as the sitemap /en gap."
+        },
+        {
+          "title": "priority/changefreq present but ignored by Google",
+          "severity": "Info",
+          "description": "Every sitemap entry sets <priority> and <changefreq>; Google has confirmed both are ignored for ranking/crawl-scheduling. Not harmful, just dead weight.",
+          "recommendation": "Optional: remove from sitemap.ts to simplify output."
+        },
+        {
+          "title": "Static-page lastmod reflects sitemap generation time, not actual content change time",
+          "severity": "Low",
+          "description": "All 11 static pages share the identical lastmod timestamp (the moment the sitemap was last built), while blog posts and activities correctly use real Sanity publishedAt/_updatedAt values.",
+          "recommendation": "Track a real last-content-change date for static pages (e.g. a Sanity singleton per page) instead of using the build timestamp."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 42,
+      "what_works": [
+        "Named, credentialed guides with real, specific bios (state diplomas, dates, personal history) — a genuine expertise/experience signal for a safety-relevant activity business",
+        "Authentic first-person voice on homepage/blog, not generic AI filler — real place recommendations and local knowledge",
+        "Individual tour pages carry concrete, quotable facts (meeting points, GPS delivery, jump heights, age minimums, inclusions)",
+        "The multi-day 'stages' camp page is genuinely strong: 812 words, day-by-day itineraries, transparent pricing — the best-executed page on the site",
+        "No keyword stuffing found anywhere reviewed"
+      ],
+      "findings": [
+        {
+          "title": "English pillar/category pages are effectively broken — untranslated French, duplicated fragments",
+          "severity": "Critical",
+          "description": "/en/canyoning, /en/climbing, /en/adventure, /en/unusual-activities render with only 42–114 words each, missing the entire FR editorial intro, and what does render is largely still in French verbatim ('Notre Sélection', 'Découvrez nos parcours phares', etc.) — on /en/canyoning and /en/climbing this fragment is duplicated twice on the same page.",
+          "recommendation": "Audit Sanity for missing en-locale values on category-page schema fields; fix the template so a missing translation renders a placeholder instead of leaking the FR fallback twice; QA every /en/ URL before next deploy."
+        },
+        {
+          "title": "/en/a-propos (the primary trust/E-E-A-T page) has an entire lede paragraph left in French",
+          "severity": "Critical",
+          "description": "Extracted EN text includes the full French intro paragraph ('L'Instant Verdon est né d'une passion commune...') untranslated, plus 'Nos Partenaires'/'Ils nous font confiance...' — on the exact page meant to build authority and trust with English-speaking visitors.",
+          "recommendation": "Fill the missing en fields in Sanity for the about-page document; add a translation-completeness QA/lint step to the publish flow."
+        },
+        {
+          "title": "Category/pillar pages sit far below the 800-word service-page floor despite highest sitemap priority (0.8-0.9)",
+          "severity": "High",
+          "description": "FR word counts: /fr/escalade 83, /fr/aventures 99, /fr/canyoning 133, /fr/insolite 134, /fr/evenementiel 164. Each is essentially an intro + CTA + card grid with no coverage of safety standards, seasonal availability, or activity-specific FAQ.",
+          "recommendation": "Expand each to 500-800+ words: safety/certification overview, seasonal notes, how listed tours differ, 3-5 activity-specific FAQ entries (also feeds FAQPage schema)."
+        },
+        {
+          "title": "No trust/safety signals found anywhere in site text content",
+          "severity": "High",
+          "description": "Across every page reviewed there is no mention of liability insurance, a recognized federation beyond the generic 'syndicat local', customer reviews/ratings, or a stated safety protocol. Trustworthiness is the heaviest-weighted E-E-A-T factor (30%) and is exactly what a safety-conscious canyoning/climbing visitor is looking for.",
+          "recommendation": "Add a visible 'Sécurité & Assurance' section (insurance carrier, certifying body, safety protocol) on About/homepage; embed real named/dated testimonials on homepage and tour pages."
+        },
+        {
+          "title": "FAQ page is extremely thin: 3 questions, ~64-68 words total",
+          "severity": "High",
+          "description": "Only equipment, swimming requirement, and a cancellation-policy deferral (to an off-page CGV link, not stated inline) are covered. Missing obvious questions: weather/river-level cancellation, minimum age per activity, medical restrictions, group size, pricing range, deposit method, parking.",
+          "recommendation": "Expand to 10-15 real on-page Q&As with self-contained answers — strong AI-citation and FAQPage-schema opportunity currently wasted."
+        },
+        {
+          "title": "Individual tour pages are short (150-300 words) with rigid, near-verbatim repeated template boilerplate",
+          "severity": "Medium",
+          "description": "Structure is consistently Description/Lieu de rendez-vous/Ce qui est inclus/Pré-requis with repeated phrasing across canyon-artuby, canyon-balene, canyon-estelie-imbut and (by word-count pattern) other canyon pages. Per-canyon descriptive paragraphs are genuinely specific, but several pages sit below even a 300-400 word floor for a complex-product page.",
+          "recommendation": "Vary connective boilerplate per page; add 1-2 unique paragraphs per canyon (difficulty grade, best season, a guide anecdote) to reduce structural sameness."
+        },
+        {
+          "title": "EN tour pages leave section headers untranslated even where body prose is translated",
+          "severity": "Medium",
+          "description": "On canyon-artuby/en and canyon-estelie-imbut/en, description paragraphs are fluently translated but section labels remain French ('📸 Galerie Photos', 'Ce qui est inclus', 'Pré-requis') — likely a hardcoded/shared template rather than a CMS field.",
+          "recommendation": "Extend the translation fix to the tour-page template's static labels, not just CMS body fields."
+        },
+        {
+          "title": "EN guide bios are meaningfully abridged versus FR, weakening the expertise signal for English readers",
+          "severity": "Medium",
+          "description": "Emma's FR bio is 3 sentences (cofounder credential, personal history, personality note); the EN version is 1 sentence, missing the cofounder credential and personality detail. Same pattern for the other guide.",
+          "recommendation": "Translate full bios rather than shortened summaries."
+        },
+        {
+          "title": "Blog has only 2 short posts (~196-310 words), seasonal listicles rather than in-depth guides",
+          "severity": "Low",
+          "description": "Content is genuinely first-hand and locally specific, a real E-E-A-T positive worth preserving, but at this length these function as short update posts, not the long-form evergreen guides that best serve organic/AI-citation goals.",
+          "recommendation": "Keep as short 'seasonal picks' posts, but invest in 1-2 flagship long-form guides (e.g. 'Complete guide to canyoning in the Verdon') if the blog is meant to drive organic acquisition."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 46,
+      "what_works": [
+        "JSON-LD used correctly everywhere it exists (no Microdata/RDFa), correct @context and absolute URLs",
+        "LocalBusiness + SportsActivityLocation renders on every page with address, geo, telephone, areaServed, openingHoursSpecification, sameAs, and nested founder/employee Person entries with credentials",
+        "BlogPosting on blog posts is well-formed with headline, author, publisher, and real image URLs — the strongest block on the site",
+        "FAQPage on /fr/faq has 7 well-formed Question/Answer pairs with real content",
+        "No deprecated schema types in use"
+      ],
+      "findings": [
+        {
+          "title": "Tour/activity detail pages — the site's highest commercial-intent pages — have zero Product/Offer/TouristTrip schema",
+          "severity": "Critical",
+          "description": "Confirmed live on /fr/canyoning/canyon-artuby: despite the Sanity activity document already containing price, duration, minAge, meeting point, and images, no structured data beyond the generic sitewide LocalBusiness block is emitted.",
+          "recommendation": "Add Product + TouristTrip + Offer JSON-LD to src/app/[locale]/[category]/[slug]/page.tsx, wired to real Sanity fields (price, duration, minAge) — ready-to-paste code provided in findings/schema.md."
+        },
+        {
+          "title": "No BreadcrumbList anywhere on the site",
+          "severity": "Critical",
+          "description": "The blog post template renders a visual breadcrumb but never emits structured data for it. With a 3-level URL hierarchy, this is a straightforward, low-risk win for sitelinks/breadcrumb rich results and AI crawlers mapping site architecture.",
+          "recommendation": "Add a reusable BreadcrumbSchema component and use it on tour detail and blog post pages — code provided in findings/schema.md."
+        },
+        {
+          "title": "LocalBusiness.url is hardcoded to the French homepage even on English pages",
+          "severity": "High",
+          "description": "src/components/LocalBusinessSchema.tsx has a static url: 'https://www.linstantverdon.com/fr'. Confirmed live on /en/faq: the schema still declares the /fr URL while description correctly switches to English.",
+          "recommendation": "Change url to a template literal using the current locale: `https://www.linstantverdon.com/${locale}`; keep @id stable/locale-independent."
+        },
+        {
+          "title": "aggregateRating (4.8/54 reviews) has no visible on-page counterpart and unclear provenance",
+          "severity": "High",
+          "description": "The same hardcoded ratingValue/reviewCount is repeated on every page. Google's guidelines require aggregate ratings to reflect ratings visibly available to users and sourced from a verifiable collection process — a self-declared number not shown anywhere in the UI risks the rich result being suppressed.",
+          "recommendation": "Confirm 4.8/54 is pulled from an actual source (GBP or TripAdvisor — the TripAdvisor sameAs link suggests that's the source); display the rating/count visibly on-site; keep numbers in sync with the real source."
+        },
+        {
+          "title": "Full guide roster, address, and rating duplicated verbatim on every page template, including unrelated blog/FAQ pages",
+          "severity": "Medium",
+          "description": "Not invalid, but bloats every page's HTML with content unrelated to that page's topic (e.g. a summer-activities blog post emits full founder-credential data).",
+          "recommendation": "Consider a leaner Organization/@id-reference block sitewide, with the full LocalBusiness detail (founder, employee, rating) only on the homepage and /a-propos/ /contact."
+        },
+        {
+          "title": "/en/faq has no FAQPage schema at all",
+          "severity": "Medium",
+          "description": "src/app/[locale]/faq/page.tsx gates the schema behind a locale === 'fr' condition. Note: Google retired FAQPage rich results for all sites (May 7 2026), so this isn't a lost SERP feature, but the markup still helps AI/LLM systems answer questions about the English-language business.",
+          "recommendation": "Remove the locale gate and translate the existing 7 Q&As for the English version — code provided in findings/schema.md."
+        },
+        {
+          "title": "No standalone Person schema for the guides on /a-propos",
+          "severity": "Medium",
+          "description": "The guides only exist as nested founder/employee objects inside the sitewide LocalBusiness block — no dedicated Person entity anchored to the About page, the natural page for E-E-A-T/entity signals.",
+          "recommendation": "Add standalone Person + EducationalOccupationalCredential schema per guide on /a-propos — code provided in findings/schema.md."
+        },
+        {
+          "title": "BlogPosting.dateModified always equals datePublished",
+          "severity": "Low",
+          "description": "Both fields are set from the same post.publishedAt value — no Sanity _updatedAt field wired in.",
+          "recommendation": "Swap in Sanity's _updatedAt if/when available."
+        },
+        {
+          "title": "LocalBusiness.image points to the logo, not a representative photo",
+          "severity": "Low",
+          "description": "Google's LocalBusiness guidance prefers image to be an actual photo of the business/activity rather than a logo mark.",
+          "recommendation": "Add a real photo URL (a canyon or a guide in action) in addition to or instead of the logo."
+        }
+      ]
+    },
+    {
+      "name": "Performance (Core Web Vitals)",
+      "score": 75,
+      "what_works": [
+        "next/font/google (Inter, Outfit) used correctly — self-hosted, preloaded woff2, avoiding extra DNS round-trips and FOIT/FOUT",
+        "Google Ads tag loaded via next/script strategy=\"afterInteractive\" — not render-blocking",
+        "TTFB excellent (~20-120ms) via Vercel edge caching (X-Vercel-Cache: HIT, prerendered)",
+        "CLS measured at 0 on the homepage in this lab run",
+        "Hero video already migrated off the Vercel build/edge to Cloudflare R2 — the right instinct, migration just incomplete"
+      ],
+      "findings": [
+        {
+          "title": "Hero background video is 62.5MB, loads eagerly with no preload/poster strategy",
+          "severity": "Critical",
+          "description": "curl -I on the R2-hosted video confirms Content-Length: 62,491,068 bytes. The <video autoPlay muted loop playsInline> has no preload attribute (defaults to preload=\"auto\") and no poster. This is the primary driver of the measured 5.27s LCP (Lighthouse mobile, homepage) — the H1 text is stuck behind network contention.",
+          "recommendation": "Add preload=\"none\" and a compressed <100KB poster; re-encode the source video to ~1080p/2-4Mbps trimmed to a short loop (target <5MB); defer video src assignment until after first paint (useEffect/requestIdleCallback)."
+        },
+        {
+          "title": "Hero title (the LCP element) is hidden at opacity:0 until client-side GSAP runs",
+          "severity": "Critical",
+          "description": "Hero is a 'use client' component; the H1 is animated in via GSAP starting after a 0.8s delay with 1.2s duration, adding a hard floor of ~0.8-2s to LCP that no image/video optimization can remove.",
+          "recommendation": "Render the H1/subtitle/CTA server-side at full opacity by default; apply GSAP entrance animation as progressive enhancement only (animate y/scale, not opacity from 0), or isolate video/GSAP logic in a small client sub-component so title text is part of server-rendered HTML."
+        },
+        {
+          "title": "next/image used in only 1 file across the entire codebase — 20+ raw <img> tags elsewhere",
+          "severity": "High",
+          "description": "grep -rl \"next/image\" src returns exactly one file; raw <img> tags found in AboutSection.tsx, Footer.tsx, Navbar.tsx, BlogOverview.tsx, and both category/detail page templates. Team photos served as full-resolution camera JPEGs (e.g. emma.JPG.jpeg) with no WebP/AVIF re-encoding, responsive srcset, or lazy-loading.",
+          "recommendation": "Replace raw <img> with next/image (with priority for above-the-fold images) across AboutSection, Footer, Navbar, BlogOverview, and the category/detail page templates — affects /a-propos, /blog, and every tour page's gallery."
+        },
+        {
+          "title": "Unnecessary image preload (flag icon) competing with critical resources on the homepage",
+          "severity": "High",
+          "description": "Rendered <head> includes a preload for flag-en.png (a small language-switcher icon), consuming early connection/priority budget that should go to fonts and the hero poster once fixed.",
+          "recommendation": "Locate the flag icon usage (likely Navbar.tsx's language switcher) and remove any priority prop / manual preload hint."
+        },
+        {
+          "title": "Client-heavy Hero component increases Time to Interactive (10.6s observed)",
+          "severity": "Medium",
+          "description": "GSAP plus video/animation logic live in a 'use client' component that must hydrate before becoming interactive, compounded by the video download saturating the network and delaying JS chunk fetch/parse.",
+          "recommendation": "Once the video and title-animation issues are fixed, re-measure; if TTI is still high, dynamically import GSAP (next/dynamic, ssr: false) so it doesn't block main-bundle parse/execute."
+        },
+        {
+          "title": "No explicit width/height on raw <img> tags — latent CLS risk",
+          "severity": "Medium",
+          "description": "Raw <img> tags rely on parent-container CSS rather than intrinsic dimensions. CLS measured 0 today only because containers happen to have fixed heights via Tailwind classes — fragile against future layout changes.",
+          "recommendation": "Resolved automatically once migrated to next/image (see High finding above)."
+        },
+        {
+          "title": "Double file extensions on public image assets suggest no image-optimization pipeline",
+          "severity": "Low",
+          "description": "Filenames like emma.JPG.jpeg, angele.jpg.jpeg, marie.JPG.jpeg indicate raw camera exports rather than processed assets.",
+          "recommendation": "Largely moot once migrated to next/image; consider renaming source files during migration for maintainability."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 35,
+      "what_works": [
+        "Category-page images have full alt-text coverage",
+        "Alt text present and descriptive on many primary tour images"
+      ],
+      "findings": [
+        {
+          "title": "next/image adopted in only 1 file sitewide — no automatic WebP/AVIF, responsive sizing, or lazy-loading",
+          "severity": "High",
+          "description": "See Performance category for full evidence — this is the same root cause scored separately here because it's specifically an image-optimization gap rather than a general performance issue.",
+          "recommendation": "Migrate to next/image across all templates; see Performance category recommendation for the specific fix and file list."
+        },
+        {
+          "title": "Tour-page gallery images missing alt text",
+          "severity": "Medium",
+          "description": "canyon-artuby has 7/10 gallery images missing alt text; escalade-grande-voie has 3/6 missing. Specific to the '📸 Galerie Photos' blocks on detail pages — category pages have full coverage.",
+          "recommendation": "Add descriptive alt text per gallery image (canyon name + action, e.g. 'saut de 8m dans la clue d'Artuby') — supports accessibility and image-search discovery for visual, decision-stage queries."
+        },
+        {
+          "title": "Unoptimized raw camera-export images served directly (double file extensions)",
+          "severity": "Low",
+          "description": "e.g. /assets/a propos/emma.JPG.jpeg — likely full-resolution, unprocessed uploads served at full size regardless of rendered thumbnail size.",
+          "recommendation": "Resolved by the next/image migration; consider renaming during the process."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness (GEO)",
+      "score": 50,
+      "what_works": [
+        "/llms.txt exists and is well-formed — lists key FR/EN pages plus a concise fact block (phone, email, address, SIRET, guide credentials, pricing, season dates)",
+        "Structured data added since the prior audit: LocalBusiness/Place, Person + EducationalOccupationalCredential per guide, AggregateRating, FAQPage",
+        "SSR/pre-rendering is solid — no client-side-rendering gap hiding content from crawlers that don't execute JavaScript",
+        "/fr/canyoning and tour detail pages contain real, specific, extractable facts (prices, durations, inclusions, prerequisites) close to a 'spec sheet' format LLMs can cite cleanly",
+        "Googlebot, Bingbot, ClaudeBot, OAI-SearchBot, PerplexityBot, and DuckAssistBot are all confirmed unblocked — the important real-time answer/citation crawlers are not caught in the block",
+        "This is a meaningful improvement over a prior 2026-06-17 baseline audit that scored 20/100 with zero structured data and no llms.txt"
+      ],
+      "findings": [
+        {
+          "title": "Server-side middleware (src/proxy.ts) hard-blocks GPTBot and ChatGPT's/Claude's live link-fetch agents with HTTP 403",
+          "severity": "Critical",
+          "description": "Live UA testing confirmed 403 for GPTBot, chatgpt-user (fires when a user pastes the URL into ChatGPT), CCBot, amazonbot, anthropic-ai, cohere-ai, claude-web (Claude's link-share agent), and google-extended. This is more severe than robots.txt: there is no way for these agents to read the site under any circumstance, including a user directly asking ChatGPT/Claude to open the URL. ClaudeBot, OAI-SearchBot, PerplexityBot, Googlebot, and Bingbot are confirmed unaffected.",
+          "recommendation": "Remove 'gptbot', 'chatgpt-user', 'amazonbot', 'ccbot' from the BANNED_USER_AGENTS array in src/proxy.ts. Optionally keep anthropic-ai/cohere-ai/google-extended blocked (training-only, doesn't affect live citation) but unblock claude-web to match the chatgpt-user fix."
+        },
+        {
+          "title": "robots.txt duplicates the same over-broad AI-crawler block",
+          "severity": "Critical",
+          "description": "src/app/robots.ts groups GPTBot/amazonbot/CCBot in the same disallow rule as legitimate SEO-scraper blocks (AhrefsBot/SemrushBot/DotBot/PetalBot/ByteSpider). Even after fixing proxy.ts, leaving these in robots.txt sends a conflicting signal to any AI crawler that does respect it.",
+          "recommendation": "Remove GPTBot, amazonbot, CCBot from the robots.ts disallow group; keep AhrefsBot/SemrushBot/DotBot/PetalBot/ByteSpider blocked."
+        },
+        {
+          "title": "FAQ page too thin to serve as a citation asset (3 Q&As, one is a non-answer)",
+          "severity": "High",
+          "description": "The cancellation-policy answer redirects to 'Consultez notre onglet CGV...' instead of stating the policy inline — LLMs can't extract an answer from a redirect. Unchanged since the June baseline audit.",
+          "recommendation": "Expand to 12-15+ questions with self-contained answers (~134-167 words each), covering pricing, difficulty/fitness, credentials, inclusions, cancellation terms stated inline, age minimums, seasonality, and booking process."
+        },
+        {
+          "title": "Canyon-Artuby detail page is missing duration",
+          "severity": "High",
+          "description": "Price, inclusions, and prerequisites are all clearly labeled ('Tarif 50€', equipment list, requirements), but duration is absent from both the detail and overview pages — a likely direct query ('combien de temps dure le canyon d'Artuby') currently can't be answered from the page.",
+          "recommendation": "Add a labeled 'Durée' field matching the existing Tarif/Ce qui est inclus/Pré-requis spec-sheet format; apply the same audit to the other 6-7 canyon detail pages."
+        },
+        {
+          "title": "NAP inconsistency between /llms.txt and the live site/schema",
+          "severity": "Medium",
+          "description": "llms.txt states 'Place de l'église, 04120 Castellane'; the live /fr/a-propos page and JSON-LD PostalAddress state '395 Chem. de Haut Bourras, 04120 La Palud-sur-Verdon'. Two different addresses in two different towns for the same entity undermines confidence when an LLM cross-references sources.",
+          "recommendation": "Update llms.txt to match the schema/page address exactly (the site content and structured data are the consistent, more likely correct source)."
+        },
+        {
+          "title": "Question-phrased headings are underused",
+          "severity": "Medium",
+          "description": "Headings are structurally clean but phrased as labels ('Description', 'Ce qui est inclus') rather than the natural-language questions users/LLMs match against.",
+          "recommendation": "Reformat key section headers as questions ('Que comprend la sortie canyoning d'Artuby ?') while keeping the same concise answers underneath."
+        },
+        {
+          "title": "No RSL 1.0 AI-content-licensing declaration",
+          "severity": "Low",
+          "description": "A very new, low-adoption standard — not present anywhere on the domain.",
+          "recommendation": "Low priority; worth a one-line mention rather than dedicated work at this stage."
+        }
+      ]
+    },
+    {
+      "name": "Search Experience Optimization (SXO)",
+      "score": 61,
+      "what_works": [
+        "Strong LocalBusiness/SportsActivityLocation schema sitewide with named, credentialed guides — a real E-E-A-T asset most niche competitors lack",
+        "Tour detail pages are structured close to a transactional Product/Service type with distinct scannable blocks (Rendez-vous, Fiche Technique, Équipement, Tarif)",
+        "Low-friction booking CTA linking directly to an external booking engine with a clear no-commitment reassurance line next to the price",
+        "Multi-channel contact options (tel:, WhatsApp) support the 'near me / same-day decision' tourist persona",
+        "Escalade grande-voie page states real climbing grades (5B-6A through 7a/7c) — the one piece of technical-evaluator-relevant content on the site"
+      ],
+      "findings": [
+        {
+          "title": "Page-type/schema mismatch on transactional tour pages",
+          "severity": "Critical",
+          "description": "All 11 tour detail pages behave like Product/Service pages in content structure (price, inclusions, prerequisites, CTA) but carry zero Product/Offer/TouristTrip schema — the only structured data on every page is the identical sitewide LocalBusiness block. A first-time canyoning searcher expects rich SERP results (price, rating, duration) that OTA competitors win but this site currently cannot.",
+          "recommendation": "Add Product/TouristTrip schema per tour page with offers (price, currency, availability) and duration — see Schema category for ready-to-use code."
+        },
+        {
+          "title": "Duration and difficulty are not visible at a glance — buried in a collapsed accordion",
+          "severity": "High",
+          "description": "On canyon-artuby, the 'Fiche Technique' section is a collapsed accordion with no duration, difficulty rating, or age minimum visible at first scroll — only free-text prerequisites. A first-time tourist's core anxiety questions ('is this too hard for me/my kids?', 'how long does it take?') go unanswered without extra clicks.",
+          "recommendation": "Add a fixed, always-visible spec strip above the fold on every tour page: Durée / Niveau (1-5 icons) / Âge minimum / Groupe max."
+        },
+        {
+          "title": "Blog is generic content marketing, not mapped to real trip-planning search intent",
+          "severity": "High",
+          "description": "Only 2 posts, both generic seasonal roundups, no Article/BlogPosting-schema-supporting structure beyond what's noted in Schema, no FAQ content. Doesn't target long-tail queries like 'canyoning débutant verdon' or 'quel canyon choisir en famille' that a recovering site needs post-relaunch.",
+          "recommendation": "Replace/extend the blog roadmap with intent-matched, answer-first posts (comparison format, internal-linked to all canyon pages) targeting real trip-planning questions."
+        },
+        {
+          "title": "Evenementiel page lacks organizer-grade specifics",
+          "severity": "Medium",
+          "description": "206 words, entirely vague ('Contactez-nous, on vous proposera une activité adaptée'). No group size min/max, no pricing bands, no logistics, no case studies — a group/event organizer persona needs concrete numbers to get internal budget approval before making contact.",
+          "recommendation": "Add a logistics block (capacity range, indicative pricing bands, 'devis sous 24h' CTA) and at least one past-event case study for corporate/bachelorette groups."
+        },
+        {
+          "title": "No named-route/topo detail for technical climbers",
+          "severity": "Low",
+          "description": "escalade-grande-voie groups routes by grade band rather than naming individual routes with pitch counts — experienced climbers will bounce to topo sites (camptocamp, guidebooks) for pitch-by-pitch detail.",
+          "recommendation": "Low priority — add named-route call-outs within grade bands if guide capacity allows differentiated booking."
+        }
+      ]
+    },
+    {
+      "name": "Local SEO",
+      "score": 50,
+      "what_works": [
+        "NAP fully consistent across footer, LocalBusiness JSON-LD, and visible Contact page text",
+        "Comprehensive LocalBusiness + SportsActivityLocation JSON-LD with geo, areaServed, openingHoursSpecification, aggregateRating, and credentialed founder/employee entries",
+        "Dedicated hyper-local landing pages exist for individual canyon/climbing sites — matches Whitespark's #1 local-organic ranking factor ('dedicated service pages')",
+        "areaServed schema appropriately lists Gorges du Verdon, Castellane, and La Palud-sur-Verdon for a hybrid base-address/service-area business",
+        "State certification signals embedded in structured data for all guides",
+        "Niche local citation present: verdontourisme.com (official Verdon tourism board) listed in sameAs"
+      ],
+      "findings": [
+        {
+          "title": "No Google Business Profile signals detected anywhere on-site",
+          "severity": "Critical",
+          "description": "No Maps embed, no sameAs link to a GBP listing, no 'view on Google'/directions CTA on Homepage, Contact, or About. GBP signals are the single largest local ranking-factor group per Whitespark's 2026 study.",
+          "recommendation": "Confirm the GBP listing for 'L'Instant Verdon' is claimed and verified; embed Google Maps on the Contact page; add a directions link and the GBP profile URL to JSON-LD sameAs."
+        },
+        {
+          "title": "TripAdvisor link mismatch between schema and the visible homepage icon",
+          "severity": "Critical",
+          "description": "JSON-LD sameAs points to the business-specific TripAdvisor page (...-d14924373-...-L_Instant_Verdon-...), but the homepage's visible TripAdvisor icon links to a different, generic listing (...-d14924372-...-Verdon_la_Palud_sur_Verdon...) — not the business's own review page.",
+          "recommendation": "Correct the homepage social-icon link to point to the same TripAdvisor ID declared in schema, after confirming which is actually correct."
+        },
+        {
+          "title": "No visible on-page reviews/testimonials despite a schema aggregateRating claim (4.8/54)",
+          "severity": "High",
+          "description": "Checked via rendered HTML on Homepage, Contact, and About — no visible review content backs the structured-data claim, creating a user-trust gap and data-consistency risk.",
+          "recommendation": "Add a visible testimonials/reviews section pulling real excerpts and the review count from the actual source (Google/TripAdvisor)."
+        },
+        {
+          "title": "No SIRET/business registration number visible on Contact, About, or footer",
+          "severity": "Medium",
+          "description": "A 'Mentions Légales' footer link exists but its content wasn't checked this session.",
+          "recommendation": "Confirm SIRET is present on the Mentions Légales page (legally required in France); consider surfacing it in the footer too as a trust signal."
+        },
+        {
+          "title": "Thin citation footprint — only TripAdvisor and verdontourisme.com confirmed",
+          "severity": "Medium",
+          "description": "No evidence found for Bing Places, Apple Business Connect, a verified Facebook Business Page, or French directories (PagesJaunes, etc.). Citation-related factors make up 3 of the top 5 AI-visibility ranking factors per Whitespark 2026.",
+          "recommendation": "Build out Tier 1/industry citations (Bing Places, Apple Business Connect, confirm Facebook Page NAP, relevant outdoor-tourism directories)."
+        },
+        {
+          "title": "Geo coordinates use 4-decimal precision rather than the recommended 5",
+          "severity": "Low",
+          "description": "43.7797, 6.3421 — one decimal short of recommended precision.",
+          "recommendation": "Increase precision if source data allows."
+        },
+        {
+          "title": "Possible team-roster discrepancy — schema lists 3 guides, business context describes 2",
+          "severity": "Low",
+          "description": "Schema lists founder Emma Aglaé plus employees Angèle Kanapa and Marie Oddo, while background context describes the business as currently run by two named guides.",
+          "recommendation": "Confirm Marie Oddo's current status is intentional in schema; remove if outdated to avoid inconsistency."
+        }
+      ]
+    },
+    {
+      "name": "Visual / UX",
+      "score": 50,
+      "what_works": [
+        "All 4 target pages (homepage, category, tour detail, contact) render correctly at all 4 viewports (desktop/laptop/tablet/mobile) with no navigation failures or 4xx/5xx errors",
+        "Homepage above-the-fold: clear value proposition ('Là où l'aventure rencontre la nature'), two visible CTAs (Découvrir nos activités / Nous contacter), text legible over the hero background on both desktop and mobile",
+        "Tour detail page (canyon-artuby) presents a clear title, category breadcrumb chip, and an 'inclus' sidebar with checkmarked items"
+      ],
+      "findings": [
+        {
+          "title": "Background video appears to prevent the page from ever reaching network-idle",
+          "severity": "High",
+          "description": "The homepage screenshot capture (which waits for Playwright's networkidle state) timed out at both 30s and 60s across all viewports; switching to a fixed load-event wait succeeded immediately. This strongly suggests the R2-hosted background video keeps issuing network requests continuously past initial page load — can hurt 'fully loaded' performance metrics and any tooling/consent-management scripts that wait for network-idle, and increases mobile data/battery usage.",
+          "recommendation": "Confirm via browser DevTools Network tab (filter by media) whether the video is continuously re-fetching/re-buffering; combine with the Performance category's video preload/poster fix."
+        },
+        {
+          "title": "Duplicate/ghosted heading text overlapping the mobile category page title",
+          "severity": "High",
+          "description": "On category_mobile.png (canyoning category page, mobile viewport), a faded, overlapping duplicate heading ('...XPLOREZ LA MAGIE DES CANYONS ET LEUR EAU TURQUOISE') is visible layered behind/over the 'CANYONING' H1 — appears to be an un-faded or stacked animation layer specific to the mobile breakpoint. Found via direct visual inspection of the captured screenshot, not by the automated visual pass (which ran out of budget before reviewing screenshots).",
+          "recommendation": "Inspect the category page hero component's mobile-breakpoint animation/transition logic for a stacking or opacity-transition bug that leaves a prior heading state visible."
+        },
+        {
+          "title": "Tour detail page: no price or duration visible in the above-the-fold 'inclus' sidebar",
+          "severity": "Medium",
+          "description": "Direct visual inspection of tourdetail_desktop.png confirms the 'Ce qui est inclus' sidebar shows only equipment items (matériel, casque, guide diplômé) — no price or duration appears until further down/behind the 'Pré-requis' section, consistent with the SXO finding that duration/difficulty is buried.",
+          "recommendation": "See SXO category recommendation — add a fixed, always-visible spec strip (Durée / Niveau / Âge minimum / Prix) near the top of the page."
+        },
+        {
+          "title": "Full visual QA (tap-target sizing, broken images, remaining viewport checks) not completed",
+          "severity": "Info",
+          "description": "The automated visual audit ran out of budget before opening/reviewing all 16 captured screenshots. This report supplements it with a direct spot-check of 4 key screenshots (home desktop/mobile, tour detail desktop, category mobile) which surfaced 2 new confirmed issues above, but tablet/laptop breakpoints and the contact page were not manually reviewed.",
+          "recommendation": "A follow-up pass reviewing the remaining screenshots (contact_*, home_laptop/tablet, tourdetail_laptop/tablet/mobile, category_desktop/laptop/tablet) is recommended before treating visual QA as complete."
+        }
+      ]
+    },
+    {
+      "name": "Backlink Profile",
+      "score": null,
+      "what_works": [
+        "The domain is already discoverable in Common Crawl's historical index (via the prior site generation), a mild positive sign the domain isn't unknown to crawlers",
+        "An existing relationship with Verdon Tourisme (regional Office de Tourisme) is evidenced by a since-broken listing URL — reactivating an existing relationship is easier than cold outreach",
+        "A TripAdvisor listing appears to exist (live-link status unverifiable due to anti-bot blocking)",
+        "Clean social presence (Facebook, Instagram, YouTube) linked from the homepage provides a foundation for future citable content"
+      ],
+      "findings": [
+        {
+          "title": "No numeric score assigned — insufficient data (Tier 0)",
+          "severity": "Info",
+          "description": "No Moz or Bing Webmaster API key configured, no DataForSEO available. Only Common Crawl (predates the 2026-06-17 relaunch, reflects the prior deindexed site) and a live verification crawler with 2 spot-checked candidate links were available. Producing a 0-100 number would imply false precision. The real finding is qualitative: a brand-new domain relaunch with an essentially unmeasured, presumed-thin backlink profile — expected at 7 weeks post-relaunch, not alarming, but action is needed.",
+          "recommendation": "Once real backlinks accrue, pull Google Search Console's Links report (first-party data, not dependent on third-party crawl sampling) — the fastest way to see real referring domains for the new domain build."
+        },
+        {
+          "title": "Broken/lost outbound link to the Verdon Tourisme business directory listing (404)",
+          "severity": "High",
+          "description": "The homepage links to https://www.verdontourisme.com/commerces-services/linstant-verdon-la-palud-sur-verdon/, which no longer resolves (verified directly, confirmed 404, no redirect). Suggests the business's listing on the regional tourism board's directory was removed, never completed, or moved during a board site redesign.",
+          "recommendation": "Fix the outbound link on-site immediately; separately, contact Verdon Tourisme to recover/restore the listing — the highest-relevance backlink opportunity available (exact geographic + activity match, regional authority) and it appears to be a lost relationship, not a never-built one."
+        },
+        {
+          "title": "No verifiable current backlinks to the new domain build",
+          "severity": "Medium",
+          "description": "Between Common Crawl's pre-relaunch data and no confirmed live referring domain, the current site build has effectively zero confirmed third-party links 7 weeks post-relaunch.",
+          "recommendation": "Expected at this stage; prioritize off-page link building alongside on-page fixes rather than treating as an emergency."
+        },
+        {
+          "title": "No federation, directory, or partner links found in the homepage's outbound link set",
+          "severity": "Medium",
+          "description": "No links to FFME (Fédération Française de la Montagne et de l'Escalade), FFS (Fédération Française de Spéléo-Canyonisme), local gîtes/campings, or activity marketplaces (GetYourGuide, Viator) — these relationships don't appear to exist yet.",
+          "recommendation": "Pursue, in priority order: recover the Verdon Tourisme listing; Comité Régional du Tourisme PACA; FFME and FFS regional directories; La Palud-sur-Verdon mairie site; GetYourGuide/Viator/TripAdvisor marketplace listings; partner accommodation (gîtes/campings) reciprocal links; local press (La Provence, France Bleu) seasonal roundups."
+        },
+        {
+          "title": "TripAdvisor link status unverifiable due to anti-bot blocking",
+          "severity": "Low",
+          "description": "The verification crawler received a 403 from TripAdvisor — inconclusive, not a confirmed loss.",
+          "recommendation": "Manually check in a browser that the listing is live, claimed, and links to the correct current domain."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Remove 'gptbot', 'chatgpt-user', 'amazonbot', 'ccbot' from src/proxy.ts BANNED_USER_AGENTS — restores all AI-search/citation access (1-line edit)",
+          "Fix src/app/robots.ts: remove GPTBot/amazonbot/CCBot from the disallow group; change disallow: '/studio/' to disallow: '/studio' to actually block the live Studio admin shell",
+          "Add notFound() calls in [category]/page.tsx and [category]/[slug]/page.tsx, plus a real not-found.tsx — stops soft 404s from confusing Search Console during reindexing",
+          "Fix self-canonicalizing wrong-locale duplicate URLs (/en/escalade, /fr/climbing, etc.) — restrict generateStaticParams() to correct locale↔slug pairs or 301-redirect mismatches",
+          "Emit /en URLs as first-class <url> entries in src/app/sitemap.ts (not just hreflang annotations) — doubles sitemap to ~60 URLs and gives Google a direct discovery path to the English site",
+          "Fix untranslated/duplicated French text on /en/canyoning, /en/climbing, /en/adventure, /en/unusual-activities, and /en/a-propos",
+          "Add preload=\"none\" + a compressed poster image to the hero <video> in Hero.tsx as an immediate LCP mitigation",
+          "Add Product/TouristTrip/Offer schema to all 11 tour detail pages (code provided in findings/schema.md)",
+          "Fix the homepage TripAdvisor icon link to match the schema-declared listing; reconcile the llms.txt address with the real La Palud-sur-Verdon address"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Re-encode the hero video to <5MB and defer its load until after first paint; remove opacity:0 GSAP gating on the H1 so the LCP element renders server-side at full opacity",
+          "Migrate raw <img> tags to next/image across AboutSection, Footer, Navbar, BlogOverview, and the category/detail page templates",
+          "Add security headers (CSP, X-Content-Type-Options, X-Frame-Options, Referrer-Policy) via next.config.ts or vercel.json",
+          "Add BreadcrumbList schema site-wide; fix LocalBusiness.url locale bug; add standalone Person schema for guides on /a-propos; remove the /en/faq locale gate",
+          "Expand /fr/faq (and /en/faq) to 12-15+ self-contained Q&As, fixing the cancellation-policy non-answer",
+          "Add a fixed, always-visible spec strip (Durée / Niveau / Âge minimum / Groupe max) above the fold on every tour detail page",
+          "Add a visible 'Sécurité & Assurance' trust section and real testimonials on homepage/About; add visible review content matching the schema aggregateRating claim",
+          "Confirm/claim Google Business Profile, embed Google Maps on the Contact page, add GBP link to schema sameAs",
+          "Recover the broken Verdon Tourisme directory listing (fix the 404'd outbound link and contact the tourism board)",
+          "Investigate and fix the mobile category-page ghosted/duplicate heading text bug"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Expand category/pillar pages (canyoning, escalade, aventures, insolite, evenementiel) from 83-164 words to 500-800+ words with safety, seasonal, and activity-differentiation content",
+          "Translate full EN guide bios and tour-page section labels (currently abridged/untranslated)",
+          "Rewrite blog roadmap toward intent-matched, answer-first posts (e.g. 'Quel canyon choisir selon son niveau') rather than generic seasonal roundups",
+          "Add group/event logistics specifics (capacity, pricing bands, case studies) to /fr/evenementiel",
+          "Add descriptive alt text to tour-page gallery images (7/10 missing on canyon-artuby, 3/6 on escalade-grande-voie)",
+          "Pursue federation/directory link building: FFME, FFS, Comité Régional du Tourisme PACA, La Palud-sur-Verdon mairie, GetYourGuide/Viator, partner gîtes/campings, local press"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Configure a Google API key (PageSpeed Insights/CrUX) to replace lab-based performance estimates with real field data",
+          "Set up Google Search Console for the relaunched domain and pull the Links report once backlinks accrue",
+          "Re-run Common Crawl checks quarterly to track when the current site build enters the crawl graph",
+          "QA every /en/ page after each content update to prevent translation regressions",
+          "Complete the deferred visual QA pass (remaining screenshots) and a live SERP capture to validate SXO page-type assumptions with real data"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

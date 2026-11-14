@@ -1,0 +1,86 @@
+{
+  "source_of_truth": "https://status.search.google.com/products/rGHU1u87FJnkP6W2GwMi/history",
+  "last_verified": "2026-10-22",
+  "freshness": {
+    "age_days": 23,
+    "stale": false,
+    "warning": null
+  },
+  "filter": {
+    "since": "2026-06",
+    "kinds": []
+  },
+  "count": 10,
+  "updates": [
+    {
+      "date": "2026-10-21",
+      "name": "Control what you share with Google Search docs updated",
+      "kind": "documentation",
+      "source": "https://developers.google.com/search/docs/crawling-indexing/control-what-you-share",
+      "notes": "The page now covers existing options such as the robots meta tag, data-nosnippet, and X-Robots-Tag alongside the Search generative AI control."
+    },
+    {
+      "date": "2026-10-16",
+      "name": "Indexing API quota page updated",
+      "kind": "documentation",
+      "source": "https://developers.google.com/search/apis/indexing-api/v3/quota-pricing",
+      "notes": "Current quota limits and process documented (default 200 publish requests per day, 180 getMetadata and 380 total requests per minute); the outdated quota request form was removed. Quota is viewed in the Google API Console."
+    },
+    {
+      "date": "2026-10-08",
+      "name": "UGC Fresh Data Program documented",
+      "kind": "documentation",
+      "source": "https://developers.google.com/search/docs/appearance/ugc-fresh-data-program",
+      "notes": "New page describing Google's UGC Fresh Data Program for user-generated content sites."
+    },
+    {
+      "date": "2026-10-06",
+      "name": "Retry-After added to the reduce crawl rate docs",
+      "kind": "documentation",
+      "source": "https://developers.google.com/crawling/docs/crawlers-fetchers/reduce-crawl-rate",
+      "notes": "The emergency crawl rate reduction section was restructured and now documents the Retry-After HTTP header with examples."
+    },
+    {
+      "date": "2026-10-01",
+      "name": "Generative AI content guidance updated",
+      "kind": "documentation",
+      "source": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
+      "notes": "The guide on using generative AI content was updated with information from the Search Quality Rater Guidelines."
+    },
+    {
+      "date": "2026-09-24",
+      "name": "VideoObject creator and interaction statistics documented",
+      "kind": "schema",
+      "source": "https://developers.google.com/search/docs/appearance/structured-data/video",
+      "notes": "Recommended creator (or author) as Person or Organization with name or alternateName; interactionStatistic supports WatchAction, LikeAction, CommentAction, and ShareAction."
+    },
+    {
+      "date": "2026-09-24",
+      "name": "Search Console web multimodal performance reporting",
+      "kind": "product",
+      "source": "https://developers.google.com/search/blog/2026/09/web-multimodal-in-sc",
+      "notes": "Global rollout of a multimodal search type filter (Lens, Circle to Search, image uploads, Chrome Search this image) in the Search results and Generative AI performance reports, with export."
+    },
+    {
+      "date": "2026-09-24",
+      "name": "September 2026 Spam Update",
+      "kind": "spam",
+      "source": "https://status.search.google.com/incidents/XhUDXP7A67iHCD2kmbVu",
+      "notes": "Global, all-language rollout from September 24 at 09:15 PDT to October 8, 2026 (13 days 16 hours on the dashboard); Google named no specific target."
+    },
+    {
+      "date": "2026-09-18",
+      "name": "Aggregator and supplier units add local business queries",
+      "kind": "documentation",
+      "source": "https://developers.google.com/search/docs/appearance/aggregator-unit",
+      "notes": "In the EEA, aggregator and supplier units now also appear for local business queries (for example plumbers and brick-and-mortar shops). Aggregators participate through the Local Point of Interest Feed. Direct providers qualify for the supplier unit from crawled data alone."
+    },
+    {
+      "date": "2026-09-18",
+      "name": "Preferred sources in AI features require gen-AI inclusion",
+      "kind": "documentation",
+      "source": "https://developers.google.com/search/docs/appearance/preferred-sources",
+      "notes": "To display as a preferred source in AI Mode and AI Overviews, a site must be included in the Search generative AI control in Search Console. Top Stories preferred-source eligibility is unchanged."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+User-Agent: *
+Allow: /
+Disallow: /studio
+
+User-Agent: AhrefsBot
+User-Agent: SemrushBot
+User-Agent: DotBot
+User-Agent: rogerbot
+User-Agent: PetalBot
+User-Agent: Bytespider
+User-Agent: MJ12bot
+User-Agent: YandexBot
+User-Agent: Baiduspider
+User-Agent: Sogou
+User-Agent: Exabot
+User-Agent: Diffbot
+User-Agent: cohere-ai
+User-Agent: anthropic-ai
+User-Agent: Google-Extended
+Disallow: /
+
+Sitemap: https://www.linstantverdon.com/sitemap.xml

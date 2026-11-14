@@ -1,0 +1,751 @@
+{
+  "property": "sc-domain:linstantverdon.com",
+  "rows": [
+    {
+      "keys": [
+        "http://linstantverdon.com/"
+      ],
+      "clicks": 175,
+      "impressions": 6728,
+      "ctr": 2.6,
+      "position": 6.1,
+      "page": "http://linstantverdon.com/"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr"
+      ],
+      "clicks": 65,
+      "impressions": 1165,
+      "ctr": 5.58,
+      "position": 23.1,
+      "page": "https://www.linstantverdon.com/fr"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/escalade"
+      ],
+      "clicks": 8,
+      "impressions": 640,
+      "ctr": 1.25,
+      "position": 18.7,
+      "page": "https://www.linstantverdon.com/fr/escalade"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/aventures/trou-du-renard"
+      ],
+      "clicks": 7,
+      "impressions": 353,
+      "ctr": 1.98,
+      "position": 9.3,
+      "page": "https://www.linstantverdon.com/fr/aventures/trou-du-renard"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyoning/canyon-baudan-baou"
+      ],
+      "clicks": 6,
+      "impressions": 393,
+      "ctr": 1.53,
+      "position": 5.4,
+      "page": "https://www.linstantverdon.com/en/canyoning/canyon-baudan-baou"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/canyoning"
+      ],
+      "clicks": 6,
+      "impressions": 438,
+      "ctr": 1.37,
+      "position": 11.7,
+      "page": "https://www.linstantverdon.com/fr/canyoning"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyoning/canyon-artuby"
+      ],
+      "clicks": 4,
+      "impressions": 44,
+      "ctr": 9.09,
+      "position": 5.3,
+      "page": "https://www.linstantverdon.com/en/canyoning/canyon-artuby"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/climbing/escalade-grande-voie"
+      ],
+      "clicks": 4,
+      "impressions": 66,
+      "ctr": 6.06,
+      "position": 6.7,
+      "page": "https://www.linstantverdon.com/en/climbing/escalade-grande-voie"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/insolite/nuit-portaledge"
+      ],
+      "clicks": 4,
+      "impressions": 61,
+      "ctr": 6.56,
+      "position": 9.3,
+      "page": "https://www.linstantverdon.com/fr/insolite/nuit-portaledge"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/a-propos"
+      ],
+      "clicks": 3,
+      "impressions": 10,
+      "ctr": 30.0,
+      "position": 3.2,
+      "page": "https://www.linstantverdon.com/fr/a-propos"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en"
+      ],
+      "clicks": 2,
+      "impressions": 98,
+      "ctr": 2.04,
+      "position": 8.1,
+      "page": "https://www.linstantverdon.com/en"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyoning/canyon-couloir-samson"
+      ],
+      "clicks": 2,
+      "impressions": 240,
+      "ctr": 0.83,
+      "position": 18.7,
+      "page": "https://www.linstantverdon.com/en/canyoning/canyon-couloir-samson"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/insolite/nuit-portaledge"
+      ],
+      "clicks": 2,
+      "impressions": 55,
+      "ctr": 3.64,
+      "position": 9.6,
+      "page": "https://www.linstantverdon.com/en/insolite/nuit-portaledge"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/canyoning/canyon-artuby"
+      ],
+      "clicks": 2,
+      "impressions": 39,
+      "ctr": 5.13,
+      "position": 9.1,
+      "page": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/canyoning/canyon-estelie-imbut"
+      ],
+      "clicks": 2,
+      "impressions": 15,
+      "ctr": 13.33,
+      "position": 5.4,
+      "page": "https://www.linstantverdon.com/fr/canyoning/canyon-estelie-imbut"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/insolite/soir%C3%A9e-insolite-portaledge"
+      ],
+      "clicks": 2,
+      "impressions": 32,
+      "ctr": 6.25,
+      "position": 6.2,
+      "page": "https://www.linstantverdon.com/fr/insolite/soir%C3%A9e-insolite-portaledge"
+    },
+    {
+      "keys": [
+        "https://linstantverdon.com/en/canyon/balene/"
+      ],
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 50.0,
+      "position": 3,
+      "page": "https://linstantverdon.com/en/canyon/balene/"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/adventure/trou-du-renard"
+      ],
+      "clicks": 1,
+      "impressions": 21,
+      "ctr": 4.76,
+      "position": 5.7,
+      "page": "https://www.linstantverdon.com/en/adventure/trou-du-renard"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyon/canyon-balene"
+      ],
+      "clicks": 1,
+      "impressions": 5,
+      "ctr": 20.0,
+      "position": 3.4,
+      "page": "https://www.linstantverdon.com/en/canyon/canyon-balene"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyon/canyon-estelie-imbut"
+      ],
+      "clicks": 1,
+      "impressions": 5,
+      "ctr": 20.0,
+      "position": 8.4,
+      "page": "https://www.linstantverdon.com/en/canyon/canyon-estelie-imbut"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyoning/canyon-balene"
+      ],
+      "clicks": 1,
+      "impressions": 106,
+      "ctr": 0.94,
+      "position": 9.7,
+      "page": "https://www.linstantverdon.com/en/canyoning/canyon-balene"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyoning/canyon-estelie-imbut"
+      ],
+      "clicks": 1,
+      "impressions": 14,
+      "ctr": 7.14,
+      "position": 12,
+      "page": "https://www.linstantverdon.com/en/canyoning/canyon-estelie-imbut"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/escalade/escalade-grande-voie"
+      ],
+      "clicks": 1,
+      "impressions": 14,
+      "ctr": 7.14,
+      "position": 8.1,
+      "page": "https://www.linstantverdon.com/en/escalade/escalade-grande-voie"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/stages"
+      ],
+      "clicks": 1,
+      "impressions": 27,
+      "ctr": 3.7,
+      "position": 6.2,
+      "page": "https://www.linstantverdon.com/en/stages"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/unusual-activities/nuit-portaledge"
+      ],
+      "clicks": 1,
+      "impressions": 23,
+      "ctr": 4.35,
+      "position": 6.3,
+      "page": "https://www.linstantverdon.com/en/unusual-activities/nuit-portaledge"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/canyoning/canyon-couloir-samson"
+      ],
+      "clicks": 1,
+      "impressions": 11,
+      "ctr": 9.09,
+      "position": 9.2,
+      "page": "https://www.linstantverdon.com/fr/canyoning/canyon-couloir-samson"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/escalade/escalade-demi-journ%C3%A9e-d%C3%A9couverte"
+      ],
+      "clicks": 1,
+      "impressions": 8,
+      "ctr": 12.5,
+      "position": 9.4,
+      "page": "https://www.linstantverdon.com/fr/escalade/escalade-demi-journ%C3%A9e-d%C3%A9couverte"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/escalade/escalade-grande-voie"
+      ],
+      "clicks": 1,
+      "impressions": 11,
+      "ctr": 9.09,
+      "position": 10.7,
+      "page": "https://www.linstantverdon.com/fr/escalade/escalade-grande-voie"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/insolite"
+      ],
+      "clicks": 1,
+      "impressions": 8,
+      "ctr": 12.5,
+      "position": 3.5,
+      "page": "https://www.linstantverdon.com/fr/insolite"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/stages"
+      ],
+      "clicks": 1,
+      "impressions": 140,
+      "ctr": 0.71,
+      "position": 6.5,
+      "page": "https://www.linstantverdon.com/fr/stages"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/stages/multi-activit%C3%A9-3-jours"
+      ],
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 50.0,
+      "position": 3.5,
+      "page": "https://www.linstantverdon.com/fr/stages/multi-activit%C3%A9-3-jours"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/unusual-activities/nuit-portaledge"
+      ],
+      "clicks": 1,
+      "impressions": 31,
+      "ctr": 3.23,
+      "position": 10.0,
+      "page": "https://www.linstantverdon.com/fr/unusual-activities/nuit-portaledge"
+    },
+    {
+      "keys": [
+        "https://linstantverdon.com/"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 1.7,
+      "page": "https://linstantverdon.com/"
+    },
+    {
+      "keys": [
+        "https://linstantverdon.com/en/blog/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10,
+      "page": "https://linstantverdon.com/en/blog/"
+    },
+    {
+      "keys": [
+        "https://linstantverdon.com/en/informations/"
+      ],
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 37.8,
+      "page": "https://linstantverdon.com/en/informations/"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7,
+      "page": "https://www.linstantverdon.com/"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/&"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8,
+      "page": "https://www.linstantverdon.com/&"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/a-propos"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 4.5,
+      "page": "https://www.linstantverdon.com/en/a-propos"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/adventure"
+      ],
+      "clicks": 0,
+      "impressions": 125,
+      "ctr": 0,
+      "position": 12.1,
+      "page": "https://www.linstantverdon.com/en/adventure"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/adventure/mainmorte"
+      ],
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 6,
+      "page": "https://www.linstantverdon.com/en/adventure/mainmorte"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/aventures/mainmorte"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 6.9,
+      "page": "https://www.linstantverdon.com/en/aventures/mainmorte"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/blog"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 5.8,
+      "page": "https://www.linstantverdon.com/en/blog"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/blog/3-activites-verdon-ete"
+      ],
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 7.4,
+      "page": "https://www.linstantverdon.com/en/blog/3-activites-verdon-ete"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/blog/3-activites-verdon-printemps"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 10,
+      "page": "https://www.linstantverdon.com/en/blog/3-activites-verdon-printemps"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyon/canoyn-bas-jabron"
+      ],
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 13.2,
+      "page": "https://www.linstantverdon.com/en/canyon/canoyn-bas-jabron"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyon/canyon-baudan-baou"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 2,
+      "page": "https://www.linstantverdon.com/en/canyon/canyon-baudan-baou"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyon/canyon-couloir-samson"
+      ],
+      "clicks": 0,
+      "impressions": 24,
+      "ctr": 0,
+      "position": 10.4,
+      "page": "https://www.linstantverdon.com/en/canyon/canyon-couloir-samson"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyon/canyon-ferne"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 7.8,
+      "page": "https://www.linstantverdon.com/en/canyon/canyon-ferne"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyoning"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4,
+      "page": "https://www.linstantverdon.com/en/canyoning"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyoning/canoyn-bas-jabron"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 7.5,
+      "page": "https://www.linstantverdon.com/en/canyoning/canoyn-bas-jabron"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyoning/canyon-ferne"
+      ],
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 4.9,
+      "page": "https://www.linstantverdon.com/en/canyoning/canyon-ferne"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/canyoning/canyon-st-auban"
+      ],
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 7.2,
+      "page": "https://www.linstantverdon.com/en/canyoning/canyon-st-auban"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/climbing"
+      ],
+      "clicks": 0,
+      "impressions": 109,
+      "ctr": 0,
+      "position": 18.8,
+      "page": "https://www.linstantverdon.com/en/climbing"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/climbing/multi-pitch"
+      ],
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 41.3,
+      "page": "https://www.linstantverdon.com/en/climbing/multi-pitch"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/event"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 11,
+      "page": "https://www.linstantverdon.com/en/event"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/insolite"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3,
+      "page": "https://www.linstantverdon.com/en/insolite"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/insolite/insolite-la-carelle"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 27.7,
+      "page": "https://www.linstantverdon.com/en/insolite/insolite-la-carelle"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/unusual-activities"
+      ],
+      "clicks": 0,
+      "impressions": 27,
+      "ctr": 0,
+      "position": 18.4,
+      "page": "https://www.linstantverdon.com/en/unusual-activities"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/unusual-activities/soir%C3%A9e-insolite-portaledge"
+      ],
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 7.2,
+      "page": "https://www.linstantverdon.com/en/unusual-activities/soir%C3%A9e-insolite-portaledge"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/weekend"
+      ],
+      "clicks": 0,
+      "impressions": 73,
+      "ctr": 0,
+      "position": 5.6,
+      "page": "https://www.linstantverdon.com/en/weekend"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/weekend/multi-activit%C3%A9-3-jours"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4,
+      "page": "https://www.linstantverdon.com/en/weekend/multi-activit%C3%A9-3-jours"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/en/weekend/multi-activit%C3%A9-7-jours"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 8.3,
+      "page": "https://www.linstantverdon.com/en/weekend/multi-activit%C3%A9-7-jours"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/adventure"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 5.4,
+      "page": "https://www.linstantverdon.com/fr/adventure"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/aventures"
+      ],
+      "clicks": 0,
+      "impressions": 24,
+      "ctr": 0,
+      "position": 11.2,
+      "page": "https://www.linstantverdon.com/fr/aventures"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/blog/3-activites-verdon-ete"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 5,
+      "page": "https://www.linstantverdon.com/fr/blog/3-activites-verdon-ete"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/blog/3-activites-verdon-printemps"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 9,
+      "page": "https://www.linstantverdon.com/fr/blog/3-activites-verdon-printemps"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/canyoning/canoyn-bas-jabron"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 2.5,
+      "page": "https://www.linstantverdon.com/fr/canyoning/canoyn-bas-jabron"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/canyoning/canyon-balene"
+      ],
+      "clicks": 0,
+      "impressions": 62,
+      "ctr": 0,
+      "position": 11.2,
+      "page": "https://www.linstantverdon.com/fr/canyoning/canyon-balene"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/canyoning/canyon-ferne"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 5.6,
+      "page": "https://www.linstantverdon.com/fr/canyoning/canyon-ferne"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/climbing/escalade-grande-voie"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 10.7,
+      "page": "https://www.linstantverdon.com/fr/climbing/escalade-grande-voie"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/contact"
+      ],
+      "clicks": 0,
+      "impressions": 232,
+      "ctr": 0,
+      "position": 2.3,
+      "page": "https://www.linstantverdon.com/fr/contact"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/evenementiel"
+      ],
+      "clicks": 0,
+      "impressions": 51,
+      "ctr": 0,
+      "position": 28.0,
+      "page": "https://www.linstantverdon.com/fr/evenementiel"
+    },
+    {
+      "keys": [
+        "https://www.linstantverdon.com/fr/stages/multi-activit%C3%A9-7-jours"
+      ],
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 8,
+      "page": "https://www.linstantverdon.com/fr/stages/multi-activit%C3%A9-7-jours"
+    }
+  ],
+  "totals": {
+    "clicks": 307,
+    "impressions": 10146,
+    "ctr": 3.03,
+    "position": 10.2
+  },
+  "totals_source": "dimensionless_aggregate",
+  "totals_complete": true,
+  "quick_wins": [],
+  "warnings": [],
+  "row_count": 73,
+  "error": null,
+  "date_range": {
+    "start": "2026-08-11",
+    "end": "2026-11-11"
+  }
+}

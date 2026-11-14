@@ -1,0 +1,44 @@
+{
+  "url": "https://www.linstantverdon.com/en/climbing",
+  "property": "sc-domain:linstantverdon.com",
+  "index_status": {
+    "verdict": "PASS",
+    "coverage_state": "Submitted and indexed",
+    "robots_txt_state": "ALLOWED",
+    "indexing_state": "INDEXING_ALLOWED",
+    "page_fetch_state": "SUCCESSFUL",
+    "last_crawl_time": "2026-11-10T15:02:50Z",
+    "crawled_as": "MOBILE",
+    "referring_urls": [
+      "https://www.linstantverdon.com/en/escalade",
+      "https://www.linstantverdon.com/en/climbing/escalade-grande-voie"
+    ]
+  },
+  "crawl_info": null,
+  "canonical": {
+    "google_canonical": "https://www.linstantverdon.com/en/climbing",
+    "user_canonical": "https://www.linstantverdon.com/en/climbing",
+    "match": true
+  },
+  "mobile_usability": {
+    "deprecated": true,
+    "verdict": "VERDICT_UNSPECIFIED",
+    "issues": []
+  },
+  "rich_results": {
+    "verdict": "PASS",
+    "detected_items": [
+      {
+        "type": "Review snippets",
+        "items": [
+          {
+            "name": "L&#39;instant Verdon",
+            "issues": []
+          }
+        ]
+      }
+    ]
+  },
+  "verdict": "PASS",
+  "error": null
+}

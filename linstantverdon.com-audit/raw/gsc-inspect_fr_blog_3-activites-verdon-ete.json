@@ -1,0 +1,43 @@
+{
+  "url": "https://www.linstantverdon.com/fr/blog/3-activites-verdon-ete",
+  "property": "sc-domain:linstantverdon.com",
+  "index_status": {
+    "verdict": "PASS",
+    "coverage_state": "Submitted and indexed",
+    "robots_txt_state": "ALLOWED",
+    "indexing_state": "INDEXING_ALLOWED",
+    "page_fetch_state": "SUCCESSFUL",
+    "last_crawl_time": "2026-11-12T00:38:19Z",
+    "crawled_as": "MOBILE",
+    "referring_urls": [
+      "https://www.linstantverdon.com/en/blog/3-activites-verdon-ete"
+    ]
+  },
+  "crawl_info": null,
+  "canonical": {
+    "google_canonical": "https://www.linstantverdon.com/fr/blog/3-activites-verdon-ete",
+    "user_canonical": "https://www.linstantverdon.com/fr/blog/3-activites-verdon-ete",
+    "match": true
+  },
+  "mobile_usability": {
+    "deprecated": true,
+    "verdict": "VERDICT_UNSPECIFIED",
+    "issues": []
+  },
+  "rich_results": {
+    "verdict": "PASS",
+    "detected_items": [
+      {
+        "type": "Review snippets",
+        "items": [
+          {
+            "name": "L&#39;instant Verdon",
+            "issues": []
+          }
+        ]
+      }
+    ]
+  },
+  "verdict": "PASS",
+  "error": null
+}

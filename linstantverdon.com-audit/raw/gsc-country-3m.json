@@ -1,0 +1,521 @@
+{
+  "property": "sc-domain:linstantverdon.com",
+  "rows": [
+    {
+      "keys": [
+        "fra"
+      ],
+      "clicks": 267,
+      "impressions": 7185,
+      "ctr": 3.72,
+      "position": 8.8,
+      "country": "fra"
+    },
+    {
+      "keys": [
+        "bel"
+      ],
+      "clicks": 8,
+      "impressions": 149,
+      "ctr": 5.37,
+      "position": 7.1,
+      "country": "bel"
+    },
+    {
+      "keys": [
+        "gbr"
+      ],
+      "clicks": 8,
+      "impressions": 178,
+      "ctr": 4.49,
+      "position": 10.1,
+      "country": "gbr"
+    },
+    {
+      "keys": [
+        "deu"
+      ],
+      "clicks": 7,
+      "impressions": 287,
+      "ctr": 2.44,
+      "position": 6.8,
+      "country": "deu"
+    },
+    {
+      "keys": [
+        "aut"
+      ],
+      "clicks": 4,
+      "impressions": 113,
+      "ctr": 3.54,
+      "position": 6.6,
+      "country": "aut"
+    },
+    {
+      "keys": [
+        "usa"
+      ],
+      "clicks": 4,
+      "impressions": 363,
+      "ctr": 1.1,
+      "position": 7.0,
+      "country": "usa"
+    },
+    {
+      "keys": [
+        "che"
+      ],
+      "clicks": 3,
+      "impressions": 157,
+      "ctr": 1.91,
+      "position": 5.1,
+      "country": "che"
+    },
+    {
+      "keys": [
+        "ita"
+      ],
+      "clicks": 3,
+      "impressions": 208,
+      "ctr": 1.44,
+      "position": 5.9,
+      "country": "ita"
+    },
+    {
+      "keys": [
+        "esp"
+      ],
+      "clicks": 1,
+      "impressions": 86,
+      "ctr": 1.16,
+      "position": 9.9,
+      "country": "esp"
+    },
+    {
+      "keys": [
+        "nld"
+      ],
+      "clicks": 1,
+      "impressions": 141,
+      "ctr": 0.71,
+      "position": 10.0,
+      "country": "nld"
+    },
+    {
+      "keys": [
+        "nor"
+      ],
+      "clicks": 1,
+      "impressions": 34,
+      "ctr": 2.94,
+      "position": 6.6,
+      "country": "nor"
+    },
+    {
+      "keys": [
+        "ago"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 43.5,
+      "country": "ago"
+    },
+    {
+      "keys": [
+        "alb"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6,
+      "country": "alb"
+    },
+    {
+      "keys": [
+        "and"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 12,
+      "country": "and"
+    },
+    {
+      "keys": [
+        "are"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 13.7,
+      "country": "are"
+    },
+    {
+      "keys": [
+        "arg"
+      ],
+      "clicks": 0,
+      "impressions": 22,
+      "ctr": 0,
+      "position": 24.7,
+      "country": "arg"
+    },
+    {
+      "keys": [
+        "arm"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 20,
+      "country": "arm"
+    },
+    {
+      "keys": [
+        "aus"
+      ],
+      "clicks": 0,
+      "impressions": 11,
+      "ctr": 0,
+      "position": 5.9,
+      "country": "aus"
+    },
+    {
+      "keys": [
+        "aze"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9,
+      "country": "aze"
+    },
+    {
+      "keys": [
+        "ben"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 25,
+      "country": "ben"
+    },
+    {
+      "keys": [
+        "bgd"
+      ],
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 40.4,
+      "country": "bgd"
+    },
+    {
+      "keys": [
+        "bgr"
+      ],
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 12.6,
+      "country": "bgr"
+    },
+    {
+      "keys": [
+        "bih"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 20,
+      "country": "bih"
+    },
+    {
+      "keys": [
+        "bol"
+      ],
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 36.5,
+      "country": "bol"
+    },
+    {
+      "keys": [
+        "bra"
+      ],
+      "clicks": 0,
+      "impressions": 62,
+      "ctr": 0,
+      "position": 20.9,
+      "country": "bra"
+    },
+    {
+      "keys": [
+        "can"
+      ],
+      "clicks": 0,
+      "impressions": 28,
+      "ctr": 0,
+      "position": 9.5,
+      "country": "can"
+    },
+    {
+      "keys": [
+        "chl"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 17,
+      "country": "chl"
+    },
+    {
+      "keys": [
+        "chn"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6.5,
+      "country": "chn"
+    },
+    {
+      "keys": [
+        "civ"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3,
+      "country": "civ"
+    },
+    {
+      "keys": [
+        "cod"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 44.8,
+      "country": "cod"
+    },
+    {
+      "keys": [
+        "cog"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1,
+      "country": "cog"
+    },
+    {
+      "keys": [
+        "col"
+      ],
+      "clicks": 0,
+      "impressions": 25,
+      "ctr": 0,
+      "position": 28.4,
+      "country": "col"
+    },
+    {
+      "keys": [
+        "cri"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 40.2,
+      "country": "cri"
+    },
+    {
+      "keys": [
+        "cuw"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1,
+      "country": "cuw"
+    },
+    {
+      "keys": [
+        "cyp"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 7.7,
+      "country": "cyp"
+    },
+    {
+      "keys": [
+        "cze"
+      ],
+      "clicks": 0,
+      "impressions": 33,
+      "ctr": 0,
+      "position": 5.4,
+      "country": "cze"
+    },
+    {
+      "keys": [
+        "dnk"
+      ],
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 5.8,
+      "country": "dnk"
+    },
+    {
+      "keys": [
+        "dom"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 21.4,
+      "country": "dom"
+    },
+    {
+      "keys": [
+        "dza"
+      ],
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 33.9,
+      "country": "dza"
+    },
+    {
+      "keys": [
+        "ecu"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 28.8,
+      "country": "ecu"
+    },
+    {
+      "keys": [
+        "egy"
+      ],
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 26.3,
+      "country": "egy"
+    },
+    {
+      "keys": [
+        "est"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 8.3,
+      "country": "est"
+    },
+    {
+      "keys": [
+        "eth"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 46.3,
+      "country": "eth"
+    },
+    {
+      "keys": [
+        "fin"
+      ],
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 6.9,
+      "country": "fin"
+    },
+    {
+      "keys": [
+        "geo"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10.5,
+      "country": "geo"
+    },
+    {
+      "keys": [
+        "ggy"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5,
+      "country": "ggy"
+    },
+    {
+      "keys": [
+        "gha"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 32.7,
+      "country": "gha"
+    },
+    {
+      "keys": [
+        "glp"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7,
+      "country": "glp"
+    },
+    {
+      "keys": [
+        "gmb"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 32,
+      "country": "gmb"
+    },
+    {
+      "keys": [
+        "grc"
+      ],
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 9.6,
+      "country": "grc"
+    }
+  ],
+  "totals": {
+    "clicks": 307,
+    "impressions": 10146,
+    "ctr": 3.03,
+    "position": 10.2
+  },
+  "totals_source": "dimensionless_aggregate",
+  "totals_complete": true,
+  "quick_wins": [],
+  "warnings": [],
+  "row_count": 50,
+  "error": null,
+  "date_range": {
+    "start": "2026-08-11",
+    "end": "2026-11-11"
+  }
+}

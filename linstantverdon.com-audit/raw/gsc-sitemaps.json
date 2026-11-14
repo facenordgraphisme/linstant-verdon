@@ -1,0 +1,38 @@
+{
+  "property": "sc-domain:linstantverdon.com",
+  "sitemaps": [
+    {
+      "path": "https://www.linstantverdon.com/sitemap.xml",
+      "last_submitted": "2026-08-07T20:05:54.303Z",
+      "is_pending": false,
+      "is_index": false,
+      "type": "sitemap",
+      "warnings": "0",
+      "errors": "0",
+      "contents": [
+        {
+          "type": "web",
+          "submitted": "60"
+        }
+      ],
+      "indexation_note": "Sitemaps API contents[].submitted reflects submitted URL counts only. Use the URL Inspection API as the indexation truth for whether specific URLs are indexed."
+    },
+    {
+      "path": "https://linstantverdon.com/sitemap-0.xml",
+      "last_submitted": "2026-05-04T16:27:34.978Z",
+      "is_pending": false,
+      "is_index": false,
+      "type": "sitemap",
+      "warnings": "0",
+      "errors": "0",
+      "contents": [
+        {
+          "type": "web",
+          "submitted": "55"
+        }
+      ],
+      "indexation_note": "Sitemaps API contents[].submitted reflects submitted URL counts only. Use the URL Inspection API as the indexation truth for whether specific URLs are indexed."
+    }
+  ],
+  "error": null
+}

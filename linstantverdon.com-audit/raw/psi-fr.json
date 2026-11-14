@@ -1,0 +1,1969 @@
+{
+  "url": "https://www.linstantverdon.com/fr",
+  "psi": {
+    "mobile": {
+      "url": "https://www.linstantverdon.com/fr",
+      "strategy": "mobile",
+      "lighthouse_version": "13.6.0",
+      "lighthouse_scores": {
+        "performance": 98,
+        "accessibility": 90,
+        "best-practices": 92,
+        "seo": 100
+      },
+      "lab_metrics": {
+        "first-contentful-paint": {
+          "value": 1682.0074676233512,
+          "display": "1.7\u00a0s",
+          "score": 0.92
+        },
+        "largest-contentful-paint": {
+          "value": 1682.0074676233512,
+          "display": "1.7\u00a0s",
+          "score": 0.99
+        },
+        "total-blocking-time": {
+          "value": 12,
+          "display": "10\u00a0ms",
+          "score": 1
+        },
+        "cumulative-layout-shift": {
+          "value": 0,
+          "display": "0",
+          "score": 1
+        },
+        "speed-index": {
+          "value": 3270.6900278371504,
+          "display": "3.3\u00a0s",
+          "score": 0.91
+        },
+        "interactive": {
+          "value": 5128.558527498015,
+          "display": "5.1\u00a0s",
+          "score": 0.75
+        }
+      },
+      "field_metrics": {},
+      "opportunities": [],
+      "diagnostics": [
+        {
+          "id": "total-byte-weight",
+          "title": "Avoid enormous network payloads",
+          "display": "Total size was 12,594\u00a0KiB",
+          "score": 0.5,
+          "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/)."
+        },
+        {
+          "id": "mainthread-work-breakdown",
+          "title": "Minimizes main-thread work",
+          "display": "0.9\u00a0s",
+          "score": 1,
+          "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to minimize main-thread work](https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/)"
+        },
+        {
+          "id": "bootup-time",
+          "title": "JavaScript execution time",
+          "display": "0.4\u00a0s",
+          "score": 1,
+          "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to reduce Javascript execution time](https://developer.chrome.com/docs/lighthouse/performance/bootup-time/)."
+        },
+        {
+          "id": "layout-shifts",
+          "title": "Avoid large layout shifts",
+          "display": "",
+          "score": null,
+          "description": "These are the largest layout shifts observed on the page. Each table item represents a single layout shift, and shows the element that shifted the most. Below each item are possible root causes that led to the layout shift. Some of these layout shifts may not be included in the CLS metric value due to [windowing](https://web.dev/articles/cls#what_is_cls). [Learn how to improve CLS](https://web.dev/articles/optimize-cls)"
+        },
+        {
+          "id": "long-tasks",
+          "title": "Avoid long main-thread tasks",
+          "display": "2 long tasks found",
+          "score": 1,
+          "description": "Lists the longest tasks on the main thread, useful for identifying worst contributors to input delay. [Learn how to avoid long main-thread tasks](https://web.dev/articles/optimize-long-tasks)"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "display": "Est savings of 112\u00a0KiB",
+          "score": 0.5,
+          "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/)."
+        },
+        {
+          "id": "unused-css-rules",
+          "title": "Reduce unused CSS",
+          "display": "",
+          "score": 1,
+          "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity. [Learn how to reduce unused CSS](https://developer.chrome.com/docs/lighthouse/performance/unused-css-rules/)."
+        }
+      ],
+      "failed_audits": [
+        {
+          "id": "errors-in-console",
+          "title": "Browser errors were logged to the console",
+          "score": 0,
+          "display": "",
+          "description": "Errors logged to the console indicate unresolved problems. They can come from network request failures and other browser concerns. [Learn more about this errors in console diagnostic audit](https://developer.chrome.com/docs/lighthouse/best-practices/errors-in-console/)"
+        },
+        {
+          "id": "inspector-issues",
+          "title": "Issues were logged in the `Issues` panel in Chrome Devtools",
+          "score": 0,
+          "display": "",
+          "description": "Issues logged to the `Issues` panel in Chrome Devtools indicate unresolved problems. They can come from network request failures, insufficient security controls, and other browser concerns. Open up the Issues panel in Chrome DevTools for more details on each issue."
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "description": "Low-contrast text is difficult or impossible for many users to read. [Learn how to provide sufficient color contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast)."
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": "",
+          "description": "Properly ordered headings that do not skip levels convey the semantic structure of the page, making it easier to navigate and understand when using assistive technologies. [Learn more about heading order](https://dequeuniversity.com/rules/axe/4.14/heading-order)."
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "display": "",
+          "description": "[Avoid chaining critical requests](https://developer.chrome.com/docs/performance/insights/network-dependency-tree) by reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load"
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "display": "Est savings of 450\u00a0ms",
+          "description": "Requests are blocking the page\u2019s initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path."
+        },
+        {
+          "id": "button-name",
+          "title": "Buttons do not have an accessible name",
+          "score": 0,
+          "display": "",
+          "description": "When a button doesn't have an accessible name, screen readers announce it as \"button\", making it unusable for users who rely on screen readers. [Learn how to make buttons more accessible](https://dequeuniversity.com/rules/axe/4.14/button-name)."
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "display": "Est savings of 12\u00a0KiB",
+          "description": "Polyfills and transforms enable older browsers to use new JavaScript features. However, many aren\u2019t necessary for modern browsers. Consider modifying your JavaScript build process to not transpile [Baseline](https://web.dev/articles/baseline-and-polyfills) features, unless you know you must support older browsers. [Learn why most sites can deploy ES6+ code without transpiling](https://developer.chrome.com/docs/performance/insights/legacy-javascript)."
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "display": "Est savings of 112\u00a0KiB",
+          "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/)."
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0.5,
+          "display": "Est savings of 5,476\u00a0KiB",
+          "description": "Reducing the download time of images can improve the perceived load time of the page and LCP. [Learn more about optimizing image size](https://developer.chrome.com/docs/performance/insights/image-delivery)."
+        },
+        {
+          "id": "total-byte-weight",
+          "title": "Avoid enormous network payloads",
+          "score": 0.5,
+          "display": "Total size was 12,594\u00a0KiB",
+          "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/)."
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.75,
+          "display": "5.1\u00a0s",
+          "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive. [Learn more about the Time to Interactive metric](https://developer.chrome.com/docs/lighthouse/performance/interactive/)."
+        }
+      ],
+      "passed_audits_count": 83,
+      "seo_audits": [
+        {
+          "id": "is-crawlable",
+          "title": "Page isn\u2019t blocked from indexing",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "document-title",
+          "title": "Document has a `<title>` element",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "meta-description",
+          "title": "Document has a meta description",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "http-status-code",
+          "title": "Page has successful HTTP status code",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "link-text",
+          "title": "Links have descriptive text",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "crawlable-anchors",
+          "title": "Links are crawlable",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "robots-txt",
+          "title": "robots.txt is valid",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "image-alt",
+          "title": "Image elements have `[alt]` attributes",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "hreflang",
+          "title": "Document has a valid `hreflang`",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "canonical",
+          "title": "Document has a valid `rel=canonical`",
+          "score": 1,
+          "pass": true
+        }
+      ],
+      "accessibility_audits": [
+        {
+          "id": "button-name",
+          "title": "Buttons do not have an accessible name",
+          "score": 0,
+          "display": ""
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": ""
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": ""
+        }
+      ],
+      "audit_details": {
+        "identical-links-same-purpose": {
+          "title": "Identical links have the same purpose.",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'selector': 'article.blog-card > div.p-8 > div.pt-4 > a.inline-flex', 'lhId': '1-28-A', 'snippet': '<a class=\"inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider\u2026\" href=\"/fr/bl"
+            }
+          ],
+          "total_items": 1
+        },
+        "errors-in-console": {
+          "title": "Browser errors were logged to the console",
+          "headings": [
+            "sourceLocation",
+            "description"
+          ],
+          "items": [
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Connecting to 'https://ad.doubleclick.net/ccm/s/collect?auid=1408446222.1794621398&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&fmt=8' violates the following Content Security Policy directive: \"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://*.sanity.io\". The action has been blocked."
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Connecting to 'https://www.google.com/ccm/collect?rcb=6&frm=0&apvc=1&auid=1408446222.1794621398&dt=L%27instant%20Verdon%20%7C%20Canyoning%2C%20Aquarando%20%26%20Escalade%20dans%20le%20Verdon&tid=AW-797772111&en=page_view&dl=https%3A%2F%2Fwww.linstantverdon.com%2Ffr&scrsrc=www.googletagmanager.com&rnd=579548228.1794621398&navt=n&npa=0&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616985~115938466~115938469~118897920~118897930~120213116~120385422~120412528~120420414~120469145~120469153~121191153~121246026~121246034&tft=1794621397923&tfd=505&tids=AW-797772111&fmt=8' violates the following Content Security Policy directive: \"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://*.sanity.io\". The action has been blocked."
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Connecting to 'https://www.google.com/rmkt/collect/797772111/?random=1794621397883&cv=11&fst=1794621397883&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616985~115938466~115938469~118897920~118897930~120213116~120385422~120412528~120420414~120469145~120469153~121191153~121246026~121246034&u_w=412&u_h=823&url=https%3A%2F%2Fwww.linstantverdon.com%2Ffr&rcb=6&frm=0&tiba=L%27instant%20Verdon%20%7C%20Canyoning%2C%20Aquarando%20%26%20Escalade%20dans%20le%20Verdon&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1408446222.1794621398&uaa=&uab=64&uafvl=Not-A.Brand%3B99.0.0.0%7CHeadlessChrome%3B157.0.8103.38%7CChromium%3B157.0.8103.38&uamb=1&uam=moto%20g%20power%20(2022)&uap=Android&uapv=11.0&uaw=0&data=event%3Dgtag.config&ept=68&gcp=5' violates the following Content Security Policy directive: \"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://*.sanity.io\". The action has been blocked."
+            },
+            {
+              "sourceLocation": "https://pub-badf3a21614b454495059542458030e6.r2.dev/video-linstant-verdon.mp4",
+              "description": "Failed to load resource: net::ERR_CONNECTION_FAILED"
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Fetch API cannot load https://ad.doubleclick.net/ccm/s/collect?auid=1408446222.1794621398&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&fmt=8. Refused to connect because it violates the document's Content Security Policy."
+            }
+          ],
+          "total_items": 13
+        },
+        "long-tasks": {
+          "title": "Avoid long main-thread tasks",
+          "headings": [
+            "url",
+            "startTime",
+            "duration"
+          ],
+          "items": [
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "startTime": 6202.072809327674,
+              "duration": 74
+            },
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "startTime": 6152.072809327674,
+              "duration": 50
+            }
+          ],
+          "total_items": 2
+        },
+        "server-response-time": {
+          "title": "Initial server response time was short",
+          "headings": [
+            "url",
+            "responseTime"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/fr",
+              "responseTime": 5
+            }
+          ],
+          "total_items": 1
+        },
+        "third-parties-insight": {
+          "title": "3rd parties",
+          "headings": [
+            "entity",
+            "transferSize",
+            "mainThreadTime"
+          ],
+          "items": [
+            {
+              "entity": "Google Tag Manager",
+              "transferSize": 153099,
+              "mainThreadTime": 99.19200015068054
+            },
+            {
+              "entity": "Google Fonts",
+              "transferSize": 0,
+              "mainThreadTime": 0.04000002145767212
+            }
+          ],
+          "total_items": 2
+        },
+        "bootup-time": {
+          "title": "JavaScript execution time",
+          "headings": [
+            "url",
+            "total",
+            "scripting",
+            "scriptParseCompile"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "total": 239.80560000000045,
+              "scripting": 84.93480000000045,
+              "scriptParseCompile": 9.894
+            },
+            {
+              "url": "https://www.linstantverdon.com/fr",
+              "total": 168.5772,
+              "scripting": 3.2592000000000003,
+              "scriptParseCompile": 2.6123999999999974
+            },
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "total": 134.84039999999996,
+              "scripting": 94.12799999999996,
+              "scriptParseCompile": 31.261200000000002
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/c15bf2b0-d565fc5052a6465c.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "total": 130.92600000000013,
+              "scripting": 44.908800000000085,
+              "scriptParseCompile": 2.9171999999999993
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "total": 121.8744000000001,
+              "scripting": 88.56600000000009,
+              "scriptParseCompile": 12.9216
+            }
+          ],
+          "total_items": 6
+        },
+        "legacy-javascript-insight": {
+          "title": "Legacy JavaScript",
+          "headings": [
+            "url",
+            "wastedBytes"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "wastedBytes": 12245
+            }
+          ],
+          "total_items": 1
+        },
+        "unused-javascript": {
+          "title": "Reduce unused JavaScript",
+          "headings": [
+            "url",
+            "totalBytes",
+            "wastedBytes"
+          ],
+          "items": [
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "totalBytes": 152411,
+              "wastedBytes": 58959
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "totalBytes": 60304,
+              "wastedBytes": 28640
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "totalBytes": 63993,
+              "wastedBytes": 27372
+            }
+          ],
+          "total_items": 3
+        },
+        "inspector-issues": {
+          "title": "Issues were logged in the `Issues` panel in Chrome Devtools",
+          "headings": [
+            "issueType"
+          ],
+          "items": [
+            {
+              "issueType": "Content security policy"
+            }
+          ],
+          "total_items": 1
+        },
+        "main-thread-tasks": {
+          "title": "Tasks",
+          "headings": [
+            "startTime",
+            "duration"
+          ],
+          "items": [
+            {
+              "startTime": 88.835,
+              "duration": 12.319
+            },
+            {
+              "startTime": 101.546,
+              "duration": 10.299
+            },
+            {
+              "startTime": 146.86,
+              "duration": 11.297
+            },
+            {
+              "startTime": 171.823,
+              "duration": 15.321
+            },
+            {
+              "startTime": 188.309,
+              "duration": 37.445
+            }
+          ],
+          "total_items": 24
+        },
+        "has-hsts": {
+          "title": "Use a strong HSTS policy",
+          "headings": [
+            "description",
+            "directive",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "No `includeSubDomains` directive found",
+              "directive": "includeSubDomains",
+              "severity": "Medium"
+            },
+            {
+              "description": "No `preload` directive found",
+              "directive": "preload",
+              "severity": "Medium"
+            }
+          ],
+          "total_items": 2
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "headings": [
+            "node",
+            "url",
+            "totalBytes",
+            "wastedBytes"
+          ],
+          "items": [
+            {
+              "node": "{'path': '1,HTML,1,BODY,3,MAIN,3,SECTION,0,DIV,1,DIV,5,DIV,0,A,0,DIV,0,DIV', 'nodeLabel': 'div.h-full > a.card-promax > div.relative > div.absolute', 'snippet': '<div class=\"absolute inset-0 bg-cover ",
+              "url": "https://www.linstantverdon.com/assets/evenementiel/events.jpg.jpeg",
+              "totalBytes": 6996136,
+              "wastedBytes": 3551400
+            },
+            {
+              "node": "{'selector': 'div.h-full > a.card-promax > div.relative > div.absolute', 'lhId': 'page-2-DIV', 'snippet': '<div class=\"absolute inset-0 bg-cover bg-center\" style=\"background-image:url(/assets/canyon/c",
+              "url": "https://www.linstantverdon.com/assets/canyon/canyon.jpeg",
+              "totalBytes": 3033465,
+              "wastedBytes": 1001337
+            },
+            {
+              "node": "{'lhId': 'page-3-DIV', 'nodeLabel': 'div.h-full > a.card-promax > div.relative > div.absolute', 'path': '1,HTML,1,BODY,3,MAIN,3,SECTION,0,DIV,1,DIV,4,DIV,0,A,0,DIV,0,DIV', 'snippet': '<div class=\"abso",
+              "url": "https://www.linstantverdon.com/assets/insolite/unusual2.webp",
+              "totalBytes": 824004,
+              "wastedBytes": 539471
+            },
+            {
+              "node": "{'lhId': 'page-4-IMG', 'selector': 'div.flex > div.lg:w-1/2 > div.relative > img.w-full', 'nodeLabel': \"L'instant Verdon Team\", 'path': '1,HTML,1,BODY,3,MAIN,2,SECTION,0,DIV,0,DIV,0,DIV,1,DIV,0,IMG', ",
+              "url": "https://www.linstantverdon.com/assets/accueil/about-us.webp",
+              "totalBytes": 391670,
+              "wastedBytes": 246949
+            },
+            {
+              "node": "{'selector': 'div.h-full > a.card-promax > div.relative > div.absolute', 'nodeLabel': 'div.h-full > a.card-promax > div.relative > div.absolute', 'snippet': '<div class=\"absolute inset-0 bg-cover bg-c",
+              "url": "https://www.linstantverdon.com/assets/aventures/adventure.jpeg",
+              "totalBytes": 325898,
+              "wastedBytes": 143925
+            }
+          ],
+          "total_items": 8
+        },
+        "network-requests": {
+          "title": "Network Requests",
+          "headings": [
+            "url",
+            "protocol",
+            "networkRequestTime",
+            "networkEndTime",
+            "transferSize",
+            "resourceSize",
+            "statusCode",
+            "mimeType",
+            "resourceType"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/fr",
+              "protocol": "h2",
+              "networkRequestTime": 0.8910000324249268,
+              "networkEndTime": 85.8759999871254,
+              "transferSize": 24143,
+              "resourceSize": 133160,
+              "statusCode": 200,
+              "mimeType": "text/html",
+              "resourceType": "Document"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/media/7b0b24f36b1a6d0b-s.p.woff2?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 99.37800002098083,
+              "networkEndTime": 177.79800003767014,
+              "transferSize": 33620,
+              "resourceSize": 32228,
+              "statusCode": 200,
+              "mimeType": "font/woff2",
+              "resourceType": "Font"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 99.44800001382828,
+              "networkEndTime": 137.1230000257492,
+              "transferSize": 49823,
+              "resourceSize": 48432,
+              "statusCode": 200,
+              "mimeType": "font/woff2",
+              "resourceType": "Font"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/image?url=%2Fassets%2Faccueil%2Flogo.webp&w=128&q=75&dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 100.73600000143051,
+              "networkEndTime": 291.40700006484985,
+              "transferSize": 3256,
+              "resourceSize": 2522,
+              "statusCode": 200,
+              "mimeType": "image/webp",
+              "resourceType": "Image"
+            },
+            {
+              "url": "https://www.linstantverdon.com/assets/accueil/about-us.webp",
+              "protocol": "h2",
+              "networkRequestTime": 105.2620000243187,
+              "networkEndTime": 194.74599999189377,
+              "transferSize": 393034,
+              "resourceSize": 391670,
+              "statusCode": 200,
+              "mimeType": "image/webp",
+              "resourceType": "Image"
+            }
+          ],
+          "total_items": 39
+        },
+        "color-contrast": {
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'selector': 'div.h-full > a.card-promax > div.p-8 > p.text-canyoning-blue', 'explanation': 'Fix any of the following:\\n  Element has insufficient color contrast of 3.36 (foreground color: #109ba2, ba"
+            },
+            {
+              "node": "{'selector': 'div.h-full > a.card-promax > div.p-8 > div.flex', 'snippet': '<div class=\"flex items-center text-xs font-black tracking-widest text-canyoning-blue g\u2026\">', 'type': 'node', 'explanation': '"
+            },
+            {
+              "node": "{'type': 'node', 'path': '1,HTML,1,BODY,3,MAIN,3,SECTION,0,DIV,1,DIV,1,DIV,0,A,1,DIV,0,P', 'snippet': '<p class=\"text-logo-teal text-[10px] font-black mb-2 uppercase tracking-[0.3em]\">', 'lhId': '1-4-"
+            },
+            {
+              "node": "{'nodeLabel': 'EXPLORER LA CAT\u00c9GORIE\\n\u2192', 'type': 'node', 'selector': 'div.h-full > a.card-promax > div.p-8 > div.flex', 'path': '1,HTML,1,BODY,3,MAIN,3,SECTION,0,DIV,1,DIV,1,DIV,0,A,1,DIV,3,DIV', 'ex"
+            },
+            {
+              "node": "{'nodeLabel': \"L'\u00c9QUILIBRE PARFAIT ENTRE VERTICALIT\u00c9 ET LIBERT\u00c9\", 'type': 'node', 'snippet': '<p class=\"text-logo-peach text-[10px] font-black mb-2 uppercase tracking-[0.3em]\">', 'boundingRect': {'hei"
+            }
+          ],
+          "total_items": 16
+        },
+        "mainthread-work-breakdown": {
+          "title": "Minimizes main-thread work",
+          "headings": [
+            "groupLabel",
+            "duration"
+          ],
+          "items": [
+            {
+              "groupLabel": "Script Evaluation",
+              "duration": 349.57439999998877
+            },
+            {
+              "groupLabel": "Other",
+              "duration": 286.0991999999989
+            },
+            {
+              "groupLabel": "Style & Layout",
+              "duration": 154.44960000000006
+            },
+            {
+              "groupLabel": "Script Parsing & Compilation",
+              "duration": 70.12560000000002
+            },
+            {
+              "groupLabel": "Rendering",
+              "duration": 40.981200000001046
+            }
+          ],
+          "total_items": 7
+        },
+        "heading-order": {
+          "title": "Heading elements are not in a sequentially-descending order",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'snippet': '<h4 class=\"text-slate-900 font-black text-[10px] uppercase tracking-[0.3em] mb-8 opac\u2026\">', 'boundingRect': {'top': 11136, 'height': 15, 'width': 364, 'bottom': 11151, 'right': 388, 'left'"
+            }
+          ],
+          "total_items": 1
+        },
+        "render-blocking-insight": {
+          "title": "Render-blocking requests",
+          "headings": [
+            "url",
+            "totalBytes",
+            "wastedMs"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/_next/static/css/d381b28fe4b06916.css?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "totalBytes": 13279,
+              "wastedMs": 476
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/css/cfafaaa66f0dd5db.css?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "totalBytes": 2205,
+              "wastedMs": 161
+            }
+          ],
+          "total_items": 2
+        },
+        "csp-xss": {
+          "title": "Ensure CSP is effective against XSS attacks",
+          "headings": [
+            "description",
+            "directive",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "Host allowlists can frequently be bypassed. Consider using CSP nonces or hashes instead, along with `'strict-dynamic'` if necessary.",
+              "directive": "script-src",
+              "severity": "High"
+            },
+            {
+              "description": "`'unsafe-inline'` allows the execution of unsafe in-page scripts and event handlers. Consider using CSP nonces or hashes to allow scripts individually.",
+              "directive": "script-src",
+              "severity": "High"
+            }
+          ],
+          "total_items": 2
+        },
+        "button-name": {
+          "title": "Buttons do not have an accessible name",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'path': '1,HTML,1,BODY,2,NAV,1,DIV,2,BUTTON', 'selector': 'body.__variable_df88af > nav.fixed > div.relative > button.md:hidden', 'lhId': '1-0-BUTTON', 'nodeLabel': 'body.__variable_df88af > nav.fixe"
+            }
+          ],
+          "total_items": 1
+        },
+        "trusted-types-xss": {
+          "title": "Mitigate DOM-based XSS with Trusted Types",
+          "headings": [
+            "description",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "No `Content-Security-Policy` header with Trusted Types directive found",
+              "severity": "High"
+            }
+          ],
+          "total_items": 1
+        },
+        "origin-isolation": {
+          "title": "Ensure proper origin isolation with COOP",
+          "headings": [
+            "description",
+            "directive",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "No COOP header found",
+              "severity": "High"
+            }
+          ],
+          "total_items": 1
+        },
+        "baseline": {
+          "title": "Baseline Features",
+          "headings": [
+            "featureId",
+            "displayStatus",
+            "source"
+          ],
+          "items": [
+            {
+              "featureId": "https://webstatus.dev/features/font-metric-overrides",
+              "displayStatus": "{'displayString': 'Limited Availability', 'type': 'baseline-status', 'status': 'limited'}",
+              "source": "https://www.linstantverdon.com/fr"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/requestidlecallback",
+              "displayStatus": "{'type': 'baseline-status', 'status': 'limited', 'displayString': 'Limited Availability'}",
+              "source": "_lighthouse-eval.js"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/referencetarget",
+              "displayStatus": "{'status': 'limited', 'type': 'baseline-status', 'displayString': 'Limited Availability'}",
+              "source": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/ua-client-hints",
+              "displayStatus": "{'type': 'baseline-status', 'status': 'limited', 'displayString': 'Limited Availability'}",
+              "source": "https://www.googletagmanager.com/gtag/js?id=AW-797772111"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/scrollend",
+              "displayStatus": "{'status': 'low', 'type': 'baseline-status', 'displayString': 'Newly Available (2025-12-12)'}",
+              "source": "https://www.linstantverdon.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF"
+            }
+          ],
+          "total_items": 33
+        },
+        "viewport-insight": {
+          "title": "Optimize viewport for mobile",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'type': 'node', 'selector': 'head > meta', 'boundingRect': {'left': 0, 'right': 0, 'height': 0, 'bottom': 0, 'width': 0, 'top': 0}, 'nodeLabel': 'head > meta', 'snippet': '<meta name=\"viewport\" conte"
+            }
+          ],
+          "total_items": 1
+        },
+        "network-server-latency": {
+          "title": "Server Backend Latencies",
+          "headings": [
+            "origin",
+            "serverResponseTime"
+          ],
+          "items": [
+            {
+              "origin": "https://www.googletagmanager.com",
+              "serverResponseTime": 18
+            },
+            {
+              "origin": "https://www.linstantverdon.com",
+              "serverResponseTime": 2
+            }
+          ],
+          "total_items": 2
+        },
+        "total-byte-weight": {
+          "title": "Avoid enormous network payloads",
+          "headings": [
+            "url",
+            "totalBytes"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/assets/evenementiel/events.jpg.jpeg",
+              "totalBytes": 6997509
+            },
+            {
+              "url": "https://www.linstantverdon.com/assets/canyon/canyon.jpeg",
+              "totalBytes": 3034824
+            },
+            {
+              "url": "https://www.linstantverdon.com/assets/insolite/unusual2.webp",
+              "totalBytes": 825368
+            },
+            {
+              "url": "https://www.linstantverdon.com/assets/accueil/about-us.webp",
+              "totalBytes": 393034
+            },
+            {
+              "url": "https://www.linstantverdon.com/assets/week%20end%20stage/weekend.webp",
+              "totalBytes": 388364
+            }
+          ],
+          "total_items": 10
+        },
+        "resource-summary": {
+          "title": "Resources Summary",
+          "headings": [
+            "label",
+            "requestCount",
+            "transferSize"
+          ],
+          "items": [
+            {
+              "label": "Total",
+              "requestCount": 39,
+              "transferSize": 12896407
+            },
+            {
+              "label": "Image",
+              "requestCount": 15,
+              "transferSize": 12392651
+            },
+            {
+              "label": "Script",
+              "requestCount": 17,
+              "transferSize": 380686
+            },
+            {
+              "label": "Font",
+              "requestCount": 2,
+              "transferSize": 83443
+            },
+            {
+              "label": "Document",
+              "requestCount": 1,
+              "transferSize": 24143
+            }
+          ],
+          "total_items": 9
+        },
+        "dom-size-insight": {
+          "title": "Optimize DOM size",
+          "headings": [
+            "statistic",
+            "node",
+            "value"
+          ],
+          "items": [
+            {
+              "statistic": "Total elements",
+              "value": "{'value': 556, 'granularity': 1, 'type': 'numeric'}"
+            },
+            {
+              "statistic": "DOM depth",
+              "node": "{'boundingRect': {'height': 0, 'top': 0, 'width': 0, 'right': 0, 'bottom': 0, 'left': 0}, 'path': '1,HTML,1,BODY,2,NAV,1,DIV,1,DIV,0,DIV,1,DIV,0,DIV,0,DIV,0,A,0,SPAN,0,SPAN,0,svg,0,path', 'lhId': 'pag",
+              "value": "{'type': 'numeric', 'value': 13, 'granularity': 1}"
+            },
+            {
+              "statistic": "Most children",
+              "node": "{'boundingRect': {'top': 0, 'width': 412, 'bottom': 11893, 'height': 11893, 'right': 412, 'left': 0}, 'path': '1,HTML,1,BODY', 'lhId': 'page-10-BODY', 'nodeLabel': 'body.__variable_df88af', 'snippet':",
+              "value": "{'type': 'numeric', 'value': 29, 'granularity': 1}"
+            }
+          ],
+          "total_items": 3
+        },
+        "network-rtt": {
+          "title": "Network Round Trip Times",
+          "headings": [
+            "origin",
+            "rtt"
+          ],
+          "items": [
+            {
+              "origin": "https://www.linstantverdon.com",
+              "rtt": 0.0023937185927377946
+            },
+            {
+              "origin": "https://www.googletagmanager.com",
+              "rtt": 0.0005268127549786268
+            }
+          ],
+          "total_items": 2
+        },
+        "video-caption": {
+          "title": "`<video>` elements contain a `<track>` element with `[kind=\"captions\"]`",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'explanation': 'Fix all of the following:\\n  Check that captions are available for the element', 'selector': 'main.min-h-screen > section.relative > div.video-container > video.absolute', 'snippet': "
+            }
+          ],
+          "total_items": 1
+        }
+      },
+      "analysis_timestamp": "2026-11-14T01:56:37.352Z",
+      "error": null
+    },
+    "desktop": {
+      "url": "https://www.linstantverdon.com/fr",
+      "strategy": "desktop",
+      "lighthouse_version": "13.6.0",
+      "lighthouse_scores": {
+        "performance": 73,
+        "accessibility": 95,
+        "best-practices": 92,
+        "seo": 100
+      },
+      "lab_metrics": {
+        "first-contentful-paint": {
+          "value": 471.0062230516499,
+          "display": "0.5\u00a0s",
+          "score": 1
+        },
+        "largest-contentful-paint": {
+          "value": 6001.230252911044,
+          "display": "6.0\u00a0s",
+          "score": 0.04
+        },
+        "total-blocking-time": {
+          "value": 9.5,
+          "display": "10\u00a0ms",
+          "score": 1
+        },
+        "cumulative-layout-shift": {
+          "value": 0.005754881358900272,
+          "display": "0.006",
+          "score": 1
+        },
+        "speed-index": {
+          "value": 1903.6034415445326,
+          "display": "1.9\u00a0s",
+          "score": 0.66
+        },
+        "interactive": {
+          "value": 6489.2492332185775,
+          "display": "6.5\u00a0s",
+          "score": 0.21
+        }
+      },
+      "field_metrics": {},
+      "opportunities": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "savings_ms": 80,
+          "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/)."
+        }
+      ],
+      "diagnostics": [
+        {
+          "id": "total-byte-weight",
+          "title": "Avoid enormous network payloads",
+          "display": "Total size was 12,708\u00a0KiB",
+          "score": 0.5,
+          "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/)."
+        },
+        {
+          "id": "mainthread-work-breakdown",
+          "title": "Minimizes main-thread work",
+          "display": "0.7\u00a0s",
+          "score": 1,
+          "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to minimize main-thread work](https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/)"
+        },
+        {
+          "id": "bootup-time",
+          "title": "JavaScript execution time",
+          "display": "0.3\u00a0s",
+          "score": 1,
+          "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to reduce Javascript execution time](https://developer.chrome.com/docs/lighthouse/performance/bootup-time/)."
+        },
+        {
+          "id": "layout-shifts",
+          "title": "Avoid large layout shifts",
+          "display": "2 layout shifts found",
+          "score": 1,
+          "description": "These are the largest layout shifts observed on the page. Each table item represents a single layout shift, and shows the element that shifted the most. Below each item are possible root causes that led to the layout shift. Some of these layout shifts may not be included in the CLS metric value due to [windowing](https://web.dev/articles/cls#what_is_cls). [Learn how to improve CLS](https://web.dev/articles/optimize-cls)"
+        },
+        {
+          "id": "long-tasks",
+          "title": "Avoid long main-thread tasks",
+          "display": "3 long tasks found",
+          "score": 1,
+          "description": "Lists the longest tasks on the main thread, useful for identifying worst contributors to input delay. [Learn how to avoid long main-thread tasks](https://web.dev/articles/optimize-long-tasks)"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "display": "Est savings of 107\u00a0KiB",
+          "score": 0,
+          "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/)."
+        },
+        {
+          "id": "unused-css-rules",
+          "title": "Reduce unused CSS",
+          "display": "",
+          "score": 1,
+          "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity. [Learn how to reduce unused CSS](https://developer.chrome.com/docs/lighthouse/performance/unused-css-rules/)."
+        }
+      ],
+      "failed_audits": [
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "description": "Low-contrast text is difficult or impossible for many users to read. [Learn how to provide sufficient color contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast)."
+        },
+        {
+          "id": "errors-in-console",
+          "title": "Browser errors were logged to the console",
+          "score": 0,
+          "display": "",
+          "description": "Errors logged to the console indicate unresolved problems. They can come from network request failures and other browser concerns. [Learn more about this errors in console diagnostic audit](https://developer.chrome.com/docs/lighthouse/best-practices/errors-in-console/)"
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "display": "Est savings of 100\u00a0ms",
+          "description": "Requests are blocking the page\u2019s initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path."
+        },
+        {
+          "id": "lcp-discovery-insight",
+          "title": "LCP request discovery",
+          "score": 0,
+          "display": "",
+          "description": "[Optimize LCP](https://developer.chrome.com/docs/performance/insights/lcp-discovery) by making the LCP image discoverable from the HTML immediately, and avoiding lazy-loading"
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0,
+          "display": "Est savings of 5,514\u00a0KiB",
+          "description": "Reducing the download time of images can improve the perceived load time of the page and LCP. [Learn more about optimizing image size](https://developer.chrome.com/docs/performance/insights/image-delivery)."
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "display": "",
+          "description": "[Avoid chaining critical requests](https://developer.chrome.com/docs/performance/insights/network-dependency-tree) by reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load"
+        },
+        {
+          "id": "lcp-breakdown-insight",
+          "title": "LCP breakdown",
+          "score": 0,
+          "display": "",
+          "description": "Each [subpart has specific improvement strategies](https://developer.chrome.com/docs/performance/insights/lcp-breakdown). Ideally, most of the LCP time should be spent on loading the resources, not within delays."
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": "",
+          "description": "Properly ordered headings that do not skip levels convey the semantic structure of the page, making it easier to navigate and understand when using assistive technologies. [Learn more about heading order](https://dequeuniversity.com/rules/axe/4.14/heading-order)."
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0,
+          "display": "Est savings of 12\u00a0KiB",
+          "description": "Polyfills and transforms enable older browsers to use new JavaScript features. However, many aren\u2019t necessary for modern browsers. Consider modifying your JavaScript build process to not transpile [Baseline](https://web.dev/articles/baseline-and-polyfills) features, unless you know you must support older browsers. [Learn why most sites can deploy ES6+ code without transpiling](https://developer.chrome.com/docs/performance/insights/legacy-javascript)."
+        },
+        {
+          "id": "inspector-issues",
+          "title": "Issues were logged in the `Issues` panel in Chrome Devtools",
+          "score": 0,
+          "display": "",
+          "description": "Issues logged to the `Issues` panel in Chrome Devtools indicate unresolved problems. They can come from network request failures, insufficient security controls, and other browser concerns. Open up the Issues panel in Chrome DevTools for more details on each issue."
+        },
+        {
+          "id": "forced-reflow-insight",
+          "title": "Forced reflow",
+          "score": 0,
+          "display": "",
+          "description": "A forced reflow occurs when JavaScript queries geometric properties (such as `offsetWidth`) after styles have been invalidated by a change to the DOM state. This can result in poor performance. Learn more about [forced reflows](https://developer.chrome.com/docs/performance/insights/forced-reflow) and possible mitigations."
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.04,
+          "display": "6.0\u00a0s",
+          "description": "Largest Contentful Paint marks the time at which the largest text or image is painted. [Learn more about the Largest Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/)"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.21,
+          "display": "6.5\u00a0s",
+          "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive. [Learn more about the Time to Interactive metric](https://developer.chrome.com/docs/lighthouse/performance/interactive/)."
+        },
+        {
+          "id": "total-byte-weight",
+          "title": "Avoid enormous network payloads",
+          "score": 0.5,
+          "display": "Total size was 12,708\u00a0KiB",
+          "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/)."
+        },
+        {
+          "id": "speed-index",
+          "title": "Speed Index",
+          "score": 0.66,
+          "display": "1.9\u00a0s",
+          "description": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more about the Speed Index metric](https://developer.chrome.com/docs/lighthouse/performance/speed-index/)."
+        }
+      ],
+      "passed_audits_count": 81,
+      "seo_audits": [
+        {
+          "id": "is-crawlable",
+          "title": "Page isn\u2019t blocked from indexing",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "document-title",
+          "title": "Document has a `<title>` element",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "meta-description",
+          "title": "Document has a meta description",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "http-status-code",
+          "title": "Page has successful HTTP status code",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "link-text",
+          "title": "Links have descriptive text",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "crawlable-anchors",
+          "title": "Links are crawlable",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "robots-txt",
+          "title": "robots.txt is valid",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "image-alt",
+          "title": "Image elements have `[alt]` attributes",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "hreflang",
+          "title": "Document has a valid `hreflang`",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "canonical",
+          "title": "Document has a valid `rel=canonical`",
+          "score": 1,
+          "pass": true
+        }
+      ],
+      "accessibility_audits": [
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": ""
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": ""
+        }
+      ],
+      "audit_details": {
+        "layout-shifts": {
+          "title": "Avoid large layout shifts",
+          "headings": [
+            "node",
+            "score"
+          ],
+          "items": [
+            {
+              "node": "{'boundingRect': {'height': 470, 'width': 1024, 'bottom': 705, 'right': 1187, 'top': 235, 'left': 163}, 'snippet': '<div class=\"relative z-20 text-center px-6 w-full max-w-5xl flex flex-col items-cent",
+              "score": 0.005754881358900272
+            },
+            {
+              "node": "{'selector': 'section.relative > div.relative > div.flex > a.button-glow', 'boundingRect': {'width': 317, 'top': 653, 'bottom': 705, 'left': 397, 'height': 52, 'right': 714}, 'path': '1,HTML,1,BODY,3,",
+              "score": 0.003109744968263732
+            }
+          ],
+          "total_items": 2
+        },
+        "identical-links-same-purpose": {
+          "title": "Identical links have the same purpose.",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'path': '1,HTML,1,BODY,3,MAIN,4,SECTION,2,DIV,1,DIV,0,ARTICLE,1,DIV,1,DIV,0,A', 'snippet': '<a class=\"inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider\u2026\" href=\"/fr/blog/3-act"
+            }
+          ],
+          "total_items": 1
+        },
+        "color-contrast": {
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'path': '1,HTML,1,BODY,3,MAIN,3,SECTION,0,DIV,1,DIV,0,DIV,0,A,1,DIV,0,P', 'selector': 'div.h-full > a.card-promax > div.p-8 > p.text-canyoning-blue', 'snippet': '<p class=\"text-canyoning-blue text-[1"
+            },
+            {
+              "node": "{'boundingRect': {'width': 318, 'left': 92, 'right': 410, 'bottom': 3090, 'top': 3074, 'height': 16}, 'nodeLabel': 'EXPLORER LA CAT\u00c9GORIE\\n\u2192', 'type': 'node', 'lhId': '1-2-DIV', 'explanation': 'Fix an"
+            },
+            {
+              "node": "{'explanation': 'Fix any of the following:\\n  Element has insufficient color contrast of 3.36 (foreground color: #109ba2, background color: #ffffff, font size: 7.5pt (10px), font weight: bold). Expect"
+            },
+            {
+              "node": "{'path': '1,HTML,1,BODY,3,MAIN,3,SECTION,0,DIV,1,DIV,1,DIV,0,A,1,DIV,3,DIV', 'nodeLabel': 'EXPLORER LA CAT\u00c9GORIE\\n\u2192', 'snippet': '<div class=\"flex items-center text-xs font-black tracking-widest text-"
+            },
+            {
+              "node": "{'snippet': '<p class=\"text-logo-peach text-[10px] font-black mb-2 uppercase tracking-[0.3em]\">', 'nodeLabel': \"L'\u00c9QUILIBRE PARFAIT ENTRE VERTICALIT\u00c9 ET LIBERT\u00c9\", 'lhId': '1-6-P', 'type': 'node', 'exp"
+            }
+          ],
+          "total_items": 16
+        },
+        "errors-in-console": {
+          "title": "Browser errors were logged to the console",
+          "headings": [
+            "sourceLocation",
+            "description"
+          ],
+          "items": [
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Connecting to 'https://ad.doubleclick.net/ccm/s/collect?auid=83465934.1794621411&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&fmt=8' violates the following Content Security Policy directive: \"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://*.sanity.io\". The action has been blocked."
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Connecting to 'https://www.google.com/ccm/collect?rcb=2&frm=0&apvc=1&auid=83465934.1794621411&dt=L%27instant%20Verdon%20%7C%20Canyoning%2C%20Aquarando%20%26%20Escalade%20dans%20le%20Verdon&tid=AW-797772111&en=page_view&dl=https%3A%2F%2Fwww.linstantverdon.com%2Ffr&scrsrc=www.googletagmanager.com&rnd=2039151505.1794621411&navt=n&npa=0&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938468~118897920~118897930~120213116~120385422~120412528~120420414~120469145~120469153~121191155~121246026~121246034&tft=1794621411075&tfd=656&tids=AW-797772111&fmt=8' violates the following Content Security Policy directive: \"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://*.sanity.io\". The action has been blocked."
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Connecting to 'https://www.google.com/rmkt/collect/797772111/?random=1794621411044&cv=11&fst=1794621411044&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938468~118897920~118897930~120213116~120385422~120412528~120420414~120469145~120469153~121191155~121246026~121246034&u_w=800&u_h=600&url=https%3A%2F%2Fwww.linstantverdon.com%2Ffr&rcb=2&frm=0&tiba=L%27instant%20Verdon%20%7C%20Canyoning%2C%20Aquarando%20%26%20Escalade%20dans%20le%20Verdon&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=83465934.1794621411&uaa=x86&uab=64&uafvl=Not-A.Brand%3B99.0.0.0%7CHeadlessChrome%3B157.0.8103.38%7CChromium%3B157.0.8103.38&uamb=0&uam=&uap=macOS&uapv=10.15.7&uaw=0&data=event%3Dgtag.config&ept=68&gcp=5' violates the following Content Security Policy directive: \"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://*.sanity.io\". The action has been blocked."
+            },
+            {
+              "sourceLocation": "https://pub-badf3a21614b454495059542458030e6.r2.dev/video-linstant-verdon.mp4",
+              "description": "Failed to load resource: net::ERR_CONNECTION_FAILED"
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Fetch API cannot load https://ad.doubleclick.net/ccm/s/collect?auid=83465934.1794621411&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&fmt=8. Refused to connect because it violates the document's Content Security Policy."
+            }
+          ],
+          "total_items": 13
+        },
+        "network-rtt": {
+          "title": "Network Round Trip Times",
+          "headings": [
+            "origin",
+            "rtt"
+          ],
+          "items": [
+            {
+              "origin": "https://www.linstantverdon.com",
+              "rtt": 0.0019947769398793347
+            },
+            {
+              "origin": "https://www.googletagmanager.com",
+              "rtt": 0.0004390140274023412
+            }
+          ],
+          "total_items": 2
+        },
+        "resource-summary": {
+          "title": "Resources Summary",
+          "headings": [
+            "label",
+            "requestCount",
+            "transferSize"
+          ],
+          "items": [
+            {
+              "label": "Total",
+              "requestCount": 46,
+              "transferSize": 13012909
+            },
+            {
+              "label": "Image",
+              "requestCount": 17,
+              "transferSize": 12507044
+            },
+            {
+              "label": "Script",
+              "requestCount": 17,
+              "transferSize": 380643
+            },
+            {
+              "label": "Font",
+              "requestCount": 2,
+              "transferSize": 83438
+            },
+            {
+              "label": "Document",
+              "requestCount": 1,
+              "transferSize": 24143
+            }
+          ],
+          "total_items": 9
+        },
+        "server-response-time": {
+          "title": "Initial server response time was short",
+          "headings": [
+            "url",
+            "responseTime"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/fr",
+              "responseTime": 5
+            }
+          ],
+          "total_items": 1
+        },
+        "unused-javascript": {
+          "title": "Reduce unused JavaScript",
+          "headings": [
+            "url",
+            "totalBytes",
+            "wastedBytes"
+          ],
+          "items": [
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "totalBytes": 152414,
+              "wastedBytes": 59621
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "totalBytes": 64002,
+              "wastedBytes": 25874
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "totalBytes": 60303,
+              "wastedBytes": 23865
+            }
+          ],
+          "total_items": 3
+        },
+        "has-hsts": {
+          "title": "Use a strong HSTS policy",
+          "headings": [
+            "description",
+            "directive",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "No `includeSubDomains` directive found",
+              "directive": "includeSubDomains",
+              "severity": "Medium"
+            },
+            {
+              "description": "No `preload` directive found",
+              "directive": "preload",
+              "severity": "Medium"
+            }
+          ],
+          "total_items": 2
+        },
+        "network-server-latency": {
+          "title": "Server Backend Latencies",
+          "headings": [
+            "origin",
+            "serverResponseTime"
+          ],
+          "items": [
+            {
+              "origin": "https://www.googletagmanager.com",
+              "serverResponseTime": 5
+            },
+            {
+              "origin": "https://www.linstantverdon.com",
+              "serverResponseTime": 1
+            }
+          ],
+          "total_items": 2
+        },
+        "total-byte-weight": {
+          "title": "Avoid enormous network payloads",
+          "headings": [
+            "url",
+            "totalBytes"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/assets/evenementiel/events.jpg.jpeg",
+              "totalBytes": 6997507
+            },
+            {
+              "url": "https://www.linstantverdon.com/assets/canyon/canyon.jpeg",
+              "totalBytes": 3034822
+            },
+            {
+              "url": "https://www.linstantverdon.com/assets/insolite/unusual2.webp",
+              "totalBytes": 825366
+            },
+            {
+              "url": "https://www.linstantverdon.com/assets/accueil/about-us.webp",
+              "totalBytes": 393031
+            },
+            {
+              "url": "https://www.linstantverdon.com/assets/week%20end%20stage/weekend.webp",
+              "totalBytes": 388362
+            }
+          ],
+          "total_items": 10
+        },
+        "render-blocking-insight": {
+          "title": "Render-blocking requests",
+          "headings": [
+            "url",
+            "totalBytes",
+            "wastedMs"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/_next/static/css/d381b28fe4b06916.css?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "totalBytes": 13276,
+              "wastedMs": 122
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/css/cfafaaa66f0dd5db.css?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "totalBytes": 2202
+            }
+          ],
+          "total_items": 2
+        },
+        "viewport-insight": {
+          "title": "Optimize viewport for mobile",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'path': '1,HTML,0,HEAD,1,META', 'nodeLabel': 'head > meta', 'selector': 'head > meta', 'lhId': 'page-14-META', 'boundingRect': {'right': 0, 'left': 0, 'top': 0, 'bottom': 0, 'height': 0, 'width': 0},"
+            }
+          ],
+          "total_items": 1
+        },
+        "csp-xss": {
+          "title": "Ensure CSP is effective against XSS attacks",
+          "headings": [
+            "description",
+            "directive",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "Host allowlists can frequently be bypassed. Consider using CSP nonces or hashes instead, along with `'strict-dynamic'` if necessary.",
+              "directive": "script-src",
+              "severity": "High"
+            },
+            {
+              "description": "`'unsafe-inline'` allows the execution of unsafe in-page scripts and event handlers. Consider using CSP nonces or hashes to allow scripts individually.",
+              "directive": "script-src",
+              "severity": "High"
+            }
+          ],
+          "total_items": 2
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "headings": [
+            "node",
+            "url",
+            "totalBytes",
+            "wastedBytes"
+          ],
+          "items": [
+            {
+              "node": "{'boundingRect': {'left': 908, 'height': 288, 'top': 3164, 'bottom': 3452, 'right': 1290, 'width': 382}, 'snippet': '<div class=\"absolute inset-0 bg-cover bg-center\" style=\"background-image: url(&quot",
+              "url": "https://www.linstantverdon.com/assets/evenementiel/events.jpg.jpeg",
+              "totalBytes": 6996136,
+              "wastedBytes": 3551400
+            },
+            {
+              "node": "{'path': '1,HTML,1,BODY,3,MAIN,3,SECTION,0,DIV,1,DIV,0,DIV,0,A,0,DIV,0,DIV', 'nodeLabel': 'div.h-full > a.card-promax > div.relative > div.absolute', 'lhId': 'page-1-DIV', 'snippet': '<div class=\"abso",
+              "url": "https://www.linstantverdon.com/assets/canyon/canyon.jpeg",
+              "totalBytes": 3033465,
+              "wastedBytes": 1001337
+            },
+            {
+              "node": "{'boundingRect': {'bottom': 3452, 'left': 484, 'height': 288, 'top': 3164, 'right': 866, 'width': 382}, 'nodeLabel': 'div.h-full > a.card-promax > div.relative > div.absolute', 'lhId': 'page-2-DIV', '",
+              "url": "https://www.linstantverdon.com/assets/insolite/unusual2.webp",
+              "totalBytes": 824004,
+              "wastedBytes": 539471
+            },
+            {
+              "node": "{'type': 'node', 'snippet': '<img src=\"/assets/accueil/about-us.webp\" alt=\"L\\'instant Verdon Team\" class=\"w-full h-full object-cover transition-transform duration-1000 group-hover:\u2026\">', 'selector': 'd",
+              "url": "https://www.linstantverdon.com/assets/accueil/about-us.webp",
+              "totalBytes": 391670,
+              "wastedBytes": 272955
+            },
+            {
+              "node": "{'type': 'node', 'lhId': 'page-4-DIV', 'boundingRect': {'bottom': 2878, 'height': 288, 'width': 382, 'left': 908, 'right': 1290, 'top': 2590}, 'path': '1,HTML,1,BODY,3,MAIN,3,SECTION,0,DIV,1,DIV,2,DIV",
+              "url": "https://www.linstantverdon.com/assets/aventures/adventure.jpeg",
+              "totalBytes": 325898,
+              "wastedBytes": 143925
+            }
+          ],
+          "total_items": 7
+        },
+        "bootup-time": {
+          "title": "JavaScript execution time",
+          "headings": [
+            "url",
+            "total",
+            "scripting",
+            "scriptParseCompile"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "total": 165.3030000000011,
+              "scripting": 76.11300000000104,
+              "scriptParseCompile": 13.991000000000001
+            },
+            {
+              "url": "https://www.linstantverdon.com/fr",
+              "total": 132.27399999999994,
+              "scripting": 1.5910000000000002,
+              "scriptParseCompile": 2.687999999999998
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "total": 117.55600000000024,
+              "scripting": 87.34000000000024,
+              "scriptParseCompile": 11.815000000000001
+            },
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "total": 109.4430000000005,
+              "scripting": 76.2260000000005,
+              "scriptParseCompile": 32.842
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/c15bf2b0-d565fc5052a6465c.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "total": 87.79000000000008,
+              "scripting": 25.69200000000001,
+              "scriptParseCompile": 3.7590000000000003
+            }
+          ],
+          "total_items": 6
+        },
+        "mainthread-work-breakdown": {
+          "title": "Minimizes main-thread work",
+          "headings": [
+            "groupLabel",
+            "duration"
+          ],
+          "items": [
+            {
+              "groupLabel": "Script Evaluation",
+              "duration": 289.6459999999923
+            },
+            {
+              "groupLabel": "Other",
+              "duration": 192.73899999999833
+            },
+            {
+              "groupLabel": "Style & Layout",
+              "duration": 119.74199999999988
+            },
+            {
+              "groupLabel": "Script Parsing & Compilation",
+              "duration": 78.021
+            },
+            {
+              "groupLabel": "Rendering",
+              "duration": 37.08900000000064
+            }
+          ],
+          "total_items": 7
+        },
+        "video-caption": {
+          "title": "`<video>` elements contain a `<track>` element with `[kind=\"captions\"]`",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'snippet': '<video autoplay=\"\" muted=\"\" loop=\"\" playsinline=\"\" preload=\"none\" poster=\"/assets/accueil/hero-poster.webp\" class=\"absolute inset-0 w-full h-full object-cover\">', 'path': '1,HTML,1,BODY,3"
+            }
+          ],
+          "total_items": 1
+        },
+        "main-thread-tasks": {
+          "title": "Tasks",
+          "headings": [
+            "startTime",
+            "duration"
+          ],
+          "items": [
+            {
+              "startTime": 167.517,
+              "duration": 9.991
+            },
+            {
+              "startTime": 177.854,
+              "duration": 7.848
+            },
+            {
+              "startTime": 204.266,
+              "duration": 15.054
+            },
+            {
+              "startTime": 232.799,
+              "duration": 11.967
+            },
+            {
+              "startTime": 300.101,
+              "duration": 22.264
+            }
+          ],
+          "total_items": 23
+        },
+        "network-requests": {
+          "title": "Network Requests",
+          "headings": [
+            "url",
+            "protocol",
+            "networkRequestTime",
+            "networkEndTime",
+            "transferSize",
+            "resourceSize",
+            "statusCode",
+            "mimeType",
+            "resourceType"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/fr",
+              "protocol": "h2",
+              "networkRequestTime": 1.0900000035762787,
+              "networkEndTime": 165.26199999451637,
+              "transferSize": 24143,
+              "resourceSize": 133160,
+              "statusCode": 200,
+              "mimeType": "text/html",
+              "resourceType": "Document"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/media/7b0b24f36b1a6d0b-s.p.woff2?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 171.77799999713898,
+              "networkEndTime": 340.62900000810623,
+              "transferSize": 33617,
+              "resourceSize": 32228,
+              "statusCode": 200,
+              "mimeType": "font/woff2",
+              "resourceType": "Font"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 171.83599999547005,
+              "networkEndTime": 213.15000000596046,
+              "transferSize": 49821,
+              "resourceSize": 48432,
+              "statusCode": 200,
+              "mimeType": "font/woff2",
+              "resourceType": "Font"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/image?url=%2Fassets%2Faccueil%2Flogo.webp&w=64&q=75&dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 172.97000002861023,
+              "networkEndTime": 297.5469999909401,
+              "transferSize": 2084,
+              "resourceSize": 1350,
+              "statusCode": 200,
+              "mimeType": "image/webp",
+              "resourceType": "Image"
+            },
+            {
+              "url": "https://www.linstantverdon.com/assets/accueil/about-us.webp",
+              "protocol": "h2",
+              "networkRequestTime": 180.86699998378754,
+              "networkEndTime": 392.63199999928474,
+              "transferSize": 393031,
+              "resourceSize": 391670,
+              "statusCode": 200,
+              "mimeType": "image/webp",
+              "resourceType": "Image"
+            }
+          ],
+          "total_items": 46
+        },
+        "origin-isolation": {
+          "title": "Ensure proper origin isolation with COOP",
+          "headings": [
+            "description",
+            "directive",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "No COOP header found",
+              "severity": "High"
+            }
+          ],
+          "total_items": 1
+        },
+        "heading-order": {
+          "title": "Heading elements are not in a sequentially-descending order",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'selector': 'div.grid > div.grid > div > h4.text-slate-900', 'boundingRect': {'left': 715, 'bottom': 6262, 'right': 979, 'height': 15, 'top': 6247, 'width': 264}, 'path': '1,HTML,1,BODY,6,FOOTER,0,DI"
+            }
+          ],
+          "total_items": 1
+        },
+        "long-tasks": {
+          "title": "Avoid long main-thread tasks",
+          "headings": [
+            "url",
+            "startTime",
+            "duration"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "startTime": 1173.042005598637,
+              "duration": 63
+            },
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "startTime": 1314.042005598637,
+              "duration": 55
+            },
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "startTime": 1263.042005598637,
+              "duration": 51
+            }
+          ],
+          "total_items": 3
+        },
+        "third-parties-insight": {
+          "title": "3rd parties",
+          "headings": [
+            "entity",
+            "transferSize",
+            "mainThreadTime"
+          ],
+          "items": [
+            {
+              "entity": "Google Tag Manager",
+              "transferSize": 153099,
+              "mainThreadTime": 106.33999994397163
+            },
+            {
+              "entity": "Google Fonts",
+              "transferSize": 0,
+              "mainThreadTime": 0.009999990463256836
+            }
+          ],
+          "total_items": 2
+        },
+        "dom-size-insight": {
+          "title": "Optimize DOM size",
+          "headings": [
+            "statistic",
+            "node",
+            "value"
+          ],
+          "items": [
+            {
+              "statistic": "Total elements",
+              "value": "{'type': 'numeric', 'granularity': 1, 'value': 566}"
+            },
+            {
+              "statistic": "DOM depth",
+              "node": "{'snippet': '<path d=\"m8 3 4 8 5-5 5 15H2L8 3z\">', 'type': 'node', 'selector': 'span.flex > span.opacity-75 > svg.lucide > path', 'nodeLabel': 'span.flex > span.opacity-75 > svg.lucide > path', 'lhId'",
+              "value": "{'granularity': 1, 'type': 'numeric', 'value': 13}"
+            },
+            {
+              "statistic": "Most children",
+              "node": "{'nodeLabel': 'body.__variable_df88af', 'snippet': '<body class=\"__variable_df88af __variable_97e3b1\" style=\"overflow: hidden;\">', 'path': '1,HTML,1,BODY', 'lhId': 'page-15-BODY', 'type': 'node', 'bou",
+              "value": "{'type': 'numeric', 'value': 29, 'granularity': 1}"
+            }
+          ],
+          "total_items": 3
+        },
+        "baseline": {
+          "title": "Baseline Features",
+          "headings": [
+            "featureId",
+            "displayStatus",
+            "source"
+          ],
+          "items": [
+            {
+              "featureId": "https://webstatus.dev/features/font-metric-overrides",
+              "displayStatus": "{'status': 'limited', 'displayString': 'Limited Availability', 'type': 'baseline-status'}",
+              "source": "https://www.linstantverdon.com/fr"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/requestidlecallback",
+              "displayStatus": "{'displayString': 'Limited Availability', 'status': 'limited', 'type': 'baseline-status'}",
+              "source": "_lighthouse-eval.js"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/referencetarget",
+              "displayStatus": "{'type': 'baseline-status', 'displayString': 'Limited Availability', 'status': 'limited'}",
+              "source": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/ua-client-hints",
+              "displayStatus": "{'status': 'limited', 'displayString': 'Limited Availability', 'type': 'baseline-status'}",
+              "source": "https://www.googletagmanager.com/gtag/js?id=AW-797772111"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/scrollend",
+              "displayStatus": "{'displayString': 'Newly Available (2025-12-12)', 'status': 'low', 'type': 'baseline-status'}",
+              "source": "https://www.linstantverdon.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF"
+            }
+          ],
+          "total_items": 33
+        },
+        "trusted-types-xss": {
+          "title": "Mitigate DOM-based XSS with Trusted Types",
+          "headings": [
+            "description",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "No `Content-Security-Policy` header with Trusted Types directive found",
+              "severity": "High"
+            }
+          ],
+          "total_items": 1
+        },
+        "legacy-javascript-insight": {
+          "title": "Legacy JavaScript",
+          "headings": [
+            "url",
+            "wastedBytes"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "wastedBytes": 12244
+            }
+          ],
+          "total_items": 1
+        },
+        "inspector-issues": {
+          "title": "Issues were logged in the `Issues` panel in Chrome Devtools",
+          "headings": [
+            "issueType"
+          ],
+          "items": [
+            {
+              "issueType": "Content security policy"
+            }
+          ],
+          "total_items": 1
+        }
+      },
+      "analysis_timestamp": "2026-11-14T01:56:50.371Z",
+      "error": null
+    }
+  },
+  "crux": {
+    "target": "https://www.linstantverdon.com/fr",
+    "metrics": {},
+    "collection_period": null,
+    "form_factor": "ALL",
+    "error": "No CrUX data for this URL. The site likely has insufficient Chrome traffic volume for eligibility."
+  },
+  "error": null
+}

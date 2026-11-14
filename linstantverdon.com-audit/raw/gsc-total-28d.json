@@ -1,0 +1,51 @@
+{
+  "property": "sc-domain:linstantverdon.com",
+  "rows": [
+    {
+      "keys": [
+        "MOBILE"
+      ],
+      "clicks": 23,
+      "impressions": 896,
+      "ctr": 2.57,
+      "position": 6.9,
+      "device": "MOBILE"
+    },
+    {
+      "keys": [
+        "DESKTOP"
+      ],
+      "clicks": 12,
+      "impressions": 587,
+      "ctr": 2.04,
+      "position": 20.9,
+      "device": "DESKTOP"
+    },
+    {
+      "keys": [
+        "TABLET"
+      ],
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 3.2,
+      "device": "TABLET"
+    }
+  ],
+  "totals": {
+    "clicks": 35,
+    "impressions": 1495,
+    "ctr": 2.34,
+    "position": 12.4
+  },
+  "totals_source": "dimensionless_aggregate",
+  "totals_complete": true,
+  "quick_wins": [],
+  "warnings": [],
+  "row_count": 3,
+  "error": null,
+  "date_range": {
+    "start": "2026-10-17",
+    "end": "2026-11-11"
+  }
+}

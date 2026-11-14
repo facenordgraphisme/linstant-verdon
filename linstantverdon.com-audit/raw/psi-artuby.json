@@ -1,0 +1,2054 @@
+{
+  "url": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby",
+  "psi": {
+    "mobile": {
+      "url": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby",
+      "strategy": "mobile",
+      "lighthouse_version": "13.6.0",
+      "lighthouse_scores": {
+        "performance": 67,
+        "accessibility": 89,
+        "best-practices": 92,
+        "seo": 100
+      },
+      "lab_metrics": {
+        "first-contentful-paint": {
+          "value": 1681.0102518585309,
+          "display": "1.7\u00a0s",
+          "score": 0.92
+        },
+        "largest-contentful-paint": {
+          "value": 11180.613383232096,
+          "display": "11.2\u00a0s",
+          "score": 0
+        },
+        "total-blocking-time": {
+          "value": 192.0000000000009,
+          "display": "190\u00a0ms",
+          "score": 0.9
+        },
+        "cumulative-layout-shift": {
+          "value": 0,
+          "display": "0",
+          "score": 1
+        },
+        "speed-index": {
+          "value": 5464.611925484559,
+          "display": "5.5\u00a0s",
+          "score": 0.55
+        },
+        "interactive": {
+          "value": 11367.673830108266,
+          "display": "11.4\u00a0s",
+          "score": 0.19
+        }
+      },
+      "field_metrics": {},
+      "opportunities": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "savings_ms": 1860,
+          "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/)."
+        }
+      ],
+      "diagnostics": [
+        {
+          "id": "total-byte-weight",
+          "title": "Avoids enormous network payloads",
+          "display": "Total size was 2,078\u00a0KiB",
+          "score": 1,
+          "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/)."
+        },
+        {
+          "id": "mainthread-work-breakdown",
+          "title": "Minimizes main-thread work",
+          "display": "1.3\u00a0s",
+          "score": 1,
+          "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to minimize main-thread work](https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/)"
+        },
+        {
+          "id": "bootup-time",
+          "title": "JavaScript execution time",
+          "display": "0.8\u00a0s",
+          "score": 1,
+          "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to reduce Javascript execution time](https://developer.chrome.com/docs/lighthouse/performance/bootup-time/)."
+        },
+        {
+          "id": "layout-shifts",
+          "title": "Avoid large layout shifts",
+          "display": "",
+          "score": null,
+          "description": "These are the largest layout shifts observed on the page. Each table item represents a single layout shift, and shows the element that shifted the most. Below each item are possible root causes that led to the layout shift. Some of these layout shifts may not be included in the CLS metric value due to [windowing](https://web.dev/articles/cls#what_is_cls). [Learn how to improve CLS](https://web.dev/articles/optimize-cls)"
+        },
+        {
+          "id": "long-tasks",
+          "title": "Avoid long main-thread tasks",
+          "display": "5 long tasks found",
+          "score": 1,
+          "description": "Lists the longest tasks on the main thread, useful for identifying worst contributors to input delay. [Learn how to avoid long main-thread tasks](https://web.dev/articles/optimize-long-tasks)"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "display": "Est savings of 347\u00a0KiB",
+          "score": 0,
+          "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/)."
+        },
+        {
+          "id": "unused-css-rules",
+          "title": "Reduce unused CSS",
+          "display": "",
+          "score": 1,
+          "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity. [Learn how to reduce unused CSS](https://developer.chrome.com/docs/lighthouse/performance/unused-css-rules/)."
+        }
+      ],
+      "failed_audits": [
+        {
+          "id": "button-name",
+          "title": "Buttons do not have an accessible name",
+          "score": 0,
+          "display": "",
+          "description": "When a button doesn't have an accessible name, screen readers announce it as \"button\", making it unusable for users who rely on screen readers. [Learn how to make buttons more accessible](https://dequeuniversity.com/rules/axe/4.14/button-name)."
+        },
+        {
+          "id": "inspector-issues",
+          "title": "Issues were logged in the `Issues` panel in Chrome Devtools",
+          "score": 0,
+          "display": "",
+          "description": "Issues logged to the `Issues` panel in Chrome Devtools indicate unresolved problems. They can come from network request failures, insufficient security controls, and other browser concerns. Open up the Issues panel in Chrome DevTools for more details on each issue."
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0,
+          "display": "11.2\u00a0s",
+          "description": "Largest Contentful Paint marks the time at which the largest text or image is painted. [Learn more about the Largest Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/)"
+        },
+        {
+          "id": "errors-in-console",
+          "title": "Browser errors were logged to the console",
+          "score": 0,
+          "display": "",
+          "description": "Errors logged to the console indicate unresolved problems. They can come from network request failures and other browser concerns. [Learn more about this errors in console diagnostic audit](https://developer.chrome.com/docs/lighthouse/best-practices/errors-in-console/)"
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": "",
+          "description": "Properly ordered headings that do not skip levels convey the semantic structure of the page, making it easier to navigate and understand when using assistive technologies. [Learn more about heading order](https://dequeuniversity.com/rules/axe/4.14/heading-order)."
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0,
+          "display": "Est savings of 12\u00a0KiB",
+          "description": "Polyfills and transforms enable older browsers to use new JavaScript features. However, many aren\u2019t necessary for modern browsers. Consider modifying your JavaScript build process to not transpile [Baseline](https://web.dev/articles/baseline-and-polyfills) features, unless you know you must support older browsers. [Learn why most sites can deploy ES6+ code without transpiling](https://developer.chrome.com/docs/performance/insights/legacy-javascript)."
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0,
+          "display": "Est savings of 470\u00a0KiB",
+          "description": "Reducing the download time of images can improve the perceived load time of the page and LCP. [Learn more about optimizing image size](https://developer.chrome.com/docs/performance/insights/image-delivery)."
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "display": "",
+          "description": "[Avoid chaining critical requests](https://developer.chrome.com/docs/performance/insights/network-dependency-tree) by reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load"
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "display": "Est savings of 100\u00a0ms",
+          "description": "Requests are blocking the page\u2019s initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path."
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "description": "Low-contrast text is difficult or impossible for many users to read. [Learn how to provide sufficient color contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast)."
+        },
+        {
+          "id": "lcp-discovery-insight",
+          "title": "LCP request discovery",
+          "score": 0,
+          "display": "",
+          "description": "[Optimize LCP](https://developer.chrome.com/docs/performance/insights/lcp-discovery) by making the LCP image discoverable from the HTML immediately, and avoiding lazy-loading"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.19,
+          "display": "11.4\u00a0s",
+          "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive. [Learn more about the Time to Interactive metric](https://developer.chrome.com/docs/lighthouse/performance/interactive/)."
+        },
+        {
+          "id": "cache-insight",
+          "title": "Use efficient cache lifetimes",
+          "score": 0.5,
+          "display": "Est savings of 13\u00a0KiB",
+          "description": "A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache)."
+        },
+        {
+          "id": "speed-index",
+          "title": "Speed Index",
+          "score": 0.55,
+          "display": "5.5\u00a0s",
+          "description": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more about the Speed Index metric](https://developer.chrome.com/docs/lighthouse/performance/speed-index/)."
+        }
+      ],
+      "passed_audits_count": 77,
+      "seo_audits": [
+        {
+          "id": "is-crawlable",
+          "title": "Page isn\u2019t blocked from indexing",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "document-title",
+          "title": "Document has a `<title>` element",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "meta-description",
+          "title": "Document has a meta description",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "http-status-code",
+          "title": "Page has successful HTTP status code",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "link-text",
+          "title": "Links have descriptive text",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "crawlable-anchors",
+          "title": "Links are crawlable",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "robots-txt",
+          "title": "robots.txt is valid",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "image-alt",
+          "title": "Image elements have `[alt]` attributes",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "hreflang",
+          "title": "Document has a valid `hreflang`",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "canonical",
+          "title": "Document has a valid `rel=canonical`",
+          "score": 1,
+          "pass": true
+        }
+      ],
+      "accessibility_audits": [
+        {
+          "id": "button-name",
+          "title": "Buttons do not have an accessible name",
+          "score": 0,
+          "display": ""
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": ""
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": ""
+        }
+      ],
+      "audit_details": {
+        "button-name": {
+          "title": "Buttons do not have an accessible name",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'boundingRect': {'height': 48, 'left': 340, 'right': 388, 'top': 36, 'width': 48, 'bottom': 84}, 'type': 'node', 'nodeLabel': 'body.__variable_df88af > nav.fixed > div.relative > button.md:hidden', '"
+            }
+          ],
+          "total_items": 1
+        },
+        "server-response-time": {
+          "title": "Initial server response time was short",
+          "headings": [
+            "url",
+            "responseTime"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby",
+              "responseTime": 3
+            }
+          ],
+          "total_items": 1
+        },
+        "mainthread-work-breakdown": {
+          "title": "Minimizes main-thread work",
+          "headings": [
+            "groupLabel",
+            "duration"
+          ],
+          "items": [
+            {
+              "groupLabel": "Script Evaluation",
+              "duration": 601.9247999999825
+            },
+            {
+              "groupLabel": "Script Parsing & Compilation",
+              "duration": 285.61199999999997
+            },
+            {
+              "groupLabel": "Other",
+              "duration": 258.11639999999755
+            },
+            {
+              "groupLabel": "Style & Layout",
+              "duration": 113.90400000000001
+            },
+            {
+              "groupLabel": "Rendering",
+              "duration": 21.725999999999946
+            }
+          ],
+          "total_items": 7
+        },
+        "trusted-types-xss": {
+          "title": "Mitigate DOM-based XSS with Trusted Types",
+          "headings": [
+            "description",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "No `Content-Security-Policy` header with Trusted Types directive found",
+              "severity": "High"
+            }
+          ],
+          "total_items": 1
+        },
+        "inspector-issues": {
+          "title": "Issues were logged in the `Issues` panel in Chrome Devtools",
+          "headings": [
+            "issueType"
+          ],
+          "items": [
+            {
+              "issueType": "Content security policy"
+            }
+          ],
+          "total_items": 1
+        },
+        "baseline": {
+          "title": "Baseline Features",
+          "headings": [
+            "featureId",
+            "displayStatus",
+            "source"
+          ],
+          "items": [
+            {
+              "featureId": "https://webstatus.dev/features/font-metric-overrides",
+              "displayStatus": "{'type': 'baseline-status', 'status': 'limited', 'displayString': 'Limited Availability'}",
+              "source": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/referencetarget",
+              "displayStatus": "{'status': 'limited', 'displayString': 'Limited Availability', 'type': 'baseline-status'}",
+              "source": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/ua-client-hints",
+              "displayStatus": "{'status': 'limited', 'type': 'baseline-status', 'displayString': 'Limited Availability'}",
+              "source": "https://www.googletagmanager.com/gtag/js?id=AW-797772111"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/scrollend",
+              "displayStatus": "{'displayString': 'Newly Available (2025-12-12)', 'status': 'low', 'type': 'baseline-status'}",
+              "source": "https://www.linstantverdon.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/fetch-priority",
+              "displayStatus": "{'status': 'low', 'displayString': 'Newly Available (2024-10-29)', 'type': 'baseline-status'}",
+              "source": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby"
+            }
+          ],
+          "total_items": 37
+        },
+        "errors-in-console": {
+          "title": "Browser errors were logged to the console",
+          "headings": [
+            "sourceLocation",
+            "description"
+          ],
+          "items": [
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Connecting to 'https://ad.doubleclick.net/ccm/s/collect?auid=340183172.1794621399&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&fmt=8' violates the following Content Security Policy directive: \"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://*.sanity.io\". The action has been blocked."
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Connecting to 'https://www.google.com/ccm/collect?rcb=19&frm=0&apvc=1&auid=340183172.1794621399&dt=La%20clue%20d%E2%80%99Artuby%20%E2%80%94%20Gorges%20du%20Verdon%20%7C%20L%27instant%20Verdon&tid=AW-797772111&en=page_view&dl=https%3A%2F%2Fwww.linstantverdon.com%2Ffr%2Fcanyoning%2Fcanyon-artuby&scrsrc=www.googletagmanager.com&rnd=321514112.1794621399&navt=n&npa=0&sdl=W3sibiI6IkxhIGNsdWUgZOKAmUFydHVieSIsIm8iOlt7InAiOjUwLCJjdSI6IkVVUiIsImEiOjF9XX1d&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938469~118897920~118897930~119863601~120213116~120385423~120412526~120420416~120469145~120469153~121191155~121246026~121246034~123988486~123988487&tft=1794621398995&tfd=936&tids=AW-797772111&fmt=8' violates the following Content Security Policy directive: \"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://*.sanity.io\". The action has been blocked."
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Connecting to 'https://www.google.com/rmkt/collect/797772111/?random=1794621398942&cv=11&fst=1794621398942&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938469~118897920~118897930~119863601~120213116~120385423~120412526~120420416~120469145~120469153~121191155~121246026~121246034~123988486~123988487&u_w=412&u_h=823&url=https%3A%2F%2Fwww.linstantverdon.com%2Ffr%2Fcanyoning%2Fcanyon-artuby&rcb=19&frm=0&tiba=La%20clue%20d%E2%80%99Artuby%20%E2%80%94%20Gorges%20du%20Verdon%20%7C%20L%27instant%20Verdon&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=340183172.1794621399&uaa=&uab=64&uafvl=Not-A.Brand%3B99.0.0.0%7CHeadlessChrome%3B157.0.8103.38%7CChromium%3B157.0.8103.38&uamb=1&uam=moto%20g%20power%20(2022)&uap=Android&uapv=11.0&uaw=0&data=event%3Dgtag.config&ept=68&gcp=5' violates the following Content Security Policy directive: \"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://*.sanity.io\". The action has been blocked."
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Fetch API cannot load https://ad.doubleclick.net/ccm/s/collect?auid=340183172.1794621399&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&fmt=8. Refused to connect because it violates the document's Content Security Policy."
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Fetch API cannot load https://www.google.com/ccm/collect?rcb=19&frm=0&apvc=1&auid=340183172.1794621399&dt=La%20clue%20d%E2%80%99Artuby%20%E2%80%94%20Gorges%20du%20Verdon%20%7C%20L%27instant%20Verdon&tid=AW-797772111&en=page_view&dl=https%3A%2F%2Fwww.linstantverdon.com%2Ffr%2Fcanyoning%2Fcanyon-artuby&scrsrc=www.googletagmanager.com&rnd=321514112.1794621399&navt=n&npa=0&sdl=W3sibiI6IkxhIGNsdWUgZOKAmUFydHVieSIsIm8iOlt7InAiOjUwLCJjdSI6IkVVUiIsImEiOjF9XX1d&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938469~118897920~118897930~119863601~120213116~120385423~120412526~120420416~120469145~120469153~121191155~121246026~121246034~123988486~123988487&tft=1794621398995&tfd=936&tids=AW-797772111&fmt=8. Refused to connect because it violates the document's Content Security Policy."
+            }
+          ],
+          "total_items": 12
+        },
+        "dom-size-insight": {
+          "title": "Optimize DOM size",
+          "headings": [
+            "statistic",
+            "node",
+            "value"
+          ],
+          "items": [
+            {
+              "statistic": "Total elements",
+              "value": "{'type': 'numeric', 'granularity': 1, 'value': 404}"
+            },
+            {
+              "statistic": "DOM depth",
+              "node": "{'lhId': 'page-9-path', 'selector': 'div.glass-card > div.p-4 > svg.lucide > path', 'snippet': '<path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 \u2026\">', 'boundingRect':",
+              "value": "{'value': 14, 'type': 'numeric', 'granularity': 1}"
+            },
+            {
+              "statistic": "Most children",
+              "node": "{'path': '1,HTML,1,BODY', 'nodeLabel': 'body.__variable_df88af', 'type': 'node', 'snippet': '<body class=\"__variable_df88af __variable_97e3b1\">', 'lhId': 'page-8-BODY', 'boundingRect': {'bottom': 6079",
+              "value": "{'type': 'numeric', 'value': 35, 'granularity': 1}"
+            }
+          ],
+          "total_items": 3
+        },
+        "network-requests": {
+          "title": "Network Requests",
+          "headings": [
+            "url",
+            "protocol",
+            "networkRequestTime",
+            "networkEndTime",
+            "transferSize",
+            "resourceSize",
+            "statusCode",
+            "mimeType",
+            "resourceType"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby",
+              "protocol": "h2",
+              "networkRequestTime": 1.9119999408721924,
+              "networkEndTime": 216.29199993610382,
+              "transferSize": 24166,
+              "resourceSize": 137244,
+              "statusCode": 200,
+              "mimeType": "text/html",
+              "resourceType": "Document"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/media/7b0b24f36b1a6d0b-s.p.woff2?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 232.5310000181198,
+              "networkEndTime": 441.34099996089935,
+              "transferSize": 33617,
+              "resourceSize": 32228,
+              "statusCode": 200,
+              "mimeType": "font/woff2",
+              "resourceType": "Font"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 232.67399990558624,
+              "networkEndTime": 540.2359999418259,
+              "transferSize": 49821,
+              "resourceSize": 48432,
+              "statusCode": 200,
+              "mimeType": "font/woff2",
+              "resourceType": "Font"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/image?url=%2Fassets%2Faccueil%2Flogo.webp&w=128&q=75&dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 234.66699993610382,
+              "networkEndTime": 430.779000043869,
+              "transferSize": 3256,
+              "resourceSize": 2522,
+              "statusCode": 200,
+              "mimeType": "image/webp",
+              "resourceType": "Image"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/css/cfafaaa66f0dd5db.css?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 232.7849999666214,
+              "networkEndTime": 438.2410000562668,
+              "transferSize": 2202,
+              "resourceSize": 3404,
+              "statusCode": 200,
+              "mimeType": "text/css",
+              "resourceType": "Stylesheet"
+            }
+          ],
+          "total_items": 55
+        },
+        "resource-summary": {
+          "title": "Resources Summary",
+          "headings": [
+            "label",
+            "requestCount",
+            "transferSize"
+          ],
+          "items": [
+            {
+              "label": "Total",
+              "requestCount": 54,
+              "transferSize": 2127753
+            },
+            {
+              "label": "Image",
+              "requestCount": 14,
+              "transferSize": 1179235
+            },
+            {
+              "label": "Script",
+              "requestCount": 26,
+              "transferSize": 797565
+            },
+            {
+              "label": "Font",
+              "requestCount": 2,
+              "transferSize": 83438
+            },
+            {
+              "label": "Other",
+              "requestCount": 7,
+              "transferSize": 26443
+            }
+          ],
+          "total_items": 9
+        },
+        "heading-order": {
+          "title": "Heading elements are not in a sequentially-descending order",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'explanation': 'Fix any of the following:\\n  Heading order invalid', 'lhId': '1-14-H4', 'path': '1,HTML,1,BODY,3,MAIN,3,DIV,0,DIV,0,DIV,1,DIV,0,DIV,1,DIV,0,DIV,0,DIV,0,DIV,1,H4', 'snippet': '<h4 clas"
+            }
+          ],
+          "total_items": 1
+        },
+        "legacy-javascript-insight": {
+          "title": "Legacy JavaScript",
+          "headings": [
+            "url",
+            "wastedBytes"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "wastedBytes": 12245
+            }
+          ],
+          "total_items": 1
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "headings": [
+            "node",
+            "url",
+            "totalBytes",
+            "wastedBytes"
+          ],
+          "items": [
+            {
+              "node": "{'lhId': 'page-0-DIV', 'snippet': '<div class=\"absolute inset-0 bg-cover bg-center transition-transform duration-[2000ms]\u2026\" style=\"background-image: url(&quot;https://cdn.sanity.io/images/h48oam2s/pro",
+              "url": "https://cdn.sanity.io/images/h48oam2s/production/0c4bff3f610915dc8e234e815a5eff2350c0ce2f-1200x1600.jpg",
+              "totalBytes": 490874,
+              "wastedBytes": 170874
+            },
+            {
+              "node": "{'lhId': 'page-1-IMG', 'boundingRect': {'bottom': 2749, 'right': 387, 'width': 362, 'top': 2547, 'height': 203, 'left': 25}, 'selector': 'div.space-y-6 > div.grid > div.rounded-[2rem] > img.object-cov",
+              "url": "https://www.linstantverdon.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fh48oam2s%2Fproduction%2F0c4bff3f610915dc8e234e815a5eff2350c0ce2f-1200x1600.jpg&w=750&q=75",
+              "totalBytes": 196864,
+              "wastedBytes": 144478
+            },
+            {
+              "node": "{'lhId': 'page-2-IMG', 'selector': 'div.space-y-6 > div.grid > div.rounded-[2rem] > img.object-cover', 'boundingRect': {'top': 3233, 'left': 25, 'bottom': 3436, 'right': 387, 'width': 362, 'height': 2",
+              "url": "https://www.linstantverdon.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fh48oam2s%2Fproduction%2F6ea0e4fa46aa02b087011b350396d88e9d86335f-960x1280.jpg&w=750&q=75",
+              "totalBytes": 112666,
+              "wastedBytes": 60130
+            },
+            {
+              "node": "{'boundingRect': {'height': 203, 'left': 25, 'right': 387, 'width': 362, 'bottom': 3664, 'top': 3462}, 'selector': 'div.space-y-6 > div.grid > div.rounded-[2rem] > img.object-cover', 'lhId': 'page-3-I",
+              "url": "https://www.linstantverdon.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fh48oam2s%2Fproduction%2Fe79d11cdc98cd0125d952be5ededce2052db85ab-1600x1200.jpg&w=750&q=75",
+              "totalBytes": 86346,
+              "wastedBytes": 34082
+            },
+            {
+              "node": "{'snippet': '<img alt=\"La clue d\u2019Artuby \u2014 photo 2\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"(max-",
+              "url": "https://www.linstantverdon.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fh48oam2s%2Fproduction%2F0ef7f8feace9df6420e0b9fc32b0e13b0bcec674-1600x1200.jpg&w=750&q=75",
+              "totalBytes": 82168,
+              "wastedBytes": 29645
+            }
+          ],
+          "total_items": 8
+        },
+        "has-hsts": {
+          "title": "Use a strong HSTS policy",
+          "headings": [
+            "description",
+            "directive",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "No `includeSubDomains` directive found",
+              "directive": "includeSubDomains",
+              "severity": "Medium"
+            },
+            {
+              "description": "No `preload` directive found",
+              "directive": "preload",
+              "severity": "Medium"
+            }
+          ],
+          "total_items": 2
+        },
+        "unused-javascript": {
+          "title": "Reduce unused JavaScript",
+          "headings": [
+            "url",
+            "totalBytes",
+            "wastedBytes"
+          ],
+          "items": [
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "totalBytes": 152385,
+              "wastedBytes": 58686
+            },
+            {
+              "url": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/places.js",
+              "totalBytes": 100881,
+              "wastedBytes": 53995
+            },
+            {
+              "url": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/main.js",
+              "totalBytes": 87042,
+              "wastedBytes": 47041
+            },
+            {
+              "url": "https://maps.gstatic.com/maps-api-v3/embed/js/66/13d/intl/fr_ALL/init_embed.js",
+              "totalBytes": 75165,
+              "wastedBytes": 40258
+            },
+            {
+              "url": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/common.js",
+              "totalBytes": 38152,
+              "wastedBytes": 28012
+            }
+          ],
+          "total_items": 10
+        },
+        "csp-xss": {
+          "title": "Ensure CSP is effective against XSS attacks",
+          "headings": [
+            "description",
+            "directive",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "Host allowlists can frequently be bypassed. Consider using CSP nonces or hashes instead, along with `'strict-dynamic'` if necessary.",
+              "directive": "script-src",
+              "severity": "High"
+            },
+            {
+              "description": "`'unsafe-inline'` allows the execution of unsafe in-page scripts and event handlers. Consider using CSP nonces or hashes to allow scripts individually.",
+              "directive": "script-src",
+              "severity": "High"
+            }
+          ],
+          "total_items": 2
+        },
+        "network-server-latency": {
+          "title": "Server Backend Latencies",
+          "headings": [
+            "origin",
+            "serverResponseTime"
+          ],
+          "items": [
+            {
+              "origin": "https://cdn.sanity.io",
+              "serverResponseTime": 12
+            },
+            {
+              "origin": "https://www.googletagmanager.com",
+              "serverResponseTime": 5
+            },
+            {
+              "origin": "https://maps.gstatic.com",
+              "serverResponseTime": 3
+            },
+            {
+              "origin": "https://www.linstantverdon.com",
+              "serverResponseTime": 1
+            },
+            {
+              "origin": "https://www.google.com",
+              "serverResponseTime": 1
+            }
+          ],
+          "total_items": 6
+        },
+        "origin-isolation": {
+          "title": "Ensure proper origin isolation with COOP",
+          "headings": [
+            "description",
+            "directive",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "No COOP header found",
+              "severity": "High"
+            }
+          ],
+          "total_items": 1
+        },
+        "long-tasks": {
+          "title": "Avoid long main-thread tasks",
+          "headings": [
+            "url",
+            "startTime",
+            "duration"
+          ],
+          "items": [
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "startTime": 6716.107644514575,
+              "duration": 127
+            },
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "startTime": 6608.107644514575,
+              "duration": 108
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/main-app-51e6280ff18d3220.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "startTime": 5869.094829691411,
+              "duration": 85.00000000000091
+            },
+            {
+              "url": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/places.js",
+              "startTime": 9992.375371572389,
+              "duration": 72
+            },
+            {
+              "url": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/main.js",
+              "startTime": 4838.796548888974,
+              "duration": 61
+            }
+          ],
+          "total_items": 5
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "headings": [
+            "url",
+            "cacheLifetimeMs",
+            "totalBytes"
+          ],
+          "items": [
+            {
+              "url": "https://maps.googleapis.com/maps/api/js/StaticMapService.GetMapImage?1m2&1i17384664&2i12237882&2e2&3u17&4m2&1u356&2u342&5m6&1e3&5sfr&6sus&10b1&12b1&14i47083502&8e1&key=AIzaSyCmL18misQw9KdwqGaw3zHkitj8vG6QF2Y&token=68222",
+              "cacheLifetimeMs": 86400000,
+              "totalBytes": 26521
+            },
+            {
+              "url": "https://maps.googleapis.com/maps/api/js?key=AIzaSyCmL18misQw9KdwqGaw3zHkitj8vG6QF2Y&paint_origin=&libraries=geometry,search&v=weekly&loading=async&language=fr&region=us&experimentation=allowed&callback=onApiLoad",
+              "cacheLifetimeMs": 1800000,
+              "totalBytes": 3360
+            }
+          ],
+          "total_items": 2
+        },
+        "total-byte-weight": {
+          "title": "Avoids enormous network payloads",
+          "headings": [
+            "url",
+            "totalBytes"
+          ],
+          "items": [
+            {
+              "url": "https://cdn.sanity.io/images/h48oam2s/production/0c4bff3f610915dc8e234e815a5eff2350c0ce2f-1200x1600.jpg",
+              "totalBytes": 491803
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fh48oam2s%2Fproduction%2F0c4bff3f610915dc8e234e815a5eff2350c0ce2f-1200x1600.jpg&w=750&q=75",
+              "totalBytes": 197399
+            },
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "totalBytes": 153072
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fh48oam2s%2Fproduction%2F6ea0e4fa46aa02b087011b350396d88e9d86335f-960x1280.jpg&w=750&q=75",
+              "totalBytes": 113200
+            },
+            {
+              "url": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/places.js",
+              "totalBytes": 101816
+            }
+          ],
+          "total_items": 10
+        },
+        "main-thread-tasks": {
+          "title": "Tasks",
+          "headings": [
+            "startTime",
+            "duration"
+          ],
+          "items": [
+            {
+              "startTime": 220.205,
+              "duration": 14.786
+            },
+            {
+              "startTime": 235.62,
+              "duration": 9.405
+            },
+            {
+              "startTime": 307.961,
+              "duration": 14.841
+            },
+            {
+              "startTime": 481.234,
+              "duration": 7.165
+            },
+            {
+              "startTime": 488.407,
+              "duration": 13.823
+            }
+          ],
+          "total_items": 37
+        },
+        "viewport-insight": {
+          "title": "Optimize viewport for mobile",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'type': 'node', 'nodeLabel': 'head > meta', 'snippet': '<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">', 'path': '1,HTML,0,HEAD,1,META', 'boundingRect': {'bottom': 0, 'width': 0"
+            }
+          ],
+          "total_items": 1
+        },
+        "render-blocking-insight": {
+          "title": "Render-blocking requests",
+          "headings": [
+            "url",
+            "totalBytes",
+            "wastedMs"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/_next/static/css/d381b28fe4b06916.css?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "totalBytes": 13276,
+              "wastedMs": 657
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/css/cfafaaa66f0dd5db.css?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "totalBytes": 2202,
+              "wastedMs": 165
+            }
+          ],
+          "total_items": 2
+        },
+        "color-contrast": {
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'type': 'node', 'nodeLabel': '\ud83d\udccd RENDEZ-VOUS', 'path': '1,HTML,1,BODY,3,MAIN,3,DIV,0,DIV,0,DIV,1,DIV,0,DIV,0,DIV,0,BUTTON', 'selector': 'div.border-t > div.w-full > div.flex > button.flex', 'explanati"
+            },
+            {
+              "node": "{'boundingRect': {'height': 65, 'right': 355, 'top': 1668, 'width': 298, 'bottom': 1733, 'left': 57}, 'type': 'node', 'path': '1,HTML,1,BODY,3,MAIN,3,DIV,0,DIV,0,DIV,1,DIV,0,DIV,1,DIV,0,DIV,0,DIV,0,DI"
+            },
+            {
+              "node": "{'selector': 'div.glass-card > div.grid > div.text-center > div.text-[9px]', 'nodeLabel': 'PRIX / PERS.', 'type': 'node', 'path': '1,HTML,1,BODY,3,MAIN,3,DIV,0,DIV,1,DIV,0,DIV,0,DIV,0,DIV,2,DIV', 'exp"
+            },
+            {
+              "node": "{'path': '1,HTML,1,BODY,3,MAIN,3,DIV,0,DIV,1,DIV,0,DIV,0,DIV,1,DIV,2,DIV', 'nodeLabel': 'DUR\u00c9E', 'boundingRect': {'bottom': 4045, 'width': 65, 'top': 4032, 'right': 239, 'left': 173, 'height': 14}, 'e"
+            },
+            {
+              "node": "{'path': '1,HTML,1,BODY,3,MAIN,3,DIV,0,DIV,1,DIV,0,DIV,0,DIV,2,DIV,2,DIV', 'snippet': '<div class=\"text-[9px] uppercase font-bold tracking-wider text-slate-400 mt-0.5\">', 'selector': 'div.glass-card >"
+            }
+          ],
+          "total_items": 7
+        },
+        "third-parties-insight": {
+          "title": "3rd parties",
+          "headings": [
+            "entity",
+            "transferSize",
+            "mainThreadTime"
+          ],
+          "items": [
+            {
+              "entity": "Google Maps",
+              "transferSize": 473696,
+              "mainThreadTime": 244.82399952411652
+            },
+            {
+              "entity": "Google Tag Manager",
+              "transferSize": 153072,
+              "mainThreadTime": 194.94299983978271
+            },
+            {
+              "entity": "Other Google APIs/SDKs",
+              "transferSize": 1428,
+              "mainThreadTime": 1.0639996528625488
+            },
+            {
+              "entity": "Google Fonts",
+              "transferSize": 0,
+              "mainThreadTime": 0.008000016212463379
+            },
+            {
+              "entity": "sanity.io",
+              "transferSize": 491803,
+              "mainThreadTime": 0
+            }
+          ],
+          "total_items": 5
+        },
+        "network-rtt": {
+          "title": "Network Round Trip Times",
+          "headings": [
+            "origin",
+            "rtt"
+          ],
+          "items": [
+            {
+              "origin": "https://cdn.sanity.io",
+              "rtt": 18.688095
+            },
+            {
+              "origin": "https://www.google.com",
+              "rtt": 0.8999999999999999
+            },
+            {
+              "origin": "https://maps.googleapis.com",
+              "rtt": 0.8999999999999999
+            },
+            {
+              "origin": "https://www.linstantverdon.com",
+              "rtt": 0.003185826885322793
+            },
+            {
+              "origin": "https://www.googletagmanager.com",
+              "rtt": 0.0009658984841655827
+            }
+          ],
+          "total_items": 6
+        },
+        "bootup-time": {
+          "title": "JavaScript execution time",
+          "headings": [
+            "url",
+            "total",
+            "scripting",
+            "scriptParseCompile"
+          ],
+          "items": [
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "total": 242.02559999999966,
+              "scripting": 167.24399999999966,
+              "scriptParseCompile": 73.11359999999999
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "total": 181.12680000000051,
+              "scripting": 51.41160000000046,
+              "scriptParseCompile": 16.2924
+            },
+            {
+              "url": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby",
+              "total": 127.97879999999999,
+              "scripting": 2.915999999999996,
+              "scriptParseCompile": 5.9051999999999945
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "total": 123.06720000000001,
+              "scripting": 93.45840000000003,
+              "scriptParseCompile": 17.397599999999997
+            },
+            {
+              "url": "Unattributable",
+              "total": 108.38640000000068,
+              "scripting": 4.6008,
+              "scriptParseCompile": 0
+            }
+          ],
+          "total_items": 10
+        }
+      },
+      "analysis_timestamp": "2026-11-14T01:56:37.977Z",
+      "error": null
+    },
+    "desktop": {
+      "url": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby",
+      "strategy": "desktop",
+      "lighthouse_version": "13.6.0",
+      "lighthouse_scores": {
+        "performance": 96,
+        "accessibility": 94,
+        "best-practices": 92,
+        "seo": 100
+      },
+      "lab_metrics": {
+        "first-contentful-paint": {
+          "value": 471.01063598755815,
+          "display": "0.5\u00a0s",
+          "score": 1
+        },
+        "largest-contentful-paint": {
+          "value": 1145.0000992585174,
+          "display": "1.1\u00a0s",
+          "score": 0.91
+        },
+        "total-blocking-time": {
+          "value": 113.50000000000023,
+          "display": "110\u00a0ms",
+          "score": 0.95
+        },
+        "cumulative-layout-shift": {
+          "value": 0,
+          "display": "0",
+          "score": 1
+        },
+        "speed-index": {
+          "value": 626.1882425178853,
+          "display": "0.6\u00a0s",
+          "score": 1
+        },
+        "interactive": {
+          "value": 1785.4711531162861,
+          "display": "1.8\u00a0s",
+          "score": 0.97
+        }
+      },
+      "field_metrics": {},
+      "opportunities": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "savings_ms": 40,
+          "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/)."
+        }
+      ],
+      "diagnostics": [
+        {
+          "id": "total-byte-weight",
+          "title": "Avoids enormous network payloads",
+          "display": "Total size was 2,089\u00a0KiB",
+          "score": 1,
+          "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/)."
+        },
+        {
+          "id": "mainthread-work-breakdown",
+          "title": "Minimizes main-thread work",
+          "display": "1.0\u00a0s",
+          "score": 1,
+          "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to minimize main-thread work](https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/)"
+        },
+        {
+          "id": "bootup-time",
+          "title": "JavaScript execution time",
+          "display": "0.6\u00a0s",
+          "score": 1,
+          "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to reduce Javascript execution time](https://developer.chrome.com/docs/lighthouse/performance/bootup-time/)."
+        },
+        {
+          "id": "layout-shifts",
+          "title": "Avoid large layout shifts",
+          "display": "",
+          "score": null,
+          "description": "These are the largest layout shifts observed on the page. Each table item represents a single layout shift, and shows the element that shifted the most. Below each item are possible root causes that led to the layout shift. Some of these layout shifts may not be included in the CLS metric value due to [windowing](https://web.dev/articles/cls#what_is_cls). [Learn how to improve CLS](https://web.dev/articles/optimize-cls)"
+        },
+        {
+          "id": "long-tasks",
+          "title": "Avoid long main-thread tasks",
+          "display": "5 long tasks found",
+          "score": 1,
+          "description": "Lists the longest tasks on the main thread, useful for identifying worst contributors to input delay. [Learn how to avoid long main-thread tasks](https://web.dev/articles/optimize-long-tasks)"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "display": "Est savings of 348\u00a0KiB",
+          "score": 0,
+          "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/)."
+        },
+        {
+          "id": "unused-css-rules",
+          "title": "Reduce unused CSS",
+          "display": "",
+          "score": 1,
+          "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity. [Learn how to reduce unused CSS](https://developer.chrome.com/docs/lighthouse/performance/unused-css-rules/)."
+        }
+      ],
+      "failed_audits": [
+        {
+          "id": "inspector-issues",
+          "title": "Issues were logged in the `Issues` panel in Chrome Devtools",
+          "score": 0,
+          "display": "",
+          "description": "Issues logged to the `Issues` panel in Chrome Devtools indicate unresolved problems. They can come from network request failures, insufficient security controls, and other browser concerns. Open up the Issues panel in Chrome DevTools for more details on each issue."
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": "",
+          "description": "Properly ordered headings that do not skip levels convey the semantic structure of the page, making it easier to navigate and understand when using assistive technologies. [Learn more about heading order](https://dequeuniversity.com/rules/axe/4.14/heading-order)."
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "display": "",
+          "description": "[Avoid chaining critical requests](https://developer.chrome.com/docs/performance/insights/network-dependency-tree) by reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load"
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": "",
+          "description": "Low-contrast text is difficult or impossible for many users to read. [Learn how to provide sufficient color contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast)."
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0,
+          "display": "Est savings of 642\u00a0KiB",
+          "description": "Reducing the download time of images can improve the perceived load time of the page and LCP. [Learn more about optimizing image size](https://developer.chrome.com/docs/performance/insights/image-delivery)."
+        },
+        {
+          "id": "errors-in-console",
+          "title": "Browser errors were logged to the console",
+          "score": 0,
+          "display": "",
+          "description": "Errors logged to the console indicate unresolved problems. They can come from network request failures and other browser concerns. [Learn more about this errors in console diagnostic audit](https://developer.chrome.com/docs/lighthouse/best-practices/errors-in-console/)"
+        },
+        {
+          "id": "lcp-discovery-insight",
+          "title": "LCP request discovery",
+          "score": 0,
+          "display": "",
+          "description": "[Optimize LCP](https://developer.chrome.com/docs/performance/insights/lcp-discovery) by making the LCP image discoverable from the HTML immediately, and avoiding lazy-loading"
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0.5,
+          "display": "",
+          "description": "Requests are blocking the page\u2019s initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path."
+        },
+        {
+          "id": "cache-insight",
+          "title": "Use efficient cache lifetimes",
+          "score": 0.5,
+          "display": "Est savings of 17\u00a0KiB",
+          "description": "A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache)."
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "display": "Est savings of 12\u00a0KiB",
+          "description": "Polyfills and transforms enable older browsers to use new JavaScript features. However, many aren\u2019t necessary for modern browsers. Consider modifying your JavaScript build process to not transpile [Baseline](https://web.dev/articles/baseline-and-polyfills) features, unless you know you must support older browsers. [Learn why most sites can deploy ES6+ code without transpiling](https://developer.chrome.com/docs/performance/insights/legacy-javascript)."
+        }
+      ],
+      "passed_audits_count": 81,
+      "seo_audits": [
+        {
+          "id": "is-crawlable",
+          "title": "Page isn\u2019t blocked from indexing",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "document-title",
+          "title": "Document has a `<title>` element",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "meta-description",
+          "title": "Document has a meta description",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "http-status-code",
+          "title": "Page has successful HTTP status code",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "link-text",
+          "title": "Links have descriptive text",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "crawlable-anchors",
+          "title": "Links are crawlable",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "robots-txt",
+          "title": "robots.txt is valid",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "image-alt",
+          "title": "Image elements have `[alt]` attributes",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "hreflang",
+          "title": "Document has a valid `hreflang`",
+          "score": 1,
+          "pass": true
+        },
+        {
+          "id": "canonical",
+          "title": "Document has a valid `rel=canonical`",
+          "score": 1,
+          "pass": true
+        }
+      ],
+      "accessibility_audits": [
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": ""
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": ""
+        }
+      ],
+      "audit_details": {
+        "baseline": {
+          "title": "Baseline Features",
+          "headings": [
+            "featureId",
+            "displayStatus",
+            "source"
+          ],
+          "items": [
+            {
+              "featureId": "https://webstatus.dev/features/font-metric-overrides",
+              "displayStatus": "{'displayString': 'Limited Availability', 'status': 'limited', 'type': 'baseline-status'}",
+              "source": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/ua-client-hints",
+              "displayStatus": "{'status': 'limited', 'displayString': 'Limited Availability', 'type': 'baseline-status'}",
+              "source": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/main.js"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/referencetarget",
+              "displayStatus": "{'displayString': 'Limited Availability', 'type': 'baseline-status', 'status': 'limited'}",
+              "source": "https://maps.gstatic.com/maps-api-v3/embed/js/66/13d/intl/fr_ALL/init_embed.js"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/scrollend",
+              "displayStatus": "{'type': 'baseline-status', 'displayString': 'Newly Available (2025-12-12)', 'status': 'low'}",
+              "source": "https://www.linstantverdon.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF"
+            },
+            {
+              "featureId": "https://webstatus.dev/features/fetch-priority",
+              "displayStatus": "{'status': 'low', 'type': 'baseline-status', 'displayString': 'Newly Available (2024-10-29)'}",
+              "source": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby"
+            }
+          ],
+          "total_items": 37
+        },
+        "inspector-issues": {
+          "title": "Issues were logged in the `Issues` panel in Chrome Devtools",
+          "headings": [
+            "issueType"
+          ],
+          "items": [
+            {
+              "issueType": "Content security policy"
+            }
+          ],
+          "total_items": 1
+        },
+        "has-hsts": {
+          "title": "Use a strong HSTS policy",
+          "headings": [
+            "description",
+            "directive",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "No `includeSubDomains` directive found",
+              "directive": "includeSubDomains",
+              "severity": "Medium"
+            },
+            {
+              "description": "No `preload` directive found",
+              "directive": "preload",
+              "severity": "Medium"
+            }
+          ],
+          "total_items": 2
+        },
+        "heading-order": {
+          "title": "Heading elements are not in a sequentially-descending order",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'path': '1,HTML,1,BODY,3,MAIN,3,DIV,0,DIV,0,DIV,1,DIV,0,DIV,1,DIV,0,DIV,0,DIV,0,DIV,1,H4', 'nodeLabel': 'Lieu de rendez-vous', 'explanation': 'Fix any of the following:\\n  Heading order invalid', 'se"
+            }
+          ],
+          "total_items": 1
+        },
+        "render-blocking-insight": {
+          "title": "Render-blocking requests",
+          "headings": [
+            "url",
+            "totalBytes",
+            "wastedMs"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/_next/static/css/d381b28fe4b06916.css?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "totalBytes": 13279,
+              "wastedMs": 121
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/css/cfafaaa66f0dd5db.css?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "totalBytes": 2205
+            }
+          ],
+          "total_items": 2
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "headings": [
+            "url",
+            "cacheLifetimeMs",
+            "totalBytes"
+          ],
+          "items": [
+            {
+              "url": "https://maps.googleapis.com/maps/api/js/StaticMapService.GetMapImage?1m2&1i17384584&2i12237882&2e2&3u17&4m2&1u515&2u342&5m6&1e3&5sfr&6sus&10b1&12b1&14i47083502&8e1&key=AIzaSyCmL18misQw9KdwqGaw3zHkitj8vG6QF2Y&token=115160",
+              "cacheLifetimeMs": 86400000,
+              "totalBytes": 36532
+            },
+            {
+              "url": "https://maps.googleapis.com/maps/api/js?key=AIzaSyCmL18misQw9KdwqGaw3zHkitj8vG6QF2Y&paint_origin=&libraries=geometry,search&v=weekly&loading=async&language=fr&region=us&experimentation=allowed&callback=onApiLoad",
+              "cacheLifetimeMs": 1800000,
+              "totalBytes": 3360
+            }
+          ],
+          "total_items": 2
+        },
+        "origin-isolation": {
+          "title": "Ensure proper origin isolation with COOP",
+          "headings": [
+            "description",
+            "directive",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "No COOP header found",
+              "severity": "High"
+            }
+          ],
+          "total_items": 1
+        },
+        "server-response-time": {
+          "title": "Initial server response time was short",
+          "headings": [
+            "url",
+            "responseTime"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby",
+              "responseTime": 5
+            }
+          ],
+          "total_items": 1
+        },
+        "color-contrast": {
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'lhId': '1-0-BUTTON', 'explanation': 'Fix any of the following:\\n  Element has insufficient color contrast of 3.49 (foreground color: #0084d1, background color: #e0f2fa, font size: 9.0pt (12px), font"
+            },
+            {
+              "node": "{'path': '1,HTML,1,BODY,3,MAIN,3,DIV,0,DIV,0,DIV,1,DIV,0,DIV,1,DIV,0,DIV,0,DIV,0,DIV,3,DIV', 'explanation': 'Fix any of the following:\\n  Element has insufficient color contrast of 2.51 (foreground co"
+            },
+            {
+              "node": "{'snippet': '<div class=\"text-[9px] uppercase font-bold tracking-wider text-slate-400 mt-0.5\">', 'nodeLabel': 'PRIX / PERS.', 'type': 'node', 'lhId': '1-4-DIV', 'boundingRect': {'width': 61, 'height':"
+            },
+            {
+              "node": "{'snippet': '<div class=\"text-[9px] uppercase font-bold tracking-wider text-slate-400 mt-0.5\">', 'boundingRect': {'right': 1130, 'left': 1069, 'top': 805, 'width': 61, 'height': 14, 'bottom': 818}, 'e"
+            },
+            {
+              "node": "{'explanation': 'Fix any of the following:\\n  Element has insufficient color contrast of 2.51 (foreground color: #90a1b9, background color: #f8fafc, font size: 6.8pt (9px), font weight: bold). Expecte"
+            }
+          ],
+          "total_items": 7
+        },
+        "dom-size-insight": {
+          "title": "Optimize DOM size",
+          "headings": [
+            "statistic",
+            "node",
+            "value"
+          ],
+          "items": [
+            {
+              "statistic": "Total elements",
+              "value": "{'type': 'numeric', 'granularity': 1, 'value': 404}"
+            },
+            {
+              "statistic": "DOM depth",
+              "node": "{'snippet': '<path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 \u2026\">', 'nodeLabel': 'div.glass-card > div.p-4 > svg.lucide > path', 'boundingRect': {'left': 105, 'width'",
+              "value": "{'granularity': 1, 'value': 14, 'type': 'numeric'}"
+            },
+            {
+              "statistic": "Most children",
+              "node": "{'selector': 'body.__variable_df88af', 'boundingRect': {'left': 0, 'bottom': 3454, 'height': 3454, 'right': 1335, 'top': 0, 'width': 1335}, 'lhId': 'page-9-BODY', 'type': 'node', 'nodeLabel': 'body.__",
+              "value": "{'value': 35, 'granularity': 1, 'type': 'numeric'}"
+            }
+          ],
+          "total_items": 3
+        },
+        "bootup-time": {
+          "title": "JavaScript execution time",
+          "headings": [
+            "url",
+            "total",
+            "scripting",
+            "scriptParseCompile"
+          ],
+          "items": [
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "total": 177.4339999999998,
+              "scripting": 126.36999999999982,
+              "scriptParseCompile": 50.208
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "total": 167.134,
+              "scripting": 141.60399999999998,
+              "scriptParseCompile": 18.584000000000003
+            },
+            {
+              "url": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby",
+              "total": 92.797,
+              "scripting": 4.703999999999991,
+              "scriptParseCompile": 6.249999999999997
+            },
+            {
+              "url": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/main.js",
+              "total": 87.075,
+              "scripting": 47.032000000000004,
+              "scriptParseCompile": 36.49099999999999
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "total": 86.75899999999993,
+              "scripting": 21.818999999999974,
+              "scriptParseCompile": 19.021
+            }
+          ],
+          "total_items": 8
+        },
+        "third-parties-insight": {
+          "title": "3rd parties",
+          "headings": [
+            "entity",
+            "transferSize",
+            "mainThreadTime"
+          ],
+          "items": [
+            {
+              "entity": "Google Maps",
+              "transferSize": 483704,
+              "mainThreadTime": 298.4169993400574
+            },
+            {
+              "entity": "Google Tag Manager",
+              "transferSize": 153099,
+              "mainThreadTime": 169.5640001296997
+            },
+            {
+              "entity": "Other Google APIs/SDKs",
+              "transferSize": 1426,
+              "mainThreadTime": 1.0069999694824219
+            },
+            {
+              "entity": "Google Fonts",
+              "transferSize": 0,
+              "mainThreadTime": 0.007999897003173828
+            },
+            {
+              "entity": "sanity.io",
+              "transferSize": 491779,
+              "mainThreadTime": 0
+            }
+          ],
+          "total_items": 5
+        },
+        "network-rtt": {
+          "title": "Network Round Trip Times",
+          "headings": [
+            "origin",
+            "rtt"
+          ],
+          "items": [
+            {
+              "origin": "https://cdn.sanity.io",
+              "rtt": 0.8999999999999999
+            },
+            {
+              "origin": "https://www.google.com",
+              "rtt": 0.8999999999999999
+            },
+            {
+              "origin": "https://maps.googleapis.com",
+              "rtt": 0.8999999999999999
+            },
+            {
+              "origin": "https://www.linstantverdon.com",
+              "rtt": 0.00318583334159678
+            },
+            {
+              "origin": "https://maps.gstatic.com",
+              "rtt": 0.0006229062095292004
+            }
+          ],
+          "total_items": 6
+        },
+        "total-byte-weight": {
+          "title": "Avoids enormous network payloads",
+          "headings": [
+            "url",
+            "totalBytes"
+          ],
+          "items": [
+            {
+              "url": "https://cdn.sanity.io/images/h48oam2s/production/0c4bff3f610915dc8e234e815a5eff2350c0ce2f-1200x1600.jpg",
+              "totalBytes": 491779
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fh48oam2s%2Fproduction%2F0c4bff3f610915dc8e234e815a5eff2350c0ce2f-1200x1600.jpg&w=750&q=75",
+              "totalBytes": 197399
+            },
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "totalBytes": 153099
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fh48oam2s%2Fproduction%2F6ea0e4fa46aa02b087011b350396d88e9d86335f-960x1280.jpg&w=750&q=75",
+              "totalBytes": 113200
+            },
+            {
+              "url": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/places.js",
+              "totalBytes": 101816
+            }
+          ],
+          "total_items": 10
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "headings": [
+            "node",
+            "url",
+            "totalBytes",
+            "wastedBytes"
+          ],
+          "items": [
+            {
+              "node": "{'snippet': '<div class=\"absolute inset-0 bg-cover bg-center transition-transform duration-[2000ms]\u2026\" style=\"background-image: url(&quot;https://cdn.sanity.io/images/h48oam2s/production/0c4b\u2026&quot;);\"",
+              "url": "https://cdn.sanity.io/images/h48oam2s/production/0c4bff3f610915dc8e234e815a5eff2350c0ce2f-1200x1600.jpg",
+              "totalBytes": 490874,
+              "wastedBytes": 170874
+            },
+            {
+              "node": "{'nodeLabel': 'La clue d\u2019Artuby \u2014 photo 3', 'path': '1,HTML,1,BODY,3,MAIN,3,DIV,0,DIV,0,DIV,2,DIV,1,DIV,1,DIV,0,IMG', 'boundingRect': {'left': 465, 'right': 851, 'bottom': 2073, 'height': 216, 'width'",
+              "url": "https://www.linstantverdon.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fh48oam2s%2Fproduction%2F0c4bff3f610915dc8e234e815a5eff2350c0ce2f-1200x1600.jpg&w=750&q=75",
+              "totalBytes": 196864,
+              "wastedBytes": 163755
+            },
+            {
+              "node": "{'selector': 'div.space-y-6 > div.grid > div.rounded-[2rem] > img.object-cover', 'lhId': 'page-2-IMG', 'snippet': '<img alt=\"La clue d\u2019Artuby \u2014 photo 6\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill",
+              "url": "https://www.linstantverdon.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fh48oam2s%2Fproduction%2F6ea0e4fa46aa02b087011b350396d88e9d86335f-960x1280.jpg&w=750&q=75",
+              "totalBytes": 112666,
+              "wastedBytes": 79556
+            },
+            {
+              "node": "{'nodeLabel': 'La clue d\u2019Artuby \u2014 photo 7', 'boundingRect': {'top': 2341, 'right': 851, 'height': 216, 'bottom': 2558, 'width': 386, 'left': 465}, 'type': 'node', 'lhId': 'page-3-IMG', 'selector': 'di",
+              "url": "https://www.linstantverdon.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fh48oam2s%2Fproduction%2Fe79d11cdc98cd0125d952be5ededce2052db85ab-1600x1200.jpg&w=750&q=75",
+              "totalBytes": 86346,
+              "wastedBytes": 67705
+            },
+            {
+              "node": "{'selector': 'div.space-y-6 > div.grid > div.rounded-[2rem] > img.object-cover', 'type': 'node', 'lhId': 'page-4-IMG', 'nodeLabel': 'La clue d\u2019Artuby \u2014 photo 2', 'snippet': '<img alt=\"La clue d\u2019Artuby",
+              "url": "https://www.linstantverdon.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fh48oam2s%2Fproduction%2F0ef7f8feace9df6420e0b9fc32b0e13b0bcec674-1600x1200.jpg&w=750&q=75",
+              "totalBytes": 82168,
+              "wastedBytes": 63528
+            }
+          ],
+          "total_items": 8
+        },
+        "network-server-latency": {
+          "title": "Server Backend Latencies",
+          "headings": [
+            "origin",
+            "serverResponseTime"
+          ],
+          "items": [
+            {
+              "origin": "https://www.googletagmanager.com",
+              "serverResponseTime": 19
+            },
+            {
+              "origin": "https://cdn.sanity.io",
+              "serverResponseTime": 6
+            },
+            {
+              "origin": "https://maps.gstatic.com",
+              "serverResponseTime": 4
+            },
+            {
+              "origin": "https://maps.googleapis.com",
+              "serverResponseTime": 1.5
+            },
+            {
+              "origin": "https://www.linstantverdon.com",
+              "serverResponseTime": 1
+            }
+          ],
+          "total_items": 6
+        },
+        "viewport-insight": {
+          "title": "Optimize viewport for mobile",
+          "headings": [
+            "node"
+          ],
+          "items": [
+            {
+              "node": "{'selector': 'head > meta', 'path': '1,HTML,0,HEAD,1,META', 'nodeLabel': 'head > meta', 'type': 'node', 'boundingRect': {'width': 0, 'top': 0, 'left': 0, 'bottom': 0, 'height': 0, 'right': 0}, 'lhId':"
+            }
+          ],
+          "total_items": 1
+        },
+        "legacy-javascript-insight": {
+          "title": "Legacy JavaScript",
+          "headings": [
+            "url",
+            "wastedBytes"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "wastedBytes": 12245
+            }
+          ],
+          "total_items": 1
+        },
+        "unused-javascript": {
+          "title": "Reduce unused JavaScript",
+          "headings": [
+            "url",
+            "totalBytes",
+            "wastedBytes"
+          ],
+          "items": [
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "totalBytes": 152411,
+              "wastedBytes": 58724
+            },
+            {
+              "url": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/places.js",
+              "totalBytes": 100881,
+              "wastedBytes": 53995
+            },
+            {
+              "url": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/main.js",
+              "totalBytes": 87042,
+              "wastedBytes": 47114
+            },
+            {
+              "url": "https://maps.gstatic.com/maps-api-v3/embed/js/66/13d/intl/fr_ALL/init_embed.js",
+              "totalBytes": 75165,
+              "wastedBytes": 40258
+            },
+            {
+              "url": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/common.js",
+              "totalBytes": 38152,
+              "wastedBytes": 28288
+            }
+          ],
+          "total_items": 10
+        },
+        "resource-summary": {
+          "title": "Resources Summary",
+          "headings": [
+            "label",
+            "requestCount",
+            "transferSize"
+          ],
+          "items": [
+            {
+              "label": "Total",
+              "requestCount": 55,
+              "transferSize": 2138819
+            },
+            {
+              "label": "Image",
+              "requestCount": 15,
+              "transferSize": 1190232
+            },
+            {
+              "label": "Script",
+              "requestCount": 26,
+              "transferSize": 797625
+            },
+            {
+              "label": "Font",
+              "requestCount": 2,
+              "transferSize": 83443
+            },
+            {
+              "label": "Other",
+              "requestCount": 7,
+              "transferSize": 26443
+            }
+          ],
+          "total_items": 9
+        },
+        "csp-xss": {
+          "title": "Ensure CSP is effective against XSS attacks",
+          "headings": [
+            "description",
+            "directive",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "Host allowlists can frequently be bypassed. Consider using CSP nonces or hashes instead, along with `'strict-dynamic'` if necessary.",
+              "directive": "script-src",
+              "severity": "High"
+            },
+            {
+              "description": "`'unsafe-inline'` allows the execution of unsafe in-page scripts and event handlers. Consider using CSP nonces or hashes to allow scripts individually.",
+              "directive": "script-src",
+              "severity": "High"
+            }
+          ],
+          "total_items": 2
+        },
+        "network-requests": {
+          "title": "Network Requests",
+          "headings": [
+            "url",
+            "protocol",
+            "networkRequestTime",
+            "networkEndTime",
+            "transferSize",
+            "resourceSize",
+            "statusCode",
+            "mimeType",
+            "resourceType"
+          ],
+          "items": [
+            {
+              "url": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby",
+              "protocol": "h2",
+              "networkRequestTime": 1.3540000915527344,
+              "networkEndTime": 85.86700010299683,
+              "transferSize": 24166,
+              "resourceSize": 137244,
+              "statusCode": 200,
+              "mimeType": "text/html",
+              "resourceType": "Document"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/media/7b0b24f36b1a6d0b-s.p.woff2?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 96.83599996566772,
+              "networkEndTime": 114.30999994277954,
+              "transferSize": 33620,
+              "resourceSize": 32228,
+              "statusCode": 200,
+              "mimeType": "font/woff2",
+              "resourceType": "Font"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 96.9980001449585,
+              "networkEndTime": 118.47000026702881,
+              "transferSize": 49823,
+              "resourceSize": 48432,
+              "statusCode": 200,
+              "mimeType": "font/woff2",
+              "resourceType": "Font"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/image?url=%2Fassets%2Faccueil%2Flogo.webp&w=64&q=75&dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 98.77600002288818,
+              "networkEndTime": 116.91099977493286,
+              "transferSize": 2084,
+              "resourceSize": 1350,
+              "statusCode": 200,
+              "mimeType": "image/webp",
+              "resourceType": "Image"
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/css/cfafaaa66f0dd5db.css?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "protocol": "h2",
+              "networkRequestTime": 97.20900011062622,
+              "networkEndTime": 113.83999967575073,
+              "transferSize": 2205,
+              "resourceSize": 3404,
+              "statusCode": 200,
+              "mimeType": "text/css",
+              "resourceType": "Stylesheet"
+            }
+          ],
+          "total_items": 56
+        },
+        "long-tasks": {
+          "title": "Avoid long main-thread tasks",
+          "headings": [
+            "url",
+            "startTime",
+            "duration"
+          ],
+          "items": [
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "startTime": 1311.0664749222392,
+              "duration": 95
+            },
+            {
+              "url": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "startTime": 1235.0664749222392,
+              "duration": 76
+            },
+            {
+              "url": "https://www.linstantverdon.com/_next/static/chunks/3794-42d7895b5f4d5178.js?dpl=dpl_33L84C9CjVYeX5V6zB5cF1toWwrF",
+              "startTime": 1100.066474922239,
+              "duration": 74.00000000000023
+            },
+            {
+              "url": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/places.js",
+              "startTime": 1954.2569918661027,
+              "duration": 71
+            },
+            {
+              "url": "https://maps.googleapis.com/maps-api-v3/api/js/66/13d/intl/fr_ALL/main.js",
+              "startTime": 1019.0027334407775,
+              "duration": 58
+            }
+          ],
+          "total_items": 5
+        },
+        "trusted-types-xss": {
+          "title": "Mitigate DOM-based XSS with Trusted Types",
+          "headings": [
+            "description",
+            "severity"
+          ],
+          "items": [
+            {
+              "description": "No `Content-Security-Policy` header with Trusted Types directive found",
+              "severity": "High"
+            }
+          ],
+          "total_items": 1
+        },
+        "errors-in-console": {
+          "title": "Browser errors were logged to the console",
+          "headings": [
+            "sourceLocation",
+            "description"
+          ],
+          "items": [
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Connecting to 'https://ad.doubleclick.net/ccm/s/collect?auid=584571131.1794621417&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&fmt=8' violates the following Content Security Policy directive: \"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://*.sanity.io\". The action has been blocked."
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Connecting to 'https://www.google.com/ccm/collect?rcb=11&frm=0&apvc=1&auid=584571131.1794621417&dt=La%20clue%20d%E2%80%99Artuby%20%E2%80%94%20Gorges%20du%20Verdon%20%7C%20L%27instant%20Verdon&tid=AW-797772111&en=page_view&dl=https%3A%2F%2Fwww.linstantverdon.com%2Ffr%2Fcanyoning%2Fcanyon-artuby&scrsrc=www.googletagmanager.com&rnd=1911318020.1794621417&navt=n&npa=0&sdl=W3sibiI6IkxhIGNsdWUgZOKAmUFydHVieSIsIm8iOlt7InAiOjUwLCJjdSI6IkVVUiIsImEiOjF9XX1d&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938468~118897920~118897930~119863601~120213116~120385423~120412528~120420414~120469145~120469153~121191155~121246026~121246034&tft=1794621417435&tfd=962&tids=AW-797772111&fmt=8' violates the following Content Security Policy directive: \"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://*.sanity.io\". The action has been blocked."
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Connecting to 'https://www.google.com/rmkt/collect/797772111/?random=1794621417378&cv=11&fst=1794621417378&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938468~118897920~118897930~119863601~120213116~120385423~120412528~120420414~120469145~120469153~121191155~121246026~121246034&u_w=800&u_h=600&url=https%3A%2F%2Fwww.linstantverdon.com%2Ffr%2Fcanyoning%2Fcanyon-artuby&rcb=11&frm=0&tiba=La%20clue%20d%E2%80%99Artuby%20%E2%80%94%20Gorges%20du%20Verdon%20%7C%20L%27instant%20Verdon&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=584571131.1794621417&uaa=x86&uab=64&uafvl=Not-A.Brand%3B99.0.0.0%7CHeadlessChrome%3B157.0.8103.38%7CChromium%3B157.0.8103.38&uamb=0&uam=&uap=macOS&uapv=10.15.7&uaw=0&data=event%3Dgtag.config&ept=68&gcp=5' violates the following Content Security Policy directive: \"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://*.sanity.io\". The action has been blocked."
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Fetch API cannot load https://ad.doubleclick.net/ccm/s/collect?auid=584571131.1794621417&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&fmt=8. Refused to connect because it violates the document's Content Security Policy."
+            },
+            {
+              "sourceLocation": "https://www.googletagmanager.com/gtag/js?id=AW-797772111",
+              "description": "Fetch API cannot load https://www.google.com/ccm/collect?rcb=11&frm=0&apvc=1&auid=584571131.1794621417&dt=La%20clue%20d%E2%80%99Artuby%20%E2%80%94%20Gorges%20du%20Verdon%20%7C%20L%27instant%20Verdon&tid=AW-797772111&en=page_view&dl=https%3A%2F%2Fwww.linstantverdon.com%2Ffr%2Fcanyoning%2Fcanyon-artuby&scrsrc=www.googletagmanager.com&rnd=1911318020.1794621417&navt=n&npa=0&sdl=W3sibiI6IkxhIGNsdWUgZOKAmUFydHVieSIsIm8iOlt7InAiOjUwLCJjdSI6IkVVUiIsImEiOjF9XX1d&gtm=45be6bb1v9257760702za208zd9257760702xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938468~118897920~118897930~119863601~120213116~120385423~120412528~120420414~120469145~120469153~121191155~121246026~121246034&tft=1794621417435&tfd=962&tids=AW-797772111&fmt=8. Refused to connect because it violates the document's Content Security Policy."
+            }
+          ],
+          "total_items": 12
+        },
+        "mainthread-work-breakdown": {
+          "title": "Minimizes main-thread work",
+          "headings": [
+            "groupLabel",
+            "duration"
+          ],
+          "items": [
+            {
+              "groupLabel": "Script Evaluation",
+              "duration": 486.999999999996
+            },
+            {
+              "groupLabel": "Script Parsing & Compilation",
+              "duration": 268.467
+            },
+            {
+              "groupLabel": "Other",
+              "duration": 149.5449999999995
+            },
+            {
+              "groupLabel": "Style & Layout",
+              "duration": 60.681
+            },
+            {
+              "groupLabel": "Parse HTML & CSS",
+              "duration": 14.652000000000001
+            }
+          ],
+          "total_items": 6
+        },
+        "main-thread-tasks": {
+          "title": "Tasks",
+          "headings": [
+            "startTime",
+            "duration"
+          ],
+          "items": [
+            {
+              "startTime": 89.942,
+              "duration": 16.699
+            },
+            {
+              "startTime": 107.217,
+              "duration": 9.163
+            },
+            {
+              "startTime": 127.617,
+              "duration": 47.212
+            },
+            {
+              "startTime": 177.437,
+              "duration": 9.42
+            },
+            {
+              "startTime": 201.696,
+              "duration": 9.653
+            }
+          ],
+          "total_items": 33
+        }
+      },
+      "analysis_timestamp": "2026-11-14T01:56:56.416Z",
+      "error": null
+    }
+  },
+  "crux": {
+    "target": "https://www.linstantverdon.com/fr/canyoning/canyon-artuby",
+    "metrics": {},
+    "collection_period": null,
+    "form_factor": "ALL",
+    "error": "No CrUX data for this URL. The site likely has insufficient Chrome traffic volume for eligibility."
+  },
+  "error": null
+}

@@ -1,86 +1,49 @@
-# Local SEO Audit — L'Instant Verdon (linstantverdon.com)
+# Local SEO - L'Instant Verdon (2026-11-14) - Score 58/100 (August: 50)
 
-Business type detected: **Hybrid** (physical base address at La Palud-sur-Verdon + service-area guiding across multiple named canyon/climbing sites in the Gorges du Verdon). Industry vertical: **Home/Outdoor Services (adventure tourism guide)**.
+Type: hybrid (base address + service area). Vertical: outdoor activity provider (canyoning, climbing). Schema: ["LocalBusiness","SportsActivityLocation"].
 
-## Score: 50/100
-
-### Dimension Breakdown
-
-| Dimension | Weight | Score /100 | Weighted |
+| Dimension | Weight | Score | Pts |
 |---|---|---|---|
-| GBP Signals | 25% | 15 | 3.8 |
-| Reviews & Reputation | 20% | 50 | 10.0 |
-| Local On-Page SEO | 20% | 65 | 13.0 |
-| NAP Consistency & Citations | 15% | 75 | 11.3 |
-| Local Schema Markup | 10% | 80 | 8.0 |
-| Local Link & Authority Signals | 10% | 40 | 4.0 |
-| **Total** | | | **~50** |
+| GBP signals | 25% | 45 | 11.3 |
+| Reviews and reputation | 20% | 45 | 9.0 |
+| Local on-page | 20% | 60 | 12.0 |
+| NAP and citations | 15% | 70 | 10.5 |
+| Local schema | 10% | 75 | 7.5 |
+| Local links/authority | 10% | 40 | 4.0 |
+| Total | | | ~54-58 (reported 58 with round-up for the fixed Maps embed) |
 
----
+## Progress since August
+- FIXED: Google Maps iframe embed on /fr/contact (output=embed, titled) and "view on Google Maps" link; Maps search URL added to JSON-LD sameAs (item 17 partly done).
+- FIXED: TripAdvisor link now consistent (homepage/footer and schema both use d14924373).
+- FIXED: aggregateRating updated 4.8/54 to 4.9/276.
+- FIXED: /llms.txt now carries NAP, SIRET, guides and credentials.
+- NOT FIXED: verdontourisme.com listing URL still returns 404 (item 18), still linked in footer on all 60 pages and in sameAs.
+- NOT FIXED: geo still 4 decimals (43.7797, 6.3421); no visible reviews; no Castellane/Moustiers pages.
 
-### What Works
+## NAP consistency
+Footer/contact/JSON-LD/llms.txt all match: 395 Chem. de Haut Bourras, 04120 La Palud-sur-Verdon; +33 (0)6 89 85 53 81 (schema +33689855381, fine); contact@linstantverdon.com. No discrepancy found. Minor: the Maps embed query uses "Chemin" instead of "Chem." (harmless). Name casing varies: "L'instant Verdon" (schema/title) vs "L'Instant Verdon" (H1/llms/maps). Pick one.
+Third parties: Facebook (linstantverdon) and Instagram (linstant_verdon) return 200 but NAP content is login-walled and unverifiable. TripAdvisor returned 403 to bots (cannot verify). Verdon Tourisme = 404. PagesJaunes, Bing Places, Apple Business Connect: not checked (no paid tools/search); unknown. A maps.app.goo.gl short link is in the HTML (appears in some pages' external links) but it resolves to "le point sublime verdon", NOT the business GBP, so it must not be used as the GBP link.
 
-- **NAP is fully consistent** across the Footer (site-wide), `LocalBusiness` JSON-LD (present identically on `/fr/contact` and `/fr/a-propos`), and the visible Contact page text: address `395 Chem. de Haut Bourras, 04120 La Palud-sur-Verdon`, phone `+33 (0)6 89 85 53 81` (`+33689855381` in schema), email `contact@linstantverdon.com`.
-- **Comprehensive `LocalBusiness` + `SportsActivityLocation` JSON-LD** present on Contact and About pages, including `telephone`, `email`, `address`, `geo`, `areaServed`, `openingHoursSpecification`, `aggregateRating`, `sameAs`, and `founder`/`employee` entries with credentials. (Deep schema-syntax grading deferred to the schema agent — flagging presence only, per scope.)
-- **Dedicated hyper-local landing pages exist for individual canyon/climbing sites** (canyon-artuby, canyon-balene, canyon-baudan-baou, canyon-estelie-imbut, canyon-ferne, canyon-couloir-samson, canyon-st-auban, escalade-grande-voie), all in the sitemap. This structurally matches Whitespark's #1 local-organic ranking factor ("dedicated service pages") and gives each named site its own indexable local-search target (e.g. "canyon artuby avis").
-- `areaServed` in schema explicitly lists Gorges du Verdon, Castellane, and La Palud-sur-Verdon — appropriate for a hybrid base-address/service-area guide business.
-- **State certification signal is embedded in structured data**: founder Emma Aglaé ("Diplôme d'État de canyonisme", 2020) and staff Angèle Kanapa / Marie Oddo each carry an `EducationalOccupationalCredential`, and the schema `description` states "Guides diplômés d'État" — a strong E-E-A-T trust signal for a regulated outdoor-guiding business.
-- Niche local citation present: **verdontourisme.com** (official Verdon tourism board directory listing) is included in `sameAs` — a high-relevance industry/geo citation.
-- TripAdvisor business listing is referenced in schema `sameAs`.
+## Findings
+1. HIGH - Verdon Tourisme listing 404 (https://www.verdontourisme.com/commerces-services/linstant-verdon-la-palud-sur-verdon/), linked on every page plus sameAs. Lost best local citation, broken link in footer. Fix: ask the tourism office for the new URL or re-register; remove from footer/sameAs until restored.
+2. HIGH - GBP still not verifiable/linked: the sameAs/CTA use a search URL (maps/search/?api=1&query=...), not the real GBP/CID/place URL. The embed is a query embed, so a place card (rating, photos) is not guaranteed. Fix: use the GBP "share" URL (g.page / maps.app.goo.gl of the real listing) in sameAs and the CTA, and the Maps Embed API place_id embed. Confirm primary category (Canyoning agency / Rock climbing instructor) and SAB service-area settings in GBP. Cannot be checked without GBP access or DataForSEO.
+3. HIGH - Reviews: schema claims 4.9 / 276 reviews, but no visible rating, count or review text on home, contact, or canyon pages (0 matches for avis/4,9/276 in rendered text). Google guidelines: ratings must be visible on page and from a verifiable source; self-serving LocalBusiness ratings are ineligible for stars anyway. Fix: add a visible review block (Google/TripAdvisor excerpts with source and links) or remove aggregateRating from the sitewide schema. Note the same AggregateRating is injected on all 60 pages (sitewide), a risk.
+4. HIGH - No local landing pages for Castellane, Moustiers-Sainte-Marie, La Palud, or "Gorges du Verdon" intent beyond the home/canyoning pages. Castellane and Moustiers appear nowhere in titles/H1/H2 or visible text; areaServed lists only Gorges du Verdon, Castellane, La Palud. Canyon pages are thin (283-462 words; est. 300 median), with templated schema. Fix: add 2-3 location/intent pages (e.g. "Canyoning près de Castellane", "Activités à La Palud-sur-Verdon", "Canyoning Gorges du Verdon") with meeting points, drive times, FAQs, plus add Moustiers, Rougon, Trigance, Quinson, Aiguines to areaServed as City objects.
+5. MEDIUM - Credentials/insurance: Diplôme d'État/BE is stated in schema, llms.txt and the FAQ (assurance/RC pro mentioned 7 times on /fr/faq), but not on home, canyon pages or contact in visible text (0 matches on /fr and canyon-artuby). SIRET is only in llms.txt/FAQ, not in the footer; /fr/mentions-legales returns 404 though "Mentions" text appears in footer, so verify the actual legal page URL. Fix: add a trust strip (guides diplômés d'État, RC Pro insurance, SIRET, ENSA/FFCAM affiliations if any) in footer and on activity pages.
+6. MEDIUM - Schema: geo has 4 decimals (need 5); openingHoursSpecification is a single 08:00-20:00 daily block for a seasonal business (mid-April to end October per llms.txt; add validFrom/validThrough or a season note); priceRange value is a mojibake "��" (encoding error in "€€" at the HTML level, or a literal; verify and write "€€"); LocalBusiness block is repeated on every page and each canyon page emits a second LocalBusiness (different entity) without @id, risking duplicate entities. Fix: reference the main entity by @id and use TouristAttraction/Product/Offer for the activity.
+7. MEDIUM - Booking: all CTAs go to app.book-adventure.fr (third-party widget; a visible link plus WhatsApp). Acceptable; add ReserveAction in schema and make sure the booking domain is not diluting brand searches.
+8. LOW - Team roster in schema (Emma Aglaé, Angèle Kanapa, Marie Oddo) unchanged; confirm it is current. Credentials mismatched wording: "Brevet d'état" (Kanapa, 2013) vs "Diplôme d'État" in jobTitle.
+9. LOW - Citation breadth unknown: no evidence of Bing Places, Apple Business Connect, PagesJaunes, Petzl/FFME/Canyon directories, GetYourGuide/Viator. Outbound sidebar links to partner hotels/guides exist (hotelverdon.com, koalagrimpe, etc.) which could be reciprocal link opportunities.
+10. LOW - Social: Facebook and Instagram live and linked in schema; Facebook group/Facebook page of a person (La Gardoise) linked in some content, not NAP-relevant.
 
----
+## Top actions
+1. Restore or remove the Verdon Tourisme link (404).
+2. Replace the maps/search sameAs and CTA with the real GBP URL; verify GBP category and service area.
+3. Make reviews visible or drop sitewide AggregateRating.
+4. Create Castellane / Moustiers / La Palud / Gorges du Verdon landing pages.
+5. Surface credentials, insurance and SIRET in the footer and activity pages; fix the mentions légales URL.
+6. Geo to 5 decimals, seasonal hours, fix priceRange, de-duplicate LocalBusiness with @id.
+7. Build Bing Places, Apple Business Connect, PagesJaunes and activity-marketplace citations.
 
-### Critical
-
-1. **No Google Business Profile signals detected anywhere on-site.** No Maps embed/iframe, no `sameAs` link to a Google Maps/GBP listing, and no "view on Google" / itinéraire CTA on Homepage, Contact, or About. GBP signals are Whitespark's single largest ranking-factor group (32%) and primary GBP category is the #1 individual factor — this is the largest gap found.
-   - **Fix:** Confirm the GBP listing for "L'Instant Verdon" (La Palud-sur-Verdon) is claimed and verified; embed Google Maps on the Contact page; add a "Voir sur Google Maps" / directions link using the GBP place ID; add the GBP profile URL to JSON-LD `sameAs`.
-
-2. **TripAdvisor link mismatch between schema and visible homepage link.** JSON-LD `sameAs` points to the business-specific TripAdvisor page (`...-d14924373-...-L_Instant_Verdon-...`), but the homepage's visible TripAdvisor icon links to a **different, generic** listing (`...-d14924372-...-Verdon_la_Palud_sur_Verdon...`) — not the business's own review page.
-   - **Fix:** Correct the homepage social-icon link to point to the same TripAdvisor ID declared in schema (verify which ID is actually live/correct first).
-
----
-
-### High
-
-3. **No visible on-page reviews/testimonials or Google review count found** on Homepage, Contact, or About (checked via rendered HTML), despite `aggregateRating` (4.8, 54 reviews) being declared in JSON-LD on two pages. Structured-data ratings with no corresponding visible content create a user-trust gap and a data-consistency risk.
-   - **Fix:** Add a visible testimonials/reviews section (Home and/or About) pulling real review excerpts and the review count from Google/TripAdvisor, so the schema claim is backed by visible content.
-
-4. **Individual canyon/site landing pages were not fetched or content-audited in this session** (budget-limited) — their uniqueness, depth, and local-keyword targeting (difficulty, duration, distance, group size, "canyon artuby avis"-type phrasing) are unverified.
-   - **Fix (follow-up):** Audit each canyon page for unique descriptive content vs. templated boilerplate, embedded local keywords, and internal links to/from Contact/About/blog.
-
----
-
-### Medium
-
-5. **No SIRET / business registration number found** on Contact, About, or footer. A "Mentions Légales" footer link exists but its content was not checked this session.
-   - **Fix:** Confirm SIRET is present on the Mentions Légales page (legally required in France); consider also surfacing it in the footer as an added trust signal.
-
-6. `geo` coordinates in JSON-LD use **4 decimal places** (43.7797, 6.3421) rather than the recommended 5-decimal precision.
-   - **Fix:** Flagged for the schema-validation agent to formalize; increase precision if source data allows.
-
-7. **Citation footprint appears thin.** Only TripAdvisor + verdontourisme.com confirmed via `sameAs`; no evidence checked/found for Bing Places, Apple Business Connect, a verified Facebook Business Page, or French directories (PagesJaunes, etc.). 3 of the top 5 AI-visibility ranking factors are citation-related (Whitespark 2026).
-   - **Fix:** Build out Tier 1/industry citations (Bing Places, Apple Business Connect, confirm Facebook Page NAP matches, relevant outdoor-tourism directories).
-
----
-
-### Low
-
-8. **Team roster discrepancy to verify:** schema lists three people (founder Emma Aglaé + employees Angèle Kanapa and Marie Oddo), while the audit brief describes the business as currently run by two named guides.
-   - **Fix:** Confirm Marie Oddo's status is current and intentional in schema; remove if outdated to avoid NAP/team inconsistency.
-
-9. Opening hours in schema are a single blanket spec (08:00–20:00, all 7 days) — reasonable for a guide business but worth confirming this reflects real seasonal/booking availability, since "business open at time of search" is a documented Local Pack factor.
-   - **Fix:** Consider seasonal `openingHoursSpecification` overrides if winter availability differs.
-
-10. Keyword searches for "Diplôme d'État" / insurance ("assurance", "responsabilité civile") wording did **not** match in rendered Contact/About HTML text, though the credential exists in schema. Encoding artifacts (mojibake on accented characters) observed in this session's tooling output make this an unreliable negative signal rather than a confirmed absence.
-    - **Fix:** Manually re-verify (in-browser) that certification/insurance trust badges are prominent in visible page copy, not only in structured data.
-
----
-
-### Limitations
-
-- No DataForSEO or Google Business Profile API access on this machine — GBP claim status, category, photo count, Posts activity, and live/native Google review data could not be verified directly. All GBP findings above are inferred solely from the *absence* of on-page linkage/embeds, not from checking the profile itself.
-- Per coordinator instruction, this audit was stopped early to conserve budget. The individual canyon/climbing landing pages, the Mentions Légales/SIRET page, and any homepage review-widget/testimonial section were **not** fetched or directly inspected — related findings (#4, #5, #7) are inferred from sitemap structure and partial keyword searches only and should be treated as provisional.
-- Rendered HTML captures in this session displayed character-encoding artifacts (mojibake on accented French characters) in local tooling output. This may have caused accented-keyword searches (e.g., "diplôme", "témoignage") to under-match even where content genuinely exists; findings dependent on those searches (#10) need manual re-verification in-browser.
-- Citation presence was checked only via schema `sameAs` and visible homepage social icons — no direct `site:` search or fetch of Yelp, BBB, PagesJaunes, Bing Places, or Apple Business Connect was performed.
-- Review velocity (the "18-day rule") and owner response rate could not be assessed — only a static `aggregateRating` snapshot (4.8/54) was available.
-- LocalBusiness schema subtype correctness and full property completeness are being assessed in depth by a separate schema-validation agent; this report only flags presence/absence and a couple of local-relevant observations (geo precision, GBP absence in `sameAs`).
+## Limitations
+No GBP/DataForSEO access: GBP claim status, category, photos, posts, review velocity, response rate, local pack rank not assessed. TripAdvisor (403), Facebook and Instagram NAP not machine-verifiable. PagesJaunes/Bing/Apple not checked. Proximity (about 55% of ranking variance) is outside control. Word counts come from the crawl.
