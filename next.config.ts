@@ -7,13 +7,15 @@ import type { NextConfig } from "next";
 // is the main class of risk for a marketing/booking site like this one.
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: https://cdn.sanity.io",
+  // Google Ads conversion pings go out as image/beacon/fetch requests to these
+  // hosts; without them every conversion is silently dropped.
+  "img-src 'self' data: https://cdn.sanity.io https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://www.google.fr https://*.doubleclick.net https://www.googleadservices.com https://pagead2.googlesyndication.com",
   "font-src 'self' data:",
   "media-src 'self' https://pub-badf3a21614b454495059542458030e6.r2.dev",
-  "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.google.com https://maps.google.com",
-  "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://*.sanity.io",
+  "frame-src https://www.youtube.com https://td.doubleclick.net https://www.googletagmanager.com https://www.youtube-nocookie.com https://www.google.com https://maps.google.com",
+  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://www.google.com https://www.google.fr https://*.doubleclick.net https://www.googleadservices.com https://pagead2.googlesyndication.com https://api.emailjs.com https://*.sanity.io",
   "frame-ancestors 'self'",
   "base-uri 'self'",
   "form-action 'self' https://api.emailjs.com",
@@ -25,6 +27,7 @@ const nextConfig: NextConfig = {
     globalNotFound: true,
   },
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -44,6 +47,10 @@ const nextConfig: NextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
         ],
+      },
+      {
+        source: '/studio/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
       },
     ];
   },

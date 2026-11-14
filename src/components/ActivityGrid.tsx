@@ -5,6 +5,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { Waves, Mountain, Compass, Calendar, Star, PartyPopper, Tent } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { categorySlugs, categoryHref, type CategoryKey } from '@/lib/routes';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,7 +47,7 @@ export default function ActivityGrid({ dict, locale }: { dict: any; locale: stri
     { key: 'canyoning', icon: <Mountain size={40} />, img: '/assets/canyon/canyon.jpeg' },
     { key: 'escalade', icon: <Compass size={40} />, img: '/assets/escalade/climbing.jpeg' },
     { key: 'aventures', icon: <Star size={40} />, img: '/assets/aventures/adventure.jpeg' },
-    { key: 'stages', icon: <Calendar size={40} />, img: '/assets/week%20end%20stage/weekend.webp' },
+    { key: 'stages', icon: <Calendar size={40} />, img: '/assets/week end stage/weekend.webp' },
     { key: 'insolite', icon: <Tent size={40} />, img: '/assets/insolite/unusual2.webp' },
     { key: 'evenementiel', icon: <PartyPopper size={40} />, img: '/assets/evenementiel/events.jpg.jpeg' },
   ];
@@ -132,14 +134,17 @@ export default function ActivityGrid({ dict, locale }: { dict: any; locale: stri
                 className="h-full flex flex-col"
               >
                 <Link 
-                  href={`/${locale}/${activity.key}`}
+                  href={activity.key in categorySlugs ? categoryHref(activity.key as CategoryKey, locale) : `/${locale}/${activity.key}`}
                   prefetch={false}
                   className={`card-promax group h-full border border-black/5 ${colors.hoverBorder}`}
                 >
                   <div className="relative h-72 image-zoom-container">
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${activity.img})`, backgroundColor: '#1a1a1a' }}
+                    <Image
+                      src={activity.img}
+                      alt={dict.activities[activity.key]?.name || dict.nav[activity.key] || ''}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover object-center bg-[#1a1a1a]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1a] to-transparent opacity-60" />
                     <div className={`absolute top-5 left-5 p-3 glass-promax rounded-2xl ${colors.text} shadow-2xl border border-white-10`}>
@@ -158,7 +163,7 @@ export default function ActivityGrid({ dict, locale }: { dict: any; locale: stri
                       {dict.activities[activity.key]?.description}
                     </p>
                     <div className={`flex items-center text-xs font-black tracking-widest ${colors.text} group-hover:translate-x-2 transition-all uppercase`}>
-                      Explorer la catégorie <span className="ml-2">→</span>
+                      {locale === 'fr' ? 'Explorer la catégorie' : 'Explore this category'} <span className="ml-2">→</span>
                     </div>
                   </div>
                 </Link>

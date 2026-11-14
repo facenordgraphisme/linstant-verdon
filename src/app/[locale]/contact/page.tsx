@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getDictionary } from '@/lib/dictionaries';
 import ContactSection from '@/components/ContactSection';
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       canonical: `/${locale}/contact`,
       languages: { fr: '/fr/contact', en: '/en/contact', 'x-default': '/fr/contact' },
     },
-    openGraph: { title: m.title, description: m.description, url: `/${locale}/contact` },
+    openGraph: { title: m.title, description: m.description, url: `/${locale}/contact` , images: [{ url: '/assets/accueil/home.webp', width: 1200, height: 630, alt: "L'instant Verdon — Canyoning & Escalade dans les Gorges du Verdon" }] },
   };
 }
 
@@ -43,9 +44,13 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
     <main className="min-h-screen bg-white">
       {/* Cinematic Hero */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-black text-white">
-        <div 
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
-          style={{ backgroundImage: `url('/assets/accueil/home.webp')` }}
+        <Image
+          src={'/assets/accueil/home.webp'}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center transition-transform duration-1000 scale-105"
         />
         <div className="absolute inset-0 bg-black/50 z-10" />
         

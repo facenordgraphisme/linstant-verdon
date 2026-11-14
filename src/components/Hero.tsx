@@ -84,25 +84,28 @@ export default function Hero({ dict }: { dict: any }) {
       <div className="relative z-20 text-center px-6 w-full max-w-5xl flex flex-col items-center">
         <div className="mb-12">
           <span className="px-6 py-2.5 bg-primary/20 text-primary rounded-full text-xs font-black uppercase tracking-[0.5em] border border-primary/30 backdrop-blur-2xl">
-            La Palud sur Verdon
+            {dict.hero.badge}
           </span>
         </div>
 
-        <h1 ref={titleRef} className="text-6xl md:text-8xl font-black mb-12 leading-[0.85] tracking-tighter text-white uppercase italic text-white-shadow">
+        <h1 ref={titleRef} className="text-6xl md:text-8xl font-black mb-8 leading-[0.85] tracking-tighter text-white uppercase italic text-white-shadow">
           L'Instant <br />
           <span className="text-gradient not-italic">Verdon</span>
+          <span className="block mt-6 text-xl md:text-3xl not-italic normal-case tracking-tight leading-tight text-white/95">
+            {dict.hero.h1Sub}
+          </span>
         </h1>
 
-        <p ref={subtitleRef} className="text-lg md:text-2xl text-white/90 mb-24 max-w-2xl leading-relaxed font-medium tracking-tight text-white-shadow">
-          "Là où l’aventure rencontre la nature"
+        <p ref={subtitleRef} className="text-base md:text-xl text-white/90 mb-14 md:mb-20 max-w-2xl leading-relaxed font-medium tracking-tight text-white-shadow">
+          {dict.hero.lede}
         </p>
 
         <div ref={ctaRef} className="flex flex-col md:flex-row items-center justify-center gap-12">
           <a href="#activities" className="button-glow py-4 px-10 text-sm">
-            DÉCOUVRIR NOS ACTIVITÉS
+            {dict.hero.ctaActivities}
           </a>
           <a href="#contact" className="text-white font-black text-sm uppercase tracking-widest hover:text-primary transition-all flex items-center gap-3 group text-white-shadow leading-none">
-            NOUS CONTACTER <ArrowRight size={22} className="group-hover:translate-x-2 transition-transform" />
+            {dict.hero.ctaContact} <ArrowRight size={22} className="group-hover:translate-x-2 transition-transform" />
           </a>
         </div>
       </div>

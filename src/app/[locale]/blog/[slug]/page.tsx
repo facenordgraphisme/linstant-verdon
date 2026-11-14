@@ -135,9 +135,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
       />
       {/* Banner Hero */}
       <section className="relative h-[65vh] flex items-center justify-center overflow-hidden bg-black text-white">
-        <div 
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[2000ms] scale-105"
-          style={{ backgroundImage: `url(${post.imageUrl || '/assets/canyon/canyon.jpeg'})` }}
+        <Image
+          src={post.imageUrl || '/assets/canyon/canyon.jpeg'}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center transition-transform duration-[2000ms] scale-105"
         />
         {/* Soft elegant blur and dark mask overlay */}
         <div className="absolute inset-0 bg-black/60 z-10" />
@@ -212,10 +216,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
               </div>
             </div>
             <div className="text-center md:text-left space-y-2">
-              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-primary">Les Auteurs</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-primary">{locale === 'fr' ? 'Les Auteurs' : 'The Authors'}</span>
               <h3 className="text-2xl font-black text-[#109ea5] uppercase tracking-tight">Emma Aglaé & Angèle Kanapa</h3>
               <p className="text-sm text-slate-500 font-semibold leading-relaxed">
-                Guides diplômées d'État passionnées par le Verdon. Nous aimons explorer, repousser les limites de la verticalité, et partager la beauté magique de nos gorges sauvages.
+                {locale === 'fr'
+                  ? "Guides diplômées d'État passionnées par le Verdon. Nous aimons explorer, repousser les limites de la verticalité, et partager la beauté magique de nos gorges sauvages."
+                  : 'State-certified guides who love the Verdon. We enjoy exploring, pushing our vertical limits and sharing the magic of these wild gorges.'}
               </p>
             </div>
           </div>
@@ -225,12 +231,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none transition-transform duration-1000 group-hover:scale-110" />
             <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 justify-between">
               <div className="text-center lg:text-left space-y-4">
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">L'AVENTURE VOUS ATTEND</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">{locale === 'fr' ? "L'AVENTURE VOUS ATTEND" : 'ADVENTURE AWAITS'}</span>
                 <h4 className="text-3xl md:text-4.5xl font-black uppercase tracking-tighter leading-tight">
-                  Envie de découvrir ces merveilles en vrai ?
+                  {locale === 'fr' ? 'Envie de découvrir ces merveilles en vrai ?' : 'Want to see these wonders for real?'}
                 </h4>
                 <p className="text-white/60 font-semibold text-sm max-w-xl">
-                  Rejoignez-nous pour une sortie inoubliable ! Réservez votre parcours de canyoning, de randonnée aquatique ou d'escalade dans le Verdon en quelques clics.
+                  {locale === 'fr'
+                    ? "Rejoignez-nous pour une sortie inoubliable ! Réservez votre parcours de canyoning, de randonnée aquatique ou d'escalade dans le Verdon en quelques clics."
+                    : 'Join us for an unforgettable outing! Book your canyoning, river hiking or climbing trip in the Verdon in a few clicks.'}
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 shrink-0 w-full lg:w-auto">
@@ -239,7 +247,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                   className="inline-flex items-center justify-center gap-3 px-8 py-5 rounded-2xl bg-white text-slate-900 font-black uppercase tracking-wider text-xs shadow-2xl hover:bg-slate-50 hover:scale-[1.02] transition-all duration-300 text-center"
                 >
                   <MessageSquare size={16} className="text-primary" />
-                  Nous contacter
+                  {locale === 'fr' ? 'Nous contacter' : 'Contact us'}
                 </Link>
                 <a 
                   href="https://app.book-adventure.fr/public/booking/65eb5a8dfb9e3e414973b8b0"
@@ -248,7 +256,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                   className="button-glow inline-flex items-center justify-center gap-3 px-8 py-5 rounded-2xl font-black uppercase tracking-wider text-xs shadow-2xl hover:scale-[1.02] transition-all duration-300 text-center"
                 >
                   <CalendarRange size={16} />
-                  Voir les départs
+                  {locale === 'fr' ? 'Voir les départs' : 'See departures'}
                 </a>
               </div>
             </div>

@@ -67,8 +67,8 @@ export default function AboutSection({ dict }: { dict: any }) {
                     <Users size={24} />
                   </div>
                   <div>
-                    <p className="text-xs font-black text-primary uppercase tracking-widest">Le Syndicat Local</p>
-                    <p className="font-bold text-slate-900">Fondé en 2018</p>
+                    <p className="text-xs font-black text-primary uppercase tracking-widest">{dict.about.unionLabel}</p>
+                    <p className="font-bold text-slate-900">{dict.about.founded}</p>
                   </div>
                 </div>
               </div>
@@ -126,7 +126,7 @@ export default function AboutSection({ dict }: { dict: any }) {
                   <span>{dict.about.ecology}</span>
                 </p>
                 <p className="bg-slate-900 text-white p-8 rounded-[2rem] shadow-xl relative overflow-hidden group">
-                  <span className="relative z-10 block mb-2 opacity-50 text-[10px] uppercase font-black tracking-widest">Notre Offre</span>
+                  <span className="relative z-10 block mb-2 opacity-50 text-[10px] uppercase font-black tracking-widest">{dict.about.offer}</span>
                   <span className="relative z-10 block text-lg font-bold italic tracking-tight">{dict.about.vocation}</span>
                   <span className="absolute -right-10 -bottom-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000" />
                 </p>
@@ -136,7 +136,7 @@ export default function AboutSection({ dict }: { dict: any }) {
 
             <div className="pt-6">
               <a href="#contact" className="button-glow">
-                NOUS REJOINDRE
+                {dict.about.join}
               </a>
             </div>
           </div>

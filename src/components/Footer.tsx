@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, Phone, MapPin, Instagram, Facebook, Youtube, Compass } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from 'lucide-react';
+import { categoryHref } from '@/lib/routes';
+import CookieSettingsLink from './CookieSettingsLink';
 
 const TripAdvisorIcon = ({ size = 20 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -37,13 +39,11 @@ export default function Footer({ dict, locale }: { dict: any; locale: string }) 
               </div>
             </Link>
             <p className="text-slate-500 leading-relaxed max-w-md font-medium">
-              Expert en aventures outdoor dans les Gorges du Verdon. 
-              Canyoning, escalade et moments inoubliables au cœur d’une nature sauvage et préservée.
+              {locale === 'fr'
+                ? "Expert en aventures outdoor dans les Gorges du Verdon. Canyoning, escalade et moments inoubliables au cœur d’une nature sauvage et préservée."
+                : 'Outdoor adventure specialists in the Gorges du Verdon. Canyoning, climbing and unforgettable moments in wild, unspoilt nature.'}
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="https://www.verdontourisme.com/commerces-services/linstant-verdon-la-palud-sur-verdon/" target="_blank" rel="noopener noreferrer" title="Verdon Tourisme" className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center hover:bg-primary hover:text-white transition-all border border-slate-100 text-slate-400">
-                <Compass size={20} />
-              </a>
               <a href="https://www.facebook.com/linstantverdon" target="_blank" rel="noopener noreferrer" title="Facebook" className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center hover:bg-primary hover:text-white transition-all border border-slate-100 text-slate-400">
                 <Facebook size={20} />
               </a>
@@ -67,9 +67,9 @@ export default function Footer({ dict, locale }: { dict: any; locale: string }) 
             <div>
               <h4 className="text-slate-900 font-black text-[10px] uppercase tracking-[0.3em] mb-8 opacity-40">Navigation</h4>
               <ul className="space-y-4">
-                <li><Link href={`/${locale}/canyoning`} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">Canyoning</Link></li>
-                <li><Link href={`/${locale}/escalade`} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">Escalade</Link></li>
-                <li><Link href={`/${locale}/stages`} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">Stages</Link></li>
+                <li><Link href={categoryHref('canyoning', locale)} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">Canyoning</Link></li>
+                <li><Link href={categoryHref('escalade', locale)} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.escalade}</Link></li>
+                <li><Link href={categoryHref('stages', locale)} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.stages}</Link></li>
                 <li><Link href={`/${locale}/blog`} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.blog}</Link></li>
                 <li><Link href={`/${locale}/a-propos`} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.about}</Link></li>
                 <li><Link href={`/${locale}/contact`} prefetch={false} className="text-slate-600 hover:text-primary transition-colors font-bold text-sm uppercase tracking-tight">{dict.nav.contact}</Link></li>
@@ -101,12 +101,13 @@ export default function Footer({ dict, locale }: { dict: any; locale: string }) 
             <span>© {new Date().getFullYear()} L'INSTANT VERDON.</span>
             <span className="hidden sm:inline text-slate-300">•</span>
             <a href="https://www.facenordgraphisme.fr" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors font-bold normal-case tracking-normal">
-              Propulsé par Face Nord Graphisme
+              {locale === 'fr' ? 'Propulsé par Face Nord Graphisme' : 'Powered by Face Nord Graphisme'}
             </a>
           </div>
           <div className="flex gap-8 text-slate-500 text-xs md:text-sm font-black tracking-[0.2em] uppercase">
-            <Link href="#" prefetch={false} className="hover:text-primary transition-colors">Mentions Légales</Link>
-            <Link href="#" prefetch={false} className="hover:text-primary transition-colors">Confidentialité</Link>
+            <Link href={`/${locale}/mentions-legales`} prefetch={false} className="hover:text-primary transition-colors">{locale === 'fr' ? 'Mentions Légales' : 'Legal Notice'}</Link>
+            <Link href={`/${locale}/confidentialite`} prefetch={false} className="hover:text-primary transition-colors">{locale === 'fr' ? 'Confidentialité' : 'Privacy'}</Link>
+            <CookieSettingsLink label={locale === 'fr' ? 'Cookies' : 'Cookies'} className="hover:text-primary transition-colors font-black tracking-[0.2em] text-slate-500 text-xs md:text-sm" />
           </div>
         </div>
       </div>

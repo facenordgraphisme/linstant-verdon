@@ -7,7 +7,6 @@ import AboutSection from '@/components/AboutSection';
 import ActivityGrid from '@/components/ActivityGrid';
 import BlogOverview from '@/components/BlogOverview';
 import ContactSection from '@/components/ContactSection';
-import PromoPopup from '@/components/PromoPopup';
 import { client } from '@/sanity/client';
 
 export const revalidate = 86400;
@@ -36,6 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: dict.meta.title,
       description: dict.meta.description,
       url: `/${locale}`,
+      images: [{ url: '/assets/accueil/home.webp', width: 1200, height: 630, alt: "L'instant Verdon — Canyoning & Escalade dans les Gorges du Verdon" }],
     },
   };
 }
@@ -58,7 +58,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   return (
     <main className="min-h-screen">
-      <PromoPopup locale={locale} />
       <Hero dict={dict} />
       <AboutSection dict={dict} />
       <ActivityGrid dict={dict} locale={locale} />

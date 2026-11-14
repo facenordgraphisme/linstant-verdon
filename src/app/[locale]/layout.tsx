@@ -43,6 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
+import CookieConsent from "@/components/CookieConsent";
 
 export default async function RootLayout({
   children,
@@ -66,6 +67,19 @@ export default async function RootLayout({
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            // Consent Mode v2: denied until the visitor accepts in the
+            // banner (CookieConsent.tsx); a stored choice is reapplied here.
+            var c = null;
+            try { c = localStorage.getItem('liv-consent-v1'); } catch (e) {}
+            var g = c === 'granted' ? 'granted' : 'denied';
+            gtag('consent', 'default', {
+              ad_storage: g,
+              ad_user_data: g,
+              ad_personalization: g,
+              analytics_storage: g,
+              wait_for_update: 500
+            });
+            gtag('set', 'ads_data_redaction', true);
             gtag('js', new Date());
             gtag('config', 'AW-797772111');
           `}
@@ -75,6 +89,7 @@ export default async function RootLayout({
         {children}
         <Footer dict={dict} locale={locale} />
         <WhatsAppFloating />
+        <CookieConsent locale={locale} />
       </body>
     </html>
   );

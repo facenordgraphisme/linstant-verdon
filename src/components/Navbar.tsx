@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 import { Menu, X, Globe, ChevronDown, Mountain, Compass, Calendar, Star, Tent, PartyPopper } from 'lucide-react';
+import { categoryHref, switchLocalePath } from '@/lib/routes';
 
 export default function Navbar({ dict, locale }: { dict: any; locale: string }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,14 +31,15 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
 
   const pathname = usePathname();
   const toggleLocale = locale === 'fr' ? 'en' : 'fr';
+  const toggleHref = switchLocalePath(pathname, toggleLocale);
 
   const activityLinks = [
-    { key: 'canyoning', href: `/${locale}/canyoning`, icon: <Mountain size={18} /> },
-    { key: 'escalade', href: `/${locale}/escalade`, icon: <Compass size={18} /> },
-    { key: 'aventures', href: `/${locale}/aventures`, icon: <Star size={18} /> },
-    { key: 'stages', href: `/${locale}/stages`, icon: <Calendar size={18} /> },
-    { key: 'insolite', href: `/${locale}/insolite`, icon: <Tent size={18} /> },
-    { key: 'evenementiel', href: `/${locale}/evenementiel`, icon: <PartyPopper size={18} /> },
+    { key: 'canyoning', href: categoryHref('canyoning', locale), icon: <Mountain size={18} /> },
+    { key: 'escalade', href: categoryHref('escalade', locale), icon: <Compass size={18} /> },
+    { key: 'aventures', href: categoryHref('aventures', locale), icon: <Star size={18} /> },
+    { key: 'stages', href: categoryHref('stages', locale), icon: <Calendar size={18} /> },
+    { key: 'insolite', href: categoryHref('insolite', locale), icon: <Tent size={18} /> },
+    { key: 'evenementiel', href: categoryHref('evenementiel', locale), icon: <PartyPopper size={18} /> },
   ];
 
   return (
@@ -122,7 +124,7 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
           <div className="w-px h-6 bg-slate-200/20 mx-2" />
 
           <Link
-            href={`/${toggleLocale}`}
+            href={toggleHref}
             prefetch={false}
             className="relative flex items-center justify-center w-10 h-10 overflow-hidden rounded-lg transition-all hover:scale-110 active:scale-95"
             title={toggleLocale === 'fr' ? 'Version Française' : 'English Version'}
@@ -159,6 +161,8 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
               : 'text-white bg-white/10 border-white/20'
           }`} 
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? (locale === 'fr' ? 'Fermer le menu' : 'Close menu') : (locale === 'fr' ? 'Ouvrir le menu' : 'Open menu')}
+          aria-expanded={isOpen}
         >
           {isOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
@@ -203,14 +207,14 @@ export default function Navbar({ dict, locale }: { dict: any; locale: string }) 
           </div>
 
           <div className="pt-10">
-             <Link href={`/${toggleLocale}`} prefetch={false} onClick={() => setIsOpen(false)} className="inline-flex items-center gap-4 px-8 py-4 rounded-full border border-slate-200 font-black text-slate-800 bg-white shadow-lg uppercase text-xs tracking-widest">
+             <Link href={toggleHref} prefetch={false} onClick={() => setIsOpen(false)} className="inline-flex items-center gap-4 px-8 py-4 rounded-full border border-slate-200 font-black text-slate-800 bg-white shadow-lg uppercase text-xs tracking-widest">
                 <Globe size={20} /> {toggleLocale === 'fr' ? 'Version Française' : 'English Version'}
              </Link>
           </div>
         </div>
         
         {/* Close button for mobile */}
-        <button className="fixed top-8 right-8 w-14 h-14 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-2xl z-50 text-slate-900" onClick={() => setIsOpen(false)}>
+        <button className="fixed top-8 right-8 w-14 h-14 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-2xl z-50 text-slate-900" onClick={() => setIsOpen(false)} aria-label={locale === 'fr' ? 'Fermer le menu' : 'Close menu'}>
           <X size={28} />
         </button>
       </div>

@@ -68,8 +68,8 @@ export default function BookingCTA({
 
       <p className="text-[11px] text-slate-500 text-center font-bold tracking-tight">
         {locale === 'fr'
-          ? 'Paiement sur place • Réservation 100% Gratuite'
-          : 'Payment on spot • Free Booking Guarantee'}
+          ? 'Acompte de 50 % à la réservation • Solde le jour J'
+          : '50% deposit to book • Balance paid on the day'}
       </p>
     </div>
   );

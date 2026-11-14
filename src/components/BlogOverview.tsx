@@ -98,7 +98,7 @@ export default function BlogOverview({ dict, locale, posts }: { dict: any; local
               prefetch={false}
               className="group inline-flex items-center gap-3 px-8 py-4.5 rounded-2xl bg-white border border-slate-100 shadow-xl hover:border-primary/20 text-slate-800 hover:text-primary transition-all duration-300 font-black uppercase tracking-wider text-xs"
             >
-              Voir tous les articles
+              {blogDict.viewAll || (locale === 'fr' ? 'Voir tous les articles' : 'See all articles')}
               <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>

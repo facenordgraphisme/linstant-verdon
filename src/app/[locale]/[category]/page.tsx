@@ -86,7 +86,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'x-default': `/fr/${altUrls.fr}`,
       },
     },
-    openGraph: { title, description, url: `/${locale}/${category}` },
+    openGraph: { title, description, url: `/${locale}/${category}` , images: [{ url: '/assets/accueil/home.webp', width: 1200, height: 630, alt: "L'instant Verdon — Canyoning & Escalade dans les Gorges du Verdon" }] },
   }
 }
 
@@ -239,9 +239,13 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
       <main className="min-h-screen bg-slate-50/50">
         {/* Hero Section */}
         <section className="relative h-[65vh] flex items-center justify-center pt-24 md:pt-32 overflow-hidden bg-black text-white">
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-[2000ms] scale-105"
-            style={{ backgroundImage: `url('${heroBg}')` }}
+          <Image
+            src={heroBg}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center transition-transform duration-[2000ms] scale-105"
           />
           <div className="absolute inset-0 bg-black/60 z-10" />
           
@@ -523,9 +527,13 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
       <main className="min-h-screen bg-slate-50/50">
         {/* Hero Section - Cinematic Glassmorphism */}
         <section className="relative h-[65vh] flex items-center justify-center overflow-hidden bg-black text-white">
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-[2000ms] scale-105"
-            style={{ backgroundImage: `url('/assets/evenementiel/events.jpg.jpeg')` }}
+          <Image
+            src={'/assets/evenementiel/events.jpg.jpeg'}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center transition-transform duration-[2000ms] scale-105"
           />
           <div className="absolute inset-0 bg-black/60 z-10" />
           
@@ -765,9 +773,13 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
     <main className="min-h-screen bg-white">
       {/* Hero Section for Category - Cinematic Version */}
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-black text-white">
-        <div 
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
-          style={{ backgroundImage: `url(${bgImage})` }}
+        <Image
+          src={bgImage}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center transition-transform duration-1000 scale-105"
         />
         <div className="absolute inset-0 bg-black/60 z-10" />
         
@@ -788,7 +800,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
               background: colors.hex
             }}
           >
-            RÉSERVER VOTRE SORTIE
+            {locale === 'fr' ? 'RÉSERVER VOTRE SORTIE' : 'BOOK YOUR TRIP'}
           </a>
         </div>
       </section>

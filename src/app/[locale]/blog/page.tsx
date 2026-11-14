@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       canonical: `/${locale}/blog`,
       languages: { fr: '/fr/blog', en: '/en/blog', 'x-default': '/fr/blog' },
     },
-    openGraph: { title: m.title, description: m.description, url: `/${locale}/blog` },
+    openGraph: { title: m.title, description: m.description, url: `/${locale}/blog` , images: [{ url: '/assets/accueil/home.webp', width: 1200, height: 630, alt: "L'instant Verdon — Canyoning & Escalade dans les Gorges du Verdon" }] },
   };
 }
 
@@ -68,9 +68,13 @@ export default async function BlogArchivePage({ params }: { params: Promise<{ lo
       
       {/* Cinematic Hero */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-black text-white">
-        <div 
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[2000ms] scale-105"
-          style={{ backgroundImage: `url('/assets/accueil/home.webp')` }}
+        <Image
+          src={'/assets/accueil/home.webp'}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center transition-transform duration-[2000ms] scale-105"
         />
         <div className="absolute inset-0 bg-black/60 z-10" />
         

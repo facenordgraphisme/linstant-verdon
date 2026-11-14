@@ -35,6 +35,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { fr: 'faq',          en: 'faq',                 changeFreq: 'monthly', priority: 0.7 },
     { fr: 'blog',         en: 'blog',                changeFreq: 'weekly',  priority: 0.8 },
     { fr: 'contact',      en: 'contact',             changeFreq: 'yearly',  priority: 0.6 },
+    { fr: 'mentions-legales', en: 'mentions-legales', changeFreq: 'yearly',  priority: 0.2 },
+    { fr: 'confidentialite',  en: 'confidentialite',  changeFreq: 'yearly',  priority: 0.2 },
   ]
 
   // Emit one <url> entry per locale per page — hreflang annotations inside a
@@ -43,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = staticPaths.flatMap(({ fr, en, changeFreq, priority }) => {
     const frUrl = `${BASE}/fr${fr ? `/${fr}` : ''}`
     const enUrl = `${BASE}/en${en ? `/${en}` : ''}`
-    const languages = { fr: frUrl, en: enUrl }
+    const languages = { fr: frUrl, en: enUrl, 'x-default': frUrl }
     return [
       { url: frUrl, lastModified: now, changeFrequency: changeFreq, priority, alternates: { languages } },
       { url: enUrl, lastModified: now, changeFrequency: changeFreq, priority, alternates: { languages } },
@@ -57,9 +59,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       *[_type == "post"] { "slug": slug.current, publishedAt }
     `)
     postEntries = posts.flatMap((post) => {
-      const frUrl = `${BASE}/fr/blog/${post.slug}`
-      const enUrl = `${BASE}/en/blog/${post.slug}`
-      const languages = { fr: frUrl, en: enUrl }
+      const frUrl = `${BASE}/fr/blog/${encodeURIComponent(post.slug)}`
+      const enUrl = `${BASE}/en/blog/${encodeURIComponent(post.slug)}`
+      const languages = { fr: frUrl, en: enUrl, 'x-default': frUrl }
       const lastModified = post.publishedAt ? new Date(post.publishedAt) : now
       return [
         { url: frUrl, lastModified, changeFrequency: 'monthly' as const, priority: 0.7, alternates: { languages } },
@@ -84,9 +86,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .filter((a) => a.slug && a.categorySlug && categoryUrlMap[a.categorySlug])
       .flatMap((activity) => {
         const map = categoryUrlMap[activity.categorySlug]
-        const frUrl = `${BASE}/fr/${map.fr}/${activity.slug}`
-        const enUrl = `${BASE}/en/${map.en}/${activity.slug}`
-        const languages = { fr: frUrl, en: enUrl }
+        const frUrl = `${BASE}/fr/${map.fr}/${encodeURIComponent(activity.slug)}`
+        const enUrl = `${BASE}/en/${map.en}/${encodeURIComponent(activity.slug)}`
+        const languages = { fr: frUrl, en: enUrl, 'x-default': frUrl }
         const lastModified = activity.updatedAt ? new Date(activity.updatedAt) : now
         return [
           { url: frUrl, lastModified, changeFrequency: 'monthly' as const, priority: 0.8, alternates: { languages } },

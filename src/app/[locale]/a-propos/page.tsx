@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       canonical: `/${locale}/a-propos`,
       languages: { fr: '/fr/a-propos', en: '/en/a-propos', 'x-default': '/fr/a-propos' },
     },
-    openGraph: { title: m.title, description: m.description, url: `/${locale}/a-propos` },
+    openGraph: { title: m.title, description: m.description, url: `/${locale}/a-propos` , images: [{ url: '/assets/accueil/home.webp', width: 1200, height: 630, alt: "L'instant Verdon — Canyoning & Escalade dans les Gorges du Verdon" }] },
   };
 }
 
@@ -45,7 +45,7 @@ const guidesSchema = (locale: 'fr' | 'en') => [
     jobTitle: locale === 'fr' ? "Co-gérante & Guide diplômée d'État canyonisme" : 'Co-manager & State-certified canyoning guide',
     image: 'https://www.linstantverdon.com/assets/a%20propos/emma.JPG.jpeg',
     url: `https://www.linstantverdon.com/${locale}/a-propos`,
-    worksFor: { '@type': 'Organization', name: "L'instant Verdon", '@id': 'https://www.linstantverdon.com' },
+    worksFor: { '@type': 'Organization', name: "L'instant Verdon", '@id': 'https://www.linstantverdon.com/#organization' },
     hasCredential: {
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: locale === 'fr' ? "Diplôme d'État de canyonisme" : 'State canyoning diploma',
@@ -59,7 +59,7 @@ const guidesSchema = (locale: 'fr' | 'en') => [
     jobTitle: locale === 'fr' ? "Co-gérante & Guide diplômée d'État escalade & canyonisme" : 'Co-manager & State-certified climbing & canyoning guide',
     image: 'https://www.linstantverdon.com/assets/a%20propos/angele.jpg.jpeg',
     url: `https://www.linstantverdon.com/${locale}/a-propos`,
-    worksFor: { '@type': 'Organization', name: "L'instant Verdon", '@id': 'https://www.linstantverdon.com' },
+    worksFor: { '@type': 'Organization', name: "L'instant Verdon", '@id': 'https://www.linstantverdon.com/#organization' },
     hasCredential: {
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: locale === 'fr' ? "Brevet d'État d'escalade et canyonisme" : 'State climbing & canyoning certificate',
@@ -73,7 +73,7 @@ const guidesSchema = (locale: 'fr' | 'en') => [
     jobTitle: locale === 'fr' ? "Guide diplômée d'État escalade & canyonisme" : 'State-certified climbing & canyoning guide',
     image: 'https://www.linstantverdon.com/assets/a%20propos/marie.JPG.jpeg',
     url: `https://www.linstantverdon.com/${locale}/a-propos`,
-    worksFor: { '@type': 'Organization', name: "L'instant Verdon", '@id': 'https://www.linstantverdon.com' },
+    worksFor: { '@type': 'Organization', name: "L'instant Verdon", '@id': 'https://www.linstantverdon.com/#organization' },
     hasCredential: {
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: locale === 'fr' ? "Diplôme d'État d'escalade et canyonisme" : 'State climbing & canyoning diploma',
@@ -104,9 +104,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       />
       {/* Cinematic Hero */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-black text-white">
-        <div 
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
-          style={{ backgroundImage: `url('/assets/accueil/about-us.webp')` }}
+        <Image
+          src={'/assets/accueil/about-us.webp'}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center transition-transform duration-1000 scale-105"
         />
         <div className="absolute inset-0 bg-black/50 z-10" />
         

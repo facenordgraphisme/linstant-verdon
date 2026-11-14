@@ -7,7 +7,7 @@ export default function LocalBusinessSchema({ locale }: { locale: string }) {
       ? "Guides diplômés d'État pour sorties canyoning, escalade et aventures dans les Gorges du Verdon. Basé à La Palud-sur-Verdon depuis 2018."
       : "State-certified guides for canyoning, climbing and adventure outings in the Gorges du Verdon since 2018.",
     image: 'https://www.linstantverdon.com/assets/accueil/logo.webp',
-    '@id': 'https://www.linstantverdon.com',
+    '@id': 'https://www.linstantverdon.com/#organization',
     url: `https://www.linstantverdon.com/${locale}`,
     telephone: '+33689855381',
     email: 'contact@linstantverdon.com',
@@ -38,19 +38,14 @@ export default function LocalBusinessSchema({ locale }: { locale: string }) {
       opens: '08:00',
       closes: '20:00',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '276',
-      bestRating: '5',
-      worstRating: '1',
-    },
+    // No aggregateRating: Google requires the rating to be visible on the
+    // page, and the site does not display reviews. Re-add it only alongside
+    // a visible reviews block with the real, current figures.
     sameAs: [
       'https://www.facebook.com/linstantverdon',
       'https://www.instagram.com/linstant_verdon/',
       'https://www.youtube.com/channel/UCvOPoMuJYkrMgZWiXiErugw',
       'https://www.tripadvisor.fr/Attraction_Review-g635586-d14924373-Reviews-L_Instant_Verdon-La_Palud_sur_Verdon_Alpes_de_Haute_Provence_Provence_Alpes_Cote.html',
-      'https://www.verdontourisme.com/commerces-services/linstant-verdon-la-palud-sur-verdon/',
       'https://www.google.com/maps/search/?api=1&query=L%27Instant+Verdon+395+Chemin+de+Haut+Bourras+04120+La+Palud-sur-Verdon',
     ],
     founder: [

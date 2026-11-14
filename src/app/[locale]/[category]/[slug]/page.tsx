@@ -282,6 +282,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
         image={activity.mainImageUrl}
         url={activityUrl}
         price={activity.price}
+        priceDetails={activity.priceDetails}
         minAge={activity.minAge}
         duration={activity.duration}
         locale={locale}
@@ -295,9 +296,13 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
       />
       {/* Cinematic Hero */}
       <section className="relative h-[65vh] flex items-center justify-center overflow-hidden bg-black text-white">
-        <div 
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[2000ms] scale-105"
-          style={{ backgroundImage: `url(${heroImage})` }}
+        <Image
+          src={heroImage}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center transition-transform duration-[2000ms] scale-105"
         />
         <div className="absolute inset-0 bg-black/60 z-10" />
         
@@ -360,12 +365,12 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
             {embedVideoUrl && (
               <div className="space-y-6 border-t border-slate-200/50 pt-12">
                 <h3 className={`text-2xl md:text-3xl font-black ${colors.text} uppercase tracking-tighter flex items-center gap-3`}>
-                  <span className={`w-8 h-1 rounded-full ${colors.bg}`} /> 🎥 Aperçu Vidéo
+                  <span className={`w-8 h-1 rounded-full ${colors.bg}`} /> 🎥 {locale === 'fr' ? 'Aperçu Vidéo' : 'Video Preview'}
                 </h3>
                 <div className="relative w-full aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white">
                   <iframe
                     src={embedVideoUrl}
-                    title="Aperçu vidéo de l'activité"
+                    title={locale === 'fr' ? "Aperçu vidéo de l'activité" : 'Activity video preview'}
                     width="100%"
                     height="100%"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -418,7 +423,12 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
                     {activity.priceDetails || (activity.price ? `${activity.price}€` : '—')}
                   </div>
                   <div className="text-[9px] uppercase font-bold tracking-wider text-slate-400 mt-0.5">
-                    {locale === 'fr' ? 'Prix / pers.' : 'Price / person'}
+                    {/* priceDetails is free text that often holds group
+                        prices ("1 à 3 pers. : 200€"), so only claim "per
+                        person" when showing the bare per-person price. */}
+                    {activity.priceDetails
+                      ? (locale === 'fr' ? 'Tarif' : 'Price')
+                      : (locale === 'fr' ? 'Prix / pers.' : 'Price / person')}
                   </div>
                 </div>
                 <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100">
